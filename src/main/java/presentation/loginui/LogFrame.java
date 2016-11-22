@@ -78,7 +78,7 @@ public class LogFrame extends Application {
 		choose.setFont(new Font(14.0));
 		
 		//type
-		ChoiceBox <String> type = new ChoiceBox<>();
+		ChoiceBox <String> type = new ChoiceBox<String>();
 		type.setCursor(Cursor.HAND);
 		body.getChildren().add(type);
 		type.setLayoutX(7.0);

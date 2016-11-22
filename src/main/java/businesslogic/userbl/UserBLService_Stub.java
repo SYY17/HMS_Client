@@ -80,7 +80,7 @@ public class UserBLService_Stub implements UserBLService{
 	@Override
 	public ArrayList<UserVO> searchByKeywords(String keywords) {
 		// TODO Auto-generated method stub
-		ArrayList<UserVO> UserList = new ArrayList<>();
+		ArrayList<UserVO> UserList = new ArrayList<UserVO>();
 		UserList.add(new UserVO(00000000,null,null));
 		return UserList;
 	}

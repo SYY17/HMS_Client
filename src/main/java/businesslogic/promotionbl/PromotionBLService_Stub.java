@@ -45,7 +45,7 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	@Override
 	public ArrayList<PromotionVO> getAllPromotion(int id) {
 		// TODO Auto-generated method stub
-		ArrayList<PromotionVO> PromotionList = new ArrayList<>();
+		ArrayList<PromotionVO> PromotionList = new ArrayList<PromotionVO>();
 		PromotionList.add(new PromotionVO(content, start, id));
 		return PromotionList;
 	}
