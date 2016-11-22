@@ -144,7 +144,7 @@ public class LogFrame extends Application {
 		type.setFont(new Font(14.0));
 		
 		//identity
-		ChoiceBox <String> id = new ChoiceBox<>();
+		ChoiceBox <String> id = new ChoiceBox<String>();
 		id.setCursor(Cursor.HAND);
 		login.getChildren().add(id);
 		id.setLayoutX(181.0);

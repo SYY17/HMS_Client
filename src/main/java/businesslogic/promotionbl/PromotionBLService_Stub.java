@@ -87,7 +87,7 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	@Override
 	public ArrayList<PromotionVO> searchByContent(int id, String content) {
 		// TODO Auto-generated method stub
-		ArrayList<PromotionVO> PromotionList = new ArrayList<>();
+		ArrayList<PromotionVO> PromotionList = new ArrayList<PromotionVO>();
 		PromotionList.add(new PromotionVO(content, start, id));
 		return PromotionList;
 	}
@@ -101,7 +101,7 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	@Override
 	public ArrayList<PromotionVO> searchByStartTime(int id, Date start) {
 		// TODO Auto-generated method stub
-		ArrayList<PromotionVO> PromotionList = new ArrayList<>();
+		ArrayList<PromotionVO> PromotionList = new ArrayList<PromotionVO>();
 		PromotionList.add(new PromotionVO(content, start, id));
 		return PromotionList;
 	}
