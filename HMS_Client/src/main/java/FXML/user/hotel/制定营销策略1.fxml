@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.CreatePromotion_controller">
+   <children>
+      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
+         <children>
+            <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label id="username" layoutX="100.0" layoutY="29.0" text="admin">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label id="default" layoutX="610.0" layoutY="28.0" text="日期">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label id="date" layoutX="665.0" layoutY="29.0" text="2016-10-10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button id="logout" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#onLogout" text="注销">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label layoutX="337.0" layoutY="25.0" text="酒店管理系统">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane id="panel_body" layoutY="80.0" prefHeight="445.0" prefWidth="800.0">
+         <children>
+            <Pane layoutX="5.0" layoutY="45.0" prefHeight="415.0" prefWidth="790.0">
+               <children>
+                  <Rectangle fill="#cfd6dd" height="415.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0" />
+                  <Button fx:id="button_submit" layoutX="716.0" layoutY="371.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="30.0" prefWidth="60.0" text="提交">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <ListView layoutX="20.0" layoutY="38.0" prefHeight="161.0" prefWidth="750.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ListView>
+                  <Label layoutX="329.0" layoutY="14.0" text="促销策略列表">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Rectangle fill="WHITE" height="188.0" layoutX="16.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="684.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <TextArea layoutX="28.0" layoutY="256.0" prefHeight="134.0" prefWidth="659.0" />
+                  <ScrollBar layoutX="673.0" layoutY="256.0" orientation="VERTICAL" prefHeight="134.0" prefWidth="14.0" />
+                  <Label layoutX="28.0" layoutY="227.0" text="新促销策略：">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <menus>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="订单管理(O)">
+                     <items>
+                        <MenuItem fx:id="Item_review" mnemonicParsing="false" onAction="#onReviewOrderList" text="订单浏览" />
+                        <MenuItem fx:id="Item_execute" mnemonicParsing="false" onAction="#onExecute" text="订单执行" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="信息管理(I)">
+                     <items>
+                        <MenuItem fx:id="Item_Manage" mnemonicParsing="false" onAction="#onManage" text="酒店信息" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="营销策略(P)">
+                     <items>
+                        <MenuItem fx:id="Item_promotion" mnemonicParsing="false" onAction="#onReviewPromotion" text="营销策略浏览" />
+                        <MenuItem fx:id="Item_createPromotion" mnemonicParsing="false" onAction="#onCreatePromotion" text="营销策略制定" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="酒店评价(R)">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="评价查看" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="帮助(H)">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="关于" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </Pane>
+      <Button fx:id="button_return" layoutX="720.0" layoutY="556.0" mnemonicParsing="false" onAction="#onReturn" prefHeight="30.0" prefWidth="60.0" text="返回">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

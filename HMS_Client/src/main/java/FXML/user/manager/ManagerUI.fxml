@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.Manager_controller">
+   <children>
+      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
+         <children>
+            <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label id="username" layoutX="100.0" layoutY="29.0" text="admin">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label id="default" layoutX="610.0" layoutY="28.0" text="日期">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label id="date" layoutX="665.0" layoutY="29.0" text="2016-10-10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button id="logout" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#onLogout" text="注销">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Label layoutX="337.0" layoutY="25.0" text="酒店管理系统">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane id="panel_body" layoutY="80.0" prefHeight="445.0" prefWidth="800.0">
+         <children>
+            <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <menus>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="用户管理(U)">
+                     <items>
+                        <MenuItem id="manageSystemUser" mnemonicParsing="false" onAction="#onManageSystemUser" text="用户浏览" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="申请查看(A)">
+                     <items>
+                        <MenuItem id="manageHotelCreatingApplication" mnemonicParsing="false" onAction="#onManageHotelCreatingApplication" text="申请一览" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="帮助(H)">
+                     <items>
+                        <MenuItem id="about" mnemonicParsing="false" onAction="#onAbout" text="关于" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <Pane id="panel_message" layoutX="5.0" layoutY="46.0" prefHeight="300.0" prefWidth="280.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfd6dd" height="476.0" layoutY="-9.0" stroke="#cfd6dd" strokeType="INSIDE" strokeWidth="2.0" width="790.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Rectangle>
+                  <Label layoutX="8.0" layoutY="-3.0" text="最新申请信息：">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TableView id="applyTable" layoutX="7.0" layoutY="23.0" prefHeight="436.0" prefWidth="776.0">
+                     <columns>
+                        <TableColumn id="col_odd" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="12.0" resizable="false" sortable="false" text="编号" />
+                        <TableColumn id="col_even" editable="false" maxWidth="117.0" minWidth="117.0" prefWidth="117.0" resizable="false" sortable="false" text="申请时间" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="112.0" resizable="false" sortable="false" text="申请人" />
+                        <TableColumn id="col_even" editable="false" maxWidth="259.0" minWidth="259.0" prefWidth="259.0" resizable="false" sortable="false" text="酒店名称" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="176.0" minWidth="176.0" prefWidth="176.0" resizable="false" sortable="false" text="操作" />
+                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

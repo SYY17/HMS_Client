@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane id="panel_top" prefHeight="53.0" prefWidth="600.0">
+         <children>
+            <Label id="default" layoutX="24.0" layoutY="18.0" text="欢迎您">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label id="info" layoutX="81.0" layoutY="19.0" text="admin">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label id="default" layoutX="459.0" layoutY="18.0" text="日期">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label id="info" layoutX="501.0" layoutY="19.0" text="2016-10-10">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button layoutX="132.0" layoutY="12.0" mnemonicParsing="false" text="注销">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label layoutX="252.0" layoutY="17.0" text="酒店管理系统">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="53.0" prefHeight="296.0" prefWidth="600.0">
+         <children>
+            <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="590.0">
+              <menus>
+                <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="用户管理(U)" />
+                <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="申请查看(A)" />
+                <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="帮助(H)" />
+              </menus>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuBar>
+            <Pane layoutX="5.0" layoutY="46.0" prefHeight="250.0" prefWidth="590.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="-7.0" text="最新申请信息：">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ListView fixedCellSize="25.0" layoutY="27.0" prefHeight="221.0" prefWidth="590.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ListView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

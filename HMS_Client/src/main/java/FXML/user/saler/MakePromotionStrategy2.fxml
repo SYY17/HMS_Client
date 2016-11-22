@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.promotionui.MakePromotionStrategy2_controller">
+	<children>
+		<Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
+			<children>
+				<Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
+					<font>
+						<Font name="System Bold" size="16.0" />
+					</font>
+				</Label>
+				<Label id="username" layoutX="100.0" layoutY="29.0" text="admin">
+					<font>
+						<Font size="15.0" />
+					</font>
+				</Label>
+				<Label id="default" layoutX="610.0" layoutY="28.0" text="日期">
+					<font>
+						<Font name="System Bold" size="16.0" />
+					</font>
+				</Label>
+				<Label id="date" layoutX="665.0" layoutY="29.0" text="2016-10-10">
+					<font>
+						<Font size="15.0" />
+					</font>
+				</Label>
+				<Button id="logout" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#onLogout" text="注销">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+					<effect>
+						<DropShadow />
+					</effect>
+					<font>
+						<Font name="System Bold" size="10.0" />
+					</font>
+				</Button>
+				<Label layoutX="337.0" layoutY="25.0" text="酒店管理系统">
+					<font>
+						<Font name="System Bold" size="18.0" />
+					</font>
+				</Label>
+			</children>
+		</Pane>
+		<Pane id="panel_body" layoutY="80.0" prefHeight="521.0" prefWidth="800.0">
+			<children>
+				<MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+					<effect>
+						<DropShadow />
+					</effect>
+					<menus>
+						<Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="订单管理(O)">
+                     <items>
+                        <MenuItem id="order_manage" mnemonicParsing="false" onAction="#onOrderManage" text="异常订单管理" />
+                     </items></Menu>
+						<Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="信用管理(C)">
+                     <items>
+                        <MenuItem id="credit_manage" mnemonicParsing="false" onAction="#onCreditManage" text="信用值管理" />
+                     </items></Menu>
+						<Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="营销策略(P)">
+                     <items>
+                        <MenuItem id="promotion_manage" mnemonicParsing="false" onAction="#onPromotionManage" text="营销策略管理" />
+                     </items>
+						</Menu>
+						<Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="帮助(H)">
+                     <items>
+                        <MenuItem id="about" mnemonicParsing="false" onAction="#onAbout" text="关于" />
+                     </items>
+						</Menu>
+					</menus>
+				</MenuBar>
+				<Pane id="panel_order" layoutX="1.0" layoutY="46.0" prefHeight="475.0" prefWidth="794.0">
+					<children>
+						<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfd6dd" height="405.0" layoutX="4.0" layoutY="12.0" stroke="#cfd6dd" strokeType="INSIDE" strokeWidth="2.0" width="782.0">
+							<effect>
+								<DropShadow />
+							</effect>
+						</Rectangle>
+						<Label layoutX="358.0" layoutY="20.0" text="促销策略列表">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+						</Label>
+						<TableView id="table" layoutX="8.0" layoutY="48.0" prefHeight="361.0" prefWidth="772.0">
+							<columns>
+								<TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="编号" />
+								<TableColumn id="col_even" editable="false" maxWidth="130.0" minWidth="77.95857238769531" prefWidth="87.87123107910156" resizable="false" sortable="false" text="时间" />
+								<TableColumn id="col_even" editable="false" maxWidth="603.0" minWidth="80.0" prefWidth="603.0" resizable="false" sortable="false" text="内容" />
+							</columns>
+							<effect>
+								<DropShadow />
+							</effect>
+						</TableView>
+					</children>
+				</Pane>
+			</children>
+		</Pane>
+		<Button id="return" layoutX="720.0" layoutY="556.0" mnemonicParsing="false" onAction="#onReturn" prefHeight="30.0" prefWidth="60.0" text="返回">
+			<effect>
+				<DropShadow />
+			</effect>
+		</Button>
+	</children>
+</Pane>

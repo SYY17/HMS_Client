@@ -1,0 +1,9 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#col_odd{
+	-fx-background-color: "#859ebb";
+}
+
+#col_even{
+	-fx-background-color: "#7f8996";
+}

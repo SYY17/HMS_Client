@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.Create_controller">
+   <children>
+      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
+         <children>
+            <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label id="username" layoutX="100.0" layoutY="29.0" text="admin">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label id="default" layoutX="610.0" layoutY="28.0" text="日期">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label id="date" layoutX="665.0" layoutY="29.0" text="2016-10-10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button id="logout" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#onLogout" text="注销">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label layoutX="337.0" layoutY="25.0" text="酒店管理系统">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane id="panel_body" layoutY="80.0" prefHeight="445.0" prefWidth="800.0">
+         <children>
+            <Pane layoutX="5.0" layoutY="45.0" prefHeight="415.0" prefWidth="790.0">
+               <children>
+                  <Label layoutX="220.0" layoutY="14.0" text="酒店名称：">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="320.0" layoutY="16.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextField>
+                  <Rectangle fill="#cfd6dd" height="363.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0" />
+                  <Label layoutX="14.0" layoutY="73.0" text="地址：">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="110.0" text="商圈：">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="145.0" text="星级：">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="179.0" text="设施服务：">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="216.0" text="简介：">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="59.0" layoutY="69.0" prefHeight="28.0" prefWidth="336.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="59.0" layoutY="106.0" prefHeight="28.0" prefWidth="336.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="59.0" layoutY="141.0" prefHeight="28.0" prefWidth="336.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="85.0" layoutY="176.0" prefHeight="28.0" prefWidth="310.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextArea layoutX="59.0" layoutY="216.0" prefHeight="192.0" prefWidth="646.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextArea>
+                  <ScrollBar layoutX="691.0" layoutY="216.0" orientation="VERTICAL" prefHeight="192.0" prefWidth="14.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ScrollBar>
+                  <ImageView fitHeight="150.0" fitWidth="295.0" layoutX="407.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+            <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <menus>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="订单管理(O)">
+                     <items>
+                        <MenuItem fx:id="Item_review" mnemonicParsing="false" onAction="#onReviewOrderList" text="订单浏览" />
+                        <MenuItem fx:id="Item_execute" mnemonicParsing="false" onAction="#onExecute" text="订单执行" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="信息管理(I)">
+                     <items>
+                        <MenuItem fx:id="Item_Manage" mnemonicParsing="false" onAction="#onManage" text="酒店信息" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="营销策略(P)">
+                     <items>
+                        <MenuItem fx:id="Item_promotion" mnemonicParsing="false" onAction="#onReviewPromotion" text="营销策略浏览" />
+                        <MenuItem fx:id="Item_createPromotion" mnemonicParsing="false" onAction="#onCreatePromotion" text="营销策略制定" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="酒店评价(R)">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="评价查看" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="帮助(H)">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="关于" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </Pane>
+      <Button fx:id="button_return" layoutX="720.0" layoutY="556.0" mnemonicParsing="false" onAction="#onReturn" prefHeight="30.0" prefWidth="60.0" text="返回">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="button_create" layoutX="649.0" layoutY="556.0" mnemonicParsing="false" onAction="#onCreate" prefHeight="30.0" prefWidth="60.0" text="创建">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
