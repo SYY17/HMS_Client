@@ -7,15 +7,15 @@ import vo.CreditVO;
 public class CreditBLService_Driver {
 	
 	public void drive(CreditBLService creditBLService){
-		CreditVO cvo = new CreditVO(0, 0);
+		int credit = 0;
 		int id = 0;
-		ResultMessage result = creditBLService.addCredit(cvo, id);
+		ResultMessage result = creditBLService.addCredit(id, credit);
 		if(result == ResultMessage.TRUE) System.out.println("Credit added!");
 		result = creditBLService.deleteCredit(id);
 		if(result == ResultMessage.TRUE) System.out.println("Credit deleted!");
-		result = creditBLService.modifyCredit(cvo, id);
+		result = creditBLService.modifyCredit(id, credit);
 		if(result == ResultMessage.TRUE) System.out.println("Credit modified!");
-		cvo = creditBLService.getCredit(id);
+		CreditVO cvo = creditBLService.getCredit(id);
 		if(cvo != null) System.out.println("Credit got!");
 	}
 }

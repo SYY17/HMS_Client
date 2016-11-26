@@ -3,7 +3,8 @@ package businesslogictest.creditbl;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import businesslogic.creditbl.CreditBLService_Stub;
+
+import businesslogic.creditbl.CreditController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.creditBLService.CreditBLService;
 import vo.CreditVO;
@@ -30,13 +31,13 @@ public class CreditBLServiceTest {
 	 */
 	@Test
 	public void testAddCredit() {
-		creditBLService = new CreditBLService_Stub();
+		creditBLService = new CreditController();
 		ResultMessage message;
-		message = creditBLService.addCredit(c1, 10926001);
+		message = creditBLService.addCredit(c1.getID(), c1.getCredit());
 		assertEquals(ResultMessage.TRUE, message);
-		message = creditBLService.addCredit(c2, 11001016);
+		message = creditBLService.addCredit(c2.getID(), c2.getCredit());
 		assertEquals(ResultMessage.TRUE, message);
-		message = creditBLService.addCredit(c3, 10926001);
+		message = creditBLService.addCredit(c1.getID(), c3.getCredit());
 		assertEquals(ResultMessage.FALSE, message);
 	}
 	
@@ -45,9 +46,9 @@ public class CreditBLServiceTest {
 	 */
 	@Test
 	public void testGetCredit() {
-		creditBLService = new CreditBLService_Stub();
+		creditBLService = new CreditController();
 		CreditVO cvo;
-		cvo = creditBLService.getCredit(10926001);
+		cvo = creditBLService.getCredit(c1.getID());
 		assertEquals(c1.getCredit(), cvo.getCredit());
 		assertEquals(c1.getID(), cvo.getID());
 	}
@@ -57,11 +58,11 @@ public class CreditBLServiceTest {
 	 */
 	@Test
 	public void testModifyCredit() {
-		creditBLService = new CreditBLService_Stub();
+		creditBLService = new CreditController();
 		ResultMessage message;
-		message = creditBLService.modifyCredit(c3, 10926001);
+		message = creditBLService.modifyCredit(c1.getID(), c3.getCredit());
 		assertEquals(ResultMessage.TRUE, message);
-		message = creditBLService.modifyCredit(c2, 10926001);
+		message = creditBLService.modifyCredit(c3.getID(), c1.getCredit());
 		assertEquals(ResultMessage.FALSE, message);
 	}
 	
@@ -70,13 +71,13 @@ public class CreditBLServiceTest {
 	 */
 	@Test
 	public void testDeleteCredit() {
-		creditBLService = new CreditBLService_Stub();
+		creditBLService = new CreditController();
 		ResultMessage message;
-		message = creditBLService.deleteCredit(10926001);
+		message = creditBLService.deleteCredit(c1.getID());
 		assertEquals(ResultMessage.TRUE, message);
-		message = creditBLService.deleteCredit(10926001);
+		message = creditBLService.deleteCredit(c1.getID());
 		assertEquals(ResultMessage.FALSE, message);
-		message = creditBLService.deleteCredit(11001016);
+		message = creditBLService.deleteCredit(c2.getID());
 		assertEquals(ResultMessage.TRUE, message);
 	}
 

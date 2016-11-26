@@ -5,7 +5,6 @@ import java.rmi.Remote;
 import dataservice.creditdataservice.CreditDataService;
 import dataservice.datafactoryservice.DataFactoryService;
 import dataservice.hoteldataservice.HotelDataService;
-import dataservice.logindataservice.LoginDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
@@ -52,14 +51,6 @@ public class RemoteController {
 	 */
 	public HotelDataService getHotelDataService(){
 		return (HotelDataService)remote;
-	}
-	
-	/**
-	 * 
-	 * @return 获得登录/注册数据信息服务
-	 */
-	public LoginDataService getLoginDataService(){
-		return (LoginDataService) remote;
 	}
 	
 	/**

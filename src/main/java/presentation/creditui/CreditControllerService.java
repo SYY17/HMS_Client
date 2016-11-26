@@ -11,7 +11,7 @@ public interface CreditControllerService {
 	 * @param id
 	 * @return 添加信用值信息
 	 */
-	public ResultMessage addCredit(CreditVO cvo, int id);
+	public ResultMessage addCredit(int id, int credit);
 	
 	/**
 	 * 
@@ -26,7 +26,7 @@ public interface CreditControllerService {
 	 * @param id
 	 * @return 维护信用值
 	 */
-	public ResultMessage modifyCredit(CreditVO cvo, int id);
+	public ResultMessage modifyCredit(int id, int credit);
 	
 	/**
 	 * 

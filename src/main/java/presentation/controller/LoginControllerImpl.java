@@ -1,6 +1,6 @@
 package presentation.controller;
 
-import businesslogic.loginbl.LoginBLService_Stub;
+import businesslogic.loginbl.LoginController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.loginblservice.LoginBLService;
 import presentation.loginui.LoginControllerService;
@@ -10,7 +10,7 @@ public class LoginControllerImpl implements LoginControllerService{
 	private LoginBLService loginBlService;
 	
 	public LoginControllerImpl(String u, String p, int i){
-		loginBlService=new LoginBLService_Stub();
+		loginBlService=new LoginController();
 	}
 	
 	/**
@@ -34,9 +34,9 @@ public class LoginControllerImpl implements LoginControllerService{
 	 * @return 登录
 	 */
 	@Override
-	public ResultMessage login(String username, String passwrd, int id) {
+	public ResultMessage login(String username, String password, int id) {
 		// TODO Auto-generated method stub
-		return loginBlService.login(username, passwrd, id);
+		return loginBlService.login(username, password);
 	}
 
 	/**
@@ -47,9 +47,9 @@ public class LoginControllerImpl implements LoginControllerService{
 	 * @return 注销
 	 */
 	@Override
-	public ResultMessage logout(String username, String passwrd, int id) {
+	public ResultMessage logout(String username, String password, int id) {
 		// TODO Auto-generated method stub
-		return loginBlService.logout(username, passwrd, id);
+		return loginBlService.logout(username);
 	}
 
 }

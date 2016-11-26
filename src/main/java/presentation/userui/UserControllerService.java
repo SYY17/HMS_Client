@@ -30,17 +30,10 @@ public interface UserControllerService {
 	
 	/**
 	 * 
-	 * @param id
-	 * @return 按照id搜索用户
+	 * @param username
+	 * @return 按照username搜索用户
 	 */
-	public UserVO searchByID(int id);
-	
-	/**
-	 * 
-	 * @param keywords
-	 * @return 按照关键词搜索用户
-	 */
-	public ArrayList<UserVO> searchByKeywords(String keywords);
+	public UserVO searchByUserName(String username);
 	
 	/**
 	 * 

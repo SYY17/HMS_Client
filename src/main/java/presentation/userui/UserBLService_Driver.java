@@ -16,11 +16,9 @@ public class UserBLService_Driver {
 		if(resultMessage==ResultMessage.TRUE) System.out.println("User deleted!");
 		resultMessage=userBLService.modifyUser(uvo);
 		if(resultMessage==ResultMessage.TRUE) System.out.println("User modified!");
-		UserVO user=userBLService.searchByID(001);
+		UserVO user=userBLService.searchByUserName("");
 		if(user!=null) System.out.println("User with certain id got!");
-		ArrayList <UserVO> list = userBLService.searchByKeywords("");
-		if(list != null) System.out.println("Users contains certain content got!");
-		list=userBLService.getAllUsers();
+		ArrayList <UserVO> list=userBLService.getAllUsers();
 		if(list != null) System.out.println("All Users got!");
 	}
 }

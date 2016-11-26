@@ -2,7 +2,7 @@ package presentation;
 import businesslogic.creditbl.CreditController;
 import businesslogic.hotelbl.HotelBLService_Stub;
 import businesslogic.promotionbl.PromotionController;
-import businesslogic.userbl.UserBLService_Stub;
+import businesslogic.userbl.UserController;
 import businesslogicservice.creditBLService.CreditBLService;
 import businesslogicservice.hotelBLService.HotelBLService;
 import businesslogicservice.promotionblservice.PromotionBLService;
@@ -16,7 +16,7 @@ public class Client {
 	public static void main(String[] args) {
 		//user驱动测试
 		System.out.println("* User Driver Test:");
-		UserBLService userBLService = new UserBLService_Stub(0, null, null);
+		UserBLService userBLService = new UserController();
 		UserBLService_Driver userDriver = new UserBLService_Driver();
 		userDriver.drive(userBLService);
 		System.out.println("* Test Completed");

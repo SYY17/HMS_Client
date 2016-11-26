@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import businesslogic.loginbl.LoginBLService_Stub;
+import businesslogic.loginbl.LoginController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.loginblservice.LoginBLService;
 
@@ -29,7 +29,7 @@ public class LoginBLServiceTest {
 	 */
 	@Test
 	public void testAddNewUser() {
-		loginBlService=new LoginBLService_Stub();
+		loginBlService=new LoginController();
 		assertEquals(ResultMessage.TRUE, loginBlService.addNewUser(username,password,id));
 	}
 	
@@ -38,8 +38,8 @@ public class LoginBLServiceTest {
 	 */
 	@Test
 	public void testLogin() {
-		loginBlService=new LoginBLService_Stub();
-		assertEquals(ResultMessage.TRUE, loginBlService.login(username,password,id));
+		loginBlService=new LoginController();
+		assertEquals(ResultMessage.TRUE, loginBlService.login(username,password));
 	}
 	
 	/**
@@ -47,8 +47,8 @@ public class LoginBLServiceTest {
 	 */
 	@Test
 	public void testLogout() {
-		loginBlService=new LoginBLService_Stub();
-		assertEquals(ResultMessage.TRUE, loginBlService.logout(username,password,id));
+		loginBlService=new LoginController();
+		assertEquals(ResultMessage.TRUE, loginBlService.logout(username));
 	}
 
 }

@@ -1,11 +1,17 @@
 package businesslogic.creditbl;
 
+import java.rmi.RemoteException;
+
 import businesslogicservice.ResultMessage;
 import businesslogicservice.creditBLService.CreditBLService;
+import po.CreditPO;
+import rmi.RemoteController;
 import vo.CreditVO;
 
 public class CreditController implements CreditBLService{
-
+	
+	private RemoteController remoteController;
+	
 	/**
 	 * 
 	 * @param cvo
@@ -13,9 +19,24 @@ public class CreditController implements CreditBLService{
 	 * @return 添加信用值信息
 	 */
 	@Override
-	public ResultMessage addCredit(CreditVO cvo, int id) {
+	public ResultMessage addCredit(int id, int credit) {
 		// TODO Auto-generated method stub
-		return null;
+		try{
+			remoteController.getCreditDataService().initCreditDataService();
+			CreditPO cpo = remoteController.getCreditDataService().findCredit(id);
+			
+			if(cpo != null){
+				return ResultMessage.FALSE;
+			}
+			
+			cpo = new CreditPO(id, credit);
+			remoteController.getCreditDataService().insertCredit(cpo);
+			remoteController.getCreditDataService().finishCreditDataService();
+			return ResultMessage.TRUE;
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return ResultMessage.FALSE;
 	}
 
 	/**
@@ -26,7 +47,15 @@ public class CreditController implements CreditBLService{
 	@Override
 	public ResultMessage deleteCredit(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		try{
+			remoteController.getCreditDataService().initCreditDataService();
+			remoteController.getCreditDataService().deleteCredit(id);
+			remoteController.getCreditDataService().finishCreditDataService();
+			return ResultMessage.TRUE;
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return ResultMessage.FALSE;
 	}
 
 	/**
@@ -36,9 +65,25 @@ public class CreditController implements CreditBLService{
 	 * @return 维护信用值
 	 */
 	@Override
-	public ResultMessage modifyCredit(CreditVO cvo, int id) {
+	public ResultMessage modifyCredit(int id, int credit) {
 		// TODO Auto-generated method stub
-		return null;
+		try{
+			remoteController.getCreditDataService().initCreditDataService();
+			CreditPO cpo = remoteController.getCreditDataService().findCredit(id);
+			
+			if(cpo == null){
+				return ResultMessage.FALSE;
+			}
+			
+			cpo = new CreditPO(id, credit);
+			
+			remoteController.getCreditDataService().updateCredit(cpo);
+			remoteController.getCreditDataService().finishCreditDataService();
+			return ResultMessage.TRUE;
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return ResultMessage.FALSE;
 	}
 
 	/**
@@ -49,7 +94,20 @@ public class CreditController implements CreditBLService{
 	@Override
 	public CreditVO getCredit(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		CreditVO cvo = null;
+		try{
+			remoteController.getCreditDataService().initCreditDataService();
+			CreditPO cpo = remoteController.getCreditDataService().findCredit(id);
+			
+			if(cpo != null){
+				cvo = new CreditVO(id, cpo.getCredit());
+			}
+			
+			remoteController.getCreditDataService().finishCreditDataService();
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return cvo;
 	}
 
 }

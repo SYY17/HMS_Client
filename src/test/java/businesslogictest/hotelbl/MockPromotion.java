@@ -1,18 +1,16 @@
 package businesslogictest.hotelbl;
 
 import java.util.ArrayList;
-import java.util.Date;
-
-import businesslogic.promotionbl.PromotionBLService_Stub;
+import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.ResultMessage;
 import vo.HotelVO;
 
-public class MockPromotion extends PromotionBLService_Stub {
+public class MockPromotion extends PromotionController {
 	int credit;
 	ArrayList<HotelVO> hotelList;
 
-	public MockPromotion(String ctt, Date s, int i) {
-		super(ctt, s, i);
+	public MockPromotion() {
+		super();
 	}
 
 	public ResultMessage modifyHotelPrice(int flag, HotelVO hotelVO) {

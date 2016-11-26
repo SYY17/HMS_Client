@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import businesslogic.userbl.UserBLService_Stub;
+import businesslogic.userbl.UserController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.userblservice.UserBLService;
 import vo.UserVO;
@@ -23,10 +23,10 @@ public class UserBLServiceTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		id=00000000;
-		name="User";
-		password="00000000";
-		userVO=new UserVO(id,name,password);
+		id = 00000000;
+		name = "User";
+		password= "00000000";
+		userVO = new UserVO(id,name,password);
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testAddUser() {
-		userBlService=new UserBLService_Stub(id,name,password);
+		userBlService = new UserController();
 		assertEquals(ResultMessage.TRUE,userBlService.addUser(userVO) );
 	}
 	
@@ -43,7 +43,7 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void deleteUser() {
-		userBlService=new UserBLService_Stub(id,name,password);
+		userBlService = new UserController();
 		assertEquals(ResultMessage.TRUE,userBlService.deleteUser(userVO.getID()) );
 	}
 	
@@ -52,7 +52,7 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void modifyAddUser() {
-		userBlService=new UserBLService_Stub(id,name,password);
+		userBlService = new UserController();
 		assertEquals(ResultMessage.TRUE,userBlService.modifyUser(userVO) );
 	}
 	
@@ -60,18 +60,9 @@ public class UserBLServiceTest {
 	 * 按照ID搜索用户的测试用例套件
 	 */
 	@Test
-	public void testSearchByID() {
-		userBlService=new UserBLService_Stub(id,name,password);
-		assertEquals(userList,userBlService.searchByID(00000000) );
-	}
-	
-	/**
-	 * 按照关键词搜索用户的测试用例套件
-	 */
-	@Test
-	public void testSearchByKeyWords() {
-		userBlService=new UserBLService_Stub(id,name,password);
-		assertEquals(userList,userBlService.searchByKeywords("00000000") );
+	public void testSearchByUserName() {
+		userBlService = new UserController();
+		assertEquals(userList,userBlService.searchByUserName("") );
 	}
 	
 	/**
@@ -79,7 +70,7 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testGetAllUsers() {
-		userBlService=new UserBLService_Stub(id,name,password);
+		userBlService = new UserController();
 		assertEquals(userList,userBlService.getAllUsers() );
 	}
 

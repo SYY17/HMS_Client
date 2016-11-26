@@ -9,7 +9,6 @@ import org.junit.Test;
 import businesslogic.hotelbl.HotelBLService_Stub;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
-import po.RoomType;
 import vo.HotelVO;
 import vo.RoomVO;
 
@@ -52,9 +51,6 @@ public class HotelBLServiceTest {
 	public void testSearchHotel() {
 		hotelBLService = new HotelBLService_Stub();
 		ArrayList<HotelVO> list1;
-		RoomVO rvo;
-		RoomType type = RoomType.STANDARD_ROOM;
-		int id = 12345678;
 		list1 = hotelBLService.searchHotel("xxhotel");
 		assertEquals(h1.getHotelID(), list1.get(0).getHotelID());
 		assertEquals(h1.getHotelName(), list1.get(0).getHotelName());
@@ -67,9 +63,6 @@ public class HotelBLServiceTest {
 		assertEquals(Double.valueOf(h1.getRating()), Double.valueOf(list1.get(0).getRating()));
 		assertEquals(h1.getStaffName(), list1.get(0).getStaffName());
 		assertEquals(h1.getPhoneNumber(), list1.get(0).getPhoneNumber());
-		rvo = hotelBLService.searchRoom(id,type);
-		assertEquals(h1.getRooms().get(0).getPrice(), rvo.getPrice());
-		assertEquals(h1.getRooms().get(0).getRoomType(), rvo.getRoomType());
 	}
 	
 	/**

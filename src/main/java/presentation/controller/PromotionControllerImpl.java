@@ -2,7 +2,7 @@ package presentation.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import businesslogic.promotionbl.PromotionBLService_Stub;
+import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import presentation.promotionui.PromotionControllerService;
@@ -10,17 +10,10 @@ import vo.PromotionVO;
 
 public class PromotionControllerImpl implements PromotionControllerService{
 
-	private String content;
-	private Date start;
-	private int id;
 	private PromotionBLService promotionBLService;
 	
 	public PromotionControllerImpl(String ctt, Date s, int i) {
-		// TODO Auto-generated constructor stub
-		content = ctt;
-		start = s;
-		id = i;
-		promotionBLService = new PromotionBLService_Stub(content, start, id);
+		promotionBLService = new PromotionController();
 	}
 	
 	/**

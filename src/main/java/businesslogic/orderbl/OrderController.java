@@ -12,7 +12,6 @@ import dataservice.userdataservice.UserDataService;
 import po.OrderPO;
 import vo.RoomType;
 import rmi.RemoteController;
-import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.PromotionVO;

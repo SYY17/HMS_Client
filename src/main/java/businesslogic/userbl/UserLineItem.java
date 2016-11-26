@@ -1,5 +1,8 @@
 package businesslogic.userbl;
 
+import po.UserPO;
+import vo.UserVO;
+
 public class UserLineItem {
 	int id;
 	String name;
@@ -10,13 +13,51 @@ public class UserLineItem {
 		name = n;
 		password = p;
 	}
+	
+	public UserLineItem(UserVO uvo){
+		id = uvo.getID();
+		name = uvo.getName();
+		password = uvo.getPassword();
+	}
+	
+	public UserLineItem(UserPO upo){
+		id = upo.getID();
+		name = upo.getName();
+		password = upo.getPassword();
+	}
 
+	public UserLineItem(){
+		id = 0;
+		name = null;
+		password = null;
+	}
+	
 	/**
 	 * 
-	 * @return 获得用户ID
+	 * @param uvo
 	 */
-	public int getID(){
-		return id;
+	public void setUserLineItem(UserVO uvo){
+		id = uvo.getID();
+		name = uvo.getName();
+		password = uvo.getPassword();
+	}
+	
+	public void setUserLineItem(UserPO upo){
+		id = upo.getID();
+		name = upo.getName();
+		password = upo.getPassword();
+	}
+	
+	/**
+	 * 
+	 * @param i
+	 * @param n
+	 * @param p
+	 */
+	public void setUserLineItem(int i, String n, String p){
+		id = i;
+		name = n;
+		password = p;
 	}
 	
 	/**
@@ -27,15 +68,7 @@ public class UserLineItem {
 	public void setID(int id){
 		this.id = id;
 	}
-	
-	/**
-	 * 
-	 * @return 获得用户name
-	 */
-	public String getName(){
-		return name;
-	}
-	
+
 	/**
 	 * 
 	 * @param name
@@ -47,18 +80,26 @@ public class UserLineItem {
 	
 	/**
 	 * 
-	 * @return 获得订单对应用户ID
-	 */
-	public String getPassword(){
-		return password;
-	}
-	
-	/**
-	 * 
 	 * @param password
 	 * @return 设置用户password
 	 */
 	public void setPassword(String password){
 		this.password = password;
+	}
+	
+	/**
+	 * 
+	 * @return 返回转换成的PO对象
+	 */
+	public UserPO getUserPO(){
+		return new UserPO(id, name, password);
+	}
+	
+	/**
+	 * 
+	 * @return 返回转换成的VO对象
+	 */
+	public UserVO getUserVO(){
+		return new UserVO(id, name, password);
 	}
 }

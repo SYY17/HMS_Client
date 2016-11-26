@@ -49,7 +49,12 @@ public class DataServiceClientRunner {
 		RemoteController rc = cr.getRemoteController();
 		try {
 			rc.getUserDataService().initUserDataService();
-			rc.getUserDataService().insertUser(new UserPO(11002166, "user", "666666"));
+			UserPO user = rc.getUserDataService().findUser("张三");
+			if(user != null){
+				System.out.print("User ID: "+user.getID()+"; ");
+				System.out.print("User Name: "+user.getName()+"; ");
+				System.out.println("User Password: "+user.getPassword());
+			}
 			rc.getUserDataService().finishUserDataService();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

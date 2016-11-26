@@ -20,7 +20,7 @@ public interface LoginBLService {
 	 * * @param id
 	 * @return 登录
 	 */
-	public ResultMessage login(String username,String passwrd,int id);
+	public ResultMessage login(String username,String password);
 	
 	/**
 	 * 
@@ -29,5 +29,5 @@ public interface LoginBLService {
 	 * * @param id
 	 * @return 注销
 	 */
-	public ResultMessage logout(String username,String passwrd,int id);
+	public ResultMessage logout(String username);
 }

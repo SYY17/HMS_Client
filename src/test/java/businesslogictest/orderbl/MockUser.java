@@ -2,17 +2,17 @@ package businesslogictest.orderbl;
 
 import java.util.ArrayList;
 
-import businesslogic.userbl.UserBLService_Stub;
+import businesslogic.userbl.UserController;
 import businesslogicservice.ResultMessage;
 import vo.CreditVO;
 import vo.OrderVO;
 
-public class MockUser extends UserBLService_Stub {
+public class MockUser extends UserController {
 	int credit;
 	ArrayList<OrderVO> orderList;
 
-	public MockUser(int i, String n, String p) {
-		super(i, n, p);
+	public MockUser() {
+		super();
 	}
 
 	public ResultMessage modifyOrderList(int flag, OrderVO orderVO) {

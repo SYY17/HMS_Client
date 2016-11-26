@@ -12,7 +12,7 @@ public class UserDataService_Driver {
 		userDataService.initUserDataService();
 		userDataService.insertUser(upo);
 		userDataService.updateUser(upo);
-		upo = userDataService.findUser(id);
+		upo = userDataService.findUser(null);
 		if(upo != null) System.out.println("User found!");
 		userDataService.deleteUser(id);
 		userDataService.finishUserDataService();

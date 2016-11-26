@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import businesslogicservice.ResultMessage;
-import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.PromotionVO;

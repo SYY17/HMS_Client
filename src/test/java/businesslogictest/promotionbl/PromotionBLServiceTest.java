@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
-
-import businesslogic.promotionbl.PromotionBLService_Stub;
+import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import vo.PromotionVO;
@@ -33,7 +32,7 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testAddPromotion(){
-		promotionBLService = new PromotionBLService_Stub();
+		promotionBLService = new PromotionController();
 		ResultMessage message;
 		message = promotionBLService.addPromotion(p1);
 		assertEquals(ResultMessage.TRUE, message);
@@ -48,7 +47,7 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testSearchPromotion() {
-		promotionBLService = new PromotionBLService_Stub();
+		promotionBLService = new PromotionController();
 		ArrayList<PromotionVO> list;
 		ResultMessage message;
 		list = promotionBLService.searchByContent(20920010, "双十一下订单八折优惠");
@@ -68,7 +67,7 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testDeletePromotion(){
-		promotionBLService = new PromotionBLService_Stub();
+		promotionBLService = new PromotionController();
 		ResultMessage message;
 		message = promotionBLService.deletePromotion(p1);
 		assertEquals(ResultMessage.TRUE, message);

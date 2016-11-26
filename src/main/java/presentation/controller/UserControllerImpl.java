@@ -2,7 +2,7 @@ package presentation.controller;
 
 import java.util.ArrayList;
 
-import businesslogic.userbl.UserBLService_Stub;
+import businesslogic.userbl.UserController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.userblservice.UserBLService;
 import presentation.userui.UserControllerService;
@@ -13,7 +13,7 @@ public class UserControllerImpl implements UserControllerService{
 	private UserBLService userBlService;
 	
 	public UserControllerImpl(int i,String u,String p){
-		userBlService=new UserBLService_Stub(i,u,p);
+		userBlService = new UserController();
 	}
 
 	/**
@@ -55,20 +55,9 @@ public class UserControllerImpl implements UserControllerService{
 	 * @return 按照id搜索用户
 	 */
 	@Override
-	public UserVO searchByID(int id) {
+	public UserVO searchByUserName(String username) {
 		// TODO Auto-generated method stub
-		return userBlService.searchByID(id);
-	}
-
-	/**
-	 * 
-	 * @param keywords
-	 * @return 按照关键词搜索用户
-	 */
-	@Override
-	public ArrayList<UserVO> searchByKeywords(String keywords) {
-		// TODO Auto-generated method stub
-		return userBlService.searchByKeywords(keywords);
+		return userBlService.searchByUserName(username);
 	}
 
 	/**
