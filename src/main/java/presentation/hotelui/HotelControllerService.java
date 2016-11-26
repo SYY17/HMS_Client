@@ -2,6 +2,7 @@ package presentation.hotelui;
 
 import java.util.ArrayList;
 import businesslogicservice.ResultMessage;
+import po.RoomType;
 import vo.HotelVO;
 import vo.RoomVO;
 
@@ -11,7 +12,7 @@ public interface HotelControllerService {
 	 * @param name
 	 * @return hotelInfoList
 	 */
-	public ArrayList<HotelVO> reviewHotelInfo(String name);
+	public HotelVO reviewHotelInfo(String name);
 	
 	/**
 	 * 浏览酒店列表
@@ -60,5 +61,7 @@ public interface HotelControllerService {
 	 * @param type
 	 * @return RoomInfoList
 	 */
-	public ArrayList<RoomVO> searchRoom(String type);
+	public RoomVO searchRoom(int id, RoomType type);
+
+	
 }
