@@ -9,6 +9,7 @@ import org.junit.Test;
 import businesslogic.hotelbl.HotelBLService_Stub;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
+import po.RoomType;
 import vo.HotelVO;
 import vo.RoomVO;
 
@@ -51,8 +52,9 @@ public class HotelBLServiceTest {
 	public void testSearchHotel() {
 		hotelBLService = new HotelBLService_Stub();
 		ArrayList<HotelVO> list1;
-		ArrayList<RoomVO> list2;
-		String type = "标间";
+		RoomVO rvo;
+		RoomType type = RoomType.STANDARD_ROOM;
+		int id = 12345678;
 		list1 = hotelBLService.searchHotel("xxhotel");
 		assertEquals(h1.getHotelID(), list1.get(0).getHotelID());
 		assertEquals(h1.getHotelName(), list1.get(0).getHotelName());
@@ -65,9 +67,9 @@ public class HotelBLServiceTest {
 		assertEquals(Double.valueOf(h1.getRating()), Double.valueOf(list1.get(0).getRating()));
 		assertEquals(h1.getStaffName(), list1.get(0).getStaffName());
 		assertEquals(h1.getPhoneNumber(), list1.get(0).getPhoneNumber());
-		list2 = hotelBLService.searchRoom(type);
-		assertEquals(h1.getRooms().get(0).getPrice(), list2.get(0).getPrice());
-		assertEquals(h1.getRooms().get(0).getRoomType(), list2.get(0).getRoomType());
+		rvo = hotelBLService.searchRoom(id,type);
+		assertEquals(h1.getRooms().get(0).getPrice(), rvo.getPrice());
+		assertEquals(h1.getRooms().get(0).getRoomType(), rvo.getRoomType());
 	}
 	
 	/**
@@ -117,17 +119,17 @@ public class HotelBLServiceTest {
 	 @Test
 	 public void testReviewHotelInfo(){
 		hotelBLService = new HotelBLService_Stub();
-		ArrayList<HotelVO> list;
-		list = hotelBLService.reviewHotelInfo("xxhotel");
-		assertEquals(h1.getHotelID(), list.get(0).getHotelID());
-		assertEquals(h1.getHotelName(), list.get(0).getHotelName());
-		assertEquals(h1.getHotelAddress(), list.get(0).getHotelAddress());
-		assertEquals(h1.getBusinessArea(), list.get(0).getBusinessArea());
-		assertEquals(h1.getHotelDescription(), list.get(0).getHotelDescription());
-		assertEquals(h1.getStarLevel(), list.get(0).getStarLevel());
-		assertEquals(Double.valueOf(h1.getRating()), Double.valueOf(list.get(0).getRating()));
-		assertEquals(h1.getStaffName(), list.get(0).getStaffName());
-		assertEquals(h1.getPhoneNumber(), list.get(0).getPhoneNumber());
+		HotelVO hvo;
+		hvo = hotelBLService.reviewHotelInfo("xxhotel");
+		assertEquals(h1.getHotelID(), hvo.getHotelID());
+		assertEquals(h1.getHotelName(), hvo.getHotelName());
+		assertEquals(h1.getHotelAddress(), hvo.getHotelAddress());
+		assertEquals(h1.getBusinessArea(), hvo.getBusinessArea());
+		assertEquals(h1.getHotelDescription(), hvo.getHotelDescription());
+		assertEquals(h1.getStarLevel(), hvo.getStarLevel());
+		assertEquals(Double.valueOf(h1.getRating()), Double.valueOf(hvo.getRating()));
+		assertEquals(h1.getStaffName(), hvo.getStaffName());
+		assertEquals(h1.getPhoneNumber(), hvo.getPhoneNumber());
 	 }
 	  
 	 /**
