@@ -160,14 +160,6 @@ public class HotelController implements HotelBLService{
 		}
 		return hvoList;
 	}
-
-	
-	public static void main(String[] args){
-		HotelController hc = new HotelController();
-		HotelVO hvo = hc.searchHotel("homeinn").get(0);
-		System.out.print(hvo.getHotelID());
-	}
-	
 	
 	@Override
 	public RoomVO searchRoom(int id, RoomType type) {
