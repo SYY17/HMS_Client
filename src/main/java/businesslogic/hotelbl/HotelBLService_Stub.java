@@ -6,6 +6,7 @@ import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
 import businesslogictest.hotelbl.MockOrder;
 import businesslogictest.hotelbl.MockPromotion;
+import po.RoomType;
 import vo.HotelVO;
 import vo.RoomVO;
 
@@ -47,11 +48,12 @@ public class HotelBLService_Stub implements HotelBLService{
 	 * @param name
 	 * @return hotelInfoList
 	 */
-	public ArrayList<HotelVO> reviewHotelInfo(String name){
-		ArrayList<HotelVO> hotelInfoList = new ArrayList<HotelVO>();
-		//HotelVO vo = new HotelVO(hotelID, businessArea, businessArea, businessArea, businessArea, hotelID, hotelID, roomPrice, businessArea, roomCondition, hotelID);
+	public HotelVO reviewHotelInfo(String name){
+		//ArrayList<HotelVO> hotelInfoList = new ArrayList<HotelVO>();
+		HotelVO hvo = new HotelVO(hotelID, hotelName, hotelAddress, businessArea, hotelDescription, 
+				starLevel, roomNumber, wholeRooms, rating, staffName, phoneNumber);
 		//hotelInfoList.add(vo);
-		return hotelInfoList;
+		return hvo;
 	}
 	
 	/**
@@ -135,9 +137,10 @@ public class HotelBLService_Stub implements HotelBLService{
 	 * @param type
 	 * @return RoomInfoList
 	 */
-	public ArrayList<RoomVO> searchRoom(String type){
-		ArrayList<RoomVO> RoomInfoList = new ArrayList<RoomVO>();
-		return RoomInfoList;
+	public RoomVO searchRoom(int id, RoomType type) {
+		// TODO Auto-generated method stub
+		RoomVO rvo = new RoomVO(id, null, 0, 0, 0);
+		return rvo;
 	}
 	
 }
