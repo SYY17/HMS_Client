@@ -1,11 +1,14 @@
 package presentation.orderui;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import businesslogicservice.ResultMessage;
 import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.RoomType;
 
 public interface OrderControllerService {
 	
@@ -37,7 +40,8 @@ public interface OrderControllerService {
 	 * @param pvo
 	 * @return 创建订单
 	 */
-	public OrderVO create(HotelVO hvo,int id,PromotionVO pvo);	
+	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
+			Date s, Date ci, Date co);	
 	
 	/**
 	 * 

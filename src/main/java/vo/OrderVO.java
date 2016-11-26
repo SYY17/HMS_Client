@@ -3,6 +3,9 @@ package vo;
 import java.io.*;
 import java.util.*;
 
+import vo.OrderStatus;
+import vo.RoomType;
+
 public class OrderVO implements Serializable {
 	/**
 	 * 
@@ -17,10 +20,10 @@ public class OrderVO implements Serializable {
 	Date checkOut;
 	int roomNumber;
 	int hotelID;
-	ArrayList<RoomVO> rooms;
+	RoomType roomType;
 
-	public OrderVO(int orderid, OrderStatus orderstatus, int pr, int i, Date s, Date ci, Date co, int rn, int hID,
-			ArrayList<RoomVO> rt) {
+	public OrderVO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Date s, Date ci,
+			Date co) {
 		orderID = orderid;
 		orderStatus = orderstatus;
 		price = pr;
@@ -30,46 +33,85 @@ public class OrderVO implements Serializable {
 		checkOut = co;
 		roomNumber = rn;
 		hotelID = hID;
-		rooms = rt;
+		roomType = rT;
 	}
-	
+	/**
+	 * 
+	 * @return 获得订单对应订单ID
+	 */
 	public int getOrderID() {
 		return orderID;
 	}
 	
+	/**
+	 * 
+	 * @return 获得订单对应订单状态
+	 */
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
 	
+	/**
+	 * 
+	 * @return 获得订单对应订单总价
+	 */
 	public int getPrice() {
 		return price;
 	}
-
-	public int getUserID() {
+	
+	/**
+	 * 
+	 * @return 获得订单对应用户ID
+	 */
+	public int getUserID(){
 		return userID;
 	}
-
-	public Date getSetTime() {
+	
+	/**
+	 * 
+	 * @return 获得订单对应下单时间
+	 */
+	public Date getSetTime(){
 		return setTime;
 	}
-
-	public Date getCheckInTime() {
+	
+	/**
+	 * 
+	 * @return 获得订单对应入住时间
+	 */
+	public Date getCheckIn(){
 		return checkIn;
 	}
-
-	public Date getCheckOutTime() {
+	
+	/**
+	 * 
+	 * @return 获得订单对应离开时间
+	 */
+	public Date getCheckOut(){
 		return checkOut;
 	}
-
-	public int getRoomNumber() {
+	
+	/**
+	 * 
+	 * @return 获得订单对应入住时间
+	 */
+	public int getRoomNumber(){
 		return roomNumber;
 	}
-
-	public int getHotelID() {
+	
+	/**
+	 * 
+	 * @return 获得订单对应酒店ID
+	 */
+	public int getHotelID(){
 		return hotelID;
 	}
-
-	public ArrayList<RoomVO> getRooms() {
-		return rooms;
+	
+	/**
+	 * 
+	 * @return 获得订单对应房间类型
+	 */
+	public RoomType getRoomType() {
+		return roomType;
 	}
 }

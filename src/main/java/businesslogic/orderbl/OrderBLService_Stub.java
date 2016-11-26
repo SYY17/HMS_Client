@@ -6,11 +6,10 @@ import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import businesslogictest.orderbl.MockHotel;
 import businesslogictest.orderbl.MockUser;
-import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.RoomVO;
+import vo.RoomType;
 
 public class OrderBLService_Stub implements OrderBLService {
 	int orderID;
@@ -22,12 +21,12 @@ public class OrderBLService_Stub implements OrderBLService {
 	Date checkOut;
 	int roomNumber;
 	int hotelID;
-	ArrayList<RoomVO> rooms;
+	RoomType roomType;
 	MockHotel mockHotel;
 	MockUser mockUser;
 
-	public OrderBLService_Stub(int orderID, OrderStatus status, int price, int userID, Date setTime, Date checkIn, Date checkOut, int roomNumber, int hotelID,
-			ArrayList<RoomVO> rooms) {
+	public OrderBLService_Stub(int orderID, OrderStatus status, int price, int userID, Date setTime, Date checkIn,
+			Date checkOut, int roomNumber, int hotelID, RoomType roomType) {
 		this.orderID = orderID;
 		this.orderStatus = status;
 		this.price = price;
@@ -37,7 +36,7 @@ public class OrderBLService_Stub implements OrderBLService {
 		this.checkOut = checkOut;
 		this.roomNumber = roomNumber;
 		this.hotelID = hotelID;
-		this.rooms = rooms;
+		this.roomType = roomType;
 	}
 
 	/**
@@ -48,8 +47,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	@Override
 	public ArrayList<OrderVO> reviewOrder(int id) {
 		ArrayList<OrderVO> OrderVOList = new ArrayList<OrderVO>();
-		OrderVOList.add(new OrderVO(orderID, orderStatus, price, userID, setTime, checkIn, checkOut, roomNumber,
-				hotelID, rooms));
+		OrderVOList.add(new OrderVO(0, 0, 0, null, id, null, id, checkIn, checkIn, checkIn));
 		return OrderVOList;
 	}
 
@@ -61,8 +59,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	@Override
 	public ArrayList<OrderVO> reviewAbnormalOrder(int id) {
 		ArrayList<OrderVO> AbnormalOrderVOList = new ArrayList<OrderVO>();
-		AbnormalOrderVOList.add(new OrderVO(orderID, orderStatus, price, userID, setTime, checkIn, checkOut, roomNumber,
-				hotelID, rooms));
+		AbnormalOrderVOList.add(new OrderVO(id, id, id, null, id, null, id, checkIn, checkIn, checkIn));
 		return AbnormalOrderVOList;
 	}
 
@@ -73,9 +70,9 @@ public class OrderBLService_Stub implements OrderBLService {
 	 */
 	@Override
 	public ResultMessage cancelOrder(OrderVO ovo) {
-		if (ovo.getCheckInTime() == checkIn && ovo.getCheckOutTime() == checkOut && ovo.getHotelID() == hotelID
-				&& ovo.getRoomNumber() == roomNumber && ovo.getRooms() == rooms && ovo.getSetTime() == setTime
-				&& ovo.getUserID() == userID) {
+		if (ovo.getCheckIn() == checkIn && ovo.getCheckOut() == checkOut && ovo.getHotelID() == hotelID
+				&& ovo.getRoomNumber() == roomNumber && ovo.getRoomType().toString().equals(roomType.toString())
+				&& ovo.getSetTime() == setTime && ovo.getUserID() == userID) {
 			if ((mockHotel.modifyOrderList(0, null) == ResultMessage.TRUE)
 					&& (mockUser.modifyOrderList(0, null) == ResultMessage.TRUE)) {
 				return ResultMessage.TRUE;
@@ -133,8 +130,10 @@ public class OrderBLService_Stub implements OrderBLService {
 	 * @return 创建订单
 	 */
 	@Override
-	public OrderVO create(HotelVO hvo, int id, PromotionVO pvo) {
-		return new OrderVO(orderID, orderStatus, price, userID, setTime, checkIn, checkOut, roomNumber, hotelID, rooms);
+	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
+			Date s, Date ci, Date co) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

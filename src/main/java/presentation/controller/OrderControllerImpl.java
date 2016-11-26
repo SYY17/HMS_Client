@@ -1,6 +1,8 @@
 package presentation.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import presentation.orderui.OrderControllerService;
@@ -8,6 +10,7 @@ import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.RoomType;
 
 public class OrderControllerImpl implements OrderControllerService{
 	
@@ -51,8 +54,9 @@ public class OrderControllerImpl implements OrderControllerService{
 	 * @return 创建订单
 	 */
 	@Override
-	public OrderVO create(HotelVO hvo, int id, PromotionVO pvo) {
-		return orderBLService.create(hvo, id, pvo);
+	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
+			Date s, Date ci, Date co) {
+		return orderBLService.create(rn, rn, orderstatus, rT, rn, pvo, co, co, co);
 	}
 	
 	/**
