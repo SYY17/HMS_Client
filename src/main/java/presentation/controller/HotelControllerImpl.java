@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import businesslogic.hotelbl.HotelBLService_Stub;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
+import po.RoomType;
 import presentation.hotelui.HotelControllerService;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -45,7 +46,7 @@ public class HotelControllerImpl implements HotelControllerService{
 	 * @return hotelInfoList
 	 */
 	@Override
-	public ArrayList<HotelVO> reviewHotelInfo(String name) {
+	public HotelVO reviewHotelInfo(String name) {
 		// TODO Auto-generated method stub
 		return hotelBLService.reviewHotelInfo(name);
 	}
@@ -122,9 +123,9 @@ public class HotelControllerImpl implements HotelControllerService{
 	 * @return RoomInfoList
 	 */
 	@Override
-	public ArrayList<RoomVO> searchRoom(String type) {
+	public RoomVO searchRoom(int id, RoomType type) {
 		// TODO Auto-generated method stub
-		return hotelBLService.searchRoom(type);
+		return hotelBLService.searchRoom(id,type);
 	}
 
 }
