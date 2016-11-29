@@ -65,7 +65,6 @@ public class UserBLService_Stub implements UserBLService{
 	 * @param id
 	 * @return 按照id搜索用户
 	 */
-	@Override
 	public UserVO searchByID(int id) {
 		// TODO Auto-generated method stub
 		UserVO user=new UserVO();
@@ -77,7 +76,6 @@ public class UserBLService_Stub implements UserBLService{
 	 * @param keywords
 	 * @return 按照关键词搜索用户
 	 */
-	@Override
 	public ArrayList<UserVO> searchByKeywords(String keywords) {
 		// TODO Auto-generated method stub
 		ArrayList<UserVO> UserList = new ArrayList<UserVO>();
@@ -94,6 +92,12 @@ public class UserBLService_Stub implements UserBLService{
 		// TODO Auto-generated method stub
 		ArrayList<UserVO> userList=new ArrayList<UserVO>();
 		return userList;
+	}
+
+	@Override
+	public UserVO searchByUserName(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

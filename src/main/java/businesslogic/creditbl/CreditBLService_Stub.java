@@ -24,7 +24,6 @@ public class CreditBLService_Stub implements CreditBLService{
 	 * @param id
 	 * @return 添加信用值信息
 	 */
-	@Override
 	public ResultMessage addCredit(CreditVO cvo, int id) {
 		// TODO Auto-generated method stub
 		if(cvo != null&&id == 0){
@@ -53,7 +52,6 @@ public class CreditBLService_Stub implements CreditBLService{
 	 * @param id
 	 * @return 维护信用值
 	 */
-	@Override
 	public ResultMessage modifyCredit(CreditVO cvo, int id) {
 		// TODO Auto-generated method stub
 		if(cvo != null&&id == 0){
@@ -72,6 +70,18 @@ public class CreditBLService_Stub implements CreditBLService{
 		// TODO Auto-generated method stub
 		CreditVO Credit = new CreditVO(id, credit);
 		return Credit;
+	}
+
+	@Override
+	public ResultMessage addCredit(int id, int credit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modifyCredit(int id, int credit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

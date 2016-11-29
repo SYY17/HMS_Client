@@ -28,7 +28,6 @@ public class LoginBLService_Stub implements LoginBLService{
 	 * * @param id
 	 * @return 登录
 	 */
-	@Override
 	public ResultMessage login(String username, String passwrd, int id) {
 		// TODO Auto-generated method stub
 		return ResultMessage.TRUE;
@@ -41,10 +40,21 @@ public class LoginBLService_Stub implements LoginBLService{
 	 * * @param id
 	 * @return 注销
 	 */
-	@Override
 	public ResultMessage logout(String username, String passwrd, int id) {
 		// TODO Auto-generated method stub
 		return ResultMessage.TRUE;
+	}
+
+	@Override
+	public ResultMessage login(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage logout(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
