@@ -1,8 +1,8 @@
 package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -12,6 +12,7 @@ import dataservice.userdataservice.UserDataService;
 import po.OrderPO;
 import vo.RoomType;
 import rmi.RemoteController;
+import runner.DataServiceClientRunner;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -23,7 +24,9 @@ public class OrderController implements OrderBLService {
 	HotelDataService hotelDataService;
 
 	public OrderController() {
-		remoteController = RemoteController.getInstance();
+		DataServiceClientRunner runner = new DataServiceClientRunner();
+		runner.start();
+		remoteController = runner.getRemoteController();
 		orderDataService = remoteController.getOrderDataService();
 		userDataService = remoteController.getUserDataService();
 		hotelDataService = remoteController.getHotelDataService();
@@ -37,7 +40,9 @@ public class OrderController implements OrderBLService {
 	}
 
 	private ArrayList<OrderVO> getOrderByUserID(int id) throws RemoteException {
+		orderDataService.initOrderDataService();
 		ArrayList<OrderPO> listPO = orderDataService.findOrderByUserID(id);
+		orderDataService.finishOrderDataService();
 		ArrayList<OrderVO> listVO = new ArrayList<OrderVO>();
 		for (int i = 0; i < listPO.size(); i++) {
 			listVO.add(POToVO(listPO.get(i)));
@@ -76,7 +81,9 @@ public class OrderController implements OrderBLService {
 	@Override
 	public ResultMessage cancelOrder(OrderVO ovo) {
 		try {
+			orderDataService.initOrderDataService();
 			orderDataService.deleteOrder(ovo.getOrderID());
+			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -99,7 +106,9 @@ public class OrderController implements OrderBLService {
 	@Override
 	public ResultMessage addOrder(OrderVO ovo) {
 		try {
+			orderDataService.initOrderDataService();
 			orderDataService.insertOrder(null);
+			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -111,12 +120,23 @@ public class OrderController implements OrderBLService {
 	public ResultMessage complainOrder(int id, OrderStatus status) {
 		po.OrderStatus orderStatus = po.OrderStatus.valueOf(status.toString());
 		try {
+			orderDataService.initOrderDataService();
 			orderDataService.updateOrder(id, orderStatus);
+			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.FALSE;
 		}
 	}
+
+//	public static void main(String[] args) {
+//		try {
+//			System.out.println(new OrderController().getOrderByUserID(20905098).get(0).getUserID());
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 }

@@ -1,6 +1,7 @@
 package po;
 
 import java.io.*;
+import java.sql.Date;
 import java.util.*;
 
 public class OrderPO implements Serializable {
@@ -19,8 +20,8 @@ public class OrderPO implements Serializable {
 	Date checkIn;
 	Date checkOut;
 
-	public OrderPO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Date s, Date ci,
-			Date co) {
+	public OrderPO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Date s,
+			Date ci, Date co) {
 		orderID = orderid;
 		orderStatus = orderstatus;
 		price = pr;

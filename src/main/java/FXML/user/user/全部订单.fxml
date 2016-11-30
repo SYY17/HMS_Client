@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -16,99 +23,103 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.AllOrder_controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.AllOrder_controller">
    <children>
-      <Rectangle fill="#cfd6dd" height="423.0" layoutX="29.0" layoutY="113.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="754.0" />
-      <TabPane layoutX="57.0" layoutY="145.0" prefHeight="351.0" prefWidth="687.0" tabClosingPolicy="UNAVAILABLE">
+      <Rectangle fill="#cfd6dd" height="423.0" layoutX="29.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="754.0">
+         <effect>
+            <DropShadow />
+         </effect></Rectangle>
+      <TabPane layoutX="48.0" layoutY="141.0" prefHeight="375.0" prefWidth="712.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="全部订单">
+          <Tab id="allorder" onSelectionChanged="#onAllOrder" text="         全部订单          ">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="-1.0" prefHeight="323.0" prefWidth="687.0">
+                        <TableView id="allordertableview" fx:id="allOrderTableView" prefHeight="344.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="60.0" text="编号" />
-                              <TableColumn prefWidth="85.0" text="酒店名称" />
-                              <TableColumn prefWidth="85.0" text="入住时间" />
-                              <TableColumn prefWidth="95.0" text="预计离开时间" />
-                              <TableColumn prefWidth="100.0" text="房间类型" />
-                              <TableColumn prefWidth="107.0" text="房间数量" />
+                              <TableColumn prefWidth="62.1545524597168" text="编号" />
+                              <TableColumn prefWidth="78.84545135498047" text="订单状态" />
+                              <TableColumn prefWidth="88.08087158203125" text="酒店名称" />
+                              <TableColumn prefWidth="164.46371459960938" text="入住时间" />
+                              <TableColumn prefWidth="168.53631591796875" text="预计离开时间" />
+                              <TableColumn prefWidth="80.04547119140625" text="房间类型" />
+                              <TableColumn maxWidth="102.64971923828125" prefWidth="74.418701171875" text="房间数量" />
                            </columns>
                         </TableView>
                      </children>
                   </Pane>
                </content>
           </Tab>
-          <Tab text="未执行订单">
+          <Tab id="unfilledorder" onSelectionChanged="#onUnfilledOrder" text="        未执行订单        ">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="323.0" prefWidth="687.0">
+                        <TableView id="allordertableview" fx:id="unfilledOrderTableView" prefHeight="344.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="60.0" text="编号" />
-                              <TableColumn prefWidth="85.0" text="酒店名称" />
-                              <TableColumn prefWidth="85.0" text="入住时间" />
-                              <TableColumn prefWidth="95.0" text="预计离开时间" />
-                              <TableColumn prefWidth="100.0" text="房间类型" />
-                              <TableColumn prefWidth="107.0" text="房间数量" />
+                              <TableColumn prefWidth="62.1545524597168" text="编号" />
+                              <TableColumn prefWidth="78.84545135498047" text="订单状态" />
+                              <TableColumn prefWidth="88.08087158203125" text="酒店名称" />
+                              <TableColumn prefWidth="164.46371459960938" text="入住时间" />
+                              <TableColumn prefWidth="168.53631591796875" text="预计离开时间" />
+                              <TableColumn prefWidth="80.04547119140625" text="房间类型" />
+                              <TableColumn maxWidth="102.64971923828125" prefWidth="74.418701171875" text="房间数量" />
                            </columns>
                         </TableView>
-                     </children>
-                  </Pane>
+                     </children></Pane>
                </content>
           </Tab>
-            <Tab text="撤销订单">
+            <Tab id="canceledorder" onSelectionChanged="#onCanceledOrder" text="          撤销订单          ">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="323.0" prefWidth="687.0">
+                        <TableView id="allordertableview" fx:id="canceledOrderTableView" prefHeight="344.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="60.0" text="编号" />
-                              <TableColumn prefWidth="85.0" text="酒店名称" />
-                              <TableColumn prefWidth="85.0" text="入住时间" />
-                              <TableColumn prefWidth="95.0" text="预计离开时间" />
-                              <TableColumn prefWidth="100.0" text="房间类型" />
-                              <TableColumn prefWidth="107.0" text="房间数量" />
+                              <TableColumn prefWidth="62.1545524597168" text="编号" />
+                              <TableColumn prefWidth="78.84545135498047" text="订单状态" />
+                              <TableColumn prefWidth="88.08087158203125" text="酒店名称" />
+                              <TableColumn prefWidth="164.46371459960938" text="入住时间" />
+                              <TableColumn prefWidth="168.53631591796875" text="预计离开时间" />
+                              <TableColumn prefWidth="80.04547119140625" text="房间类型" />
+                              <TableColumn maxWidth="102.64971923828125" prefWidth="74.418701171875" text="房间数量" />
                            </columns>
                         </TableView>
-                     </children>
-                  </Pane>
+                     </children></Pane>
                </content>
             </Tab>
-            <Tab text="异常订单">
+            <Tab id="abnormalorder" onSelectionChanged="#onAbnormalOrder" text="          异常订单          ">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="323.0" prefWidth="687.0">
+                        <TableView id="allordertableview" fx:id="abnormalOrderTableView" prefHeight="344.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="60.0" text="编号" />
-                              <TableColumn prefWidth="85.0" text="酒店名称" />
-                              <TableColumn prefWidth="85.0" text="入住时间" />
-                              <TableColumn prefWidth="95.0" text="预计离开时间" />
-                              <TableColumn prefWidth="100.0" text="房间类型" />
-                              <TableColumn prefWidth="107.0" text="房间数量" />
+                              <TableColumn prefWidth="62.1545524597168" text="编号" />
+                              <TableColumn prefWidth="78.84545135498047" text="订单状态" />
+                              <TableColumn prefWidth="88.08087158203125" text="酒店名称" />
+                              <TableColumn prefWidth="164.46371459960938" text="入住时间" />
+                              <TableColumn prefWidth="168.53631591796875" text="预计离开时间" />
+                              <TableColumn prefWidth="80.04547119140625" text="房间类型" />
+                              <TableColumn maxWidth="102.64971923828125" prefWidth="74.418701171875" text="房间数量" />
                            </columns>
                         </TableView>
-                     </children>
-                  </Pane>
+                     </children></Pane>
                </content>
             </Tab>
-            <Tab text="已执行订单">
+            <Tab id="finishedorder" onSelectionChanged="#onFinishedOrder" text="        已执行订单        ">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="323.0" prefWidth="687.0">
+                        <TableView id="allordertableview" fx:id="finishedOrderTableView" prefHeight="344.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="60.0" text="编号" />
-                              <TableColumn prefWidth="85.0" text="酒店名称" />
-                              <TableColumn prefWidth="85.0" text="入住时间" />
-                              <TableColumn prefWidth="95.0" text="预计离开时间" />
-                              <TableColumn prefWidth="100.0" text="房间类型" />
-                              <TableColumn prefWidth="107.0" text="房间数量" />
+                              <TableColumn prefWidth="62.1545524597168" text="编号" />
+                              <TableColumn prefWidth="78.84545135498047" text="订单状态" />
+                              <TableColumn prefWidth="88.08087158203125" text="酒店名称" />
+                              <TableColumn prefWidth="164.46371459960938" text="入住时间" />
+                              <TableColumn prefWidth="168.53631591796875" text="预计离开时间" />
+                              <TableColumn prefWidth="80.04547119140625" text="房间类型" />
+                              <TableColumn maxWidth="102.64971923828125" prefWidth="74.418701171875" text="房间数量" />
                            </columns>
                         </TableView>
-                     </children>
-                  </Pane>
+                     </children></Pane>
                </content>
             </Tab>
         </tabs>
@@ -123,10 +134,6 @@
          <effect>
             <DropShadow />
          </effect></Button>
-      <Slider layoutX="752.0" layoutY="214.0" orientation="VERTICAL" prefHeight="289.0" prefWidth="15.0">
-         <effect>
-            <DropShadow />
-         </effect></Slider>
       <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
          <children>
             <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">

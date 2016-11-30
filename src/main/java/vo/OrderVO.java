@@ -1,7 +1,7 @@
 package vo;
 
 import java.io.*;
-import java.util.*;
+import java.sql.Date;
 
 import vo.OrderStatus;
 import vo.RoomType;
@@ -22,8 +22,8 @@ public class OrderVO implements Serializable {
 	int hotelID;
 	RoomType roomType;
 
-	public OrderVO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Date s, Date ci,
-			Date co) {
+	public OrderVO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Date s,
+			Date ci, Date co) {
 		orderID = orderid;
 		orderStatus = orderstatus;
 		price = pr;
@@ -35,6 +35,7 @@ public class OrderVO implements Serializable {
 		hotelID = hID;
 		roomType = rT;
 	}
+
 	/**
 	 * 
 	 * @return 获得订单对应订单ID
@@ -42,7 +43,7 @@ public class OrderVO implements Serializable {
 	public int getOrderID() {
 		return orderID;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应订单状态
@@ -50,7 +51,7 @@ public class OrderVO implements Serializable {
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应订单总价
@@ -58,55 +59,55 @@ public class OrderVO implements Serializable {
 	public int getPrice() {
 		return price;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应用户ID
 	 */
-	public int getUserID(){
+	public int getUserID() {
 		return userID;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应下单时间
 	 */
-	public Date getSetTime(){
+	public Date getSetTime() {
 		return setTime;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应入住时间
 	 */
-	public Date getCheckIn(){
+	public Date getCheckIn() {
 		return checkIn;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应离开时间
 	 */
-	public Date getCheckOut(){
+	public Date getCheckOut() {
 		return checkOut;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应入住时间
 	 */
-	public int getRoomNumber(){
+	public int getRoomNumber() {
 		return roomNumber;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应酒店ID
 	 */
-	public int getHotelID(){
+	public int getHotelID() {
 		return hotelID;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应房间类型
