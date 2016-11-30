@@ -10,7 +10,7 @@
 
 <Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.Manager_controller">
    <children>
-      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
+      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #eaecee;">
          <children>
             <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
                <font>
@@ -91,11 +91,11 @@
                   </Label>
                   <TableView id="applyTable" layoutX="7.0" layoutY="23.0" prefHeight="436.0" prefWidth="776.0">
                      <columns>
-                        <TableColumn id="col_odd" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="12.0" resizable="false" sortable="false" text="编号" />
-                        <TableColumn id="col_even" editable="false" maxWidth="117.0" minWidth="117.0" prefWidth="117.0" resizable="false" sortable="false" text="申请时间" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="112.0" resizable="false" sortable="false" text="申请人" />
-                        <TableColumn id="col_even" editable="false" maxWidth="259.0" minWidth="259.0" prefWidth="259.0" resizable="false" sortable="false" text="酒店名称" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="176.0" minWidth="176.0" prefWidth="176.0" resizable="false" sortable="false" text="操作" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="12.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="编号" />
+                        <TableColumn id="col_even" editable="false" maxWidth="117.0" minWidth="117.0" prefWidth="117.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="申请时间" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="112.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="申请人" />
+                        <TableColumn id="col_even" editable="false" maxWidth="259.0" minWidth="259.0" prefWidth="259.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="酒店名称" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="176.0" minWidth="176.0" prefWidth="176.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="操作" />
                      </columns>
                      <effect>
                         <DropShadow />
