@@ -6,9 +6,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
-import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
-import dataservice.userdataservice.UserDataService;
 import po.OrderPO;
 import vo.RoomType;
 import rmi.RemoteController;
@@ -20,16 +18,16 @@ import vo.PromotionVO;
 public class OrderController implements OrderBLService {
 	RemoteController remoteController;
 	OrderDataService orderDataService;
-	UserDataService userDataService;
-	HotelDataService hotelDataService;
+//	UserDataService userDataService;
+//	HotelDataService hotelDataService;
 
 	public OrderController() {
 		DataServiceClientRunner runner = new DataServiceClientRunner();
 		runner.start();
 		remoteController = runner.getRemoteController();
 		orderDataService = remoteController.getOrderDataService();
-		userDataService = remoteController.getUserDataService();
-		hotelDataService = remoteController.getHotelDataService();
+//		userDataService = remoteController.getUserDataService();
+//		hotelDataService = remoteController.getHotelDataService();
 	}
 
 	private OrderVO POToVO(OrderPO opo) {

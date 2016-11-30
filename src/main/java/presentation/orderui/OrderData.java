@@ -1,4 +1,4 @@
-package presentation.userui.user;
+package presentation.orderui;
 
 import java.sql.Date;
 
@@ -9,15 +9,17 @@ import vo.OrderStatus;
 
 public class OrderData {
 	private final SimpleIntegerProperty orderID = new SimpleIntegerProperty();
+	private final SimpleIntegerProperty userID = new SimpleIntegerProperty();
 	private final SimpleStringProperty orderStatus = new SimpleStringProperty();
 	private final SimpleIntegerProperty hotelID = new SimpleIntegerProperty();
 	private final SimpleStringProperty checkIn = new SimpleStringProperty();
 	private final SimpleStringProperty checkOut = new SimpleStringProperty();
 	private final SimpleStringProperty roomType = new SimpleStringProperty();
 	private final SimpleIntegerProperty roomNumber = new SimpleIntegerProperty();
+	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
 
-	public OrderData(int orderID, OrderStatus orderStatus, int hotelID, Date checkIn, Date checkOut,
-			RoomType roomType, int roomNumber) {
+	public OrderData(int orderID, OrderStatus orderStatus, int hotelID, Date checkIn, Date checkOut, RoomType roomType,
+			int roomNumber) {
 		this.orderID.set(orderID);
 		this.orderStatus.set(orderStatus.toString());
 		this.hotelID.set(hotelID);
@@ -27,12 +29,46 @@ public class OrderData {
 		this.roomNumber.set(roomNumber);
 	}
 
+	public OrderData(int hotelID, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
+		this.hotelID.set(hotelID);
+		this.checkIn.set(checkIn.toString());
+		this.checkOut.set(checkOut.toString());
+		this.roomType.set(roomType.toString());
+		this.roomNumber.set(roomNumber);
+		this.price.set(price);
+	}
+	
+	public OrderData(int hotelID,int userID, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
+		this.hotelID.set(hotelID);
+		this.userID.set(userID);
+		this.checkIn.set(checkIn.toString());
+		this.checkOut.set(checkOut.toString());
+		this.roomType.set(roomType.toString());
+		this.roomNumber.set(roomNumber);
+		this.price.set(price);
+	}
+
+	public OrderData(int orderID, int userID, Date checkIn, int price) {
+		this.orderID.set(orderID);
+		this.userID.set(userID);
+		this.checkIn.set(checkIn.toString());
+		this.price.set(price);
+	}
+
 	public int getOrderID() {
 		return orderID.get();
 	}
 
 	public void setOrderID(int orderID) {
 		this.orderID.set(orderID);
+	}
+	
+	public int getUserID(){
+		return userID.get();
+	}
+	
+	public void setUserID(int userID){
+		this.userID.set(userID);
 	}
 
 	public String getOrderStatus() {
@@ -103,5 +139,13 @@ public class OrderData {
 
 	public void setRoomNumber(int roomNumber) {
 		this.roomNumber.set(roomNumber);
+	}
+
+	public int getPrice() {
+		return price.get();
+	}
+
+	public void setPrice(int price) {
+		this.price.set(price);
 	}
 }

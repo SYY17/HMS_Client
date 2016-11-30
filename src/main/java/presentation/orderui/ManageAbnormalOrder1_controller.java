@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import presentation.creditui.ManageUserCredit1_start;
 import presentation.loginui.LogFrame;
@@ -14,6 +15,8 @@ import presentation.promotionui.MakePromotionStrategy1_start;
 public class ManageAbnormalOrder1_controller {
 
 	public static Stage stage;
+	
+	public TableView<OrderData> manageAbnormalOrderTableView;
 
 	@FXML
 	private void onLogout(ActionEvent event) throws IOException {
