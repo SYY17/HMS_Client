@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class UserList {
 	ArrayList<UserLineItem> userList;
 	
+	public UserList() {
+		// TODO Auto-generated constructor stub
+		userList = new ArrayList<UserLineItem>();
+	}
+	
 	/**
 	 * 
 	 * @param userList
@@ -15,10 +20,10 @@ public class UserList {
 	
 	/**
 	 * 
-	 * @return 获得用户列表
+	 * @param list
 	 */
-	public ArrayList<UserLineItem> getUserList(){
-		return userList;
+	public void addAll(ArrayList<UserLineItem> list){
+		userList.addAll(list);
 	}
 	
 	/**
@@ -33,7 +38,7 @@ public class UserList {
 	 * 
 	 *@param id
 	 */
-	public void delete(int id){
+	public void remove(int id){
 		userList.remove(id);
 	}
 	
@@ -42,15 +47,27 @@ public class UserList {
 	 * @param userLineItem
 	 * @param id
 	 */
-	public void modify(UserLineItem userLineItem,int id){
-		userList.set(id, userLineItem);
+	public void modify(int index, UserLineItem userLineItem){
+		userList.set(index, userLineItem);
 	}
 	
 	/**
 	 * 
 	 * @param id
 	 */
-	public void find(int id) {
-		userList.get(id);
+	public UserLineItem get(int index) {
+		return userList.get(index);
+	}
+	
+	/**
+	 * 
+	 * @return size
+	 */
+	public int size(){
+		return userList.size();
+	}
+	
+	public void clear(){
+		userList.clear();
 	}
 }

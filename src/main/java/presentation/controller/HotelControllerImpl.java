@@ -1,7 +1,7 @@
 package presentation.controller;
 import java.util.ArrayList;
 
-import businesslogic.hotelbl.HotelBLService_Stub;
+import businesslogic.hotelbl.HotelController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
 import po.RoomType;
@@ -37,7 +37,7 @@ public class HotelControllerImpl implements HotelControllerService{
 		staffName = sn;
 		phoneNumber = pn;
 		
-		hotelBLService = new HotelBLService_Stub(hotelID,hotelName,hotelAddress,businessArea,hotelDescription,starLevel,roomNumber,wholeRooms,rating,staffName,phoneNumber);
+		hotelBLService = new HotelController();
 	}
 	
 	/**

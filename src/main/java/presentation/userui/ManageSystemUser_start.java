@@ -22,5 +22,9 @@ public class ManageSystemUser_start extends Application{
 			e.printStackTrace();
 		}
 	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }

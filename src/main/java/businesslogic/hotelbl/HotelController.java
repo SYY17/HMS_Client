@@ -15,9 +15,15 @@ import vo.RoomVO;
 
 public class HotelController implements HotelBLService{
 
+	/**
+	 * 
+	 * @param name
+	 * @return 浏览酒店信息
+	 */
 	@Override
 	public HotelVO reviewHotelInfo(String name) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -35,9 +41,15 @@ public class HotelController implements HotelBLService{
 		return hvo;
 	}
 
+	/**
+	 * 
+	 * @param 
+	 * @return 浏览酒店列表
+	 */
 	@Override
 	public ArrayList<HotelVO> reviewHotelList() {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -58,9 +70,15 @@ public class HotelController implements HotelBLService{
 		return hvoList;
 	}
 
+	/**
+	 * 
+	 * @param hvo
+	 * @return 创建酒店
+	 */
 	@Override
 	public ResultMessage createHotel(HotelVO hvo) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -77,9 +95,15 @@ public class HotelController implements HotelBLService{
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param hvo
+	 * @return 删除酒店
+	 */
 	@Override
 	public ResultMessage deleteHotel(int id) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -97,9 +121,15 @@ public class HotelController implements HotelBLService{
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param hvo
+	 * @return 修改酒店基本信息
+	 */
 	@Override
 	public ResultMessage modifyHotel(HotelVO hvo) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -117,9 +147,15 @@ public class HotelController implements HotelBLService{
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param hvo
+	 * @return 评价酒店
+	 */
 	@Override
 	public ResultMessage gradeHotel(HotelVO hvo) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -137,9 +173,15 @@ public class HotelController implements HotelBLService{
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param name
+	 * @return 按酒店名称搜索酒店基本信息
+	 */
 	@Override
 	public ArrayList<HotelVO> searchHotel(String name) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -161,9 +203,16 @@ public class HotelController implements HotelBLService{
 		return hvoList;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @param type
+	 * @return 按类型搜索房间
+	 */
 	@Override
 	public RoomVO searchRoom(int id, RoomType type) {
 		// TODO Auto-generated method stub
+		//待修改，初始化服务可以提取到LogFrame中
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
 		RemoteController rc = cr.getRemoteController();
@@ -181,7 +230,9 @@ public class HotelController implements HotelBLService{
 		return rvo;
 	}
 
+	//待修改，不提供给外界的方法应声明为private，且可采用委托式风格将该职责委托给其他类以满足单一职责原则
 	public HotelPO HotelVOtoHotelPO(HotelVO hvo){
+		//待修改，应改写为两个方法，一个为单独的VO,PO转换，另一种为多个PO转换为多个VO
 		ArrayList<RoomPO> rpoList = new ArrayList<RoomPO>();
 		ArrayList<RoomVO> rvoList = hvo.getRooms();
 		if(rvoList != null){
@@ -197,15 +248,17 @@ public class HotelController implements HotelBLService{
 		return hpo;
 	}
 	
+	//待修改，不提供给外界的方法应声明为private，且可采用委托式风格将该职责委托给其他类以满足单一职责原则
 	public HotelVO HotelPOtoHotelVO(HotelPO hpo){
+		//待修改，应改写为两个方法，一个为单独的VO,PO转换，另一种为多个VO转换为多个PO
 		ArrayList<RoomVO> rvoList = new ArrayList<RoomVO>();
 		ArrayList<RoomPO> rpoList = hpo.getRooms();
 		if(rpoList != null){
-		for(int i=0;i<rpoList.size();i++){//??????????change enums in po to vo???????????????
-			RoomVO rvo = new RoomVO(rpoList.get(i).getHotelID(), (vo.RoomType)(Object)rpoList.get(i).getRoomType(), 
-					rpoList.get(i).getTotalSum(), rpoList.get(i).getRemainSum(), rpoList.get(i).getPrice());
-			rvoList.add(rvo);
-		}
+			for(int i=0;i<rpoList.size();i++){//??????????change enums in po to vo???????????????
+				RoomVO rvo = new RoomVO(rpoList.get(i).getHotelID(), (vo.RoomType)(Object)rpoList.get(i).getRoomType(), 
+						rpoList.get(i).getTotalSum(), rpoList.get(i).getRemainSum(), rpoList.get(i).getPrice());
+				rvoList.add(rvo);
+			}
 		}
 		HotelVO hvo = new HotelVO(hpo.getHotelID(),hpo.getHotelName(), hpo.getHotelAddress(), 
 				hpo.getBusinessArea(), hpo.getHotelDescription(), hpo.getStarLevel(), hpo.getRoomNumber(), 

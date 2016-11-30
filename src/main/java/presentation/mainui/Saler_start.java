@@ -12,7 +12,6 @@ public class Saler_start extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/SalerUI.fxml"));
 			Scene scene = new Scene(root, 800, 600);
-			 scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
 			Saler_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
@@ -20,9 +19,5 @@ public class Saler_start extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

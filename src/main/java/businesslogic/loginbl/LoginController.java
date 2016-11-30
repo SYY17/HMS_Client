@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.loginblservice.LoginBLService;
+import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
@@ -11,10 +12,15 @@ import runner.DataServiceClientRunner;
 public class LoginController implements LoginBLService{
 
 	private RemoteController remoteController;
+	private UserDataService userdataservice;
 	
 	public LoginController() {
 		// TODO Auto-generated constructor stub
-		this.startRunner();
+		//建立与服务器端的连接
+		DataServiceClientRunner runner = new DataServiceClientRunner();
+		runner.start();
+		remoteController = runner.getRemoteController();
+		userdataservice = remoteController.getUserDataService();
 	}
 	
 	/**
@@ -28,8 +34,8 @@ public class LoginController implements LoginBLService{
 	public ResultMessage addNewUser(String username, String password, int id) {
 		// TODO Auto-generated method stub
 		try {
-			remoteController.getUserDataService().initUserDataService();
-			UserPO user = remoteController.getUserDataService().findUser(username);
+			userdataservice.initUserDataService();
+			UserPO user = userdataservice.findUser(username);
 			
 			//如果user数据不为空，表示已有该用户信息，直接返回注册失败
 			if(user != null){
@@ -37,8 +43,8 @@ public class LoginController implements LoginBLService{
 			}
 			
 			user = new UserPO(id, username, password);
-			remoteController.getUserDataService().insertUser(user);
-			remoteController.getUserDataService().finishUserDataService();
+			userdataservice.insertUser(user);
+			userdataservice.finishUserDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +64,12 @@ public class LoginController implements LoginBLService{
 	public ResultMessage login(String username, String password) {
 		// TODO Auto-generated method stub
 		try {
-			UserPO user = remoteController.getUserDataService().findUser(username);
+			userdataservice.initUserDataService();
+			UserPO user = userdataservice.findUser(username);
+			userdataservice.finishUserDataService();
+			
+			if(user == null) return ResultMessage.FALSE;
+			
 			if(user.getPassword().equals(password)){
 				return ResultMessage.TRUE;
 			}
@@ -84,16 +95,6 @@ public class LoginController implements LoginBLService{
 		}
 		
 		return ResultMessage.FALSE;
-	}
-	
-	/**
-	 * 建立连接，待删除
-	 */
-	private void startRunner(){
-		DataServiceClientRunner runner = new DataServiceClientRunner();
-		runner.start();
-		remoteController = runner.getRemoteController();
-		
 	}
 
 }

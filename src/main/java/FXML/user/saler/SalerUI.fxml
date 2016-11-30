@@ -113,10 +113,10 @@
                   </Label>
                   <TableView id="table" layoutX="-2.0" layoutY="25.0" prefHeight="430.0" prefWidth="390.0">
                      <columns>
-                        <TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="编号" />
-                        <TableColumn id="col_even" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="用户名" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" resizable="false" sortable="false" text="时间" />
-                        <TableColumn id="col_even" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="操作" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb;" text="编号" />
+                        <TableColumn id="col_even" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996;" text="用户名" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb;" text="时间" />
+                        <TableColumn id="col_even" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996;" text="操作" />
                      </columns>
                      <effect>
                         <DropShadow />

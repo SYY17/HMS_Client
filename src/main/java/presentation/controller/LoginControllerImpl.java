@@ -9,8 +9,8 @@ public class LoginControllerImpl implements LoginControllerService{
 	
 	private LoginBLService loginBlService;
 	
-	public LoginControllerImpl(String u, String p, int i){
-		loginBlService=new LoginController();
+	public LoginControllerImpl(){
+		loginBlService = new LoginController();
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class LoginControllerImpl implements LoginControllerService{
 	 * @return 登录
 	 */
 	@Override
-	public ResultMessage login(String username, String password, int id) {
+	public ResultMessage login(String username, String password) {
 		// TODO Auto-generated method stub
 		return loginBlService.login(username, password);
 	}

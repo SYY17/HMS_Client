@@ -12,7 +12,6 @@ public class User_start extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/UserUI.fxml"));
 			Scene scene = new Scene(root, 800, 600);
-			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			User_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
@@ -21,7 +20,7 @@ public class User_start extends Application {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -1,6 +1,8 @@
 package presentation.loginui;
 
 import java.io.IOException;
+
+import businesslogicservice.ResultMessage;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import presentation.controller.LoginControllerImpl;
 import presentation.mainui.Hotel_start;
 import presentation.mainui.Manager_start;
 import presentation.mainui.Saler_start;
@@ -28,6 +31,7 @@ public class LogFrame extends Application {
 	Pane login;
 	Pane register;
 	Stage stage;
+	int identity;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -168,6 +172,7 @@ public class LogFrame extends Application {
 		login.getChildren().add(nameField);
 		nameField.setLayoutX(181.0);
 		nameField.setLayoutY(57.0);
+		nameField.setPromptText("请输入您的用户名");
 		nameField.setCursor(Cursor.HAND);
 		nameField.setEffect(new DropShadow());
 		nameField.setId("input");
@@ -184,6 +189,7 @@ public class LogFrame extends Application {
 		login.getChildren().add(passwordField);
 		passwordField.setLayoutX(181.0);
 		passwordField.setLayoutY(104.0);
+		passwordField.setPromptText("请输入您的密码");
 		passwordField.setCursor(Cursor.HAND);
 		passwordField.setEffect(new DropShadow());
 		passwordField.setId("input");
@@ -205,15 +211,14 @@ public class LogFrame extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				String i = id.getValue();
-				if(i.equals("网站管理人员")){
-					new Manager_start().start(stage);
-				}else if(i.equals("网站营销人员")){
-					new Saler_start().start(stage);
-				}else if(i.equals("酒店工作人员")){
-					new Hotel_start().start(stage);
+				LoginControllerService loginController = new LoginControllerImpl();
+				String username = nameField.getText();
+				String password = passwordField.getText();
+				ResultMessage result = loginController.login(username, password);
+				if(result == ResultMessage.TRUE){
+					jumpToMainFrame();
 				}else{
-					new User_start().start(stage);
+					//弹出登录失败对话框
 				}
 			}
 		});
@@ -249,6 +254,13 @@ public class LogFrame extends Application {
 		id.setValue("客户");
 		id.setEffect(new DropShadow());
 		id.setId("choicebox_id");
+		id.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				identity = getID(id);
+			}
+		});
 		
 		//Label_Name
 		Label name = new Label("用户名");
@@ -262,6 +274,7 @@ public class LogFrame extends Application {
 		register.getChildren().add(nameField);
 		nameField.setLayoutX(181.0);
 		nameField.setLayoutY(57.0);
+		nameField.setPromptText("请输入您的用户名");
 		nameField.setCursor(Cursor.HAND);
 		nameField.setEffect(new DropShadow());
 		nameField.setId("input");
@@ -278,6 +291,7 @@ public class LogFrame extends Application {
 		register.getChildren().add(passwordField);
 		passwordField.setLayoutX(181.0);
 		passwordField.setLayoutY(103.0);
+		passwordField.setPromptText("请输入您的密码");
 		passwordField.setCursor(Cursor.HAND);
 		passwordField.setEffect(new DropShadow());
 		passwordField.setId("input");
@@ -294,6 +308,7 @@ public class LogFrame extends Application {
 		register.getChildren().add(passwordConfirmField);
 		passwordConfirmField.setLayoutX(181.0);
 		passwordConfirmField.setLayoutY(151.0);
+		passwordConfirmField.setPromptText("请再次输入密码");
 		passwordConfirmField.setCursor(Cursor.HAND);
 		passwordConfirmField.setEffect(new DropShadow());
 		passwordConfirmField.setId("input");
@@ -310,8 +325,55 @@ public class LogFrame extends Application {
 		registerButton.setCursor(Cursor.HAND);
 		registerButton.setEffect(new DropShadow());
 		registerButton.setId("button_register");
+		registerButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				LoginControllerService loginController = new LoginControllerImpl();
+				String username = nameField.getText();
+				String password = passwordField.getText();
+				String confirm = passwordConfirmField.getText();
+				if(!password.equals(confirm)){
+					//提示两次输入不一致
+					return;
+				}
+				ResultMessage result = loginController.addNewUser(username, password, identity);
+				if(result == ResultMessage.TRUE){
+					//提示注册成功，确认跳转至登录选项
+					System.out.println("Registered!");
+				}else{
+					//弹出注册失败对话框
+				}
+			}
+		});
 		
 		return register;
+	}
+	
+	private void jumpToMainFrame(){
+		if(identity == 4){
+			new Manager_start().start(stage);
+		}else if(identity == 3){
+			new Saler_start().start(stage);
+		}else if(identity == 2){
+			new Hotel_start().start(stage);
+		}else{
+			new User_start().start(stage);
+		}
+	}
+	
+	private int getID(ChoiceBox <String> id_Box){
+		String i = id_Box.getValue();
+		if(i.equals("网站管理人员")){
+			return 4;
+		}else if(i.equals("网站营销人员")){
+			return 3;
+		}else if(i.equals("酒店工作人员")){
+			return 2;
+		}else{
+			return 1;
+		}
 	}
 
 	public static void main(String[] args) {

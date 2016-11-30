@@ -12,7 +12,7 @@ public class UserControllerImpl implements UserControllerService{
 	
 	private UserBLService userBlService;
 	
-	public UserControllerImpl(int i,String u,String p){
+	public UserControllerImpl(){
 		userBlService = new UserController();
 	}
 

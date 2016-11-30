@@ -68,6 +68,14 @@ public class UserLineItem {
 	public void setID(int id){
 		this.id = id;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getID(){
+		return id;
+	}
 
 	/**
 	 * 
@@ -76,6 +84,10 @@ public class UserLineItem {
 	 */
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	public String getName(){
+		return name;
 	}
 	
 	/**

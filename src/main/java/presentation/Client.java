@@ -1,6 +1,6 @@
 package presentation;
 import businesslogic.creditbl.CreditController;
-import businesslogic.hotelbl.HotelBLService_Stub;
+import businesslogic.hotelbl.HotelController;
 import businesslogic.promotionbl.PromotionController;
 import businesslogic.userbl.UserController;
 import businesslogicservice.creditBLService.CreditBLService;
@@ -23,7 +23,7 @@ public class Client {
 		
 		//hotel驱动测试
 		System.out.println("* Hotel Driver Test:");
-		HotelBLService hotelBLService = new HotelBLService_Stub(0, null, null, null, null, 0, 0, null, 0, null, null);
+		HotelBLService hotelBLService = new HotelController();
 		HotelBLService_Driver hotelDriver = new HotelBLService_Driver();
 		hotelDriver.drive(hotelBLService);
 		System.out.println("* Test Completed");

@@ -1,9 +1,8 @@
 package businesslogictest.orderbl;
 
 import static org.junit.Assert.*;
-
-import java.sql.Date;
 import java.util.ArrayList;
+import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 

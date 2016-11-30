@@ -11,8 +11,7 @@ import vo.PromotionVO;
 
 public class PromotionController implements PromotionBLService{
 	
-	//类中待修改语句
-	//pvo = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
+	//类中存在待修改语句
 	
 	private RemoteController remoteController;
 
@@ -32,6 +31,7 @@ public class PromotionController implements PromotionBLService{
 				return ResultMessage.FALSE;
 			}
 			
+			//待修改，应创建一个单独的转换类以满足单一职责原则，避免重复原则以及迪米特原则
 			PromotionPO ppo = new PromotionPO(pvo.getContent(), pvo.getStartTime(), pvo.getID());
 			remoteController.getPromotionDataService().insertPromotion(ppo);
 			remoteController.getPromotionDataService().finishPromotionDataService();
@@ -60,6 +60,7 @@ public class PromotionController implements PromotionBLService{
 				list = null;
 			}else{
 				for(int i = 0; i<listPromotion.size(); i++){
+					//待修改，应创建一个单独的转换类以满足单一职责原则，避免重复原则以及迪米特原则
 					tmp = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
 					list.add(tmp);
 				}
@@ -82,7 +83,8 @@ public class PromotionController implements PromotionBLService{
 		// TODO Auto-generated method stub
 		try{
 			remoteController.getPromotionDataService().initPromotionDataService();
-			//待修改
+			
+			//待修改，应创建一个单独的转换类以满足单一职责原则，避免重复原则以及迪米特原则
 			PromotionPO ppo = new PromotionPO(pvo.getContent(), pvo.getStartTime(), pvo.getID());
 			remoteController.getPromotionDataService().deletePromotion(ppo);
 			remoteController.getPromotionDataService().finishPromotionDataService();
@@ -143,6 +145,8 @@ public class PromotionController implements PromotionBLService{
 				list = null;
 			}else{
 				for(int i = 0; i<listPromotion.size(); i++){
+					
+					//待修改，应创建一个单独的转换类以满足单一职责原则，避免重复原则以及迪米特原则
 					pvo = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
 					list.add(pvo);
 				}
@@ -174,6 +178,8 @@ public class PromotionController implements PromotionBLService{
 				list = null;
 			}else{
 				for(int i = 0; i<listPromotion.size(); i++){
+					
+					//待修改，应创建一个单独的转换类以满足单一职责原则，避免重复原则以及迪米特原则
 					tmp = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
 					list.add(tmp);
 				}

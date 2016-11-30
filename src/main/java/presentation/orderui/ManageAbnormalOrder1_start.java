@@ -36,6 +36,7 @@ public class ManageAbnormalOrder1_start extends Application {
 	}
 
 	private void initiateTableView(Parent root) {
+		@SuppressWarnings("unchecked")
 		TableView<OrderData> manageAbnormalOrderTableView = (TableView<OrderData>) root
 				.lookup("#manageAbnormalOrderTableView");
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();

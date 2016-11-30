@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import businesslogic.hotelbl.HotelBLService_Stub;
+import businesslogic.hotelbl.HotelController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
 import vo.HotelVO;
@@ -34,7 +34,7 @@ public class HotelBLServiceTest {
 	 */
 	@Test
 	public void testCreateHotel(){
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		ResultMessage message;
 		message = hotelBLService.createHotel(h1);
 		assertEquals(ResultMessage.TRUE, message);
@@ -49,7 +49,7 @@ public class HotelBLServiceTest {
 	 */
 	@Test
 	public void testSearchHotel() {
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		ArrayList<HotelVO> list1;
 		list1 = hotelBLService.searchHotel("xxhotel");
 		assertEquals(h1.getHotelID(), list1.get(0).getHotelID());
@@ -70,7 +70,7 @@ public class HotelBLServiceTest {
 	 */
 	@Test
 	public void testDeleteHotel(){
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		ResultMessage message;
 		message = hotelBLService.deleteHotel(h1.getHotelID());
 		assertEquals(ResultMessage.TRUE, message);
@@ -85,7 +85,7 @@ public class HotelBLServiceTest {
 	 */
 	@Test
 	public void testModifyHotel(){
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		ResultMessage message;
 		message = hotelBLService.modifyHotel(h1);
 		assertEquals(ResultMessage.TRUE, message);
@@ -98,7 +98,7 @@ public class HotelBLServiceTest {
 	 */
 	 @Test
 	 public void testGradeHotel(){
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		ResultMessage message;
 		message = hotelBLService.gradeHotel(h1);
 		assertEquals(ResultMessage.TRUE, message);
@@ -111,7 +111,7 @@ public class HotelBLServiceTest {
 	  */
 	 @Test
 	 public void testReviewHotelInfo(){
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		HotelVO hvo;
 		hvo = hotelBLService.reviewHotelInfo("xxhotel");
 		assertEquals(h1.getHotelID(), hvo.getHotelID());
@@ -130,7 +130,7 @@ public class HotelBLServiceTest {
 	  */
 	 @Test
 	 public void testReviewHotelList(){
-		hotelBLService = new HotelBLService_Stub();
+		hotelBLService = new HotelController();
 		ArrayList<HotelVO> list;
 		list = hotelBLService.reviewHotelList();
 		assertEquals(h1.getHotelID(), list.get(0).getHotelID());
