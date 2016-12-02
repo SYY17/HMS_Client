@@ -3,6 +3,7 @@ package presentation.controller;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import presentation.orderui.OrderControllerService;
@@ -15,6 +16,11 @@ public class OrderControllerImpl implements OrderControllerService{
 	
 	private OrderBLService orderBLService;
 
+	public OrderControllerImpl() {
+		// TODO Auto-generated constructor stub
+		orderBLService = new OrderController();
+	}
+	
 	/**
 	 * 
 	 * @param id

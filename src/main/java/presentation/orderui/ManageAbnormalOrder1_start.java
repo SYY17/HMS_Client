@@ -78,4 +78,8 @@ public class ManageAbnormalOrder1_start extends Application {
 		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
