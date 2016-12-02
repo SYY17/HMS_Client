@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.UserControllerImpl;
-import presentation.userui.user.UserDataHelper;
 import vo.UserVO;
 
 public class ManageSystemUser_start extends Application{

@@ -1,7 +1,7 @@
 package businesslogic.promotionbl;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import vo.PromotionVO;
 
@@ -89,7 +89,7 @@ public class PromotionList {
 		String ctt = promotionLineItem.getContent();
 		Date s = promotionLineItem.getStartTime();
 		int i = promotionLineItem.getID();
-		return new PromotionVO(ctt, s, i);
+		return new PromotionVO(ctt,s,i);
 	}
 	
 	/**

@@ -1,7 +1,7 @@
 package presentation.promotionui;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;

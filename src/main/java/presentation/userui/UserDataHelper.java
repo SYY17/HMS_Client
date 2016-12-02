@@ -1,6 +1,5 @@
-package presentation.userui.user;
+package presentation.userui;
 
-import presentation.userui.UserData;
 import vo.UserVO;
 
 public class UserDataHelper {

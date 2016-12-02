@@ -2,7 +2,7 @@ package businesslogic.promotionbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import dataservice.promotiondataservice.PromotionDataService;
 import po.PromotionPO;
 

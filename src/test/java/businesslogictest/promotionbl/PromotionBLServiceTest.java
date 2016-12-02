@@ -2,7 +2,7 @@ package businesslogictest.promotionbl;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 import businesslogic.promotionbl.PromotionController;

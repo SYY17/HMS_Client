@@ -8,6 +8,7 @@ import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
+import dataservice.usercredithistoryservice.UserCreditHistoryDataService;
 import dataservice.userdataservice.UserDataService;
 
 public class RemoteController {
@@ -83,6 +84,14 @@ public class RemoteController {
 	 */
 	public UserDataService getUserDataService(){
 		return (UserDataService) remote;
+	}
+	
+	/**
+	 * 
+	 * @return 获得用户历史信息信息服务
+	 */
+	public UserCreditHistoryDataService getUserCreditHistoryDataService(){
+		return (UserCreditHistoryDataService) remote;
 	}
 	
 	/**

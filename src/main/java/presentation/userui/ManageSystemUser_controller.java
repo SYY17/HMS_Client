@@ -20,7 +20,6 @@ import presentation.controller.UserControllerImpl;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
 import presentation.loginui.LogFrame;
 import presentation.mainui.Manager_start;
-import presentation.userui.user.UserDataHelper;
 import vo.UserVO;
 
 public class ManageSystemUser_controller {

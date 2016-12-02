@@ -1,7 +1,11 @@
 package businesslogicservice.creditBLService;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 import businesslogicservice.ResultMessage;
 import vo.CreditVO;
+import vo.UserCreditHistoryVO;
 
 public interface CreditBLService {
 	
@@ -34,4 +38,25 @@ public interface CreditBLService {
 	 * @return 查看信用值
 	 */
 	public CreditVO getCredit(int id);
+	
+	/**
+	 * 
+	 * @param userid
+	 * @return 查看用户所有历史
+	 */
+	public ArrayList<UserCreditHistoryVO> getHistory(int userId);
+	
+	/**
+	 * 
+	 * @param userid
+	 * @return 查看用户所有历史时间
+	 */
+	public ArrayList<Date> getHistoryDate(int userId);
+	
+	/**
+	 * 
+	 * @param userid
+	 * @return 查看用户所有历史变化
+	 */
+	public ArrayList<Integer> getHistoryChange(int userId);
 }

@@ -1,7 +1,7 @@
 package businesslogicservice.promotionblservice;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import businesslogicservice.ResultMessage;
 import vo.PromotionVO;

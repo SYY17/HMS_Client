@@ -1,7 +1,7 @@
 package presentation.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;

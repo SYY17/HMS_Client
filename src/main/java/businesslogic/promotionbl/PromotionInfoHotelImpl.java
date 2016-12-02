@@ -1,6 +1,6 @@
 package businesslogic.promotionbl;
 
-import java.util.Date;
+import java.sql.Date;
 
 import businesslogic.hotelbl.PromotionInfo;
 

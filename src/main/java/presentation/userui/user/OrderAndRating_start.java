@@ -39,6 +39,7 @@ public class OrderAndRating_start extends Application {
 	}
 
 	private void initiateTableView(Parent root) {
+		@SuppressWarnings("unchecked")
 		TableView<OrderData> orderAndRatingTableView = (TableView<OrderData>) root.lookup("#orderAndRatingTableView");
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
 		OrderControllerService orderControllerService = new OrderControllerImpl();
