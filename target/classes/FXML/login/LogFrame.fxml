@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panel_log" fx:id="panel_log" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eaecee;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.Login_controller">
+   <children>
+      <Label id="label_title" layoutX="315.0" layoutY="59.0" text="酒店管理系统">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Rectangle id="rect_body" arcHeight="5.0" arcWidth="5.0" fill="#cfd6dd" height="400.0" layoutX="45.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="706.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Pane id="panel_body" layoutX="93.0" layoutY="151.0" prefHeight="159.0" prefWidth="123.0">
+         <children>
+            <Label layoutX="-6.0" layoutY="14.0" text="请选择操作类型">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="choicebox_type" fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" onMouseClicked="#onChooseType" onMouseEntered="#onEntered" prefHeight="23.0" prefWidth="60.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef2f5" height="324.0" layoutX="182.0" layoutY="199.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="539.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <Pane id="panel_login" fx:id="panel_login" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0">
+         <children>
+            <Label layoutX="65.0" layoutY="10.0" text="请选择用户类型">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="choicebox_id" fx:id="login_id" layoutX="181.0" layoutY="10.0" maxHeight="23.0" maxWidth="105.0" minHeight="23.0" minWidth="105.0" prefHeight="23.0" prefWidth="105.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ChoiceBox>
+            <Label layoutX="121.0" layoutY="59.0" text="用户名">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="input" fx:id="login_username" layoutX="181.0" layoutY="57.0" promptText="请输入您的用户名">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <Label layoutX="135.0" layoutY="106.0" text="密码">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <PasswordField id="input" fx:id="login_password" layoutX="181.0" layoutY="104.0" promptText="请输入您的密码">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </PasswordField>
+            <Button id="button_login" layoutX="207.0" layoutY="151.0" maxHeight="29.0" maxWidth="64.0" minHeight="29.0" minWidth="64.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="29.0" prefWidth="64.0" text="登录">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+      <Pane id="panel_register" fx:id="panel_register" disable="true" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0" visible="false">
+         <children>
+            <Label layoutX="65.0" layoutY="10.0" text="请选择用户类型">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="choicebox_id" fx:id="register_id" layoutX="181.0" layoutY="10.0" maxHeight="23.0" maxWidth="105.0" minHeight="23.0" minWidth="105.0" prefHeight="23.0" prefWidth="105.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+            <Label layoutX="121.0" layoutY="57.0" text="用户名">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="input" fx:id="register_username" layoutX="181.0" layoutY="55.0" promptText="请输入您的用户名">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <Label layoutX="135.0" layoutY="104.0" text="密码">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <PasswordField id="input" fx:id="register_password" layoutX="181.0" layoutY="103.0" promptText="请输入您的密码">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </PasswordField>
+            <Label layoutX="107.0" layoutY="151.0" text="密码确认">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <PasswordField id="input" fx:id="register_confirm" layoutX="181.0" layoutY="151.0" promptText="请再次输入您的密码">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </PasswordField>
+            <Button id="button_register" layoutX="207.0" layoutY="196.0" maxHeight="29.0" maxWidth="64.0" minHeight="29.0" minWidth="64.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="29.0" prefWidth="64.0" text="注册">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</Pane>
