@@ -49,7 +49,7 @@ public class DataServiceClientRunner {
 		RemoteController rc = cr.getRemoteController();
 		try {
 			rc.getUserDataService().initUserDataService();
-			UserPO user = rc.getUserDataService().findUser("张三");
+			UserPO user = rc.getUserDataService().findUser("customer");
 			if(user != null){
 				System.out.print("User ID: "+user.getID()+"; ");
 				System.out.print("User Name: "+user.getName()+"; ");

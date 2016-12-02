@@ -2,7 +2,6 @@ package po;
 
 import java.io.*;
 import java.sql.Date;
-import java.util.*;
 
 public class OrderPO implements Serializable {
 	/**

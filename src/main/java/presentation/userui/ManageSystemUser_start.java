@@ -78,4 +78,8 @@ public class ManageSystemUser_start extends Application{
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
 }
