@@ -24,6 +24,11 @@ public class HotelControllerImpl implements HotelControllerService{
 	
 	private HotelBLService hotelBLService;
 	
+	
+	public HotelControllerImpl(){
+		
+	}
+	
 	public HotelControllerImpl(int hid,String hn,String ha,String ba,String hd,int sl,int rn,ArrayList<RoomVO> rooms,double r,String sn,String pn){
 		hotelID=hid;
 		hotelName=hn;
@@ -38,7 +43,7 @@ public class HotelControllerImpl implements HotelControllerService{
 		phoneNumber = pn;
 		
 		hotelBLService = new HotelController();
-	}
+		}
 	
 	/**
 	 * 浏览酒店信息
@@ -126,6 +131,23 @@ public class HotelControllerImpl implements HotelControllerService{
 	public RoomVO searchRoom(int id, RoomType type) {
 		// TODO Auto-generated method stub
 		return hotelBLService.searchRoom(id,type);
+	}
+
+	/**
+	 * 更新客房信息
+	 * @param rvo
+	 * @return ResultMessage
+	 */
+	@Override
+	public ResultMessage modifyRoom(RoomVO rvo) {
+		// TODO Auto-generated method stub
+		return hotelBLService.ModifyRoom(rvo);
+	}
+
+	@Override
+	public ArrayList<RoomVO> searchRooms(int id) {
+		// TODO Auto-generated method stub
+		return hotelBLService.SearchRooms(id);
 	}
 
 }

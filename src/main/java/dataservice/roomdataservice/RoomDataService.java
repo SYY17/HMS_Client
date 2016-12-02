@@ -2,6 +2,7 @@ package dataservice.roomdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.RoomPO;
 import po.RoomType;
@@ -58,6 +59,14 @@ public interface RoomDataService extends Remote{
 	 * @return 根据酒店工作人员ID与房间类型查找并返回相应房间信息
 	 */
 	public RoomPO findRoom(int id, RoomType type) throws RemoteException;
+	
+	/**
+	 * 
+	 * @param id
+	 * @return 查找并返回所 有房间
+	 * @throws RemoteException
+	 */
+	public ArrayList<RoomPO> findRooms(int id) throws RemoteException;
 	
 	/**
 	 * 

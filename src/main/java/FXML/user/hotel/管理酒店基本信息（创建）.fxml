@@ -55,12 +55,12 @@
          <children>
             <Pane layoutX="5.0" layoutY="45.0" prefHeight="415.0" prefWidth="790.0">
                <children>
-                  <Label layoutX="220.0" layoutY="14.0" text="酒店名称：">
+                  <Label layoutX="307.0" layoutY="17.0" text="酒店名称：">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="320.0" layoutY="16.0">
+                  <TextField fx:id="nameText" layoutX="407.0" layoutY="16.0">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -84,7 +84,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="179.0" text="设施服务：">
+                  <Label layoutX="10.0" layoutY="179.0" text="联系方式：">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -94,7 +94,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="59.0" layoutY="69.0" prefHeight="28.0" prefWidth="336.0">
+                  <TextField fx:id="addressText" layoutX="59.0" layoutY="69.0" prefHeight="28.0" prefWidth="336.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -102,7 +102,7 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="59.0" layoutY="106.0" prefHeight="28.0" prefWidth="336.0">
+                  <TextField fx:id="businessAreaText" layoutX="59.0" layoutY="106.0" prefHeight="28.0" prefWidth="336.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -110,7 +110,7 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="59.0" layoutY="141.0" prefHeight="28.0" prefWidth="336.0">
+                  <TextField fx:id="starText" layoutX="59.0" layoutY="141.0" prefHeight="28.0" prefWidth="336.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -118,7 +118,7 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="85.0" layoutY="176.0" prefHeight="28.0" prefWidth="310.0">
+                  <TextField fx:id="phoneText" layoutX="85.0" layoutY="176.0" prefHeight="28.0" prefWidth="310.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -126,7 +126,7 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <TextArea layoutX="59.0" layoutY="216.0" prefHeight="192.0" prefWidth="646.0">
+                  <TextArea fx:id="descriptionText" layoutX="59.0" layoutY="216.0" prefHeight="192.0" prefWidth="646.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -137,6 +137,19 @@
                      </effect>
                   </ScrollBar>
                   <ImageView fitHeight="150.0" fitWidth="295.0" layoutX="407.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="35.0" layoutY="16.0" text="ID:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idText" layoutX="65.0" layoutY="16.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
             <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">

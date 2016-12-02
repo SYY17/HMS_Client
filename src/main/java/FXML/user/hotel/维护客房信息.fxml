@@ -61,46 +61,21 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Rectangle fill="WHITE" height="173.0" layoutX="6.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="379.0">
+                  <Rectangle fill="WHITE" height="173.0" layoutX="6.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="773.0">
                      <effect>
                         <DropShadow />
                      </effect></Rectangle>
-                  <Label layoutX="16.0" layoutY="248.0" text="入住时间：">
+                  <Label layoutX="16.0" layoutY="248.0" text="房间类型：">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="15.0" layoutY="319.0" text="预计离开时间：">
+                  <Label layoutX="15.0" layoutY="319.0" text="剩余客房数：">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <DatePicker layoutX="92.0" layoutY="247.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </DatePicker>
-                  <DatePicker layoutX="120.0" layoutY="318.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </DatePicker>
-                  <Rectangle fill="WHITE" height="173.0" layoutX="400.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="379.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Rectangle>
-                  <Label layoutX="411.0" layoutY="248.0" text="离开时间：">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <DatePicker layoutX="486.0" layoutY="247.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </DatePicker>
-                  <Button fx:id="button_update_in" layoutX="315.0" layoutY="371.0" mnemonicParsing="false" onAction="#onUpdateIn" prefHeight="30.0" prefWidth="60.0" text="更新">
+                  <Button fx:id="button_update" layoutX="716.0" layoutY="371.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="30.0" prefWidth="60.0" text="更新">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -111,22 +86,37 @@
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="button_update_out" layoutX="716.0" layoutY="371.0" mnemonicParsing="false" onAction="#onUpdateOut" prefHeight="30.0" prefWidth="60.0" text="更新">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  <ChoiceBox fx:id="typeChoice" layoutX="98.0" layoutY="247.0" prefWidth="150.0">
                      <effect>
                         <DropShadow />
                      </effect>
+                  </ChoiceBox>
+                  <TextField fx:id="remainText" layoutX="105.0" layoutY="318.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextField>
+                  <Label layoutX="15.0" layoutY="285.0" text="总客房数：">
                      <font>
-                        <Font size="13.0" />
+                        <Font size="15.0" />
                      </font>
-                  </Button>
-                  <ListView layoutX="6.0" layoutY="41.0" prefHeight="179.0" prefWidth="773.0">
+                  </Label>
+                  <TextField fx:id="totalText" layoutX="105.0" layoutY="284.0">
                      <effect>
                         <DropShadow />
                      </effect>
-                  </ListView>
+                  </TextField>
+                  <TableView fx:id="roomView" layoutX="5.0" layoutY="41.0" prefHeight="179.0" prefWidth="773.0">
+                    <columns>
+                      <TableColumn prefWidth="193.0" text="房间类型" />
+                      <TableColumn prefWidth="193.0" text="总客房数" />
+                        <TableColumn prefWidth="193.0" text="剩余客房数" />
+                        <TableColumn prefWidth="194.0" text="价格" />
+                    </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
                </children>
             </Pane>
             <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">

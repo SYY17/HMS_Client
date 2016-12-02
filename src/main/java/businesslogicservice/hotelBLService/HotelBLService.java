@@ -65,6 +65,17 @@ public interface HotelBLService{
 	 */
 	public RoomVO searchRoom(int id, RoomType type);
 
+	/**
+	 * 
+	 * @param rvo
+	 * @return 更新客房信息
+	 */
+	public ResultMessage ModifyRoom(RoomVO rvo);
 	
-	
+	/**
+	 * 
+	 * @param id
+	 * @return 查找所有房间
+	 */
+	public ArrayList<RoomVO> SearchRooms(int id);
 }

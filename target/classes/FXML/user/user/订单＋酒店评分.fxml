@@ -43,7 +43,7 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <TableView fx:id="orderAndRatingTableView" layoutX="68.0" layoutY="123.0" prefHeight="145.0" prefWidth="667.0">
+      <TableView layoutX="68.0" layoutY="123.0" prefHeight="145.0" prefWidth="667.0">
         <columns>
           <TableColumn prefWidth="120.0" text="酒店名称" />
           <TableColumn prefWidth="137.0" text="入住时间" />
@@ -57,7 +57,7 @@
          </effect>
       </TableView>
       <Slider layoutX="744.0" layoutY="142.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="15.0" />
-      <TextArea layoutX="69.0" layoutY="326.0" prefHeight="133.0" prefWidth="667.0" promptText="酒店信息">
+      <TextArea fx:id="hotelInfoText" layoutX="69.0" layoutY="326.0" prefHeight="133.0" prefWidth="667.0" promptText="酒店信息">
          <effect>
             <DropShadow />
          </effect></TextArea>
@@ -66,7 +66,7 @@
             <BoxBlur />
          </effect>
       </ImageView>
-      <Label layoutX="82.0" layoutY="492.0" text="酒店评分">
+      <Label fx:id="rateLabel" layoutX="82.0" layoutY="492.0" text="酒店评分">
          <font>
             <Font size="19.0" />
          </font>
@@ -157,5 +157,14 @@
             </Menu>
          </menus>
       </MenuBar>
+      <TextField fx:id="rateText" layoutX="466.0" layoutY="494.0" prefHeight="23.0" prefWidth="48.0" />
+      <Button layoutX="533.0" layoutY="491.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="30.0" prefWidth="60.0" text="提交">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
    </children>
 </Pane>

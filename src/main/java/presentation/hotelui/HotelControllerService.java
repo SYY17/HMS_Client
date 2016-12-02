@@ -62,6 +62,18 @@ public interface HotelControllerService {
 	 * @return RoomInfoList
 	 */
 	public RoomVO searchRoom(int id, RoomType type);
-
 	
+	/**
+	 * 更新客房信息
+	 * @param rvo
+	 * @return ResultMessage
+	 */
+	public ResultMessage modifyRoom(RoomVO rvo);
+
+	/**
+	 * 查找所有客房
+	 * @param id
+	 * @return roomList
+	 */
+	public ArrayList<RoomVO> searchRooms(int id);
 }
