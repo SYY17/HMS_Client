@@ -3,8 +3,6 @@ package presentation.userui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import businesslogic.userbl.UserLineItem;
-import businesslogic.userbl.UserList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +20,7 @@ import presentation.controller.UserControllerImpl;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
 import presentation.loginui.LogFrame;
 import presentation.mainui.Manager_start;
+import presentation.userui.user.UserDataHelper;
 import vo.UserVO;
 
 public class ManageSystemUser_controller {
@@ -36,23 +35,26 @@ public class ManageSystemUser_controller {
 	public TableColumn<UserData, String> startColumn;
 	public TableColumn<UserData, Button> operationColumn;
 	
-	private UserList userList;
+	private UserDataHelper userDataHelper;
 	private final ObservableList<UserData> data = FXCollections.observableArrayList();
 
 	@FXML
 	private void onClickedRefreshButton(MouseEvent event) throws IOException {
 		UserControllerService userController = new UserControllerImpl();
-		ArrayList<UserVO> list = userController.getAllUsers();
-		UserLineItem userLineItem;
-		userList = new UserList();
 		
-		//转换VO list并存储于user list中
+		data.clear();
+		ObservableList<TableColumn<UserData, ?>> observableList = userTable.getColumns();
+		initiateObservableList(observableList);
+		
+		ArrayList<UserVO> list = userController.getAllUsers();
+		
+		userDataHelper = new UserDataHelper();
+		
 		for(int i=0; i<list.size(); i++){
-			userLineItem = new UserLineItem(list.get(i));
-			userList.add(userLineItem);
+			data.add(userDataHelper.toUserData(list.get(i)));
 		}
 		
-		refreshList();
+		userTable.setItems(data);
 	}
 	
 	@FXML
@@ -83,62 +85,15 @@ public class ManageSystemUser_controller {
 		alert.showAndWait();
 	}
 	
-	private void refreshList(){		
-		idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-		identityColumn.setCellValueFactory(new PropertyValueFactory<>("identity"));
-		startColumn.setCellValueFactory(new PropertyValueFactory<>("start"));
-		operationColumn.setCellValueFactory(new PropertyValueFactory<>("operation"));
-		
-		data.clear();
-		ArrayList<UserData> dataList = convert(userList);
-		data.addAll(dataList);
-		
-		userTable.setItems(data);
-	}
-	
-	private ArrayList<UserData> convert(UserList list){
-		ArrayList<UserData> result = new ArrayList<UserData>();
-		UserData temp;
-		for(int i=0; i<list.size(); i++){
-			temp = convert(list.get(i));
-			if(temp != null){
-				result.add(temp);
-			}
-		}
-		return result;
-	}
-	
-	private UserData convert(UserLineItem userLineItem){
-		int id = userLineItem.getID();
-		String username = userLineItem.getName();
-		String identity = judgeIdentity(id);
-		String start = judgeStart(id);
-		String operation = "管理";
-		if(identity != null){
-			return new UserData(String.valueOf(id), username, identity, start, operation);
-		}
-		
-		return null;
-	}
-	
-	private String judgeIdentity(int id){
-		char c = String.valueOf(id).charAt(0);
-		
-		if(c == '1'){
-			return "客户";
-		}else if(c == '2'){
-			return "酒店工作人员";
-		}else if(c == '3'){
-			return "网站营销人员";
-		}else{
-			return null;
-		}
-	}
-	
-	private String judgeStart(int id){
-		String temp = String.valueOf(id);
-		String result = temp.substring(1, 3)+"-"+temp.substring(3, 5);
-		return result;
+	/**
+	 * 初始化数据表
+	 * @param observableList
+	 */
+	private void initiateObservableList(ObservableList<TableColumn<UserData, ?>> observableList) {
+		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("username"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("identity"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("start"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 }

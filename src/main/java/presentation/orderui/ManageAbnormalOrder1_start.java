@@ -2,8 +2,6 @@ package presentation.orderui;
 
 import java.util.ArrayList;
 
-import businesslogic.orderbl.OrderController;
-import businesslogicservice.orderblservice.OrderBLService;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.OrderControllerImpl;
 import vo.OrderVO;
 
 public class ManageAbnormalOrder1_start extends Application {
@@ -21,8 +20,7 @@ public class ManageAbnormalOrder1_start extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader
-					.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder1.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder1.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
@@ -35,24 +33,42 @@ public class ManageAbnormalOrder1_start extends Application {
 		}
 	}
 
+	/**
+	 * 初始化表内数据
+	 * @param root
+	 */
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
+		
+		//查找tableview
 		TableView<OrderData> manageAbnormalOrderTableView = (TableView<OrderData>) root
 				.lookup("#manageAbnormalOrderTableView");
+		
+		//建立observablelist以更新数据
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
-		OrderBLService orderBLService = new OrderController();
+		
+//		OrderBLService orderBLService = new OrderController();
+		OrderControllerService orderController = new OrderControllerImpl();
+		
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		
+		ArrayList<OrderVO> orderList = orderController.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
+			
+			//建议建立一个创建OrderData对象的方法
 			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getCheckOut(),
 					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
 		}
 		manageAbnormalOrderTableView.setItems(data);
 	}
 
+	/**
+	 * 初始化数据表
+	 * @param observableList
+	 */
 	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userID"));
@@ -61,9 +77,5 @@ public class ManageAbnormalOrder1_start extends Application {
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("roomType"));
 		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("price"));
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

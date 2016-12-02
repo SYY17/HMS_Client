@@ -98,10 +98,10 @@
 								<TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="编号" />
 								<TableColumn id="col_even" editable="false" maxWidth="130.0" minWidth="77.95857238769531" prefWidth="87.87123107910156" resizable="false" sortable="false" text="用户" />
 								<TableColumn id="col_odd" editable="false" maxWidth="603.0" minWidth="80.0" prefWidth="166.72515869140625" resizable="false" sortable="false" text="入住时间" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="56.33929443359375" prefWidth="182.5294189453125" resizable="false" sortable="false" text="预计离开时间" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="578.6607055664062" minWidth="80.0" prefWidth="84.8714599609375" resizable="false" sortable="false" text="客房类型" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="425.2265625" minWidth="55.4193115234375" prefWidth="81.1285400390625" resizable="false" sortable="false" text="客房数量" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="40.91845703125" prefWidth="88.7027587890625" resizable="false" sortable="false" text="订单总价" />
+                       			<TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="56.33929443359375" prefWidth="182.5294189453125" resizable="false" sortable="false" text="预计离开时间" />
+                        		<TableColumn id="col_odd" editable="false" maxWidth="578.6607055664062" minWidth="80.0" prefWidth="84.8714599609375" resizable="false" sortable="false" text="客房类型" />
+                        		<TableColumn id="col_odd" editable="false" maxWidth="425.2265625" minWidth="55.4193115234375" prefWidth="81.1285400390625" resizable="false" sortable="false" text="客房数量" />
+                        		<TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="40.91845703125" prefWidth="88.7027587890625" resizable="false" sortable="false" text="订单总价" />
 							</columns>
 							<effect>
 								<DropShadow />

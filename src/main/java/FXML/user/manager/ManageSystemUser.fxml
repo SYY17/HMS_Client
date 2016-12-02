@@ -116,13 +116,13 @@
                   </Label>
 					</children>
 				</Pane>
-				<TableView id="applyTable" fx:id="userTable" layoutX="9.0" layoutY="96.0" prefHeight="361.0" prefWidth="781.0" style="-fx-background-position: center center;">
+				<TableView fx:id="userTable" layoutX="9.0" layoutY="96.0" prefHeight="361.0" prefWidth="781.0" style="-fx-background-position: center center;">
 					<columns>
-						<TableColumn id="col_odd" fx:id="idColumn" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="12.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="ID" />
-						<TableColumn id="col_even" fx:id="usernameColumn" editable="false" maxWidth="117.0" minWidth="117.0" prefWidth="117.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="用户名" />
-						<TableColumn id="col_odd" fx:id="identityColumn" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="112.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="用户身份" />
-						<TableColumn id="col_even" fx:id="startColumn" editable="false" maxWidth="259.0" minWidth="259.0" prefWidth="259.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="创建时间" />
-						<TableColumn id="col_odd" fx:id="operationColumn" editable="false" maxWidth="176.0" minWidth="183.0" prefWidth="183.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="操作选项" />
+						<TableColumn fx:id="idColumn" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="12.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="ID" />
+						<TableColumn fx:id="usernameColumn" editable="false" maxWidth="117.0" minWidth="117.0" prefWidth="117.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="用户名" />
+						<TableColumn fx:id="identityColumn" editable="false" maxWidth="112.0" minWidth="112.0" prefWidth="112.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="用户身份" />
+						<TableColumn fx:id="startColumn" editable="false" maxWidth="259.0" minWidth="259.0" prefWidth="259.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="创建时间" />
+						<TableColumn fx:id="operationColumn" editable="false" maxWidth="176.0" minWidth="183.0" prefWidth="183.0" resizable="false" sortable="false" style="-fx-border-width: 0px; -fx-background-insets: 0.5; -fx-font-size: 12px;" text="操作选项" />
 					</columns>
 					<effect>
 						<DropShadow />
