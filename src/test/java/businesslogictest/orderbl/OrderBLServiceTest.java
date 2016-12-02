@@ -1,8 +1,9 @@
 package businesslogictest.orderbl;
 
 import static org.junit.Assert.*;
-import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class OrderBLServiceTest {
 	OrderStatus orderStatus;
 	int price;
 	int userID;
-	Date setTime;
+	Timestamp setTime;
 	Date checkIn;
 	Date checkOut;
 	int roomNumber;
@@ -81,7 +82,7 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void testCreate(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Date s, Date ci, Date co) {
+			Timestamp s, Date ci, Date co) {
 		orderBlService = new OrderController();
 		assertEquals(orderVO, orderBlService.create(userid, hotelid, orderstatus, rT, rn, pvo, s, ci, co));
 	}

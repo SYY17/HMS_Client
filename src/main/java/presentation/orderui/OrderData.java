@@ -38,8 +38,8 @@ public class OrderData {
 		this.price.set(price);
 	}
 	
-	public OrderData(int hotelID,int userID, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
-		this.hotelID.set(hotelID);
+	public OrderData(int orderID,int userID, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
+		this.orderID.set(orderID);
 		this.userID.set(userID);
 		this.checkIn.set(checkIn.toString());
 		this.checkOut.set(checkOut.toString());

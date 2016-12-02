@@ -1,6 +1,7 @@
 package businesslogicservice.orderblservice;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import businesslogicservice.ResultMessage;
@@ -40,7 +41,7 @@ public interface OrderBLService {
 	 * @return 创建订单
 	 */
 	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Date s, Date ci, Date co);	
+			Timestamp s, Date ci, Date co);	
 	
 	/**
 	 * 

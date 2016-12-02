@@ -3,8 +3,6 @@ package presentation.userui.user;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import businesslogic.orderbl.OrderController;
-import businesslogicservice.orderblservice.OrderBLService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,8 +12,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.OrderControllerImpl;
 import presentation.loginui.LogFrame;
 import presentation.mainui.User_start;
+import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import vo.OrderStatus;
 import vo.OrderVO;
@@ -24,7 +24,7 @@ public class AllOrder_controller {
 
 	public static Stage stage;
 	private final ObservableList<OrderData> data = FXCollections.observableArrayList();
-	public OrderBLService orderBLService = new OrderController();
+	public OrderControllerService orderControllerService = new OrderControllerImpl();
 	public TableView<OrderData> allOrderTableView;
 	public TableView<OrderData> unfilledOrderTableView;
 	public TableView<OrderData> canceledOrderTableView;
@@ -66,12 +66,14 @@ public class AllOrder_controller {
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = allOrderTableView.getColumns();
 		initialTableView(observableList);
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
+		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelID(), ovo.getCheckIn(),
 					ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
 		}
+		
 		allOrderTableView.setItems(data);
 	}
 
@@ -81,7 +83,8 @@ public class AllOrder_controller {
 		ObservableList<TableColumn<OrderData, ?>> observableList = unfilledOrderTableView.getColumns();
 		initialTableView(observableList);
 
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
+		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			if (ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
@@ -98,7 +101,8 @@ public class AllOrder_controller {
 		ObservableList<TableColumn<OrderData, ?>> observableList = canceledOrderTableView.getColumns();
 		initialTableView(observableList);
 
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
+		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			if (ovo.getOrderStatus().toString().equals(OrderStatus.Canceled.toString())) {
@@ -115,7 +119,8 @@ public class AllOrder_controller {
 		ObservableList<TableColumn<OrderData, ?>> observableList = abnormalOrderTableView.getColumns();
 		initialTableView(observableList);
 
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
+		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
@@ -132,7 +137,8 @@ public class AllOrder_controller {
 		ObservableList<TableColumn<OrderData, ?>> observableList = finishedOrderTableView.getColumns();
 		initialTableView(observableList);
 
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
+		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			if (ovo.getOrderStatus().toString().equals(OrderStatus.Finished.toString())) {

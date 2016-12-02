@@ -1,6 +1,7 @@
 package businesslogic.orderbl;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -16,7 +17,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	OrderStatus orderStatus;
 	int price;
 	int userID;
-	Date setTime;
+	Timestamp setTime;
 	Date checkIn;
 	Date checkOut;
 	int roomNumber;
@@ -25,7 +26,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	MockHotel mockHotel;
 	MockUser mockUser;
 
-	public OrderBLService_Stub(int orderID, OrderStatus status, int price, int userID, Date setTime, Date checkIn,
+	public OrderBLService_Stub(int orderID, OrderStatus status, int price, int userID, Timestamp setTime, Date checkIn,
 			Date checkOut, int roomNumber, int hotelID, RoomType roomType) {
 		this.orderID = orderID;
 		this.orderStatus = status;
@@ -47,7 +48,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	@Override
 	public ArrayList<OrderVO> reviewOrder(int id) {
 		ArrayList<OrderVO> OrderVOList = new ArrayList<OrderVO>();
-		OrderVOList.add(new OrderVO(0, 0, 0, null, id, null, id, checkIn, checkIn, checkIn));
+		OrderVOList.add(new OrderVO(0, 0, 0, null, id, null, id, setTime, checkIn, checkIn));
 		return OrderVOList;
 	}
 
@@ -59,7 +60,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	@Override
 	public ArrayList<OrderVO> reviewAbnormalOrder(int id) {
 		ArrayList<OrderVO> AbnormalOrderVOList = new ArrayList<OrderVO>();
-		AbnormalOrderVOList.add(new OrderVO(id, id, id, null, id, null, id, checkIn, checkIn, checkIn));
+		AbnormalOrderVOList.add(new OrderVO(id, id, id, null, id, null, id, setTime, checkIn, checkIn));
 		return AbnormalOrderVOList;
 	}
 
@@ -131,7 +132,7 @@ public class OrderBLService_Stub implements OrderBLService {
 	 */
 	@Override
 	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Date s, Date ci, Date co) {
+			Timestamp s, Date ci, Date co) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -2,6 +2,7 @@ package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import businesslogicservice.ResultMessage;
@@ -91,7 +92,7 @@ public class OrderController implements OrderBLService {
 
 	@Override
 	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType roomType, int roomNumber,
-			PromotionVO pvo, Date settime, Date checkin, Date checkout) {
+			PromotionVO pvo, Timestamp settime, Date checkin, Date checkout) {
 		return new OrderVO(0, userid, hotelid, OrderStatus.Unfilled, calculatePrice(roomType, roomNumber, pvo),
 				roomType, roomNumber, settime, checkin, checkout);
 	}

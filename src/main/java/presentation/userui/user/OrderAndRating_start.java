@@ -2,8 +2,6 @@ package presentation.userui.user;
 
 import java.util.ArrayList;
 
-import businesslogic.orderbl.OrderController;
-import businesslogicservice.orderblservice.OrderBLService;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +12,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.OrderControllerImpl;
+import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import vo.OrderVO;
 
@@ -41,11 +41,11 @@ public class OrderAndRating_start extends Application {
 	private void initiateTableView(Parent root) {
 		TableView<OrderData> orderAndRatingTableView = (TableView<OrderData>) root.lookup("#orderAndRatingTableView");
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
-		OrderBLService orderBLService = new OrderController();
+		OrderControllerService orderControllerService = new OrderControllerImpl();
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = orderAndRatingTableView.getColumns();
 		initiateObservableList(observableList);
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderData(ovo.getHotelID(), ovo.getCheckIn(), ovo.getCheckOut(), ovo.getRoomType(),

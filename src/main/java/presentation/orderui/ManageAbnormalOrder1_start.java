@@ -16,11 +16,16 @@ import presentation.controller.OrderControllerImpl;
 import vo.OrderVO;
 
 public class ManageAbnormalOrder1_start extends Application {
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder1.fxml"));
+			Parent root = FXMLLoader
+					.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder1.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
@@ -35,30 +40,37 @@ public class ManageAbnormalOrder1_start extends Application {
 
 	/**
 	 * 初始化表内数据
+	 * 
 	 * @param root
 	 */
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
-		
-		//查找tableview
+		// 查找tableview
 		TableView<OrderData> manageAbnormalOrderTableView = (TableView<OrderData>) root
 				.lookup("#manageAbnormalOrderTableView");
-		
-		//建立observablelist以更新数据
+
+		// 建立observablelist以更新数据
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
-		
-//		OrderBLService orderBLService = new OrderController();
-		OrderControllerService orderController = new OrderControllerImpl();
-		
+
+		// OrderBLService orderBLService = new OrderController();
+		OrderControllerService orderControllerService = new OrderControllerImpl();
+
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
-		
-		ArrayList<OrderVO> orderList = orderController.reviewOrder(/* id = */20905098);
+
+		ArrayList<OrderVO> orderList = orderControllerService
+				.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			
-			//建议建立一个创建OrderData对象的方法
+			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getCheckOut(),
+					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
+		}
+		orderList = orderControllerService.reviewOrder(/* id = */12098013);
+		for (int i = 0; i < orderList.size(); i++) {
+			OrderVO ovo = orderList.get(i);
+
+			// 建议建立一个创建OrderData对象的方法
 			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getCheckOut(),
 					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
 		}
@@ -67,6 +79,7 @@ public class ManageAbnormalOrder1_start extends Application {
 
 	/**
 	 * 初始化数据表
+	 * 
 	 * @param observableList
 	 */
 	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
@@ -79,7 +92,4 @@ public class ManageAbnormalOrder1_start extends Application {
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
 }

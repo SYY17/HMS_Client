@@ -2,6 +2,7 @@ package vo;
 
 import java.io.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import vo.OrderStatus;
 import vo.RoomType;
@@ -15,14 +16,14 @@ public class OrderVO implements Serializable {
 	OrderStatus orderStatus;
 	int price;
 	int userID;
-	Date setTime;
+	Timestamp setTime;
 	Date checkIn;
 	Date checkOut;
 	int roomNumber;
 	int hotelID;
 	RoomType roomType;
 
-	public OrderVO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Date s,
+	public OrderVO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Timestamp s,
 			Date ci, Date co) {
 		orderID = orderid;
 		orderStatus = orderstatus;
@@ -72,7 +73,7 @@ public class OrderVO implements Serializable {
 	 * 
 	 * @return 获得订单对应下单时间
 	 */
-	public Date getSetTime() {
+	public Timestamp getSetTime() {
 		return setTime;
 	}
 

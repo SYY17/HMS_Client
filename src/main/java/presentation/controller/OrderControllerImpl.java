@@ -1,6 +1,7 @@
 package presentation.controller;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderController;
@@ -60,8 +61,8 @@ public class OrderControllerImpl implements OrderControllerService{
 	 */
 	@Override
 	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Date s, Date ci, Date co) {
-		return orderBLService.create(rn, rn, orderstatus, rT, rn, pvo, co, co, co);
+			Timestamp s, Date ci, Date co) {
+		return orderBLService.create(rn, rn, orderstatus, rT, rn, pvo, s, ci, co);
 	}
 	
 	/**

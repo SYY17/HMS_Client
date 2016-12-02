@@ -2,8 +2,7 @@ package presentation.orderui;
 
 import java.util.ArrayList;
 
-import businesslogic.orderbl.OrderController;
-import businesslogicservice.orderblservice.OrderBLService;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.OrderControllerImpl;
 import vo.OrderVO;
 
 public class ManageAbnormalOrder2_start extends Application{
@@ -40,11 +40,11 @@ public class ManageAbnormalOrder2_start extends Application{
 		TableView<OrderData> manageAbnormalOrderTableView = (TableView<OrderData>) root.lookup("#manageAbnormalOrderTableView");
 		System.out.println(manageAbnormalOrderTableView);
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
-		OrderBLService orderBLService = new OrderController();
+		OrderControllerService orderControllerService = new OrderControllerImpl();
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
-		ArrayList<OrderVO> orderList = orderBLService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getPrice()));
