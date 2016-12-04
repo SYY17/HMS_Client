@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import po.OrderPO;
 import po.OrderStatus;
 
-public interface OrderDataService extends Remote{
-	
+public interface OrderDataService extends Remote {
+
 	/**
 	 * 
 	 * @param po
@@ -37,14 +37,22 @@ public interface OrderDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public OrderPO findOrder(int id) throws RemoteException;
-	
+
 	/**
 	 * 
-	 * @param id
+	 * @param userName
 	 * @return
 	 * @throws RemoteException
 	 */
-	public  ArrayList<OrderPO> findOrderByUserID(int id) throws RemoteException;
+	public ArrayList<OrderPO> findOrderByUserName(String userName) throws RemoteException;
+
+	/**
+	 * 
+	 * @param hotelName
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<OrderPO> findOrderByHotelName(String hotelName) throws RemoteException;
 
 	/**
 	 * 

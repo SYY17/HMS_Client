@@ -55,7 +55,10 @@
          <children>
             <Pane layoutX="5.0" layoutY="45.0" prefHeight="415.0" prefWidth="790.0">
                <children>
-                  <Rectangle fill="#cfd6dd" height="415.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0" />
+                  <Rectangle fill="#cfd6dd" height="415.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0">
+                     <effect>
+                        <DropShadow />
+                     </effect></Rectangle>
                   <Button fx:id="button_confirm" layoutX="712.0" layoutY="360.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="30.0" prefWidth="72.0" text="确认执行">
                      <cursor>
                         <Cursor fx:constant="HAND" />

@@ -7,7 +7,7 @@ import po.OrderStatus;
 
 public class OrderDataService_Driver {
 	public void drive(OrderDataService orderDatabaseService) throws RemoteException {
-		OrderPO opo = new OrderPO(0, 0, 0, null, 0, null, 0, null, null, null);
+		OrderPO opo = new OrderPO(0, null, null, null, 0, null, 0, null, null, null);
 		int id = 0;
 		OrderStatus status = OrderStatus.Unfilled;
 		orderDatabaseService.initOrderDataService();

@@ -55,25 +55,29 @@
          <children>
             <Pane layoutX="5.0" layoutY="45.0" prefHeight="415.0" prefWidth="790.0">
                <children>
-                  <Rectangle fill="#cfd6dd" height="415.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0" />
+                  <Rectangle fill="#cfd6dd" height="415.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0">
+                     <effect>
+                        <DropShadow />
+                     </effect></Rectangle>
                   <Label layoutX="19.0" layoutY="14.0" text="待确认订单：">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="19.0" layoutY="48.0" prefHeight="349.0" prefWidth="635.0">
+                  <TableView fx:id="orderListTableView" layoutX="10.0" layoutY="48.0" prefHeight="315.0" prefWidth="770.0">
                     <columns>
-                      <TableColumn prefWidth="113.0" text="编号" />
-                      <TableColumn prefWidth="120.0" text="申请人" />
-                        <TableColumn prefWidth="125.0" text="时间" />
-                        <TableColumn prefWidth="133.0" text="客房类型" />
-                        <TableColumn prefWidth="143.0" text="客房数量" />
+                      <TableColumn prefWidth="108.0" text="编号" />
+                      <TableColumn prefWidth="132.0" text="申请人" />
+                        <TableColumn prefWidth="150.0" text="时间" />
+                        <TableColumn prefWidth="137.0" text="客房类型" />
+                        <TableColumn prefWidth="128.0" text="客房数量" />
+                        <TableColumn prefWidth="108.0" text="总价" />
                     </columns>
                      <effect>
                         <DropShadow />
                      </effect>
                   </TableView>
-                  <Button fx:id="button_detail" layoutX="716.0" layoutY="360.0" mnemonicParsing="false" onAction="#onDetail" prefHeight="30.0" prefWidth="60.0" text="详细">
+                  <Button fx:id="button_detail" layoutX="701.0" layoutY="377.0" mnemonicParsing="false" onAction="#onDetail" prefHeight="30.0" prefWidth="82.0" text="确认执行">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

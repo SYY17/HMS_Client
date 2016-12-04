@@ -15,25 +15,25 @@ public class OrderVO implements Serializable {
 	int orderID;
 	OrderStatus orderStatus;
 	int price;
-	int userID;
+	String userName;
 	Timestamp setTime;
 	Date checkIn;
 	Date checkOut;
 	int roomNumber;
-	int hotelID;
+	String hotelName;
 	RoomType roomType;
 
-	public OrderVO(int orderid, int i, int hID, OrderStatus orderstatus, int pr, RoomType rT, int rn, Timestamp s,
+	public OrderVO(int orderid, String un, String hn, OrderStatus orderstatus, int pr, RoomType rT, int rn, Timestamp s,
 			Date ci, Date co) {
 		orderID = orderid;
 		orderStatus = orderstatus;
 		price = pr;
-		userID = i;
+		userName = un;
 		setTime = s;
 		checkIn = ci;
 		checkOut = co;
 		roomNumber = rn;
-		hotelID = hID;
+		hotelName = hn;
 		roomType = rT;
 	}
 
@@ -65,8 +65,8 @@ public class OrderVO implements Serializable {
 	 * 
 	 * @return 获得订单对应用户ID
 	 */
-	public int getUserID() {
-		return userID;
+	public String getUserName() {
+		return userName;
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class OrderVO implements Serializable {
 	 * 
 	 * @return 获得订单对应酒店ID
 	 */
-	public int getHotelID() {
-		return hotelID;
+	public String getHotelName() {
+		return hotelName;
 	}
 
 	/**

@@ -16,7 +16,7 @@ import presentation.controller.OrderControllerImpl;
 import vo.OrderVO;
 
 public class ManageAbnormalOrder1_start extends Application {
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -63,7 +63,7 @@ public class ManageAbnormalOrder1_start extends Application {
 				.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getCheckOut(),
+			data.add(new OrderData(ovo.getOrderID(), ovo.getUserName(), ovo.getCheckIn(), ovo.getCheckOut(),
 					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
 		}
 		orderList = orderControllerService.reviewOrder(/* id = */12098013);
@@ -71,7 +71,7 @@ public class ManageAbnormalOrder1_start extends Application {
 			OrderVO ovo = orderList.get(i);
 
 			// 建议建立一个创建OrderData对象的方法
-			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getCheckOut(),
+			data.add(new OrderData(ovo.getOrderID(), ovo.getUserName(), ovo.getCheckIn(), ovo.getCheckOut(),
 					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
 		}
 		manageAbnormalOrderTableView.setItems(data);
@@ -84,12 +84,12 @@ public class ManageAbnormalOrder1_start extends Application {
 	 */
 	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userID"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userName"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("checkIn"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("checkOut"));
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("roomType"));
 		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
-	
+
 }

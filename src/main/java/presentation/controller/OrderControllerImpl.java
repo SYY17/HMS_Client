@@ -13,15 +13,15 @@ import vo.OrderVO;
 import vo.PromotionVO;
 import vo.RoomType;
 
-public class OrderControllerImpl implements OrderControllerService{
-	
+public class OrderControllerImpl implements OrderControllerService {
+
 	private OrderBLService orderBLService;
 
 	public OrderControllerImpl() {
 		// TODO Auto-generated constructor stub
 		orderBLService = new OrderController();
 	}
-	
+
 	/**
 	 * 
 	 * @param id
@@ -31,15 +31,15 @@ public class OrderControllerImpl implements OrderControllerService{
 	public ArrayList<OrderVO> reviewOrder(int id) {
 		return orderBLService.reviewOrder(id);
 	}
-	
+
 	/**
 	 * 
 	 * @param id
 	 * @return 浏览异常订单
 	 */
 	@Override
-	public ArrayList<OrderVO> reviewAbnormalOrder(int id) {
-		return orderBLService.reviewAbnormalOrder(id);
+	public ArrayList<OrderVO> reviewOrder(int id, OrderStatus orderStatus) {
+		return orderBLService.reviewOrder(id, orderStatus);
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class OrderControllerImpl implements OrderControllerService{
 	public ResultMessage cancelOrder(OrderVO ovo) {
 		return orderBLService.cancelOrder(ovo);
 	}
-	
+
 	/**
 	 * 
 	 * @param hvo
@@ -60,11 +60,11 @@ public class OrderControllerImpl implements OrderControllerService{
 	 * @return 创建订单
 	 */
 	@Override
-	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Timestamp s, Date ci, Date co) {
-		return orderBLService.create(rn, rn, orderstatus, rT, rn, pvo, s, ci, co);
+	public OrderVO create(String username, String hotelname, OrderStatus orderstatus, RoomType rT, int rn,
+			PromotionVO pvo, Timestamp s, Date ci, Date co) {
+		return orderBLService.create(username, hotelname, orderstatus, rT, rn, pvo, s, ci, co);
 	}
-	
+
 	/**
 	 * 
 	 * @param ovo

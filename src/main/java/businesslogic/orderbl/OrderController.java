@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import businesslogic.userbl.UserInfoImpl;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.orderdataservice.OrderDataService;
@@ -19,20 +20,22 @@ import vo.PromotionVO;
 public class OrderController implements OrderBLService {
 	RemoteController remoteController;
 	OrderDataService orderDataService;
-//	UserDataService userDataService;
-//	HotelDataService hotelDataService;
+	UserInfo userInfo;
+	// UserDataService userDataService;
+	// HotelDataService hotelDataService;
 
 	public OrderController() {
 		DataServiceClientRunner runner = new DataServiceClientRunner();
 		runner.start();
 		remoteController = runner.getRemoteController();
 		orderDataService = remoteController.getOrderDataService();
-//		userDataService = remoteController.getUserDataService();
-//		hotelDataService = remoteController.getHotelDataService();
+		userInfo = new UserInfoImpl();
+		// userDataService = remoteController.getUserDataService();
+		// hotelDataService = remoteController.getHotelDataService();
 	}
 
 	private OrderVO POToVO(OrderPO opo) {
-		return new OrderVO(opo.getOrderID(), opo.getUserID(), opo.getHotelID(),
+		return new OrderVO(opo.getOrderID(), opo.getUserName(), opo.getHotelName(),
 				OrderStatus.valueOf(opo.getOrderStatus().toString()), opo.getPrice(),
 				RoomType.valueOf(opo.getRoomType().toString()), opo.getRoomNumber(), opo.getSetTime(), opo.getCheckIn(),
 				opo.getCheckOut());
@@ -40,7 +43,8 @@ public class OrderController implements OrderBLService {
 
 	private ArrayList<OrderVO> getOrderByUserID(int id) throws RemoteException {
 		orderDataService.initOrderDataService();
-		ArrayList<OrderPO> listPO = orderDataService.findOrderByUserID(id);
+		String userName = userInfo.searchByUserID(id);
+		ArrayList<OrderPO> listPO = orderDataService.findOrderByUserName(userName);
 		orderDataService.finishOrderDataService();
 		ArrayList<OrderVO> listVO = new ArrayList<OrderVO>();
 		for (int i = 0; i < listPO.size(); i++) {
@@ -61,12 +65,12 @@ public class OrderController implements OrderBLService {
 	}
 
 	@Override
-	public ArrayList<OrderVO> reviewAbnormalOrder(int id) {
+	public ArrayList<OrderVO> reviewOrder(int id, OrderStatus orderStatus) {
 		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
 		try {
 			list = getOrderByUserID(id);
 			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getOrderStatus().toString().equals("Abnormal")) {
+				if (list.get(i).getOrderStatus().toString().equals(orderStatus.toString())) {
 					list.remove(i);
 					i--;
 				}
@@ -91,10 +95,10 @@ public class OrderController implements OrderBLService {
 	}
 
 	@Override
-	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType roomType, int roomNumber,
+	public OrderVO create(String username, String hotelname, OrderStatus orderstatus, RoomType roomtype, int roomNumber,
 			PromotionVO pvo, Timestamp settime, Date checkin, Date checkout) {
-		return new OrderVO(0, userid, hotelid, OrderStatus.Unfilled, calculatePrice(roomType, roomNumber, pvo),
-				roomType, roomNumber, settime, checkin, checkout);
+		return new OrderVO(0, username, hotelname, OrderStatus.Unfilled, calculatePrice(roomtype, roomNumber, pvo),
+				roomtype, roomNumber, settime, checkin, checkout);
 	}
 
 	private int calculatePrice(RoomType roomType, int roomNumber, PromotionVO pvo) {
@@ -129,13 +133,14 @@ public class OrderController implements OrderBLService {
 		}
 	}
 
-//	public static void main(String[] args) {
-//		try {
-//			System.out.println(new OrderController().getOrderByUserID(20905098).get(0).getUserID());
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	// public static void main(String[] args) {
+	// try {
+	// System.out.println(new
+	// OrderController().getOrderByUserID(20905098).get(0).getUserID());
+	// } catch (RemoteException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
 
 }

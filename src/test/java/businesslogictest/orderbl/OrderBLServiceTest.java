@@ -21,12 +21,12 @@ public class OrderBLServiceTest {
 	int orderID;
 	OrderStatus orderStatus;
 	int price;
-	int userID;
+	String userName;
 	Timestamp setTime;
 	Date checkIn;
 	Date checkOut;
 	int roomNumber;
-	int hotelID;
+	String hotelName;
 	OrderVO orderVO;
 	HotelVO hotelVO;
 	PromotionVO promotionVO;
@@ -38,18 +38,20 @@ public class OrderBLServiceTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		userID = 00000000;
+		userName = null;
 		setTime = null;
 		checkIn = null;
 		checkOut = null;
 		roomNumber = 0;
-		hotelID = 00000000;
+		hotelName = null;
 		orderList = null;
-		orderVO = new OrderVO(orderID, userID, hotelID, orderStatus, price, roomType, roomNumber, setTime, checkIn, checkOut);
-		hotelVO = new HotelVO(hotelID, null, null, null, null, hotelID, hotelID, null, hotelID, null, null);
+		orderVO = new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime, checkIn,
+				checkOut);
+		hotelVO = new HotelVO(orderID, hotelName, hotelName, hotelName, hotelName, orderID, orderID, null, orderID,
+				hotelName, hotelName);
 		promotionVO = new PromotionVO("双十一下订单八折优惠", new Date(System.currentTimeMillis()), 20920010);
 	}
-	
+
 	/**
 	 * 浏览全部订单的测试用例套件
 	 */
@@ -58,16 +60,16 @@ public class OrderBLServiceTest {
 		orderBlService = new OrderController();
 		assertEquals(orderList, orderBlService.reviewOrder(00000000));
 	}
-	
+
 	/**
 	 * 浏览异常订单的测试用例套件
 	 */
 	@Test
-	public void testReviewAbnormalOrder() {
+	public void testReviewOrder2() {
 		orderBlService = new OrderController();
-		assertEquals(orderList, orderBlService.reviewAbnormalOrder(00000000));
+		assertEquals(orderList, orderBlService.reviewOrder(00000000, OrderStatus.Finished));
 	}
-	
+
 	/**
 	 * 取消订单的测试用例套件
 	 */
@@ -76,17 +78,17 @@ public class OrderBLServiceTest {
 		orderBlService = new OrderController();
 		assertEquals(ResultMessage.TRUE, orderBlService.cancelOrder(orderVO));
 	}
-	
+
 	/**
 	 * 创建订单的测试用例套件
 	 */
 	@Test
-	public void testCreate(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
+	public void testCreate(String username, String hotelname, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
 			Timestamp s, Date ci, Date co) {
 		orderBlService = new OrderController();
-		assertEquals(orderVO, orderBlService.create(userid, hotelid, orderstatus, rT, rn, pvo, s, ci, co));
+		assertEquals(orderVO, orderBlService.create(username, hotelname, orderstatus, rT, rn, pvo, s, ci, co));
 	}
-	
+
 	/**
 	 * 增加订单的测试用例套件
 	 */

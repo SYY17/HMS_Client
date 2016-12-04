@@ -51,102 +51,61 @@ public class AllOrder_controller {
 		new DetailedInfomation_start().start(stage);
 	}
 
-	private void initialTableView(ObservableList<TableColumn<OrderData, ?>> observableList) {
-		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
-		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("hotelID"));
-		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("checkIn"));
-		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("checkOut"));
-		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomType"));
-		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-	}
-
 	@FXML
 	private void onAllOrder(Event event) {
-		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = allOrderTableView.getColumns();
-		initialTableView(observableList);
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
-		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
-		for (int i = 0; i < orderList.size(); i++) {
-			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelID(), ovo.getCheckIn(),
-					ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
-		}
-		
-		allOrderTableView.setItems(data);
+		initialTableView(allOrderTableView, null);
 	}
 
 	@FXML
 	private void onUnfilledOrder(Event event) {
-		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = unfilledOrderTableView.getColumns();
-		initialTableView(observableList);
-
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
-		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
-		for (int i = 0; i < orderList.size(); i++) {
-			OrderVO ovo = orderList.get(i);
-			if (ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
-				data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelID(), ovo.getCheckIn(),
-						ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
-			}
-		}
-		unfilledOrderTableView.setItems(data);
+		initialTableView(unfilledOrderTableView, OrderStatus.Unfilled);
 	}
 
 	@FXML
 	private void onCanceledOrder(Event event) {
-		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = canceledOrderTableView.getColumns();
-		initialTableView(observableList);
-
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
-		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
-		for (int i = 0; i < orderList.size(); i++) {
-			OrderVO ovo = orderList.get(i);
-			if (ovo.getOrderStatus().toString().equals(OrderStatus.Canceled.toString())) {
-				data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelID(), ovo.getCheckIn(),
-						ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
-			}
-		}
-		canceledOrderTableView.setItems(data);
+		initialTableView(canceledOrderTableView, OrderStatus.Canceled);
 	}
 
 	@FXML
 	private void onAbnormalOrder(Event event) {
-		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = abnormalOrderTableView.getColumns();
-		initialTableView(observableList);
-
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
-		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
-		for (int i = 0; i < orderList.size(); i++) {
-			OrderVO ovo = orderList.get(i);
-			if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
-				data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelID(), ovo.getCheckIn(),
-						ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
-			}
-		}
-		abnormalOrderTableView.setItems(data);
+		initialTableView(abnormalOrderTableView, OrderStatus.Abnormal);
 	}
 
 	@FXML
 	private void onFinishedOrder(Event event) {
-		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = finishedOrderTableView.getColumns();
-		initialTableView(observableList);
+		initialTableView(finishedOrderTableView, OrderStatus.Finished);
+	}
 
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
-		orderList.addAll(orderControllerService.reviewOrder(/* id = */12098013));
+	private void initialTableView(TableView<OrderData> tableView, OrderStatus orderStatus) {
+		ObservableList<TableColumn<OrderData, ?>> observableList = tableView.getColumns();
+		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("checkIn"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("checkOut"));
+		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomType"));
+		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+
+		data.clear();
+		ArrayList<OrderVO> orderList = orderControllerService
+				.reviewOrder(/* id = */40000000);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			if (ovo.getOrderStatus().toString().equals(OrderStatus.Finished.toString())) {
-				data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelID(), ovo.getCheckIn(),
+			if (isValid(orderStatus, ovo)) {
+				data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelName(), ovo.getCheckIn(),
 						ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
 			}
 		}
-		finishedOrderTableView.setItems(data);
+
+		tableView.setItems(data);
 	}
 
+	private boolean isValid(OrderStatus orderStatus, OrderVO ovo) {
+		if (orderStatus == null) {
+			return true;
+		} else {
+			return ovo.getOrderStatus().toString().equals(orderStatus.toString());
+		}
+
+	}
 }

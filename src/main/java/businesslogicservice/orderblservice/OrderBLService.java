@@ -11,28 +11,28 @@ import vo.PromotionVO;
 import vo.RoomType;
 
 public interface OrderBLService {
-	
+
 	/**
 	 * 
 	 * @param id
 	 * @return 浏览全部订单
 	 */
-	public ArrayList<OrderVO> reviewOrder(int id);	
-	
+	public ArrayList<OrderVO> reviewOrder(int id);
+
 	/**
 	 * 
 	 * @param id
-	 * @return 浏览异常订单
+	 * @return 浏览相应状态的订单
 	 */
-	public ArrayList<OrderVO> reviewAbnormalOrder(int id);	
-	
+	public ArrayList<OrderVO> reviewOrder(int id, OrderStatus orderStatus);
+
 	/**
 	 * 
 	 * @param ovo
 	 * @return 取消订单
 	 */
-	public ResultMessage cancelOrder(OrderVO ovo);	
-	
+	public ResultMessage cancelOrder(OrderVO ovo);
+
 	/**
 	 * 
 	 * @param hvo
@@ -40,21 +40,21 @@ public interface OrderBLService {
 	 * @param pvo
 	 * @return 创建订单
 	 */
-	public OrderVO create(int userid, int hotelid, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Timestamp s, Date ci, Date co);	
-	
+	public OrderVO create(String username, String hotelname, OrderStatus orderstatus, RoomType rT, int rn,
+			PromotionVO pvo, Timestamp s, Date ci, Date co);
+
 	/**
 	 * 
 	 * @param ovo
 	 * @return 增加订单
 	 */
-	public ResultMessage addOrder(OrderVO ovo);	
-	
+	public ResultMessage addOrder(OrderVO ovo);
+
 	/**
 	 * 
 	 * @param cvo
 	 * @param id
 	 * @return 处理异常订单
 	 */
-	public ResultMessage complainOrder(int id, OrderStatus status);		
+	public ResultMessage complainOrder(int id, OrderStatus status);
 }

@@ -44,17 +44,17 @@ public class ManageAbnormalOrder2_start extends Application{
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getOrderID(), ovo.getUserID(), ovo.getCheckIn(), ovo.getPrice()));
+			data.add(new OrderData(ovo.getOrderID(), ovo.getUserName(), ovo.getCheckIn(), ovo.getPrice()));
 		}
 		manageAbnormalOrderTableView.setItems(data);
 	}
 
 	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userID"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userName"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("checkIn"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
