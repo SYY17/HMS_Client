@@ -21,10 +21,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import presentation.controller.LoginControllerImpl;
+import presentation.controller.UserControllerImpl;
 import presentation.mainui.Hotel_start;
 import presentation.mainui.Manager_start;
 import presentation.mainui.Saler_start;
 import presentation.mainui.User_start;
+import presentation.userui.UserControllerService;
+import vo.UserVO;
 
 public class LogFrame extends Application {
 
@@ -32,6 +35,8 @@ public class LogFrame extends Application {
 	Pane register;
 	Stage stage;
 	int identity;
+	IDHelper idHelper;
+	int id;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -216,6 +221,12 @@ public class LogFrame extends Application {
 				String password = passwordField.getText();
 				ResultMessage result = loginController.login(username, password);
 				if(result == ResultMessage.TRUE){
+					//初始化ID
+					idHelper = IDHelper.getInstance();
+					UserControllerService userController = new UserControllerImpl();
+					UserVO uvo = userController.searchByUserName(username);
+					idHelper.initialID(uvo.getID());
+					identity = updateIdentity(uvo.getID());
 					jumpToMainFrame();
 				}else{
 					//弹出登录失败对话框
@@ -254,13 +265,6 @@ public class LogFrame extends Application {
 		id.setValue("客户");
 		id.setEffect(new DropShadow());
 		id.setId("choicebox_id");
-		id.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				identity = getID(id);
-			}
-		});
 		
 		//Label_Name
 		Label name = new Label("用户名");
@@ -363,17 +367,9 @@ public class LogFrame extends Application {
 		}
 	}
 	
-	private int getID(ChoiceBox <String> id_Box){
-		String i = id_Box.getValue();
-		if(i.equals("网站管理人员")){
-			return 4;
-		}else if(i.equals("网站营销人员")){
-			return 3;
-		}else if(i.equals("酒店工作人员")){
-			return 2;
-		}else{
-			return 1;
-		}
+	private int updateIdentity(int id){
+		int i = id/10000000;
+		return i;
 	}
 
 	public static void main(String[] args) {

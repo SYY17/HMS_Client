@@ -38,4 +38,5 @@ public class Manager_controller {
 		alert.setHeaderText("据说这是大作业");
 		alert.showAndWait();
 	}
+
 }
