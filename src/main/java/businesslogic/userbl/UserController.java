@@ -134,5 +134,27 @@ public class UserController implements UserBLService{
 		}
 		return list;
 	}
+	
+	/**
+	 * 
+	 * @param userName
+	 * @return 根据用户ID查找并返回用户名
+	 */
+	@Override
+	public String searchByUserID(int id){
+		// TODO Auto-generated method stub
+		String username = null;
+		
+		try {
+			userdataservice.initUserDataService();
+			username = userdataservice.findUser(id);
+			userdataservice.finishUserDataService();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return username;
+	}
 
 }
