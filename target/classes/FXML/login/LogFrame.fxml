@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="panel_log" fx:id="panel_log" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eaecee;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.Login_controller">
+<Pane id="panel_log" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(hotel.png);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.LoginUI_controller">
    <children>
       <Label id="label_title" layoutX="315.0" layoutY="59.0" text="酒店管理系统">
          <font>
@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox id="choicebox_type" fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" onMouseClicked="#onChooseType" onMouseEntered="#onEntered" prefHeight="23.0" prefWidth="60.0">
+            <ChoiceBox id="choicebox_type" fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" prefHeight="23.0" prefWidth="60.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
