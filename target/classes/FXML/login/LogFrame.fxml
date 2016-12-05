@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
@@ -8,21 +9,31 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="panel_log" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(hotel.png);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.LoginUI_controller">
+<Pane id="panel_log" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.LoginUI_controller">
    <children>
-      <Label id="label_title" layoutX="315.0" layoutY="59.0" text="酒店管理系统">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@hotel.png" />
+         </image>
+      </ImageView>
+      <Label id="label_title" layoutX="315.0" layoutY="59.0" text="酒店管理系统" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Rectangle id="rect_body" arcHeight="5.0" arcWidth="5.0" fill="#cfd6dd" height="400.0" layoutX="45.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="706.0">
+      <Label layoutX="507.0" layoutY="100.0" text="帮您寻找最适合您的酒店" textFill="#070707">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle id="rect_body" arcHeight="5.0" arcWidth="5.0" fill="#cfd6dd" height="400.0" layoutX="45.0" layoutY="145.0" opacity="0.23" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="706.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
       <Pane id="panel_body" layoutX="93.0" layoutY="151.0" prefHeight="159.0" prefWidth="123.0">
          <children>
-            <Label layoutX="-6.0" layoutY="14.0" text="请选择操作类型">
+            <Label layoutX="5.0" layoutY="14.0" text="登录/注册" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -37,14 +48,14 @@
             </ChoiceBox>
          </children>
       </Pane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef2f5" height="324.0" layoutX="182.0" layoutY="199.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="539.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef2f5" height="324.0" layoutX="182.0" layoutY="199.0" opacity="0.27" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="539.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
       <Pane id="panel_login" fx:id="panel_login" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0">
          <children>
-            <Label layoutX="65.0" layoutY="10.0" text="请选择用户类型">
+            <Label layoutX="65.0" layoutY="10.0" text="请选择您的身份">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
