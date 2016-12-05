@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import presentation.controller.OrderControllerImpl;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
+import presentation.orderui.OrderDataHelper;
 import vo.OrderVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -48,8 +49,7 @@ public class OrderList_start extends Application {
 				.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getOrderID(), ovo.getHotelName(), ovo.getCheckIn(), ovo.getRoomType(),
-					ovo.getRoomNumber(),ovo.getPrice()));
+			data.add(new OrderDataHelper().toOrderData(ovo));
 		}
 		orderListTableView.setItems(data);
 	}

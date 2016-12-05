@@ -63,16 +63,14 @@ public class ManageAbnormalOrder1_start extends Application {
 				.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getOrderID(), ovo.getUserName(), ovo.getCheckIn(), ovo.getCheckOut(),
-					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
+			data.add(new OrderDataHelper().toOrderData(ovo));
 		}
 		orderList = orderControllerService.reviewOrder(/* id = */12098013);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 
 			// 建议建立一个创建OrderData对象的方法
-			data.add(new OrderData(ovo.getOrderID(), ovo.getUserName(), ovo.getCheckIn(), ovo.getCheckOut(),
-					ovo.getRoomType(), ovo.getRoomNumber(), ovo.getPrice()));
+			data.add(new OrderDataHelper().toOrderData(ovo));
 		}
 		manageAbnormalOrderTableView.setItems(data);
 	}

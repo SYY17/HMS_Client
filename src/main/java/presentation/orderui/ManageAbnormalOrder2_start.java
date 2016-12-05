@@ -47,7 +47,7 @@ public class ManageAbnormalOrder2_start extends Application{
 		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getOrderID(), ovo.getUserName(), ovo.getCheckIn(), ovo.getPrice()));
+			data.add(new OrderDataHelper().toOrderData(ovo));
 		}
 		manageAbnormalOrderTableView.setItems(data);
 	}

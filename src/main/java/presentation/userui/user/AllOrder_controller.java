@@ -17,6 +17,7 @@ import presentation.loginui.LogFrame;
 import presentation.mainui.User_start;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
+import presentation.orderui.OrderDataHelper;
 import vo.OrderStatus;
 import vo.OrderVO;
 
@@ -92,8 +93,7 @@ public class AllOrder_controller {
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			if (isValid(orderStatus, ovo)) {
-				data.add(new OrderData(ovo.getOrderID(), ovo.getOrderStatus(), ovo.getHotelName(), ovo.getCheckIn(),
-						ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber()));
+				data.add(new OrderDataHelper().toOrderData(ovo));
 			}
 		}
 

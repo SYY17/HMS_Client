@@ -1,6 +1,7 @@
 package presentation.orderui;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,56 +13,24 @@ public class OrderData {
 	private final SimpleStringProperty userName = new SimpleStringProperty();
 	private final SimpleStringProperty orderStatus = new SimpleStringProperty();
 	private final SimpleStringProperty hotelName = new SimpleStringProperty();
+	private final SimpleStringProperty setTime = new SimpleStringProperty();
 	private final SimpleStringProperty checkIn = new SimpleStringProperty();
 	private final SimpleStringProperty checkOut = new SimpleStringProperty();
 	private final SimpleStringProperty roomType = new SimpleStringProperty();
 	private final SimpleIntegerProperty roomNumber = new SimpleIntegerProperty();
 	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
-
-	public OrderData(int orderID, OrderStatus orderStatus, String hotelName, Date checkIn, Date checkOut, RoomType roomType,
-			int roomNumber) {
+	
+	public OrderData(int orderID, String userName,OrderStatus orderStatus, String hotelName,Timestamp setTime, Date checkIn, Date checkOut, RoomType roomType,
+			int roomNumber,int price) {
 		this.orderID.set(orderID);
+		this.userName.set(userName);
 		this.orderStatus.set(orderStatus.toString());
 		this.hotelName.set(hotelName);
+		this.setTime.set(setTime.toString());
 		this.checkIn.set(checkIn.toString());
 		this.checkOut.set(checkOut.toString());
 		this.roomType.set(roomType.toString());
 		this.roomNumber.set(roomNumber);
-	}
-
-	public OrderData(String hotelName, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
-		this.hotelName.set(hotelName);
-		this.checkIn.set(checkIn.toString());
-		this.checkOut.set(checkOut.toString());
-		this.roomType.set(roomType.toString());
-		this.roomNumber.set(roomNumber);
-		this.price.set(price);
-	}
-	
-	public OrderData(int orderID,String userName, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
-		this.orderID.set(orderID);
-		this.userName.set(userName);
-		this.checkIn.set(checkIn.toString());
-		this.checkOut.set(checkOut.toString());
-		this.roomType.set(roomType.toString());
-		this.roomNumber.set(roomNumber);
-		this.price.set(price);
-	}
-
-	public OrderData(int orderID, String userName, Date checkIn, int price) {
-		this.orderID.set(orderID);
-		this.userName.set(userName);
-		this.checkIn.set(checkIn.toString());
-		this.price.set(price);
-	}
-	
-	public OrderData(int orderID, String userName, Date checkIn, RoomType roomType, int roonNumber,int price) {
-		this.orderID.set(orderID);
-		this.userName.set(userName);
-		this.checkIn.set(checkIn.toString());
-		this.roomType.set(roomType.toString());
-		this.roomNumber.set(roonNumber);
-		this.price.set(price);
 	}
 
 	public int getOrderID() {

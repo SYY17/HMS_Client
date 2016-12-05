@@ -18,6 +18,7 @@ import presentation.controller.OrderControllerImpl;
 import presentation.hotelui.HotelControllerService;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
+import presentation.orderui.OrderDataHelper;
 import vo.HotelVO;
 import vo.OrderVO;
 
@@ -69,8 +70,7 @@ public class OrderAndRating_start extends Application {
 				.reviewOrder(/* id = */20905098);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderData(ovo.getHotelName(), ovo.getCheckIn(), ovo.getCheckOut(), ovo.getRoomType(),
-					ovo.getRoomNumber(), ovo.getPrice()));
+			data.add(new OrderDataHelper().toOrderData(ovo));
 		}
 		orderAndRatingTableView.setItems(data);
 	}
