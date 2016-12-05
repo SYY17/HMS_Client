@@ -55,7 +55,7 @@
       </Rectangle>
       <Pane id="panel_login" fx:id="panel_login" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0">
          <children>
-            <Label layoutX="65.0" layoutY="10.0" text="请选择您的身份">
+            <Label layoutX="65.0" layoutY="10.0" text="请选择您的身份" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -68,7 +68,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ChoiceBox>
-            <Label layoutX="121.0" layoutY="59.0" text="用户名">
+            <Label layoutX="121.0" layoutY="59.0" text="用户名" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -81,7 +81,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <Label layoutX="135.0" layoutY="106.0" text="密码">
+            <Label layoutX="135.0" layoutY="106.0" text="密码" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -3,10 +3,11 @@ package businesslogic.userbl;
 import businesslogic.orderbl.UserInfo;
 
 public class UserInfoImpl implements UserInfo {
-	public UserInfoImpl() {
-		// TODO Auto-generated constructor stub
-	}
-
+	/**
+	 * 
+	 * @param userName
+	 * @return 查询用户ID
+	 */
 	@Override
 	public String searchByUserID(int id) {
 		// TODO Auto-generated method stub
