@@ -62,6 +62,7 @@ public class LoginUI_controller {
 	@FXML
 	private void onSelectedType(MouseEvent event) throws IOException {
 		//在start中初始化
+		//type变化刷新message和pane
 	}
 
 }

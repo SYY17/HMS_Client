@@ -30,7 +30,7 @@ public class LoginBLServiceTest {
 	@Test
 	public void testAddNewUser() {
 		loginBlService=new LoginController();
-		assertEquals(ResultMessage.TRUE, loginBlService.addNewUser(username,password,id));
+		assertEquals(ResultMessage.TRUE, loginBlService.addNewUser(username, password, id));
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class LoginBLServiceTest {
 	@Test
 	public void testLogin() {
 		loginBlService=new LoginController();
-		assertEquals(ResultMessage.TRUE, loginBlService.login(username,password));
+		assertEquals(ResultMessage.TRUE, loginBlService.login(username, password, id));
 	}
 	
 	/**
