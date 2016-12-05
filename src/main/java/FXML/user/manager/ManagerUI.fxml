@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -10,8 +11,13 @@
 
 <Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.Manager_controller">
    <children>
-      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #eaecee;">
+      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
          <children>
+            <ImageView fitHeight="80.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/title.jpg" />
+               </image>
+            </ImageView>
             <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
                <font>
                   <Font name="System Bold" size="16.0" />

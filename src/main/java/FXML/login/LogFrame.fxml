@@ -16,12 +16,17 @@
             <Image url="@hotel.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="225.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
       <Label id="label_title" layoutX="315.0" layoutY="59.0" text="酒店管理系统" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="507.0" layoutY="100.0" text="帮您寻找最适合您的酒店" textFill="#070707">
+      <Label fx:id="message" layoutX="487.0" layoutY="110.0" text="找到最适合您的酒店" textFill="#070707">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
