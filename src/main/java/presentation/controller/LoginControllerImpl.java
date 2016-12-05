@@ -34,9 +34,9 @@ public class LoginControllerImpl implements LoginControllerService{
 	 * @return 登录
 	 */
 	@Override
-	public ResultMessage login(String username, String password) {
+	public ResultMessage login(String username, String password, int id) {
 		// TODO Auto-generated method stub
-		return loginBlService.login(username, password);
+		return loginBlService.login(username, password, id);
 	}
 
 	/**

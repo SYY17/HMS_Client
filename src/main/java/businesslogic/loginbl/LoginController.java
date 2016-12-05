@@ -61,7 +61,7 @@ public class LoginController implements LoginBLService{
 	 * @return 登录
 	 */
 	@Override
-	public ResultMessage login(String username, String password) {
+	public ResultMessage login(String username, String password, int id) {
 		// TODO Auto-generated method stub
 		try {
 			userdataservice.initUserDataService();
@@ -70,7 +70,7 @@ public class LoginController implements LoginBLService{
 			
 			if(user == null) return ResultMessage.FALSE;
 			
-			if(user.getPassword().equals(password)){
+			if(user.getPassword().equals(password) && (user.getID()/10000000 == id)){
 				return ResultMessage.TRUE;
 			}
 		} catch (RemoteException e) {

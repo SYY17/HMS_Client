@@ -219,7 +219,7 @@ public class LogFrame extends Application {
 				LoginControllerService loginController = new LoginControllerImpl();
 				String username = nameField.getText();
 				String password = passwordField.getText();
-				ResultMessage result = loginController.login(username, password);
+				ResultMessage result = loginController.login(username, password, parseID(id));
 				if(result == ResultMessage.TRUE){
 					//初始化ID
 					idHelper = IDHelper.getInstance();
@@ -231,6 +231,20 @@ public class LogFrame extends Application {
 				}else{
 					//弹出登录失败对话框
 				}
+			}
+
+			private int parseID(ChoiceBox<String> id) {
+				// TODO Auto-generated method stub
+				String s = id.getValue();
+				
+				if(s.equals("客户")){
+					return 1;
+				}else if(s.equals("酒店工作人员")){
+					return 2;
+				}else if(s.equals("网站营销人员")){
+					return 3;
+				}
+				return 4;
 			}
 		});
 		

@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@hotel.png" />
+            <Image url="@icon/hotel.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="225.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo.png" />
+            <Image url="@icon/logo.png" />
          </image>
       </ImageView>
       <Label id="label_title" layoutX="315.0" layoutY="59.0" text="酒店管理系统" textFill="#fcfcfc">
@@ -43,7 +43,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox id="choicebox_type" fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" prefHeight="23.0" prefWidth="60.0">
+            <ChoiceBox fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" onMouseClicked="#onSelectedType" prefHeight="23.0" prefWidth="60.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -58,7 +58,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Pane id="panel_login" fx:id="panel_login" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0">
+      <Pane fx:id="panel_login" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0">
          <children>
             <Label layoutX="65.0" layoutY="10.0" text="请选择您的身份" textFill="WHITE">
                <font>
@@ -112,7 +112,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane id="panel_register" fx:id="panel_register" disable="true" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0" visible="false">
+      <Pane fx:id="panel_register" disable="true" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0" visible="false">
          <children>
             <Label layoutX="65.0" layoutY="10.0" text="请选择用户类型">
                <font>
