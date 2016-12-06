@@ -53,7 +53,7 @@
             </ChoiceBox>
          </children>
       </Pane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef2f5" height="324.0" layoutX="182.0" layoutY="199.0" opacity="0.27" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="539.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef2f5" height="287.0" layoutX="182.0" layoutY="199.0" opacity="0.27" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="481.0">
          <effect>
             <DropShadow />
          </effect>

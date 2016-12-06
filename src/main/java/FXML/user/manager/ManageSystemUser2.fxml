@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.ManageSystemUser_controller2">
+   <children>
+      <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Downloads/temp/blue.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="92.0" layoutX="4.0" layoutY="7.0" opacity="0.21" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="786.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="456.0" layoutX="7.0" layoutY="109.0" opacity="0.21" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="153.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="30.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/usermanage.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="51.0" layoutY="230.0" onMouseClicked="#onManageSystemUser" text="用户管理">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="39.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/applycheck.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="50.0" layoutY="378.0" onMouseClicked="#onManageHotelCreatingApplication" text="申请一览">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="72.0" fitWidth="100.0" layoutX="30.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/message.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="58.0" layoutY="507.0" text="站内信">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e78b9" height="456.0" layoutX="172.0" layoutY="109.0" opacity="0.38" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="417.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fitHeight="444.0" fitWidth="400.0" layoutX="187.0" layoutY="113.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/middle_back.jpg" />
+               </image>
+            </ImageView>
+            <TableView id="applyTable" fx:id="applyInfoTable" layoutX="183.0" layoutY="171.0" prefHeight="291.0" prefWidth="395.0">
+               <columns>
+                  <TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="ID" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" text="用户名" />
+                  <TableColumn id="col_even" editable="false" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" resizable="false" sortable="false" text="用户身份" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="67.0" minWidth="67.0" prefWidth="67.0" resizable="false" sortable="false" text="选择" />
+               </columns>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TableView>
+            <Label layoutX="183.0" layoutY="131.0" prefHeight="27.0" prefWidth="127.0" text="用户列表" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="104.0" layoutY="34.0" text="酒店管理系统">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="return_icon" fitHeight="40.0" fitWidth="50.0" layoutX="641.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/goback.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="return_button" layoutX="698.0" layoutY="39.0" onMouseClicked="#onClickedReturn" onMouseEntered="#onEnteredReturn" text="返回">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/logo.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="456.0" layoutX="602.0" layoutY="109.0" opacity="0.21" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="191.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="649.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/defaultuser.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="663.0" layoutY="144.0" text="当前用户">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="username" layoutX="675.0" layoutY="282.0" text="admin">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="676.0" layoutY="316.0" maxHeight="23.0" maxWidth="42.0" minHeight="23.0" minWidth="42.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="23.0" prefWidth="42.0" text="注销">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="650.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/datecheck.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="670.0" layoutY="497.0" text="日期查看">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="search_field" layoutX="370.0" layoutY="134.0" prefHeight="23.0" prefWidth="206.0" promptText="请输入待查找的用户名">
+               <effect>
+                  <DropShadow />
+               </effect></TextField>
+            <ImageView fx:id="search_button" fitHeight="23.0" fitWidth="23.0" layoutX="552.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/search.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="add_button" fitHeight="30.0" fitWidth="30.0" layoutX="540.0" layoutY="476.0" onMouseClicked="#onAddNewUser" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/adduser.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="username_field" layoutX="236.0" layoutY="481.0" prefHeight="23.0" prefWidth="111.0" promptText="请输入用户名">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <ChoiceBox fx:id="id_choicebox" layoutX="418.0" layoutY="480.0" prefHeight="23.0" prefWidth="111.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+            <Label layoutX="186.0" layoutY="482.0" text="用户名">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="355.0" layoutY="482.0" text="选择身份">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="540.0" layoutY="517.0" onMouseClicked="#onDeleteUser" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/deleteuser.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="418.0" layoutY="524.0" text="删除所有选中用户">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

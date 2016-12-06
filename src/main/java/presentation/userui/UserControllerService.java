@@ -40,4 +40,11 @@ public interface UserControllerService {
 	 * @return 获得所有用户
 	 */
 	public ArrayList<UserVO> getAllUsers();
+	
+	/**
+	 * 
+	 * @param userName
+	 * @return 根据用户ID查找并返回用户名
+	 */
+	public String searchByUserID(int id);
 }
