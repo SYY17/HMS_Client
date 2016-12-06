@@ -5,6 +5,9 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import businesslogic.creditbl.CreditInfoImpl;
+import businesslogic.hotelbl.HotelInfoImpl;
+import businesslogic.promotionbl.PromotionInfoImpl;
 import businesslogic.userbl.UserInfoImpl;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -20,6 +23,9 @@ import vo.PromotionVO;
 public class OrderController implements OrderBLService {
 	RemoteController remoteController;
 	OrderDataService orderDataService;
+	CreditInfo creditinfo;
+	HotelInfo hotelInfo;
+	PromotionInfo promotionInfo;
 	UserInfo userInfo;
 	// UserDataService userDataService;
 	// HotelDataService hotelDataService;
@@ -29,9 +35,10 @@ public class OrderController implements OrderBLService {
 		runner.start();
 		remoteController = runner.getRemoteController();
 		orderDataService = remoteController.getOrderDataService();
+		creditinfo = new CreditInfoImpl();
+		hotelInfo = new HotelInfoImpl();
+		promotionInfo = new PromotionInfoImpl();
 		userInfo = new UserInfoImpl();
-		// userDataService = remoteController.getUserDataService();
-		// hotelDataService = remoteController.getHotelDataService();
 	}
 
 	private OrderVO POToVO(OrderPO opo) {
@@ -43,8 +50,18 @@ public class OrderController implements OrderBLService {
 
 	private ArrayList<OrderVO> getOrderByUserID(int id) throws RemoteException {
 		orderDataService.initOrderDataService();
-		String userName = userInfo.searchByUserID(id);
-		ArrayList<OrderPO> listPO = orderDataService.findOrderByUserName(userName);
+		ArrayList<OrderPO> listPO = new ArrayList<OrderPO>();
+		if (id >= 30000000) {
+			
+		} else {
+			String name = userInfo.searchByUserID(id);
+			if (id >= 20000000) {
+				listPO = orderDataService.findOrderByUserName(name);
+			} else {
+				listPO = orderDataService.findOrderByHotelName(name);
+			}
+		}
+		
 		orderDataService.finishOrderDataService();
 		ArrayList<OrderVO> listVO = new ArrayList<OrderVO>();
 		for (int i = 0; i < listPO.size(); i++) {

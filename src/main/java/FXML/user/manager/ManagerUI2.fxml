@@ -132,7 +132,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="676.0" layoutY="316.0" maxHeight="23.0" maxWidth="42.0" minHeight="23.0" minWidth="42.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="23.0" prefWidth="42.0" text="注销">
+            <Button layoutX="673.0" layoutY="316.0" maxHeight="23.0" maxWidth="48.0" minHeight="23.0" minWidth="42.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="23.0" prefWidth="48.0" text="注销" textFill="#6a3906">
                <effect>
                   <DropShadow />
                </effect>
