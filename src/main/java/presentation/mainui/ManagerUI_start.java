@@ -3,7 +3,7 @@ package presentation.mainui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import presentation.loginui.IDHelper;
+import presentation.controller.IDHelper;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 

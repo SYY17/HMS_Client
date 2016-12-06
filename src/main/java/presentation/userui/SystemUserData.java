@@ -1,8 +1,11 @@
 package presentation.userui;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.RadioButton;
-import javafx.scene.text.Font;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 
 public class SystemUserData {
 	private final SimpleStringProperty id = new SimpleStringProperty();
@@ -46,9 +49,14 @@ public class SystemUserData {
 	 * 
 	 * @return 操作
 	 */
-	public RadioButton getOperation() {
-		RadioButton button = new RadioButton();
-		button.setFont(new Font(12.0));
+	public Button getOperation() {
+		Button button = new Button();
+		button.setPrefSize(20, 20);
+		button.setMaxSize(20, 20);
+		button.setMinSize(20, 20);
+		button.setCursor(Cursor.HAND);
+		button.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("deleteuser.png").toString()), null, null, null, null)));
+		
 		return button;
 	}
 	
@@ -83,4 +91,5 @@ public class SystemUserData {
 	public void setOperation(String operation){
 		this.operation.set(operation);
 	}
+	
 }

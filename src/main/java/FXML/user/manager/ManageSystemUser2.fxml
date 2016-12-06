@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../Downloads/temp/blue.jpg" />
+                  <Image url="@../../login/icon/blue.jpg" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="92.0" layoutX="4.0" layoutY="7.0" opacity="0.21" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="786.0">
@@ -88,16 +88,19 @@
                   <Image url="@../../login/icon/middle_back.jpg" />
                </image>
             </ImageView>
-            <TableView id="applyTable" fx:id="applyInfoTable" layoutX="183.0" layoutY="171.0" prefHeight="291.0" prefWidth="395.0">
+            <TableView fx:id="applyInfoTable" layoutX="183.0" layoutY="171.0" prefHeight="335.0" prefWidth="395.0">
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="ID" />
                   <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" text="用户名" />
-                  <TableColumn id="col_even" editable="false" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" resizable="false" sortable="false" text="用户身份" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="67.0" minWidth="67.0" prefWidth="67.0" resizable="false" sortable="false" text="选择" />
+                  <TableColumn id="col_even" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" text="用户身份" />
+                  <TableColumn id="col_odd" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" resizable="false" sortable="false" />
                </columns>
                <effect>
                   <DropShadow />
                </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </TableView>
             <Label layoutX="183.0" layoutY="131.0" prefHeight="27.0" prefWidth="127.0" text="用户列表" textFill="WHITE">
                <cursor>
@@ -112,7 +115,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <ImageView fx:id="return_icon" fitHeight="40.0" fitWidth="50.0" layoutX="641.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="return_icon" fitHeight="40.0" fitWidth="50.0" layoutX="641.0" layoutY="33.0" onMouseClicked="#onClickedReturn" onMouseEntered="#onEnteredReturn" onMouseExited="#onExitedReturn" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/goback.png" />
                </image>
@@ -120,7 +123,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="return_button" layoutX="698.0" layoutY="39.0" onMouseClicked="#onClickedReturn" onMouseEntered="#onEnteredReturn" text="返回">
+            <Label fx:id="return_button" layoutX="698.0" layoutY="39.0" onMouseClicked="#onClickedReturn" onMouseEntered="#onEnteredReturn" onMouseExited="#onExitedReturn" text="返回">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -183,46 +186,46 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="search_field" layoutX="370.0" layoutY="134.0" prefHeight="23.0" prefWidth="206.0" promptText="请输入待查找的用户名">
+            <TextField fx:id="search_field" layoutX="370.0" layoutY="134.0" maxHeight="23.0" maxWidth="206.0" minHeight="23.0" minWidth="206.0" prefHeight="23.0" prefWidth="206.0" promptText="请输入待查找的用户名">
                <effect>
-                  <DropShadow />
+                  <Glow>
+                     <input>
+                        <DropShadow />
+                     </input>
+                  </Glow>
                </effect></TextField>
             <ImageView fx:id="search_button" fitHeight="23.0" fitWidth="23.0" layoutX="552.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/search.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
-            <ImageView fx:id="add_button" fitHeight="30.0" fitWidth="30.0" layoutX="540.0" layoutY="476.0" onMouseClicked="#onAddNewUser" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="add_button" fitHeight="30.0" fitWidth="30.0" layoutX="540.0" layoutY="518.0" onMouseClicked="#onAddNewUser" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/adduser.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
-            <TextField fx:id="username_field" layoutX="236.0" layoutY="481.0" prefHeight="23.0" prefWidth="111.0" promptText="请输入用户名">
+            <TextField fx:id="username_field" layoutX="236.0" layoutY="523.0" maxHeight="23.0" maxWidth="111.0" minHeight="23.0" minWidth="111.0" prefHeight="23.0" prefWidth="111.0" promptText="请输入用户名">
                <effect>
                   <DropShadow />
                </effect>
             </TextField>
-            <ChoiceBox fx:id="id_choicebox" layoutX="418.0" layoutY="480.0" prefHeight="23.0" prefWidth="111.0">
+            <ChoiceBox fx:id="id_choicebox" layoutX="418.0" layoutY="522.0" prefHeight="23.0" prefWidth="111.0">
                <effect>
                   <DropShadow />
                </effect>
             </ChoiceBox>
-            <Label layoutX="186.0" layoutY="482.0" text="用户名">
+            <Label layoutX="186.0" layoutY="524.0" text="用户名">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="355.0" layoutY="482.0" text="选择身份">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="540.0" layoutY="517.0" onMouseClicked="#onDeleteUser" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/deleteuser.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="418.0" layoutY="524.0" text="删除所有选中用户">
+            <Label layoutX="355.0" layoutY="524.0" text="选择身份">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

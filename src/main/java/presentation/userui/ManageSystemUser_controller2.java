@@ -1,6 +1,7 @@
 package presentation.userui;
 
-import javafx.collections.FXCollections;
+import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,9 +13,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import presentation.controller.LoginControllerImpl;
+import presentation.controller.UserControllerImpl;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
+import presentation.loginui.LoginControllerService;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.ManagerUI_start;
+import vo.UserVO;
 
 public class ManageSystemUser_controller2 {
 
@@ -47,9 +52,7 @@ public class ManageSystemUser_controller2 {
 	@FXML
 	private Label username;
 	
-	private UserDataHelper userDataHelper;
-	
-	private final ObservableList<UserData> data = FXCollections.observableArrayList();
+	private ObservableList<SystemUserData> data;
 	
 	@FXML
 	private void onManageSystemUser(MouseEvent event) throws Exception {
@@ -63,8 +66,12 @@ public class ManageSystemUser_controller2 {
 	
 	@FXML
 	private void onEnteredReturn(MouseEvent event) throws Exception {
-		return_button.setTextFill(Paint.valueOf("#000079"));
-		new ManagerUI_start().start(stage);
+		return_button.setTextFill(Paint.valueOf("#ffffff"));
+	}
+	
+	@FXML
+	private void onExitedReturn(MouseEvent event) throws Exception {
+		return_button.setTextFill(Paint.valueOf("#000000"));
 	}
 	
 	@FXML
@@ -75,16 +82,64 @@ public class ManageSystemUser_controller2 {
 	@FXML
 	private void onAddNewUser(MouseEvent event) throws Exception {
 		//在observablelist中添加value
-	}
-	
-	@FXML
-	private void onDeleteUser(MouseEvent event) throws Exception {
-		//在observablelist中删除value
+		String text = username_field.getText();
+		
+		if(text.equals("")){
+			//提示未输入用户名
+		}else if(text.length()>12){
+			//提示字数过多
+		}else{
+			LoginControllerService loginController = new LoginControllerImpl();
+			loginController.addNewUser(text, "000000", this.parseID(id_choicebox));
+		}
+		
+		this.refreshTableView();
 	}
 	
 	@FXML
 	private void onLogout(ActionEvent event) throws Exception {
 		new LoginUI_start().start(stage);
+	}
+	
+	/**
+	 * 刷新表内数据
+	 * @param root
+	 */
+	private void refreshTableView(){
+		
+		//建立observablelist以更新数据
+		UserControllerService userController = new UserControllerImpl();
+		
+		data = applyInfoTable.getItems();
+		data.clear();
+		
+		SystemUserDataHelper systemUserDataHelper = new SystemUserDataHelper();
+		
+		ArrayList<UserVO> list = userController.getAllUsers();
+		for (int i = 0; i < list.size(); i++) {
+			UserVO uvo = list.get(i);
+			data.add(systemUserDataHelper.toSystemUserData(uvo));
+		}
+		applyInfoTable.setItems(data);
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return 转换成对应数字ID
+	 */
+	private int parseID(ChoiceBox<String> id) {
+		// TODO Auto-generated method stub
+		String s = id.getValue();
+		
+		if(s.equals("客户")){
+			return 1;
+		}else if(s.equals("酒店工作人员")){
+			return 2;
+		}else if(s.equals("网站营销人员")){
+			return 3;
+		}
+		return 4;
 	}
 	
 }

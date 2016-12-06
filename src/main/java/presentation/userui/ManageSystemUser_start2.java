@@ -5,16 +5,19 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
-import presentation.loginui.IDHelper;
 import vo.UserVO;
 
 public class ManageSystemUser_start2 extends Application{
@@ -49,7 +52,7 @@ public class ManageSystemUser_start2 extends Application{
 		@SuppressWarnings("unchecked")
 		
 		//查找tableview
-		TableView<SystemUserData> userTable = (TableView<SystemUserData>) root
+		TableView<SystemUserData> applyInfoTable = (TableView<SystemUserData>) root
 				.lookup("#applyInfoTable");
 		
 		//建立observablelist以更新数据
@@ -58,8 +61,9 @@ public class ManageSystemUser_start2 extends Application{
 		UserControllerService userController = new UserControllerImpl();
 		
 		data.clear();
-		ObservableList<TableColumn<SystemUserData, ?>> observableList = userTable.getColumns();
+		ObservableList<TableColumn<SystemUserData, ?>> observableList = applyInfoTable.getColumns();
 		initiateObservableList(observableList);
+		initiateEvent(data);
 		
 		systemUserDataHelper = new SystemUserDataHelper();
 		
@@ -68,7 +72,7 @@ public class ManageSystemUser_start2 extends Application{
 			UserVO uvo = list.get(i);
 			data.add(systemUserDataHelper.toSystemUserData(uvo));
 		}
-		userTable.setItems(data);
+		applyInfoTable.setItems(data);
 	}
 	
 	/**
@@ -79,7 +83,7 @@ public class ManageSystemUser_start2 extends Application{
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("username"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("identity"));
-		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("operation"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 	
 	/**
@@ -96,6 +100,7 @@ public class ManageSystemUser_start2 extends Application{
 	 */
 	private void initiateElements(Parent root){
 		initiateUserName(root);
+		initiateChoiceBox(root);
 	}
 	
 	/**
@@ -106,6 +111,32 @@ public class ManageSystemUser_start2 extends Application{
 		UserControllerService userController = new UserControllerImpl();
 		String name = userController.searchByUserID(id);
 		username.setText(name);
+	}
+	
+	/**
+	 * 初始化选择框选项
+	 * @param root
+	 */
+	@SuppressWarnings("unchecked")
+	private void initiateChoiceBox(Parent root){
+		ChoiceBox<String> id_choicebox = (ChoiceBox<String>) root.lookup("#id_choicebox");
+		id_choicebox.setItems(FXCollections.observableArrayList("客户", "酒店工作人员", "网站营销人员", "网站管理人员"));
+		id_choicebox.setValue("客户");
+	}
+	
+	private void initiateEvent(ObservableList<SystemUserData> data){
+		for(int i=0; i<data.size(); i++){
+			SystemUserData user = data.get(i);
+			
+			user.getOperation().setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					// TODO Auto-generated method stub
+					data.remove(user);
+				}
+			});
+		}
 	}
 	
 	public static void main(String[] args) {

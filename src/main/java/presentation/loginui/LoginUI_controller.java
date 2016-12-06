@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.controller.IDHelper;
 import presentation.controller.LoginControllerImpl;
 import presentation.controller.UserControllerImpl;
 import presentation.mainui.Hotel_start;
@@ -118,7 +119,7 @@ public class LoginUI_controller {
 	/**
 	 * 
 	 * @param id
-	 * @return
+	 * @return 转换成对应数字ID
 	 */
 	private int parseID(ChoiceBox<String> id) {
 		// TODO Auto-generated method stub
