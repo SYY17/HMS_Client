@@ -43,7 +43,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" onMouseClicked="#onSelectedType" prefHeight="23.0" prefWidth="60.0">
+            <ChoiceBox fx:id="choicebox_type" layoutX="7.0" layoutY="48.0" maxHeight="23.0" maxWidth="60.0" minHeight="23.0" minWidth="60.0" prefHeight="23.0" prefWidth="60.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -65,7 +65,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox id="choicebox_id" fx:id="login_id" layoutX="181.0" layoutY="10.0" maxHeight="23.0" maxWidth="105.0" minHeight="23.0" minWidth="105.0" prefHeight="23.0" prefWidth="105.0">
+            <ChoiceBox fx:id="login_id" layoutX="181.0" layoutY="10.0" maxHeight="23.0" maxWidth="105.0" minHeight="23.0" minWidth="105.0" prefHeight="23.0" prefWidth="105.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -78,7 +78,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField id="input" fx:id="login_username" layoutX="181.0" layoutY="57.0" promptText="请输入您的用户名">
+            <TextField fx:id="login_username" layoutX="181.0" layoutY="57.0" promptText="请输入您的用户名">
                <effect>
                   <DropShadow />
                </effect>
@@ -91,7 +91,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <PasswordField id="input" fx:id="login_password" layoutX="181.0" layoutY="104.0" promptText="请输入您的密码">
+            <PasswordField fx:id="login_password" layoutX="181.0" layoutY="104.0" promptText="请输入您的密码">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -114,12 +114,12 @@
       </Pane>
       <Pane fx:id="panel_register" disable="true" layoutX="173.0" layoutY="208.0" prefHeight="184.0" prefWidth="361.0" visible="false">
          <children>
-            <Label layoutX="65.0" layoutY="10.0" text="请选择用户类型">
+            <Label layoutX="65.0" layoutY="10.0" text="请选择用户类型" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ChoiceBox id="choicebox_id" fx:id="register_id" layoutX="181.0" layoutY="10.0" maxHeight="23.0" maxWidth="105.0" minHeight="23.0" minWidth="105.0" prefHeight="23.0" prefWidth="105.0">
+            <ChoiceBox fx:id="register_id" layoutX="181.0" layoutY="10.0" maxHeight="23.0" maxWidth="105.0" minHeight="23.0" minWidth="105.0" prefHeight="23.0" prefWidth="105.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -127,12 +127,12 @@
                   <DropShadow />
                </effect>
             </ChoiceBox>
-            <Label layoutX="121.0" layoutY="57.0" text="用户名">
+            <Label layoutX="121.0" layoutY="57.0" text="用户名" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField id="input" fx:id="register_username" layoutX="181.0" layoutY="55.0" promptText="请输入您的用户名">
+            <TextField fx:id="register_username" layoutX="181.0" layoutY="55.0" promptText="请输入您的用户名">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -140,12 +140,12 @@
                   <DropShadow />
                </effect>
             </TextField>
-            <Label layoutX="135.0" layoutY="104.0" text="密码">
+            <Label layoutX="135.0" layoutY="104.0" text="密码" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <PasswordField id="input" fx:id="register_password" layoutX="181.0" layoutY="103.0" promptText="请输入您的密码">
+            <PasswordField fx:id="register_password" layoutX="181.0" layoutY="103.0" promptText="请输入您的密码">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -153,12 +153,12 @@
                   <DropShadow />
                </effect>
             </PasswordField>
-            <Label layoutX="107.0" layoutY="151.0" text="密码确认">
+            <Label layoutX="107.0" layoutY="151.0" text="密码确认" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <PasswordField id="input" fx:id="register_confirm" layoutX="181.0" layoutY="151.0" promptText="请再次输入您的密码">
+            <PasswordField fx:id="register_confirm" layoutX="181.0" layoutY="151.0" promptText="请再次输入您的密码">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -166,7 +166,7 @@
                   <DropShadow />
                </effect>
             </PasswordField>
-            <Button id="button_register" layoutX="207.0" layoutY="196.0" maxHeight="29.0" maxWidth="64.0" minHeight="29.0" minWidth="64.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="29.0" prefWidth="64.0" text="注册">
+            <Button layoutX="207.0" layoutY="196.0" maxHeight="29.0" maxWidth="64.0" minHeight="29.0" minWidth="64.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="29.0" prefWidth="64.0" text="注册">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

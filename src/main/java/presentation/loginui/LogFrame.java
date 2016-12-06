@@ -36,7 +36,6 @@ public class LogFrame extends Application {
 	Stage stage;
 	int identity;
 	IDHelper idHelper;
-	int id;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -232,20 +231,7 @@ public class LogFrame extends Application {
 					//弹出登录失败对话框
 				}
 			}
-
-			private int parseID(ChoiceBox<String> id) {
-				// TODO Auto-generated method stub
-				String s = id.getValue();
-				
-				if(s.equals("客户")){
-					return 1;
-				}else if(s.equals("酒店工作人员")){
-					return 2;
-				}else if(s.equals("网站营销人员")){
-					return 3;
-				}
-				return 4;
-			}
+			
 		});
 		
 		return login;
@@ -367,6 +353,20 @@ public class LogFrame extends Application {
 		});
 		
 		return register;
+	}
+	
+	private int parseID(ChoiceBox<String> id) {
+		// TODO Auto-generated method stub
+		String s = id.getValue();
+		
+		if(s.equals("客户")){
+			return 1;
+		}else if(s.equals("酒店工作人员")){
+			return 2;
+		}else if(s.equals("网站营销人员")){
+			return 3;
+		}
+		return 4;
 	}
 	
 	private void jumpToMainFrame(){
