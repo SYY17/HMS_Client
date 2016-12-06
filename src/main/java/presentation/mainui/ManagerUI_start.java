@@ -4,8 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import presentation.controller.IDHelper;
+import presentation.controller.UserControllerImpl;
+import presentation.userui.UserControllerService;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 
 public class ManagerUI_start extends Application {
 	
@@ -19,6 +22,7 @@ public class ManagerUI_start extends Application {
 			Scene scene = new Scene(root, 800, 600);
 			ManagerUI_controller.stage = primaryStage;
 			this.initiateHelper();
+			this.initiateUserName(root);
 			
 			//print，待删除
 			System.out.println(id);
@@ -36,6 +40,16 @@ public class ManagerUI_start extends Application {
 	private void initiateHelper(){
 		idHelper = IDHelper.getInstance();
 		id = idHelper.getID();
+	}
+	
+	/**
+	 * 初始化当前用户用户名
+	 */
+	private void initiateUserName(Parent root){
+		Label username = (Label) root.lookup("#username");
+		UserControllerService userController = new UserControllerImpl();
+		String name = userController.searchByUserID(id);
+		username.setText(name);
 	}
 	
 	public static void main(String[] args) {

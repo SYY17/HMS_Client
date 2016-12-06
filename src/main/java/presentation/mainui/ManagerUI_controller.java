@@ -2,16 +2,20 @@ package presentation.mainui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
 import presentation.loginui.LoginUI_start;
-import presentation.userui.ManageSystemUser_start;
+import presentation.userui.ManageSystemUser_start2;
 
 public class ManagerUI_controller {
 	
 	public static Stage stage;
+	
+	@FXML
+	private Label username;
 	
     @FXML
     private TableView<ApplyData> applyInfoTable;
@@ -23,7 +27,7 @@ public class ManagerUI_controller {
 
 	@FXML
 	private void onManageSystemUser(MouseEvent event) throws Exception {
-		new ManageSystemUser_start().start(stage);
+		new ManageSystemUser_start2().start(stage);
 	}
 	
 	@FXML

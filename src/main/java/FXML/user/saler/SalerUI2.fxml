@@ -28,12 +28,12 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="30.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="99.0" fitWidth="90.0" layoutX="39.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/usermanage.png" />
+                  <Image url="@../../login/icon/abnormal.png" />
                </image>
             </ImageView>
-            <Label layoutX="51.0" layoutY="230.0" onMouseClicked="#onManageSystemUser" text="用户管理">
+            <Label layoutX="40.0" layoutY="230.0" text="异常订单管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -41,12 +41,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="39.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="33.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/applycheck.png" />
+                  <Image url="@../../login/icon/promotion.png" />
                </image>
             </ImageView>
-            <Label layoutX="50.0" layoutY="378.0" onMouseClicked="#onManageHotelCreatingApplication" text="申请一览">
+            <Label layoutX="40.0" layoutY="378.0" text="营销策略管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -54,12 +54,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="72.0" fitWidth="100.0" layoutX="30.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="34.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/message.png" />
+                  <Image url="@../../login/icon/credit.png" />
                </image>
             </ImageView>
-            <Label layoutX="58.0" layoutY="507.0" text="站内信">
+            <Label layoutX="53.0" layoutY="525.0" text="信用管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -77,18 +77,18 @@
                   <Image url="@../../login/icon/middle_back.jpg" />
                </image>
             </ImageView>
-            <TableView id="applyTable" fx:id="applyInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="337.0" prefWidth="395.0">
+            <TableView id="applyTable" fx:id="OrderInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="337.0" prefWidth="395.0">
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="编号" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="申请用户" />
-                  <TableColumn id="col_even" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="酒店名称" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="用户名" />
+                  <TableColumn id="col_even" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="订单发起日期" />
                   <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="查看" />
                </columns>
                <effect>
                   <DropShadow />
                </effect>
             </TableView>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新申请消息" textFill="WHITE">
+            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新异常订单" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -124,7 +124,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="675.0" layoutY="282.0" text="admin">
+            <Label fx:id="username" layoutX="675.0" layoutY="282.0" text="admin">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -142,7 +142,7 @@
             </Button>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="650.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/datecheck.png" />
+                  <Image url="@../../../../../../../../../Downloads/temp/calendar.png" />
                </image>
             </ImageView>
             <Label layoutX="670.0" layoutY="497.0" text="日期查看">
