@@ -93,7 +93,7 @@
                   <TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="ID" />
                   <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" text="用户名" />
                   <TableColumn id="col_even" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" text="用户身份" />
-                  <TableColumn id="col_odd" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" resizable="false" sortable="false" />
+                  <TableColumn maxWidth="25.0" minWidth="25.0" prefWidth="25.0" resizable="false" sortable="false" />
                </columns>
                <effect>
                   <DropShadow />

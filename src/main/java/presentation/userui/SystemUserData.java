@@ -1,11 +1,14 @@
 package presentation.userui;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import presentation.controller.UserControllerImpl;
 
 public class SystemUserData {
 	private final SimpleStringProperty id = new SimpleStringProperty();
@@ -56,6 +59,15 @@ public class SystemUserData {
 		button.setMinSize(20, 20);
 		button.setCursor(Cursor.HAND);
 		button.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("deleteuser.png").toString()), null, null, null, null)));
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				UserControllerService userController = new UserControllerImpl();
+				userController.deleteUser(Integer.valueOf(getId()));
+			}
+		});
 		
 		return button;
 	}

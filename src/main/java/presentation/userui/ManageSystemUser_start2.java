@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -63,7 +61,6 @@ public class ManageSystemUser_start2 extends Application{
 		data.clear();
 		ObservableList<TableColumn<SystemUserData, ?>> observableList = applyInfoTable.getColumns();
 		initiateObservableList(observableList);
-		initiateEvent(data);
 		
 		systemUserDataHelper = new SystemUserDataHelper();
 		
@@ -122,21 +119,6 @@ public class ManageSystemUser_start2 extends Application{
 		ChoiceBox<String> id_choicebox = (ChoiceBox<String>) root.lookup("#id_choicebox");
 		id_choicebox.setItems(FXCollections.observableArrayList("客户", "酒店工作人员", "网站营销人员", "网站管理人员"));
 		id_choicebox.setValue("客户");
-	}
-	
-	private void initiateEvent(ObservableList<SystemUserData> data){
-		for(int i=0; i<data.size(); i++){
-			SystemUserData user = data.get(i);
-			
-			user.getOperation().setOnAction(new EventHandler<ActionEvent>() {
-
-				@Override
-				public void handle(ActionEvent event) {
-					// TODO Auto-generated method stub
-					data.remove(user);
-				}
-			});
-		}
 	}
 	
 	public static void main(String[] args) {
