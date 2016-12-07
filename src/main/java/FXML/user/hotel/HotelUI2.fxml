@@ -23,17 +23,17 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff6f6" height="456.0" layoutX="7.0" layoutY="109.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="153.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff6f6" height="456.0" layoutX="7.0" layoutY="109.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="119.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <ImageView fitHeight="99.0" fitWidth="90.0" layoutX="39.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="27.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/abnormal.png" />
+                  <Image url="@../../login/icon/orderview.png" />
                </image>
             </ImageView>
-            <Label layoutX="40.0" layoutY="230.0" onMouseClicked="#onOrderManage" text="异常订单管理">
+            <Label layoutX="39.0" layoutY="230.0" onMouseClicked="#onOrderManage" text="订单管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -41,12 +41,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="33.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="25.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/promotion.png" />
+                  <Image url="@../../login/icon/hotelinfo.png" />
                </image>
             </ImageView>
-            <Label layoutX="40.0" layoutY="378.0" onMouseClicked="#onPromotionManage" text="营销策略管理">
+            <Label layoutX="28.0" layoutY="369.0" onMouseClicked="#onPromotionManage" text="酒店信息管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -54,12 +54,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="34.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/credit.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="53.0" layoutY="525.0" onMouseClicked="#onCreditManage" text="信用管理">
+            <Label layoutX="28.0" layoutY="504.0" onMouseClicked="#onCreditManage" text="营销策略管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -67,28 +62,30 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e78b9" height="456.0" layoutX="172.0" layoutY="109.0" opacity="0.38" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="417.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e78b9" height="456.0" layoutX="139.0" layoutY="109.0" opacity="0.38" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="480.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <ImageView fitHeight="444.0" fitWidth="400.0" layoutX="187.0" layoutY="113.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="444.0" fitWidth="467.0" layoutX="146.0" layoutY="113.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/middle_back.jpg" />
+                  <Image url="@../../login/icon/middle_back_w.jpg" />
                </image>
             </ImageView>
-            <TableView id="applyTable" fx:id="OrderInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="337.0" prefWidth="395.0">
+            <TableView id="applyTable" fx:id="OrderInfoTable" layoutX="158.0" layoutY="199.0" prefHeight="337.0" prefWidth="443.0">
                <columns>
-                  <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="编号" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="用户名" />
-                  <TableColumn id="col_even" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="订单发起日期" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="49.0" minWidth="49.0" prefWidth="49.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="编号" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="102.0" minWidth="102.0" prefWidth="102.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="预订者" />
+                  <TableColumn id="col_even" editable="false" maxWidth="105.0" minWidth="105.0" prefWidth="105.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="预定时间" />
+                  <TableColumn id="col_even" editable="false" maxWidth="86.0" minWidth="86.0" prefWidth="86.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="客房类型" />
+                  <TableColumn id="col_even" editable="false" maxWidth="59.0" minWidth="59.0" prefWidth="59.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="数量" />
                   <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="查看" />
                </columns>
                <effect>
                   <DropShadow />
                </effect>
             </TableView>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新异常订单" textFill="WHITE">
+            <Label layoutX="157.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新订单" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -106,17 +103,17 @@
                   <Image url="@../../login/icon/logo.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="456.0" layoutX="602.0" layoutY="109.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="191.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="456.0" layoutX="635.0" layoutY="109.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="158.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="649.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="664.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/defaultuser.png" />
                </image>
             </ImageView>
-            <BorderPane fx:id="username" layoutX="601.0" layoutY="283.0" prefHeight="27.0" prefWidth="191.0">
+            <BorderPane fx:id="username" layoutX="616.0" layoutY="283.0" prefHeight="27.0" prefWidth="191.0">
                <center>
                   <Label fx:id="username" text="admin" BorderPane.alignment="CENTER">
                      <cursor>
@@ -128,7 +125,7 @@
                   </Label>
                </center>
             </BorderPane>
-            <Label layoutX="663.0" layoutY="144.0" text="当前用户">
+            <Label layoutX="678.0" layoutY="144.0" text="当前用户">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -136,7 +133,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="676.0" layoutY="316.0" maxHeight="23.0" maxWidth="42.0" minHeight="23.0" minWidth="42.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="23.0" prefWidth="42.0" text="注销">
+            <Button layoutX="691.0" layoutY="316.0" maxHeight="23.0" maxWidth="42.0" minHeight="23.0" minWidth="42.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="23.0" prefWidth="42.0" text="注销">
                <effect>
                   <DropShadow />
                </effect>
@@ -147,12 +144,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="650.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="662.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../Downloads/temp/calendar.png" />
+                  <Image url="@../../login/icon/review.png" />
                </image>
             </ImageView>
-            <Label layoutX="670.0" layoutY="497.0" text="日期查看">
+            <Label layoutX="683.0" layoutY="504.0" text="酒店评分">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -160,6 +157,11 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="25.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/promotion.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
