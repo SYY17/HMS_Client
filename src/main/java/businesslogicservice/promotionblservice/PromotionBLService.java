@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.sql.Date;
 
 import businesslogicservice.ResultMessage;
+import vo.DiscountPromotionVO;
+import vo.FullCutPromotionVO;
 import vo.PromotionVO;
 
 public interface PromotionBLService {
@@ -51,4 +53,32 @@ public interface PromotionBLService {
 	 * @return 按照起始时间查找营销策略
 	 */
 	public ArrayList <PromotionVO> searchByStartTime(int id, Date start);
+	
+	/**
+	 * 
+	 * @param fvo
+	 * @return 制定满减策略
+	 */
+	public ResultMessage addFullCutPromotion(FullCutPromotionVO fvo);
+	
+	/**
+	 * 
+	 * @param dvo
+	 * @return 制定折扣策略
+	 */
+	public ResultMessage addDiscountPromotion(DiscountPromotionVO dvo);
+	
+	/**
+	 * 
+	 * @param fvo
+	 * @return 删除营销策略
+	 */
+	public ResultMessage deletePromotion(FullCutPromotionVO fvo);
+	
+	/**
+	 * 
+	 * @param dvo
+	 * @return 删除营销策略
+	 */
+	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo);
 }

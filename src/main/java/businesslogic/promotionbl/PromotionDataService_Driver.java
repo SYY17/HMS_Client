@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import java.sql.Date;
 import dataservice.promotiondataservice.PromotionDataService;
 import po.PromotionPO;
+import po.PromotionType;
 
 public class PromotionDataService_Driver {
 
 	public void drive(PromotionDataService promotionDataService) throws RemoteException{
-		PromotionPO ppo = new PromotionPO(null, null, 0);
+		PromotionPO ppo = new PromotionPO( null, null, null, null, null, 0);
+		String promotionName = null;
 		String content = null;
 		Date start = null;
+		Date stop = null;
+		PromotionType promotionType = null;
 		int id=0;
 		promotionDataService.initPromotionDataService();
 		ArrayList <PromotionPO> list = promotionDataService.findsPromotion(id);

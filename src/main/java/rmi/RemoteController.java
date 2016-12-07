@@ -4,6 +4,8 @@ import java.rmi.Remote;
 
 import dataservice.creditdataservice.CreditDataService;
 import dataservice.datafactoryservice.DataFactoryService;
+import dataservice.discountpromotiondataservice.DiscountPromotionDataService;
+import dataservice.fullcutpromotiondataservice.FullCutPromotionDataService;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
@@ -92,6 +94,22 @@ public class RemoteController {
 	 */
 	public UserCreditHistoryDataService getUserCreditHistoryDataService(){
 		return (UserCreditHistoryDataService) remote;
+	}
+	
+	/**
+	 * 
+	 * @return 获得满减策略信息服务
+	 */
+	public FullCutPromotionDataService getFullCutPromotionDataService(){
+		return (FullCutPromotionDataService) remote;
+	}
+	
+	/**
+	 * 
+	 * @return 获得折扣策略信息服务
+	 */
+	public DiscountPromotionDataService getDiscountPromotionDataService(){
+		return (DiscountPromotionDataService) remote;
 	}
 	
 	/**

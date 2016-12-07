@@ -3,6 +3,7 @@ package businesslogic.promotionbl;
 import java.util.ArrayList;
 import java.sql.Date;
 
+import vo.PromotionType;
 import vo.PromotionVO;
 
 public class PromotionList {
@@ -86,10 +87,13 @@ public class PromotionList {
 	 * @return 将营销策略项转换为VO对象
 	 */
 	private PromotionVO converse(PromotionLineItem promotionLineItem){
+		String pn = promotionLineItem.getPromotionName();
 		String ctt = promotionLineItem.getContent();
 		Date s = promotionLineItem.getStartTime();
+		Date sp = promotionLineItem.getStopTime();
+		PromotionType pt = promotionLineItem.getPromotionType();
 		int i = promotionLineItem.getID();
-		return new PromotionVO(ctt,s,i);
+		return new PromotionVO(pn, ctt , s, sp, pt, i);
 	}
 	
 	/**

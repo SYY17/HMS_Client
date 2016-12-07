@@ -8,5 +8,5 @@ public interface PromotionInfo {
 	 * @param initialPrice,pvo
 	 * @return 获得最终订单价格
 	 */
-	public int getFinalPrice(int initialPrice, PromotionVO pvo);
+	public double getFinalPrice(double initialPrice, PromotionVO pvo);
 }

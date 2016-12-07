@@ -8,6 +8,7 @@ import org.junit.Test;
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
+import vo.PromotionType;
 import vo.PromotionVO;
 
 public class PromotionBLServiceTest {
@@ -16,6 +17,7 @@ public class PromotionBLServiceTest {
 	PromotionVO p1;
 	PromotionVO p2;
 	long time;
+	long sp;
 	
 	/**
 	 * 初始化
@@ -23,8 +25,9 @@ public class PromotionBLServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		time = System.currentTimeMillis();
-		p1 = new PromotionVO("双十一下订单八折优惠", new Date(time), 20920010);
-		p2 = new PromotionVO("订单完成后获得信用值增加百分之五", new Date(time), 30925005);
+		sp = System.currentTimeMillis()+10000;
+		p1 = new PromotionVO( "双十一折扣", "双十一下订单八折优惠", new Date(time), new Date(sp), PromotionType.DISCOUNT, 20920010);
+		p2 = new PromotionVO( "订单完成满减", "订单完成后获得信用值增加百分之五", new Date(time), new Date(sp), PromotionType.FULL_CUT, 30925005);
 	}
 	
 	/**
@@ -51,13 +54,19 @@ public class PromotionBLServiceTest {
 		ArrayList<PromotionVO> list;
 		ResultMessage message;
 		list = promotionBLService.searchByContent(20920010, "双十一下订单八折优惠");
+		assertEquals(p1.getPromotionName(), list.get(0).getPromotionName());//
 		assertEquals(p1.getID(), list.get(0).getID());
 		assertEquals(p1.getContent(), list.get(0).getContent());
 		assertEquals(p1.getStartTime(), list.get(0).getStartTime());
+		assertEquals(p1.getStopTime(), list.get(0).getStopTime());//
+		assertEquals(p1.getPromotionType(), list.get(0).getPromotionType());//
 		list = promotionBLService.searchByStartTime(20920010, new Date(time));
+		assertEquals(p1.getPromotionName(), list.get(0).getPromotionName());
 		assertEquals(p1.getID(), list.get(0).getID());
 		assertEquals(p1.getContent(), list.get(0).getContent());
 		assertEquals(p1.getStartTime(), list.get(0).getStartTime());
+		assertEquals(p1.getStopTime(), list.get(0).getStopTime());
+		assertEquals(p1.getPromotionType(), list.get(0).getPromotionType());
 		message = promotionBLService.searchPromotion(p1);
 		assertEquals(ResultMessage.TRUE, message);
 	}
@@ -78,3 +87,4 @@ public class PromotionBLServiceTest {
 	}
 			
 }
+

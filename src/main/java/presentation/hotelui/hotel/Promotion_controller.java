@@ -44,7 +44,7 @@ public class Promotion_controller {
 		ArrayList<PromotionVO> pvo = promotionBlService.getAllPromotion(/* id = */20905098);//
 		ArrayList<String> content = new ArrayList<String>();
 		for(int i=0;i<pvo.size();i++){
-			content.add(pvo.get(i).getContent());
+			content.add(pvo.get(i).getPromotionName());
 		}
 		ObservableList<String> strList = FXCollections.observableArrayList(content);
 		promotionListView.setItems(strList);

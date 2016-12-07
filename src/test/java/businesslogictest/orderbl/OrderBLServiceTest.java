@@ -13,6 +13,7 @@ import businesslogicservice.orderblservice.OrderBLService;
 import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
+import vo.PromotionType;
 import vo.PromotionVO;
 import vo.RoomType;
 
@@ -49,7 +50,7 @@ public class OrderBLServiceTest {
 				checkOut);
 		hotelVO = new HotelVO(orderID, hotelName, hotelName, hotelName, hotelName, orderID, orderID, null, orderID,
 				hotelName, hotelName);
-		promotionVO = new PromotionVO("双十一下订单八折优惠", new Date(System.currentTimeMillis()), 20920010);
+		promotionVO = new PromotionVO( "双十一优惠", "双十一下订单八折优惠", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()*2), PromotionType.DISCOUNT, 20920010);//
 	}
 
 	/**

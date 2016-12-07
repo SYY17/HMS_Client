@@ -41,14 +41,17 @@ public class MakePromotionStrategy2_controller {
     private void initialize() {
 		data.clear();
 		ObservableList<TableColumn<PromotionData, ?>> observableList = promotionTableView.getColumns();
+		
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("promotionID"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("promotionDate"));
-		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("promotionContent"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("promotionName"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("promotionDate"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("promotionStop"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("promotionContent"));
 		
 		ArrayList<PromotionVO> promotionList = promotionBlService.getAllPromotion(/* id = */20905098);
 		for(int i=0;i<promotionList.size();i++){
 			PromotionVO pvo = promotionList.get(i);
-			data.add(new PromotionData(pvo.getID(),pvo.getStartTime(),pvo.getContent()));
+			data.add(new PromotionData( pvo.getID(), pvo.getPromotionName(), pvo.getStartTime(), pvo.getStopTime(), pvo.getContent()));//..................!!!!!!!!!!!!!!!!!!!!!!!!!!
 		}
 		
 		promotionTableView.setItems(data);

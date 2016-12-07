@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.sql.Date;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
+import po.DiscountPromotionPO;
+import po.FullCutPromotionPO;
 import po.PromotionPO;
 import rmi.RemoteController;
+import vo.DiscountPromotionVO;
+import vo.FullCutPromotionVO;
+import vo.PromotionType;
 import vo.PromotionVO;
 
 public class PromotionController implements PromotionBLService{
-	
-	//类中待修改语句
-	//pvo = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
 	
 	private RemoteController remoteController;
 
@@ -32,9 +34,10 @@ public class PromotionController implements PromotionBLService{
 				return ResultMessage.FALSE;
 			}
 			
-			PromotionPO ppo = new PromotionPO(pvo.getContent(), pvo.getStartTime(), pvo.getID());
+			PromotionPO ppo = new PromotionPO( pvo.getPromotionName(), pvo.getContent(), pvo.getStartTime(), pvo.getStopTime(), pvo.getPromotionType(), pvo.getID());
 			remoteController.getPromotionDataService().insertPromotion(ppo);
 			remoteController.getPromotionDataService().finishPromotionDataService();
+
 			return ResultMessage.TRUE;
 		}catch(RemoteException e){
 			e.printStackTrace();
@@ -60,7 +63,8 @@ public class PromotionController implements PromotionBLService{
 				list = null;
 			}else{
 				for(int i = 0; i<listPromotion.size(); i++){
-					tmp = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
+					tmp = new PromotionVO( listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(), listPromotion.get(i).getStartTime(),
+							listPromotion.get(i).getStopTime(), listPromotion.get(i).getPromotionType(), listPromotion.get(i).getID());
 					list.add(tmp);
 				}
 			}
@@ -83,9 +87,10 @@ public class PromotionController implements PromotionBLService{
 		try{
 			remoteController.getPromotionDataService().initPromotionDataService();
 			//待修改
-			PromotionPO ppo = new PromotionPO(pvo.getContent(), pvo.getStartTime(), pvo.getID());
+			PromotionPO ppo = new PromotionPO(pvo.getPromotionName(), pvo.getContent(), pvo.getStartTime(), pvo.getStopTime(), pvo.getPromotionType(), pvo.getID());
 			remoteController.getPromotionDataService().deletePromotion(ppo);
 			remoteController.getPromotionDataService().finishPromotionDataService();
+			
 			return ResultMessage.TRUE;
 		}catch(RemoteException e){
 			e.printStackTrace();
@@ -143,7 +148,8 @@ public class PromotionController implements PromotionBLService{
 				list = null;
 			}else{
 				for(int i = 0; i<listPromotion.size(); i++){
-					pvo = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
+					pvo = new PromotionVO( listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(), listPromotion.get(i).getStartTime(),
+							listPromotion.get(i).getStopTime(), listPromotion.get(i).getPromotionType(), listPromotion.get(i).getID());
 					list.add(pvo);
 				}
 			}
@@ -174,7 +180,8 @@ public class PromotionController implements PromotionBLService{
 				list = null;
 			}else{
 				for(int i = 0; i<listPromotion.size(); i++){
-					tmp = new PromotionVO(listPromotion.get(i).getContent(),listPromotion.get(i).getStartTime(),listPromotion.get(i).getID());
+					tmp = new PromotionVO(listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(), listPromotion.get(i).getStartTime(),
+							listPromotion.get(i).getStopTime(), listPromotion.get(i).getPromotionType(), listPromotion.get(i).getID());
 					list.add(tmp);
 				}
 			}
@@ -182,6 +189,74 @@ public class PromotionController implements PromotionBLService{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public ResultMessage addFullCutPromotion(FullCutPromotionVO fvo) {
+		// TODO Auto-generated method stub
+		try{
+			remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
+			
+			FullCutPromotionPO fpo = new FullCutPromotionPO( fvo.getPromotionName(), fvo.getContent(), fvo.getStartTime(), fvo.getStopTime(), fvo.getPromotionType(), fvo.getID(), fvo.getEvery(), fvo.getCut());//....
+			
+			remoteController.getFullCutPromotionDataService().insertFullCutPromotion(fpo);
+			remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
+			}catch(RemoteException e){
+				e.printStackTrace();
+				}
+		
+		return ResultMessage.TRUE;
+	}
+
+	@Override
+	public ResultMessage addDiscountPromotion(DiscountPromotionVO dvo) {
+		// TODO Auto-generated method stub
+		try{
+			remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
+			
+			DiscountPromotionPO dpo = new DiscountPromotionPO( dvo.getPromotionName(), dvo.getContent(), dvo.getStartTime(), dvo.getStopTime(), dvo.getPromotionType(), dvo.getID(), dvo.getDiscount());//....
+			
+			remoteController.getDiscountPromotionDataService().insertDiscountPromotion(dpo);
+			remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
+			}catch(RemoteException e){
+				e.printStackTrace();
+				}
+		
+		return ResultMessage.TRUE;
+	}
+
+	@Override
+	public ResultMessage deletePromotion(FullCutPromotionVO fvo) {
+		// TODO Auto-generated method stub
+		try{
+			remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
+			
+			FullCutPromotionPO fpo = new FullCutPromotionPO( fvo.getPromotionName(), fvo.getContent(), fvo.getStartTime(), fvo.getStopTime(), fvo.getPromotionType(), fvo.getID(), fvo.getEvery(), fvo.getCut());//....
+			
+			remoteController.getFullCutPromotionDataService().deleteFullCutPromotion(fpo);
+			remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		
+		return ResultMessage.TRUE;
+	}
+
+	@Override
+	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo) {
+		// TODO Auto-generated method stub
+		try{
+			remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
+			
+			DiscountPromotionPO dpo = new DiscountPromotionPO( dvo.getPromotionName(), dvo.getContent(), dvo.getStartTime(), dvo.getStopTime(), dvo.getPromotionType(), dvo.getID(), dvo.getDiscount());//....
+			
+			remoteController.getDiscountPromotionDataService().deleteDiscountPromotion(dpo);
+			remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		
+		return ResultMessage.TRUE;
 	}
 
 }

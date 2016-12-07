@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.promotionui.MakePromotionStrategy1_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.promotionui.MakePromotionStrategy1_controller">
 	<children>
 		<Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
 			<children>
@@ -93,11 +101,13 @@
 								<Font name="System Bold" size="14.0" />
 							</font>
 						</Label>
-						<TableView id="table" layoutX="16.0" layoutY="23.0" prefHeight="160.0" prefWidth="778.0">
+						<TableView id="table" layoutX="16.0" layoutY="23.0" prefHeight="160.0" prefWidth="777.0">
 							<columns>
-								<TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="80.0" resizable="false" sortable="false" text="编号" />
-								<TableColumn id="col_even" editable="false" maxWidth="130.0" minWidth="77.95857238769531" prefWidth="87.87123107910156" resizable="false" sortable="false" text="时间" />
-								<TableColumn id="col_odd" editable="false" maxWidth="609.0" minWidth="80.0" prefWidth="609.0" resizable="false" sortable="false" text="内容" />
+								<TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="44.0" prefWidth="51.0" resizable="false" sortable="false" text="编号" />
+                        <TableColumn id="col_even" editable="false" maxWidth="659.0" minWidth="45.0" prefWidth="145.0" resizable="false" sortable="false" text="名称" />
+								<TableColumn id="col_odd" editable="false" maxWidth="602.0" minWidth="38.0" prefWidth="136.0" resizable="false" sortable="false" text="起始时间" />
+                        <TableColumn id="col_even" editable="false" maxWidth="503.0" minWidth="77.95857238769531" prefWidth="134.0" resizable="false" sortable="false" text="结束时间" />
+								<TableColumn id="col_odd" editable="false" maxWidth="579.0" minWidth="77.0" prefWidth="370.0" resizable="false" sortable="false" text="内容" />
 							</columns>
 							<effect>
 								<DropShadow />
@@ -119,16 +129,87 @@
 						<Font name="System Bold" size="14.0" />
 					</font>
 				</Label>
-				<ListView id="list" layoutX="9.0" layoutY="-12.0" prefHeight="128.0" prefWidth="777.0">
-					<effect>
-						<DropShadow />
-					</effect>
-				</ListView>
 				<Button layoutX="717.0" layoutY="128.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="提交">
 					<effect>
 						<DropShadow />
 					</effect>
 				</Button>
+            <TextArea id="promotionDescription" layoutX="92.0" layoutY="94.0" prefHeight="68.0" prefWidth="595.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextArea>
+            <Label layoutX="19.0" layoutY="12.0" text="起始时间">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="57.0" text="结束时间">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField id="promotionName" layoutX="96.0" layoutY="-34.0" prefHeight="27.0" prefWidth="185.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <Label layoutX="19.0" layoutY="119.0" text="具体描述">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <DatePicker id="startTime" layoutX="92.0" layoutY="10.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </DatePicker>
+            <DatePicker id="stopTime" layoutX="92.0" layoutY="53.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </DatePicker>
+            <Label layoutX="482.0" layoutY="-26.0" text="促销类型">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="482.0" layoutY="21.0" text="满减折扣">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="promotionType" layoutX="567.0" layoutY="-30.0" prefWidth="150.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+            <Label layoutX="484.0" layoutY="57.0" text="普通折扣" />
+            <Label layoutX="661.0" layoutY="22.0" text="减">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="648.0" layoutY="58.0" text="折">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField id="every" layoutX="568.0" layoutY="17.0" prefHeight="27.0" prefWidth="84.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <TextField id="cut" layoutX="684.0" layoutY="18.0" prefHeight="27.0" prefWidth="84.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <TextField id="discount" layoutX="568.0" layoutY="53.0" prefHeight="27.0" prefWidth="71.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
 			</children>
 		</Pane>
 		<Button id="return" layoutX="720.0" layoutY="556.0" mnemonicParsing="false" onAction="#onReturn" prefHeight="30.0" prefWidth="60.0" text="返回">

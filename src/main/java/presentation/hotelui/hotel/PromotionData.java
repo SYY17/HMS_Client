@@ -8,12 +8,16 @@ import javafx.beans.property.SimpleStringProperty;
 public class PromotionData {
 	
 	private final SimpleIntegerProperty promotionID = new SimpleIntegerProperty();
+	private final SimpleStringProperty promotionName = new SimpleStringProperty();
 	private final SimpleStringProperty promotionDate = new SimpleStringProperty();
+	private final SimpleStringProperty promotionStop = new SimpleStringProperty();
 	private final SimpleStringProperty promotionContent = new SimpleStringProperty();
 	
-	public PromotionData(int promotionID,Date promotionDate,String promotionContent){
+	public PromotionData( int promotionID, String promotionName, Date promotionDate, Date promotionStop, String promotionContent){
 		this.promotionID.set(promotionID);
+		this.promotionName.set(promotionName);
 		this.promotionDate.set(promotionDate.toString());
+		this.promotionStop.set(promotionStop.toString());
 		this.promotionContent.set(promotionContent);
 	}
 	
@@ -26,12 +30,28 @@ public class PromotionData {
 		this.promotionID.set(promotionID);
 	}
 	
+	public String getPromotionName() {
+		return promotionName.get();
+	}
+
+	public void setPromotionName(String promotionName) {
+		this.promotionName.set(promotionName);
+	}
+	
 	public String getPromotionDate() {
 		return promotionDate.get();
 	}
 
 	public void setPromotionDate(Date promotionDate) {
 		this.promotionDate.set(promotionDate.toString());
+	}
+	
+	public String getPromotionStop() {
+		return promotionStop.get();
+	}
+
+	public void setPromotionStop(Date promotionStop) {
+		this.promotionStop.set(promotionStop.toString());
 	}
 	
 	public String getPromotionContent() {
