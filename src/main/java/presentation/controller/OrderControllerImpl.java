@@ -10,7 +10,6 @@ import businesslogicservice.orderblservice.OrderBLService;
 import presentation.orderui.OrderControllerService;
 import vo.OrderStatus;
 import vo.OrderVO;
-import vo.PromotionVO;
 import vo.RoomType;
 
 public class OrderControllerImpl implements OrderControllerService {
@@ -60,9 +59,9 @@ public class OrderControllerImpl implements OrderControllerService {
 	 * @return 创建订单
 	 */
 	@Override
-	public OrderVO create(String username, String hotelname, OrderStatus orderstatus, RoomType rT, int rn,
-			PromotionVO pvo, Timestamp s, Date ci, Date co) {
-		return orderBLService.create(username, hotelname, orderstatus, rT, rn, pvo, s, ci, co);
+	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
+			Date checkIn, Date checkOut) {
+		return orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut);
 	}
 
 	/**

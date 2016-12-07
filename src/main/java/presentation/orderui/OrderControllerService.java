@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import businesslogicservice.ResultMessage;
 import vo.OrderStatus;
 import vo.OrderVO;
-import vo.PromotionVO;
 import vo.RoomType;
 
 public interface OrderControllerService {
@@ -40,8 +39,8 @@ public interface OrderControllerService {
 	 * @param pvo
 	 * @return 创建订单
 	 */
-	public OrderVO create(String username, String hotelname, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Timestamp s, Date ci, Date co);
+	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
+			Date checkIn, Date checkOut);
 
 	/**
 	 * 

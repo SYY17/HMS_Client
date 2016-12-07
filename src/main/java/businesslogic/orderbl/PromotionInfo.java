@@ -1,12 +1,18 @@
 package businesslogic.orderbl;
 
-import vo.PromotionVO;
+import java.sql.Timestamp;
+
 
 public interface PromotionInfo {
 	/**
 	 * 
-	 * @param initialPrice,pvo
+	 * @param roomtype,
+	 *            roomNumber, hotelName
 	 * @return 获得最终订单价格
 	 */
+<<<<<<< HEAD
 	public double getFinalPrice(double initialPrice, PromotionVO pvo);
+=======
+	public int getFinalPrice(String hotelName, Timestamp setTime, int initialPrice);
+>>>>>>> origin/master
 }
