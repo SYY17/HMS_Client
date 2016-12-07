@@ -83,10 +83,10 @@ public class OrderBLServiceTest {
 	 * 创建订单的测试用例套件
 	 */
 	@Test
-	public void testCreate(String username, String hotelname, OrderStatus orderstatus, RoomType rT, int rn, PromotionVO pvo,
-			Timestamp s, Date ci, Date co) {
+	public void testCreate(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
+			Date checkIn, Date checkOut) {
 		orderBlService = new OrderController();
-		assertEquals(orderVO, orderBlService.create(username, hotelname, orderstatus, rT, rn, pvo, s, ci, co));
+		assertEquals(orderVO, orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut));
 	}
 
 	/**

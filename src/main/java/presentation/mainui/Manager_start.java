@@ -38,4 +38,8 @@ public class Manager_start extends Application {
 		id = idHelper.getID();
 	}
 	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
 }

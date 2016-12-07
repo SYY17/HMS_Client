@@ -3,7 +3,16 @@ package businesslogic.hotelbl;
 import businesslogic.orderbl.HotelInfo;
 import vo.RoomType;
 
-public class HotelInfoImpl implements HotelInfo{
+public class HotelInfoForOrder implements HotelInfo{
+	/**
+	 * 
+	 * @param hotelName,roomType
+	 * @return 查询房间价格 
+	 */
+	public int getPrice(String hotelName,RoomType roomType){
+		return 0;
+	}
+	
 	/**
 	 * 
 	 * @param hotelName,roomType,changedRoomNum

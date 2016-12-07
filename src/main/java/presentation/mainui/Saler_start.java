@@ -20,4 +20,5 @@ public class Saler_start extends Application {
 			e.printStackTrace();
 		}
 	}
+
 }
