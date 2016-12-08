@@ -30,7 +30,7 @@ public class HotelInfoForOrder implements HotelInfo{
 	 * @return 查询酒店特定房间的剩余数量
 	 */
 	@Override
-	public int getRemainedRoomNum(String hotelName, RoomType roomType) {
+	public int getRoomNum(String hotelName, RoomType roomType) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

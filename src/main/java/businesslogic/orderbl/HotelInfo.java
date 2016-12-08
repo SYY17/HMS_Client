@@ -23,5 +23,5 @@ public interface HotelInfo {
 	 * @param hotelName,roomType
 	 * @return 查询酒店特定房间的剩余数量
 	 */
-	public int getRemainedRoomNum(String hotelName, RoomType roomType);
+	public int getRoomNum(String hotelName, RoomType roomType);
 }
