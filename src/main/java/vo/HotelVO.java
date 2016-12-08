@@ -13,21 +13,22 @@ public class HotelVO implements Serializable{
 	String businessArea;
 	String hotelDescription;
 	int starLevel;
-	int roomNumber;
-	ArrayList<RoomVO> wholeRooms; 
+//	int roomNumber;
+//	ArrayList<RoomVO> wholeRooms; 
 	double rating;
 	String staffName;
 	String phoneNumber;
 	
-	public HotelVO(int hid,String hn,String ha,String ba,String hd,int sl,int rn,ArrayList<RoomVO> rooms,double r,String sn,String pn){
+	public HotelVO(int hid,String hn,String ha,String ba,String hd,int sl,/*int rn,ArrayList<RoomVO> rooms,*/
+			double r,String sn,String pn){
 		hotelID=hid;
 		hotelName=hn;
 		hotelAddress=ha;
 		businessArea = ba;
 		hotelDescription = hd;
 		starLevel = sl;
-		roomNumber=rn;
-		wholeRooms=rooms;
+//		roomNumber=rn;
+//		wholeRooms=rooms;
 		rating =r;
 		staffName = sn;
 		phoneNumber = pn;
@@ -82,21 +83,21 @@ public class HotelVO implements Serializable{
 		return starLevel;
 	}
 	
-	/**
-	 * 
-	 * @return 获得房间号
-	 */
-	public int getRoomNumber(){
-		return roomNumber;
-	}
-	
-	/**
-	 * 
-	 * @return 获得酒店房间列表
-	 */
-	public ArrayList<RoomVO> getRooms(){
-		return wholeRooms;
-	}
+//	/**
+//	 * 
+//	 * @return 获得房间号
+//	 */
+//	public int getRoomNumber(){
+//		return roomNumber;
+//	}
+//	
+//	/**
+//	 * 
+//	 * @return 获得酒店房间列表
+//	 */
+//	public ArrayList<RoomVO> getRooms(){
+//		return wholeRooms;
+//	}
 	
 	/**
 	 * 

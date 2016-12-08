@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import presentation.loginui.LogFrame;
 import presentation.mainui.Hotel_start;
@@ -12,6 +13,7 @@ import presentation.mainui.Hotel_start;
 public class Manage_controller {
 	
 	public static Stage stage;
+	public static Label nameLabel;
 	
 	@FXML
 	private void onLogout(ActionEvent event) throws IOException {

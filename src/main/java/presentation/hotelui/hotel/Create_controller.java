@@ -42,7 +42,7 @@ public class Create_controller {
 		String description = descriptionText.getText();
 		if(hotelName!=null && address!=null && businessArea!=null && starLevel!=0 && phone!=null){
 			HotelControllerService hotelController = new HotelControllerImpl();
-			HotelVO hvo = new HotelVO(id,hotelName,address,businessArea,description,starLevel,0,null,0,null,phone);
+			HotelVO hvo = new HotelVO(id,hotelName,address,businessArea,description,starLevel,0,null,phone);//   传入staff name??
 			ResultMessage result = hotelController.createHotel(hvo);
 		
 			if(result == ResultMessage.TRUE){

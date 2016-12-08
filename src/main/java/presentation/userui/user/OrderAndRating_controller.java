@@ -48,31 +48,31 @@ public class OrderAndRating_controller {
 	private void onSubmit(ActionEvent event) throws IOException {
 		int rate = Integer.parseInt(rateText.getText());
 		
-		String hotelName = "homeinn";/*    传入hotelID    */
+		String hotelName = "homeinn";/*    浼犲叆hotelID    */
 		
 		if(rate!=0){
 			HotelControllerService hotelController = new HotelControllerImpl();
 			HotelVO hotel = hotelController.reviewHotelInfo(hotelName);
 			
 			HotelVO hvo = new HotelVO(hotel.getHotelID(),hotelName,hotel.getHotelAddress(),hotel.getBusinessArea(),
-					hotel.getHotelDescription(),hotel.getStarLevel(),hotel.getRoomNumber(),hotel.getRooms(),
+					hotel.getHotelDescription(),hotel.getStarLevel(),
 					rate,hotel.getStaffName(),hotel.getPhoneNumber());
 			ResultMessage result = hotelController.gradeHotel(hvo);
 		
 			if(result == ResultMessage.TRUE){
 				/*
-				 * 提示评价成功
+				 * 鎻愮ず璇勪环鎴愬姛
 				 */
 				new Manage_start().start(stage);
 			}else{
 				/*
-				 * 提示评价失败
+				 * 鎻愮ず璇勪环澶辫触
 				 */
 			}
 			
 		}else{
 			/*
-			 * 提示需要填写才能评价
+			 * 鎻愮ず闇�瑕佸～鍐欐墠鑳借瘎浠�
 			 */
 		}
 	}

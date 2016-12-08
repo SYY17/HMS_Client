@@ -98,7 +98,7 @@
                   </ScrollBar>
                   <ImageView fitHeight="150.0" fitWidth="295.0" layoutX="431.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Pictures/Paris04-002-1.jpg" />
+                        <Image url="@hotelPic.JPG" />
                      </image>
                   </ImageView>
                </children>

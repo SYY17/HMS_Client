@@ -46,7 +46,7 @@ public class Modify_start extends Application {
 		HotelVO hvo = hotelController.reviewHotelInfo(name);
 		addressText.setText(hvo.getHotelAddress());
 		businessAreaText.setText(hvo.getBusinessArea());
-		starText.setText(hvo.getStarLevel()+"星");
+		starText.setText(hvo.getStarLevel()+"");
 		phoneText.setText(hvo.getPhoneNumber());
 		descriptionText.setText(hvo.getHotelDescription());
 	}

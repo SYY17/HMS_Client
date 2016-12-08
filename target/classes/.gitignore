@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
+/.DS_Store
 /FXML/
->>>>>>> origin/master
 /businesslogic/
 /businesslogicservice/
 /dataservice/
@@ -10,4 +8,3 @@
 /rmi/
 /runner/
 /vo/
-/META-INF/

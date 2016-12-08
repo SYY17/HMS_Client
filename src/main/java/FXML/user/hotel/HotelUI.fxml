@@ -10,7 +10,7 @@
 
 <Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.Hotel_controller">
    <children>
-      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #eaecee;">
+      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
          <children>
             <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
                <font>
@@ -50,23 +50,23 @@
             </Label>
          </children>
       </Pane>
-      <Pane id="panel_body" layoutY="80.0" prefHeight="445.0" prefWidth="800.0" style="-fx-background-color: #eaecee;">
+      <Pane id="panel_body" layoutY="80.0" prefHeight="445.0" prefWidth="800.0">
          <children>
             <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">
               <menus>
                 <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="订单管理(O)">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="订单浏览" />
-                        <MenuItem mnemonicParsing="false" text="订单执行" />
+                        <MenuItem fx:id="Item_review" mnemonicParsing="false" onAction="#onReviewOrderList" text="订单浏览" />
+                        <MenuItem fx:id="Item_execute" mnemonicParsing="false" onAction="#onExecute" text="订单执行" />
                      </items></Menu>
                 <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="信息管理(I)">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="酒店信息" />
+                        <MenuItem fx:id="Item_Manage" mnemonicParsing="false" onAction="#onManage" text="酒店信息" />
                      </items></Menu>
                   <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="营销策略(P)">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="营销策略浏览" />
-                        <MenuItem mnemonicParsing="false" text="营销策略制定" />
+                        <MenuItem fx:id="Item_promotion" mnemonicParsing="false" onAction="#onReviewPromotion" text="营销策略浏览" />
+                        <MenuItem fx:id="Item_createPromotion" mnemonicParsing="false" onAction="#onCreatePromotion" text="营销策略制定" />
                      </items></Menu>
                   <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="酒店评价(R)">
                      <items>
@@ -117,17 +117,22 @@
                   </Label>
                   <TableView id="table" layoutX="5.0" layoutY="25.0" prefHeight="270.0" prefWidth="495.0">
                     <columns>
-                      <TableColumn id="col_odd" editable="false" maxWidth="77.0" minWidth="77.0" prefWidth="77.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb;" text="编号" />
-                      <TableColumn id="col_even" editable="false" maxWidth="82.0" minWidth="82.0" prefWidth="82.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996;" text="预订人" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb;" text="时间" />
-                        <TableColumn id="col_even" editable="false" maxWidth="86.0" minWidth="86.0" prefWidth="86.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996;" text="客房类型" />
-                        <TableColumn id="col_odd" editable="false" maxWidth="81.0" minWidth="81.0" prefWidth="81.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb;" text="客房数量" />
-                        <TableColumn id="col_even" editable="false" maxWidth="83.0" minWidth="83.0" prefWidth="83.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996;" text="操作" />
+                      <TableColumn id="col_odd" editable="false" maxWidth="77.0" minWidth="77.0" prefWidth="77.0" resizable="false" sortable="false" text="编号" />
+                      <TableColumn id="col_even" editable="false" maxWidth="82.0" minWidth="82.0" prefWidth="82.0" resizable="false" sortable="false" text="预订人" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" resizable="false" sortable="false" text="时间" />
+                        <TableColumn id="col_even" editable="false" maxWidth="86.0" minWidth="86.0" prefWidth="86.0" resizable="false" sortable="false" text="客房类型" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="81.0" minWidth="81.0" prefWidth="81.0" resizable="false" sortable="false" text="客房数量" />
+                        <TableColumn id="col_even" editable="false" maxWidth="83.0" minWidth="83.0" prefWidth="83.0" resizable="false" sortable="false" text="操作" />
                     </columns>
                      <effect>
                         <DropShadow />
                      </effect>
                   </TableView>
+                  <Button fx:id="button_editorder" layoutX="460.0" layoutY="-5.0" mnemonicParsing="false" onAction="#onEditOrder" text="编辑">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
                </children>
             </Pane>
             <Pane id="panel_promotion" layoutX="2.0" layoutY="352.0" prefHeight="173.0" prefWidth="800.0">

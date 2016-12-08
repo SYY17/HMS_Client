@@ -46,7 +46,8 @@ public class Modify_controller {
 		if(hotelName!=null && address!=null && businessArea!=null && starLevel!=0 && phone!=null){
 			HotelControllerService hotelController = new HotelControllerImpl();
 			int id = hotelController.reviewHotelInfo(hotelName).getHotelID();
-			HotelVO hvo = new HotelVO(id,hotelName,address,businessArea,description,starLevel,0,null,0,null,phone);
+			String staffname = hotelController.reviewHotelInfo(hotelName).getStaffName();
+			HotelVO hvo = new HotelVO(id,hotelName,address,businessArea,description,starLevel,0,staffname,phone);
 			ResultMessage result = hotelController.modifyHotel(hvo);
 		
 			if(result == ResultMessage.TRUE){

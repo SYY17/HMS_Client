@@ -26,7 +26,7 @@ public class HotelControllerImpl implements HotelControllerService{
 	
 	
 	public HotelControllerImpl(){
-		
+		hotelBLService = new HotelController();
 	}
 	
 	public HotelControllerImpl(int hid,String hn,String ha,String ba,String hd,int sl,int rn,ArrayList<RoomVO> rooms,double r,String sn,String pn){
@@ -144,6 +144,11 @@ public class HotelControllerImpl implements HotelControllerService{
 		return hotelBLService.ModifyRoom(rvo);
 	}
 
+	/**
+	 * 按id搜索酒店所有房间
+	 * @param id
+	 * @return roomList
+	 */
 	@Override
 	public ArrayList<RoomVO> searchRooms(int id) {
 		// TODO Auto-generated method stub
