@@ -5,7 +5,7 @@ import java.sql.Date;
 import businesslogic.hotelbl.PromotionInfo;
 import vo.PromotionType;
 
-public class PromotionInfoHotelImpl implements PromotionInfo{
+public class PromotionInfoHotelImpl implements PromotionInfo {
 
 	PromotionLineItem promotionLineItem;
 
@@ -39,27 +39,27 @@ public class PromotionInfoHotelImpl implements PromotionInfo{
 		return converse(promotionLineItem.getPromotionType());
 	}
 
-	public vo.PromotionType converse(po.PromotionType pt){
+	public vo.PromotionType converse(po.PromotionType pt) {
 		vo.PromotionType pp = vo.PromotionType.FULL_CUT;
-		
-		if(pt == po.PromotionType.FULL_CUT){
+
+		if (pt == po.PromotionType.FULL_CUT) {
 			pp = vo.PromotionType.FULL_CUT;
-		}else if(pt == po.PromotionType.DISCOUNT){
+		} else if (pt == po.PromotionType.DISCOUNT) {
 			pp = vo.PromotionType.DISCOUNT;
 		}
-		
+
 		return pp;
 	}
-	
-	public po.PromotionType converse(vo.PromotionType pt){
+
+	public po.PromotionType converse(vo.PromotionType pt) {
 		po.PromotionType pp = po.PromotionType.FULL_CUT;
-		
-		if(pt == vo.PromotionType.FULL_CUT){
+
+		if (pt == vo.PromotionType.FULL_CUT) {
 			pp = po.PromotionType.FULL_CUT;
-		}else if(pt == vo.PromotionType.DISCOUNT){
+		} else if (pt == vo.PromotionType.DISCOUNT) {
 			pp = po.PromotionType.DISCOUNT;
 		}
-		
+
 		return pp;
 	}
 }

@@ -1,6 +1,6 @@
 package vo;
 
-public class CustomerVO extends UserVO{
+public class CustomerVO extends UserVO {
 	/**
 	 * 
 	 */
@@ -8,28 +8,28 @@ public class CustomerVO extends UserVO{
 	String realName;
 	String phoneNumber;
 	String email;
-	
-	public CustomerVO(int i,String n,String p, String r, String pN, String e) {
+
+	public CustomerVO(int i, String n, String p, String r, String pN, String e) {
 		// TODO Auto-generated constructor stub
 		super(i, n, p);
 		realName = r;
 		phoneNumber = pN;
 		email = e;
 	}
-	
-	public CustomerVO(UserVO uvo, String r, String pN, String e){
+
+	public CustomerVO(UserVO uvo, String r, String pN, String e) {
 		this(uvo.getID(), uvo.getName(), uvo.getPassword(), r, pN, e);
 	}
-	
-	public String getRealName(){
+
+	public String getRealName() {
 		return realName;
 	}
-	
-	public String getPhoneNumber(){
+
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	
-	public String getEmail(){
+
+	public String getEmail() {
 		return email;
 	}
 }

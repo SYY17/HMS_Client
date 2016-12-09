@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 
 import po.UserPO;
 
-public interface LoginDataService extends Remote{
-	
+public interface LoginDataService extends Remote {
+
 	/**
 	 * 
 	 * @param username
@@ -14,8 +14,8 @@ public interface LoginDataService extends Remote{
 	 * @param id
 	 * @throws RemoteException
 	 */
-	public void insertUser(String username,String password,int id) throws RemoteException;
-	
+	public void insertUser(String username, String password, int id) throws RemoteException;
+
 	/**
 	 * 
 	 * @param username
@@ -25,13 +25,13 @@ public interface LoginDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public UserPO findUser(int id) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @throws RemoteException
 	 */
 	public void initLoginDataService() throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @throws RemoteException

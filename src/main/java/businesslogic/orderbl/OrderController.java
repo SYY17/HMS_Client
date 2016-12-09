@@ -121,8 +121,8 @@ public class OrderController implements OrderBLService {
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut) {
 		return new OrderVO(0, userName, hotelName, OrderStatus.Unfilled,
-				promotionInfo.getFinalPrice(hotelName,setTime,hotelInfo.getPrice(hotelName, roomType)* roomNumber), roomType, roomNumber, setTime, checkIn,
-				checkOut);
+				promotionInfo.getFinalPrice(hotelName, setTime, hotelInfo.getPrice(hotelName, roomType) * roomNumber),
+				roomType, roomNumber, setTime, checkIn, checkOut);
 	}
 
 	/**

@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import businesslogic.hotelbl.HotelController;
 import businesslogic.orderbl.PromotionInfo;
+import vo.PromotionVO;
 
 public class PromotionInfoImpl implements PromotionInfo {
 
@@ -20,13 +21,13 @@ public class PromotionInfoImpl implements PromotionInfo {
 		HotelController hc = new HotelController();
 		int hotelId = hc.reviewHotelInfo(hotelName).getHotelID();
 		PromotionController pc = new PromotionController();
-		
+
 		PromotionVO pvo = pc.searchPromotionPresent(hotelId, setTime);
-		
+
 		double finalPrice = -1;
 		finalPrice = pvo.calculatePayment(initialPrice);
-		
-		return (int)finalPrice;
+
+		return (int) finalPrice;
 	}
 
 }

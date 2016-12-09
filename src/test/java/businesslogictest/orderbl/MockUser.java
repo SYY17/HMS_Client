@@ -18,8 +18,8 @@ public class MockUser extends UserController {
 	public ResultMessage modifyOrderList(int flag, OrderVO orderVO) {
 		return ResultMessage.TRUE;
 	}
-	
-	public ResultMessage modifyCredit(int flag, CreditVO creditVO){
+
+	public ResultMessage modifyCredit(int flag, CreditVO creditVO) {
 		return ResultMessage.TRUE;
 	}
 }

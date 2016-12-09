@@ -4,7 +4,7 @@ import businesslogicservice.ResultMessage;
 import vo.CreditVO;
 
 public interface CreditControllerService {
-	
+
 	/**
 	 * 
 	 * @param cvo
@@ -12,14 +12,14 @@ public interface CreditControllerService {
 	 * @return 添加信用值信息
 	 */
 	public ResultMessage addCredit(int id, int credit);
-	
+
 	/**
 	 * 
 	 * @param id
 	 * @return 删除信用值信息
 	 */
 	public ResultMessage deleteCredit(int id);
-	
+
 	/**
 	 * 
 	 * @param cvo
@@ -27,7 +27,7 @@ public interface CreditControllerService {
 	 * @return 维护信用值
 	 */
 	public ResultMessage modifyCredit(int id, int credit);
-	
+
 	/**
 	 * 
 	 * @param id

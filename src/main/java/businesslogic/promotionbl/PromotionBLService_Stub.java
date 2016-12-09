@@ -11,24 +11,24 @@ import vo.FullCutPromotionVO;
 import vo.PromotionType;
 import vo.PromotionVO;
 
-public class PromotionBLService_Stub implements PromotionBLService{
-	
+public class PromotionBLService_Stub implements PromotionBLService {
+
 	String promotionName;
 	String content = null;
 	Date start = null;
 	Date stop = null;
 	PromotionType promotionType;
 	int id = 0;
-	
+
 	double every;
 	double cut;
 	double discount;
-	
-	public PromotionBLService_Stub(){
+
+	public PromotionBLService_Stub() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public PromotionBLService_Stub( String pn, String ctt, Date s, Date sp, PromotionType pt, int i) {
+
+	public PromotionBLService_Stub(String pn, String ctt, Date s, Date sp, PromotionType pt, int i) {
 		// TODO Auto-generated constructor stub
 		promotionName = pn;
 		content = ctt;
@@ -37,7 +37,7 @@ public class PromotionBLService_Stub implements PromotionBLService{
 		promotionType = pt;
 		id = i;
 	}
-	
+
 	/**
 	 * 
 	 * @param pvo
@@ -46,10 +46,10 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	@Override
 	public ResultMessage addPromotion(PromotionVO pvo) {
 		// TODO Auto-generated method stub
-		if(pvo != null){
+		if (pvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	public ArrayList<PromotionVO> getAllPromotion(int id) {
 		// TODO Auto-generated method stub
 		ArrayList<PromotionVO> PromotionList = new ArrayList<PromotionVO>();
-		PromotionList.add(new PromotionVO(promotionName,content, start, stop, promotionType, id));
+		PromotionList.add(new PromotionVO(promotionName, content, start, stop, promotionType, id));
 		return PromotionList;
 	}
 
@@ -73,10 +73,10 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	@Override
 	public ResultMessage deletePromotion(PromotionVO pvo) {
 		// TODO Auto-generated method stub
-		if(pvo != null){
+		if (pvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class PromotionBLService_Stub implements PromotionBLService{
 	@Override
 	public ResultMessage searchPromotion(PromotionVO pvo) {
 		// TODO Auto-generated method stub
-		if(pvo != null){
+		if (pvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	/**
@@ -120,41 +120,41 @@ public class PromotionBLService_Stub implements PromotionBLService{
 		PromotionList.add(new PromotionVO(promotionName, content, start, stop, promotionType, id));
 		return PromotionList;
 	}
-	
+
 	@Override
 	public ResultMessage addFullCutPromotion(FullCutPromotionVO fvo) {
 		// TODO Auto-generated method stub
-		if(fvo != null){
+		if (fvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	@Override
 	public ResultMessage addDiscountPromotion(DiscountPromotionVO dvo) {
 		// TODO Auto-generated method stub
-		if(dvo != null){
+		if (dvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	@Override
 	public ResultMessage deletePromotion(FullCutPromotionVO fvo) {
 		// TODO Auto-generated method stub
-		if(fvo != null){
+		if (fvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	@Override
 	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo) {
 		// TODO Auto-generated method stub
-		if(dvo != null){
+		if (dvo != null) {
 			return ResultMessage.TRUE;
-		}
-		else return ResultMessage.FALSE;
+		} else
+			return ResultMessage.FALSE;
 	}
 
 	@Override
@@ -162,5 +162,5 @@ public class PromotionBLService_Stub implements PromotionBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

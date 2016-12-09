@@ -11,12 +11,12 @@ import presentation.loginui.LogFrame;
 import presentation.userui.ManageSystemUser_start;
 
 public class Manager_controller {
-	
+
 	public static Stage stage;
-	
-    @FXML
-    private Pane layoutPane;
-	
+
+	@FXML
+	private Pane layoutPane;
+
 	@FXML
 	private void onLogout(ActionEvent event) throws IOException {
 		new LogFrame().start(stage);
@@ -26,12 +26,12 @@ public class Manager_controller {
 	private void onManageSystemUser(ActionEvent event) throws Exception {
 		new ManageSystemUser_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onManageHotelCreatingApplication(ActionEvent event) throws Exception {
 		new ManageHotelCreatingApplication_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onAbout(ActionEvent event) throws Exception {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);

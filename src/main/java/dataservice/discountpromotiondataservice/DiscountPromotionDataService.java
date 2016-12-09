@@ -12,20 +12,20 @@ public interface DiscountPromotionDataService {
 	 * @throws RemoteException
 	 */
 	public void insertDiscountPromotion(DiscountPromotionPO dpo) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @param dpo
 	 * @throws RemoteException
 	 */
 	public void deleteDiscountPromotion(DiscountPromotionPO dpo) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @throws RemoteException
 	 */
 	public void initDiscountPromotionDataService() throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @throws RemoteException

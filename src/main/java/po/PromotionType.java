@@ -1,5 +1,5 @@
 package po;
 
 public enum PromotionType {
-	FULL_CUT,DISCOUNT
+	FULL_CUT, DISCOUNT
 }

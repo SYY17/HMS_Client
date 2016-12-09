@@ -24,97 +24,98 @@ import vo.UserVO;
 public class ManageSystemUser_controller2 {
 
 	public static Stage stage;
-	
+
 	@FXML
 	private TableView<SystemUserData> applyInfoTable;
-	
+
 	@FXML
 	private ImageView return_icon;
-	
+
 	@FXML
 	private Label return_button;
-	
+
 	@FXML
 	private TextField search_field;
-	
+
 	@FXML
 	private ImageView search_button;
-	
+
 	@FXML
 	private ImageView add_button;
-	
+
 	@FXML
 	private TextField username_field;
-	
+
 	@FXML
 	private ChoiceBox<String> id_choicebox;
-	
+
 	@FXML
 	private Label username;
-	
+
 	private ObservableList<SystemUserData> data;
-	
+
 	@FXML
 	private void onManageSystemUser(MouseEvent event) throws Exception {
 		new ManageSystemUser_start2().start(stage);
 	}
-	
+
 	@FXML
 	private void onManageHotelCreatingApplication(MouseEvent event) throws Exception {
 		new ManageHotelCreatingApplication_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onEnteredReturn(MouseEvent event) throws Exception {
 		return_button.setTextFill(Paint.valueOf("#ffffff"));
 	}
-	
+
 	@FXML
 	private void onExitedReturn(MouseEvent event) throws Exception {
 		return_button.setTextFill(Paint.valueOf("#000000"));
 	}
-	
+
 	@FXML
 	private void onClickedReturn(MouseEvent event) throws Exception {
 		new ManagerUI_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onAddNewUser(MouseEvent event) throws Exception {
-		//在observablelist中添加value
+		// 在observablelist中添加value
 		String text = username_field.getText();
-		
-		if(text.equals("")){
-			//提示未输入用户名
-		}else if(text.length()>12){
-			//提示字数过多
-		}else{
+
+		if (text.equals("")) {
+			// 提示未输入用户名
+		} else if (text.length() > 12) {
+			// 提示字数过多
+		} else {
 			LoginControllerService loginController = new LoginControllerImpl();
 			loginController.addNewUser(text, "000000", this.parseID(id_choicebox));
 		}
-		
+
 		this.refreshTableView();
 	}
-	
+
 	@FXML
 	private void onLogout(ActionEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
-	
+
 	/**
 	 * 刷新表内数据
+	 * 
 	 * @param root
 	 */
-	private void refreshTableView(){
-		
-		//建立observablelist以更新数据
+	private void refreshTableView() {
+
+		// 建立observablelist以更新数据
 		UserControllerService userController = new UserControllerImpl();
-		
+
 		data = applyInfoTable.getItems();
 		data.clear();
-		
+
 		SystemUserDataHelper systemUserDataHelper = new SystemUserDataHelper();
-		
+
 		ArrayList<UserVO> list = userController.getAllUsers();
 		for (int i = 0; i < list.size(); i++) {
 			UserVO uvo = list.get(i);
@@ -122,7 +123,7 @@ public class ManageSystemUser_controller2 {
 		}
 		applyInfoTable.setItems(data);
 	}
-	
+
 	/**
 	 * 
 	 * @param id
@@ -131,15 +132,15 @@ public class ManageSystemUser_controller2 {
 	private int parseID(ChoiceBox<String> id) {
 		// TODO Auto-generated method stub
 		String s = id.getValue();
-		
-		if(s.equals("客户")){
+
+		if (s.equals("客户")) {
 			return 1;
-		}else if(s.equals("酒店工作人员")){
+		} else if (s.equals("酒店工作人员")) {
 			return 2;
-		}else if(s.equals("网站营销人员")){
+		} else if (s.equals("网站营销人员")) {
 			return 3;
 		}
 		return 4;
 	}
-	
+
 }

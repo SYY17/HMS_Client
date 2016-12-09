@@ -19,9 +19,9 @@ public class OrderData {
 	private final SimpleStringProperty roomType = new SimpleStringProperty();
 	private final SimpleIntegerProperty roomNumber = new SimpleIntegerProperty();
 	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
-	
-	public OrderData(int orderID, String userName,OrderStatus orderStatus, String hotelName,Timestamp setTime, Date checkIn, Date checkOut, RoomType roomType,
-			int roomNumber,int price) {
+
+	public OrderData(int orderID, String userName, OrderStatus orderStatus, String hotelName, Timestamp setTime,
+			Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
 		this.orderID.set(orderID);
 		this.userName.set(userName);
 		this.orderStatus.set(orderStatus.toString());
@@ -40,12 +40,12 @@ public class OrderData {
 	public void setOrderID(int orderID) {
 		this.orderID.set(orderID);
 	}
-	
-	public String getUserName(){
+
+	public String getUserName() {
 		return userName.get();
 	}
-	
-	public void setUserName(String userName){
+
+	public void setUserName(String userName) {
 		this.userName.set(userName);
 	}
 

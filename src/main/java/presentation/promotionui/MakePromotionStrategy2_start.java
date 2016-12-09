@@ -17,15 +17,16 @@ import javafx.stage.Stage;
 import presentation.hotelui.hotel.PromotionData;
 import vo.PromotionVO;
 
-public class MakePromotionStrategy2_start extends Application{
+public class MakePromotionStrategy2_start extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/MakePromotionStrategy2.fxml"));
+			Parent root = FXMLLoader
+					.load(getClass().getClassLoader().getResource("FXML/user/saler/MakePromotionStrategy2.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
-//			scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
+			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
 			MakePromotionStrategy2_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("制定营销策略");
@@ -38,7 +39,6 @@ public class MakePromotionStrategy2_start extends Application{
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
 
 	/**
 	 * 初始化表内数据
@@ -48,30 +48,29 @@ public class MakePromotionStrategy2_start extends Application{
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找tableview
-		TableView<PromotionData> promotionTableView = (TableView<PromotionData>) root
-				.lookup("#promotionTableView");
-		
+		TableView<PromotionData> promotionTableView = (TableView<PromotionData>) root.lookup("#promotionTableView");
+
 		// 建立observablelist以更新数据
 		final ObservableList<PromotionData> data = FXCollections.observableArrayList();
 		PromotionBLService promotionBlService = new PromotionController();
-		
+
 		data.clear();
 		ObservableList<TableColumn<PromotionData, ?>> observableList = promotionTableView.getColumns();
-		
+
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("promotionID"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("promotionName"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("promotionDate"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("promotionStop"));
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("promotionContent"));
-		
+
 		ArrayList<PromotionVO> promotionList = promotionBlService.getAllPromotion(20902341);
-		
-		for(int i=0;i<promotionList.size();i++){
+
+		for (int i = 0; i < promotionList.size(); i++) {
 			PromotionVO pvo = promotionList.get(i);
 			data.add(new PromotionDataHelper().toPromotionData(pvo));
-			}
-		
+		}
+
 		promotionTableView.setItems(data);
 	}
-	
+
 }

@@ -7,7 +7,7 @@ public interface CreditInfo {
 	 * @return 查询用户信用值
 	 */
 	public int getCreditByUserID(int id);
-	
+
 	/**
 	 * 
 	 * @param id

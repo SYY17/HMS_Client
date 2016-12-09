@@ -15,7 +15,7 @@ public class CreditBLServiceTest {
 	CreditVO c1;
 	CreditVO c2;
 	CreditVO c3;
-	
+
 	/**
 	 * 初始化
 	 */
@@ -40,7 +40,7 @@ public class CreditBLServiceTest {
 		message = creditBLService.addCredit(c1.getID(), c3.getCredit());
 		assertEquals(ResultMessage.FALSE, message);
 	}
-	
+
 	/**
 	 * 获得信用值的测试用例套件
 	 */
@@ -52,7 +52,7 @@ public class CreditBLServiceTest {
 		assertEquals(c1.getCredit(), cvo.getCredit());
 		assertEquals(c1.getID(), cvo.getID());
 	}
-	
+
 	/**
 	 * 维护信用值的测试用例套件
 	 */
@@ -65,7 +65,7 @@ public class CreditBLServiceTest {
 		message = creditBLService.modifyCredit(c3.getID(), c1.getCredit());
 		assertEquals(ResultMessage.FALSE, message);
 	}
-	
+
 	/**
 	 * 删除信用值对象的测试用例套件
 	 */

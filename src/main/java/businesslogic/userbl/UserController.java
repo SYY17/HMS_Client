@@ -11,12 +11,12 @@ import rmi.RemoteController;
 import runner.DataServiceClientRunner;
 import vo.UserVO;
 
-public class UserController implements UserBLService{
+public class UserController implements UserBLService {
 
 	private RemoteController remoteController;
 	private UserDataService userdataservice;
 	private UserLineItem userLineItem;
-	
+
 	public UserController() {
 		// TODO Auto-generated constructor stub
 		DataServiceClientRunner runner = new DataServiceClientRunner();
@@ -25,7 +25,7 @@ public class UserController implements UserBLService{
 		userdataservice = remoteController.getUserDataService();
 		userLineItem = new UserLineItem();
 	}
-	
+
 	/**
 	 * 
 	 * @param uvo
@@ -101,7 +101,7 @@ public class UserController implements UserBLService{
 			userdataservice.initUserDataService();
 			UserPO upo = userdataservice.findUser(username);
 			userdataservice.finishUserDataService();
-			
+
 			userLineItem.setUserLineItem(upo);
 			uvo = userLineItem.getUserVO();
 		} catch (RemoteException e) {
@@ -123,8 +123,8 @@ public class UserController implements UserBLService{
 			userdataservice.initUserDataService();
 			ArrayList<UserPO> upoList = userdataservice.findAll();
 			userdataservice.finishUserDataService();
-			
-			for(int i = 0; i<upoList.size(); i++){
+
+			for (int i = 0; i < upoList.size(); i++) {
 				userLineItem.setUserLineItem(upoList.get(i));
 				list.add(userLineItem.getUserVO());
 			}
@@ -134,17 +134,17 @@ public class UserController implements UserBLService{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 
 	 * @param userName
 	 * @return 根据用户ID查找并返回用户名
 	 */
 	@Override
-	public String searchByUserID(int id){
+	public String searchByUserID(int id) {
 		// TODO Auto-generated method stub
 		String username = null;
-		
+
 		try {
 			userdataservice.initUserDataService();
 			username = userdataservice.findUser(id);
@@ -153,7 +153,7 @@ public class UserController implements UserBLService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return username;
 	}
 

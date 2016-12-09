@@ -8,11 +8,11 @@ import businesslogicservice.userblservice.UserBLService;
 import presentation.userui.UserControllerService;
 import vo.UserVO;
 
-public class UserControllerImpl implements UserControllerService{
-	
+public class UserControllerImpl implements UserControllerService {
+
 	private UserBLService userBlService;
-	
-	public UserControllerImpl(){
+
+	public UserControllerImpl() {
 		userBlService = new UserController();
 	}
 
@@ -69,13 +69,13 @@ public class UserControllerImpl implements UserControllerService{
 		// TODO Auto-generated method stub
 		return userBlService.getAllUsers();
 	}
-	
+
 	/**
 	 * 
 	 * @param userName
 	 * @return 根据用户ID查找并返回用户名
 	 */
-	public String searchByUserID(int id){
+	public String searchByUserID(int id) {
 		return userBlService.searchByUserID(id);
 	}
 

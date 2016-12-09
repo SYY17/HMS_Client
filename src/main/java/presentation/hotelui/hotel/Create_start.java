@@ -13,7 +13,7 @@ public class Create_start extends Application {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/管理酒店基本信息（创建）.fxml"));
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.initStyle(StageStyle.DECORATED);
+			// primaryStage.initStyle(StageStyle.DECORATED);
 			Create_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");

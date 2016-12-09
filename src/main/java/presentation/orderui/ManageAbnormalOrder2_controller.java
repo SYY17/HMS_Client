@@ -18,27 +18,27 @@ public class ManageAbnormalOrder2_controller {
 	private void onLogout(ActionEvent event) throws IOException {
 		new LogFrame().start(stage);
 	}
-	
+
 	@FXML
 	private void onReturn(ActionEvent event) throws Exception {
 		new ManageAbnormalOrder1_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onOrderManage(ActionEvent event) throws Exception {
 		new ManageAbnormalOrder1_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onPromotionManage(ActionEvent event) throws Exception {
 		new MakePromotionStrategy1_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onCreditManage(ActionEvent event) throws Exception {
 		new ManageUserCredit1_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onAbout(ActionEvent event) throws Exception {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);

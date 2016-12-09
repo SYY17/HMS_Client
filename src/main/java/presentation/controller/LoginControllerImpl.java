@@ -5,19 +5,19 @@ import businesslogicservice.ResultMessage;
 import businesslogicservice.loginblservice.LoginBLService;
 import presentation.loginui.LoginControllerService;
 
-public class LoginControllerImpl implements LoginControllerService{
-	
+public class LoginControllerImpl implements LoginControllerService {
+
 	private LoginBLService loginBlService;
-	
-	public LoginControllerImpl(){
+
+	public LoginControllerImpl() {
 		loginBlService = new LoginController();
 	}
-	
+
 	/**
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 增加新用户
 	 */
 	@Override
@@ -30,7 +30,7 @@ public class LoginControllerImpl implements LoginControllerService{
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 登录
 	 */
 	@Override
@@ -43,7 +43,7 @@ public class LoginControllerImpl implements LoginControllerService{
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 注销
 	 */
 	@Override

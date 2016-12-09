@@ -2,7 +2,7 @@ package businesslogic.creditbl;
 
 import businesslogic.orderbl.CreditInfo;
 
-public class CreditInfoImpl implements CreditInfo{
+public class CreditInfoImpl implements CreditInfo {
 	/**
 	 * 
 	 * @param id
@@ -22,6 +22,6 @@ public class CreditInfoImpl implements CreditInfo{
 	@Override
 	public void updateCreditByUserID(int id, int creditValue) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

@@ -1,6 +1,8 @@
 package vo;
+
 import java.io.*;
-public class RoomVO implements Serializable{
+
+public class RoomVO implements Serializable {
 	/**
 	 * 
 	 */
@@ -10,32 +12,32 @@ public class RoomVO implements Serializable{
 	int totalSum;
 	int remainSum;
 	int price;
-	
-	public RoomVO(int hid,RoomType rt,int ts,int rs,int p){
-		hotelID=hid;
-		roomtype=rt;
-		totalSum=ts;
-		remainSum=rs;
-		price=p;
+
+	public RoomVO(int hid, RoomType rt, int ts, int rs, int p) {
+		hotelID = hid;
+		roomtype = rt;
+		totalSum = ts;
+		remainSum = rs;
+		price = p;
 	}
-	
-	public int getHotelID(){
+
+	public int getHotelID() {
 		return hotelID;
 	}
-	
-	public RoomType getRoomType(){
+
+	public RoomType getRoomType() {
 		return roomtype;
 	}
-	
-	public int getTotalSum(){
+
+	public int getTotalSum() {
 		return totalSum;
 	}
-	
-	public int getRemainSum(){
+
+	public int getRemainSum() {
 		return remainSum;
 	}
-	
-	public int getPrice(){
+
+	public int getPrice() {
 		return price;
 	}
 }

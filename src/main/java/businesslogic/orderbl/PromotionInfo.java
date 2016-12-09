@@ -2,7 +2,6 @@ package businesslogic.orderbl;
 
 import java.sql.Timestamp;
 
-
 public interface PromotionInfo {
 	/**
 	 * 

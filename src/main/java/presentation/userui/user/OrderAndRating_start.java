@@ -28,10 +28,11 @@ public class OrderAndRating_start extends Application {
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/OrderAndRating.fxml"));
+			Parent root = FXMLLoader
+					.load(getClass().getClassLoader().getResource("FXML/user/user/OrderAndRating.fxml"));
 
-//			initiateHotelInfoText(root);
-//			initiateTableView(root);
+			// initiateHotelInfoText(root);
+			// initiateTableView(root);
 
 			Scene scene = new Scene(root, 800, 600);
 			OrderAndRating_controller.stage = primaryStage;

@@ -35,7 +35,7 @@ public interface OrderDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public ArrayList<OrderPO> findOrder() throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @param id
@@ -43,7 +43,7 @@ public interface OrderDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public OrderPO findOrderByOrderID(int id) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @param userName
@@ -51,7 +51,7 @@ public interface OrderDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public ArrayList<OrderPO> findOrderByUserName(String userName) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @param hotelName

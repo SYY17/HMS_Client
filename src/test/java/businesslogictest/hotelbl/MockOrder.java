@@ -16,5 +16,5 @@ public class MockOrder extends OrderController {
 	public ResultMessage modifyHotelRoomList(int flag, HotelVO hotelVO) {
 		return ResultMessage.TRUE;
 	}
-	
+
 }

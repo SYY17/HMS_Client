@@ -19,7 +19,7 @@ public class Review_start extends Application {
 			initiate(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.initStyle(StageStyle.DECORATED);
+			// primaryStage.initStyle(StageStyle.DECORATED);
 			Review_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
@@ -29,28 +29,26 @@ public class Review_start extends Application {
 		}
 	}
 
-	
 	private void initiate(Parent root) {
-		Label nameLabel = (Label)root.lookup("#nameLabel");
-		Label addressLabel = (Label)root.lookup("#addressLabel");
-		Label areaLabel = (Label)root.lookup("#areaLabel");
-		Label starLabel = (Label)root.lookup("#starLabel");
-		Label phoneLabel = (Label)root.lookup("#phoneLabel");
-		TextArea descriptionText = (TextArea)root.lookup("#descriptionText");
-		
-		nameLabel.setText("homeinn");//not finished
+		Label nameLabel = (Label) root.lookup("#nameLabel");
+		Label addressLabel = (Label) root.lookup("#addressLabel");
+		Label areaLabel = (Label) root.lookup("#areaLabel");
+		Label starLabel = (Label) root.lookup("#starLabel");
+		Label phoneLabel = (Label) root.lookup("#phoneLabel");
+		TextArea descriptionText = (TextArea) root.lookup("#descriptionText");
+
+		nameLabel.setText("homeinn");// not finished
 		String name = nameLabel.getText();
-		
-		
+
 		HotelControllerService hotelController = new HotelControllerImpl();
 		HotelVO hvo = hotelController.reviewHotelInfo(name);
-		addressLabel.setText("地址："+hvo.getHotelAddress());
-		areaLabel.setText("商圈："+hvo.getBusinessArea());
-		starLabel.setText("星级："+hvo.getStarLevel()+"星");
-		phoneLabel.setText("联系方式："+hvo.getPhoneNumber());
+		addressLabel.setText("地址：" + hvo.getHotelAddress());
+		areaLabel.setText("商圈：" + hvo.getBusinessArea());
+		starLabel.setText("星级：" + hvo.getStarLevel() + "星");
+		phoneLabel.setText("联系方式：" + hvo.getPhoneNumber());
 		descriptionText.setText(hvo.getHotelDescription());
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

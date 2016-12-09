@@ -5,8 +5,8 @@ import dataservice.creditdataservice.CreditDataService;
 import po.CreditPO;
 
 public class CreditDataService_Driver {
-	
-	public void drive(CreditDataService creditDataService) throws RemoteException{
+
+	public void drive(CreditDataService creditDataService) throws RemoteException {
 		CreditPO cpo = new CreditPO(0, 0);
 		int id = 0;
 		creditDataService.initCreditDataService();
@@ -14,7 +14,8 @@ public class CreditDataService_Driver {
 		creditDataService.deleteCredit(id);
 		creditDataService.updateCredit(cpo);
 		cpo = creditDataService.findCredit(id);
-		if(cpo != null) System.out.println("Credit found!");
+		if (cpo != null)
+			System.out.println("Credit found!");
 		creditDataService.finishCreditDataService();
 	}
 }
