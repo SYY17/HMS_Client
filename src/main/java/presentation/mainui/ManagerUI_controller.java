@@ -17,21 +17,6 @@ public class ManagerUI_controller {
 	@FXML
 	private Label username;
 	
-	@FXML
-	private Label date;
-	
-	@FXML
-	private Label hotelSum;
-	
-	@FXML
-	private Label userSum;
-	
-	@FXML
-	private Label salerSum;
-	
-	@FXML
-	private Label managerSum;
-	
     @FXML
     private TableView<ApplyData> applyInfoTable;
 	

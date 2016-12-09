@@ -17,7 +17,6 @@ import rmi.RemoteController;
 import runner.DataServiceClientRunner;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
-import vo.PromotionType;
 import vo.PromotionVO;
 
 public class PromotionController implements PromotionBLService{

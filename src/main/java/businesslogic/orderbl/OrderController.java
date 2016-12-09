@@ -143,7 +143,10 @@ public class OrderController implements OrderBLService {
 		}
 	}
 	
+	//TODO finish the method
 	private boolean conflictTime(OrderPO orderPO, Date checkIn,Date checkOut){
+		boolean mark = true;
+		
 		return true;
 	}
 
@@ -201,10 +204,6 @@ public class OrderController implements OrderBLService {
 			e.printStackTrace();
 			return ResultMessage.FALSE;
 		}
-	}
-
-	private int getOrderID() {
-		return 0;
 	}
 
 	// public static void main(String[] args) {
