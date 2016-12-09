@@ -10,21 +10,20 @@ import presentation.userui.user.AllOrder_start;
 
 import presentation.userui.user.DetailedInfomation_start;
 
-
 public class User_controller {
-	
+
 	public static Stage stage;
-	
+
 	@FXML
 	private void onLogout(ActionEvent event) throws IOException {
 		new LogFrame().start(stage);
 	}
-	
+
 	@FXML
 	private void onShowOrder(ActionEvent event) throws IOException {
 		new AllOrder_start().start(stage);
 	}
-	
+
 	@FXML
 
 	private void onDetailedInfo(ActionEvent event) {

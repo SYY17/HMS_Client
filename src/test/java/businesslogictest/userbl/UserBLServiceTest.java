@@ -17,7 +17,7 @@ public class UserBLServiceTest {
 	String password;
 	UserVO userVO;
 	ArrayList<UserVO> userList;
-	
+
 	/**
 	 * 初始化
 	 */
@@ -25,8 +25,8 @@ public class UserBLServiceTest {
 	public void setUp() throws Exception {
 		id = 00000000;
 		name = "User";
-		password= "00000000";
-		userVO = new UserVO(id,name,password);
+		password = "00000000";
+		userVO = new UserVO(id, name, password);
 	}
 
 	/**
@@ -35,43 +35,43 @@ public class UserBLServiceTest {
 	@Test
 	public void testAddUser() {
 		userBlService = new UserController();
-		assertEquals(ResultMessage.TRUE,userBlService.addUser(userVO) );
+		assertEquals(ResultMessage.TRUE, userBlService.addUser(userVO));
 	}
-	
+
 	/**
 	 * 删除用户的测试用例套件
 	 */
 	@Test
 	public void deleteUser() {
 		userBlService = new UserController();
-		assertEquals(ResultMessage.TRUE,userBlService.deleteUser(userVO.getID()) );
+		assertEquals(ResultMessage.TRUE, userBlService.deleteUser(userVO.getID()));
 	}
-	
+
 	/**
 	 * 修改用户的测试用例套件
 	 */
 	@Test
 	public void modifyAddUser() {
 		userBlService = new UserController();
-		assertEquals(ResultMessage.TRUE,userBlService.modifyUser(userVO) );
+		assertEquals(ResultMessage.TRUE, userBlService.modifyUser(userVO));
 	}
-	
+
 	/**
 	 * 按照ID搜索用户的测试用例套件
 	 */
 	@Test
 	public void testSearchByUserName() {
 		userBlService = new UserController();
-		assertEquals(userList,userBlService.searchByUserName("") );
+		assertEquals(userList, userBlService.searchByUserName(""));
 	}
-	
+
 	/**
 	 * 获得所有用户的测试用例套件
 	 */
 	@Test
 	public void testGetAllUsers() {
 		userBlService = new UserController();
-		assertEquals(userList,userBlService.getAllUsers() );
+		assertEquals(userList, userBlService.getAllUsers());
 	}
 
 }

@@ -12,20 +12,20 @@ public interface FullCutPromotionDataService {
 	 * @throws RemoteException
 	 */
 	public void insertFullCutPromotion(FullCutPromotionPO fpo) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @param fpo
 	 * @throws RemoteException
 	 */
 	public void deleteFullCutPromotion(FullCutPromotionPO fpo) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @throws RemoteException
 	 */
 	public void initFullCutPromotionDataService() throws RemoteException;
-	
+
 	/**
 	 * 
 	 * @throws RemoteException

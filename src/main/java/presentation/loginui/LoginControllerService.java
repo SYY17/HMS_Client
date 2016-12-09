@@ -8,26 +8,26 @@ public interface LoginControllerService {
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 增加新用户
 	 */
-	public ResultMessage addNewUser(String username,String password,int id);
-	
+	public ResultMessage addNewUser(String username, String password, int id);
+
 	/**
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 登录
 	 */
-	public ResultMessage login(String username,String password, int id);
-	
+	public ResultMessage login(String username, String password, int id);
+
 	/**
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 注销
 	 */
-	public ResultMessage logout(String username,String password,int id);
+	public ResultMessage logout(String username, String password, int id);
 }

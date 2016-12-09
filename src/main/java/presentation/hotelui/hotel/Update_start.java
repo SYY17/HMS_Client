@@ -13,7 +13,7 @@ public class Update_start extends Application {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/更新入住退房信息.fxml"));
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.initStyle(StageStyle.DECORATED);
+			// primaryStage.initStyle(StageStyle.DECORATED);
 			Update_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");

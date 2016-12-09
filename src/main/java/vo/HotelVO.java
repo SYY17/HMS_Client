@@ -2,7 +2,8 @@ package vo;
 
 import java.io.*;
 import java.util.*;
-public class HotelVO implements Serializable{
+
+public class HotelVO implements Serializable {
 	/**
 	 * 
 	 */
@@ -13,113 +14,114 @@ public class HotelVO implements Serializable{
 	String businessArea;
 	String hotelDescription;
 	int starLevel;
-//	int roomNumber;
-//	ArrayList<RoomVO> wholeRooms; 
+	// int roomNumber;
+	// ArrayList<RoomVO> wholeRooms;
 	double rating;
 	String staffName;
 	String phoneNumber;
-	
-	public HotelVO(int hid,String hn,String ha,String ba,String hd,int sl,/*int rn,ArrayList<RoomVO> rooms,*/
-			double r,String sn,String pn){
-		hotelID=hid;
-		hotelName=hn;
-		hotelAddress=ha;
+
+	public HotelVO(int hid, String hn, String ha, String ba, String hd,
+			int sl, /* int rn,ArrayList<RoomVO> rooms, */
+			double r, String sn, String pn) {
+		hotelID = hid;
+		hotelName = hn;
+		hotelAddress = ha;
 		businessArea = ba;
 		hotelDescription = hd;
 		starLevel = sl;
-//		roomNumber=rn;
-//		wholeRooms=rooms;
-		rating =r;
+		// roomNumber=rn;
+		// wholeRooms=rooms;
+		rating = r;
 		staffName = sn;
 		phoneNumber = pn;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店ID
 	 */
-	public int getHotelID(){
+	public int getHotelID() {
 		return hotelID;
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店名称
 	 */
-	public String getHotelName(){
+	public String getHotelName() {
 		return hotelName;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店地址
 	 */
-	public String getHotelAddress(){
+	public String getHotelAddress() {
 		return hotelAddress;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店商圈
 	 */
-	public String getBusinessArea(){
+	public String getBusinessArea() {
 		return businessArea;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店简介
 	 */
-	public String getHotelDescription(){
+	public String getHotelDescription() {
 		return hotelDescription;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店星级
 	 */
-	public int getStarLevel(){
+	public int getStarLevel() {
 		return starLevel;
 	}
-	
-//	/**
-//	 * 
-//	 * @return 获得房间号
-//	 */
-//	public int getRoomNumber(){
-//		return roomNumber;
-//	}
-//	
-//	/**
-//	 * 
-//	 * @return 获得酒店房间列表
-//	 */
-//	public ArrayList<RoomVO> getRooms(){
-//		return wholeRooms;
-//	}
-	
+
+	// /**
+	// *
+	// * @return 获得房间号
+	// */
+	// public int getRoomNumber(){
+	// return roomNumber;
+	// }
+	//
+	// /**
+	// *
+	// * @return 获得酒店房间列表
+	// */
+	// public ArrayList<RoomVO> getRooms(){
+	// return wholeRooms;
+	// }
+
 	/**
 	 * 
 	 * @return 获得酒店评级
 	 */
-	public double getRating(){
+	public double getRating() {
 		return rating;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得工作人员姓名
 	 */
-	public String getStaffName(){
+	public String getStaffName() {
 		return staffName;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得酒店电话号码
 	 */
-	public String getPhoneNumber(){
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 }

@@ -10,7 +10,7 @@ public class UserData {
 	private final SimpleStringProperty identity = new SimpleStringProperty();
 	private final SimpleStringProperty start = new SimpleStringProperty();
 	private final SimpleStringProperty operation = new SimpleStringProperty();
-	
+
 	public UserData(String id, String username, String identity, String start, String operation) {
 		// TODO Auto-generated constructor stub
 		this.id.set(id);
@@ -19,7 +19,7 @@ public class UserData {
 		this.start.set(start);
 		this.operation.set(operation);
 	}
-	
+
 	/**
 	 * 
 	 * @return 用户ID
@@ -43,7 +43,7 @@ public class UserData {
 	public String getIdentity() {
 		return identity.getValue();
 	}
-	
+
 	/**
 	 * 
 	 * @return 创建时间
@@ -61,44 +61,44 @@ public class UserData {
 		button.setFont(new Font(12.0));
 		return button;
 	}
-	
+
 	/**
 	 * 
 	 * @param id
 	 */
-	public void setId(String id){
+	public void setId(String id) {
 		this.id.set(id);
 	}
-	
+
 	/**
 	 * 
 	 * @param username
 	 */
-	public void setUsername(String username){
+	public void setUsername(String username) {
 		this.username.set(username);
 	}
-	
+
 	/**
 	 * 
 	 * @param identity
 	 */
-	public void setIdentity(String identity){
+	public void setIdentity(String identity) {
 		this.identity.set(identity);
 	}
-	
+
 	/**
 	 * 
 	 * @param start
 	 */
-	public void setStart(String start){
+	public void setStart(String start) {
 		this.start.set(start);
 	}
-	
+
 	/**
 	 * 
 	 * @param operation
 	 */
-	public void setOperation(String operation){
+	public void setOperation(String operation) {
 		this.operation.set(operation);
 	}
 }

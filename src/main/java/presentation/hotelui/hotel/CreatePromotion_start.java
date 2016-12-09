@@ -22,9 +22,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 
 public class CreatePromotion_start extends Application {
-	
+
 	private final String pattern = "yyyy-MM-dd";
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -34,7 +34,7 @@ public class CreatePromotion_start extends Application {
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.initStyle(StageStyle.DECORATED);
+			// primaryStage.initStyle(StageStyle.DECORATED);
 			CreatePromotion_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
@@ -47,89 +47,82 @@ public class CreatePromotion_start extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	/*
 	 * 初始化ChoiceBox
 	 */
-	public void initChoiceBox(Parent root){
+	public void initChoiceBox(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找promotionType
-		ChoiceBox<Object> promotionType= (ChoiceBox<Object>) root
-				.lookup("#promotionType");
-		
-		    promotionType.setItems(FXCollections.observableArrayList( "FullCut", "Discount"));  
+		ChoiceBox<Object> promotionType = (ChoiceBox<Object>) root.lookup("#promotionType");
+
+		promotionType.setItems(FXCollections.observableArrayList("FullCut", "Discount"));
 	}
-	
+
 	/*
 	 * 初始化DatePicker
 	 */
-	public void initDatePicker(Parent root){
+	public void initDatePicker(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找startTime
-		DatePicker startTime = (DatePicker) root
-				.lookup("#startTime");
-		
+		DatePicker startTime = (DatePicker) root.lookup("#startTime");
+
 		@SuppressWarnings("unchecked")
 		// 查找stopTime
-		DatePicker stopTime = (DatePicker) root
-		        .lookup("#stopTime");
-		
-		StringConverter converter = new StringConverter<LocalDate>() {
-			DateTimeFormatter dateFormatter = 
-					DateTimeFormatter.ofPattern(pattern);
-			
-	            @Override
-	            public String toString(LocalDate date) {
-	            	if (date != null) {
-	                    return dateFormatter.format(date);
-	                } else {
-	                    return "";
-	                }
-	            }
-	            
-	            @Override
-	            public LocalDate fromString(String string) {
-	                if (string != null && !string.isEmpty()) {
-	                    return LocalDate.parse(string, dateFormatter);
-	                } else {
-	                    return null;
-	                }
-	            }
-	        };             
-	        
-	        startTime.setShowWeekNumbers(true);
-	        startTime.setConverter(converter);
-	        startTime.setPromptText(pattern.toLowerCase());
-	        
-	        stopTime.setShowWeekNumbers(true);
-	        stopTime.setConverter(converter);
-	        stopTime.setPromptText(pattern.toLowerCase());
-	        
-	        startTime.setValue(LocalDate.now());
-	        
-		final Callback<DatePicker, DateCell> dayCellFactory = 
-				new Callback<DatePicker, DateCell>() {
-			          @Override
-	                  public DateCell call(final DatePicker datePicker) {
-	                      return new DateCell() {
-	                          @Override
-	                          public void updateItem(LocalDate item, boolean empty) {
-	                              super.updateItem(item, empty);
+		DatePicker stopTime = (DatePicker) root.lookup("#stopTime");
 
-	                              if (item.isBefore(
-	                                      startTime.getValue().plusDays(1))
-	                                  ) {
-	                                      setDisable(true);
-	                                      setStyle("-fx-background-color: #ffc0cb;");
-	                              }   
-	                      }
-	                  };
-	              }
-	          };
-	          stopTime.setDayCellFactory(dayCellFactory);
-	          stopTime.setValue(startTime.getValue().plusDays(1));
+		StringConverter converter = new StringConverter<LocalDate>() {
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+			@Override
+			public String toString(LocalDate date) {
+				if (date != null) {
+					return dateFormatter.format(date);
+				} else {
+					return "";
+				}
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.isEmpty()) {
+					return LocalDate.parse(string, dateFormatter);
+				} else {
+					return null;
+				}
+			}
+		};
+
+		startTime.setShowWeekNumbers(true);
+		startTime.setConverter(converter);
+		startTime.setPromptText(pattern.toLowerCase());
+
+		stopTime.setShowWeekNumbers(true);
+		stopTime.setConverter(converter);
+		stopTime.setPromptText(pattern.toLowerCase());
+
+		startTime.setValue(LocalDate.now());
+
+		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+			@Override
+			public DateCell call(final DatePicker datePicker) {
+				return new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						super.updateItem(item, empty);
+
+						if (item.isBefore(startTime.getValue().plusDays(1))) {
+							setDisable(true);
+							setStyle("-fx-background-color: #ffc0cb;");
+						}
+					}
+				};
+			}
+		};
+		stopTime.setDayCellFactory(dayCellFactory);
+		stopTime.setValue(startTime.getValue().plusDays(1));
 	}
-	
+
 	/**
 	 * 初始化表内数据
 	 * 
@@ -138,17 +131,17 @@ public class CreatePromotion_start extends Application {
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找tableview
-		ListView<String> promotionListView = (ListView<String>) root
-				.lookup("#promotionListView");
-		
+		ListView<String> promotionListView = (ListView<String>) root.lookup("#promotionListView");
+
 		// 建立observablelist以更新数据
 		final ObservableList<PromotionData> data = FXCollections.observableArrayList();
 		PromotionBLService promotionBlService = new PromotionController();
-		
+
 		data.clear();
-		ArrayList<PromotionVO> pvo = promotionBlService.getAllPromotion(/* id = */20902341);//
+		ArrayList<PromotionVO> pvo = promotionBlService
+				.getAllPromotion(/* id = */20902341);//
 		ArrayList<String> content = new ArrayList<String>();
-		for(int i=0;i<pvo.size();i++){
+		for (int i = 0; i < pvo.size(); i++) {
 			content.add(pvo.get(i).getPromotionName());
 		}
 		ObservableList<String> strList = FXCollections.observableArrayList(content);

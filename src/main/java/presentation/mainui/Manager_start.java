@@ -8,10 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class Manager_start extends Application {
-	
+
 	private IDHelper idHelper;
 	private int id;
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -19,8 +19,8 @@ public class Manager_start extends Application {
 			Scene scene = new Scene(root, 800, 600);
 			Manager_controller.stage = primaryStage;
 			this.initiateHelper();
-			
-			//print，待删除
+
+			// print，待删除
 			System.out.println(id);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
@@ -29,17 +29,17 @@ public class Manager_start extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 获取当前用户ID
 	 */
-	private void initiateHelper(){
+	private void initiateHelper() {
 		idHelper = IDHelper.getInstance();
 		id = idHelper.getID();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 }

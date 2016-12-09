@@ -54,7 +54,7 @@ public class RoomData {
 	public void setTotalSum(int totalSum) {
 		this.totalSum.set(totalSum);
 	}
-	
+
 	public int getRemainSum() {
 		return remainSum.get();
 	}
@@ -62,7 +62,7 @@ public class RoomData {
 	public void setRemainSum(int remainSum) {
 		this.remainSum.set(remainSum);
 	}
-	
+
 	public int getPrice() {
 		return price.get();
 	}

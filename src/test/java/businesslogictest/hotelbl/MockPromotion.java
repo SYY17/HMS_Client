@@ -16,5 +16,5 @@ public class MockPromotion extends PromotionController {
 	public ResultMessage modifyHotelPrice(int flag, HotelVO hotelVO) {
 		return ResultMessage.TRUE;
 	}
-	
+
 }

@@ -48,9 +48,9 @@ public class OrderBLServiceTest {
 		orderList = null;
 		orderVO = new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime, checkIn,
 				checkOut);
-		//hotelVO = new HotelVO(orderID, hotelName, hotelName, hotelName, hotelName, orderID, orderID, null, orderID,
-				//hotelName, hotelName);
-		promotionVO = new PromotionVO( "双十一优惠", "双十一下订单八折优惠", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()*2), PromotionType.DISCOUNT, 20920010);//
+		hotelVO = new HotelVO(orderID, hotelName, hotelName, hotelName, hotelName, orderID, orderID, null, hotelName);
+		promotionVO = new PromotionVO("双十一优惠", "双十一下订单八折优惠", new Date(System.currentTimeMillis()),
+				new Date(System.currentTimeMillis() * 2), PromotionType.DISCOUNT, 20920010);//
 	}
 
 	/**
@@ -87,7 +87,8 @@ public class OrderBLServiceTest {
 	public void testCreate(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut) {
 		orderBlService = new OrderController();
-		assertEquals(orderVO, orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut));
+		assertEquals(orderVO,
+				orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut));
 	}
 
 	/**

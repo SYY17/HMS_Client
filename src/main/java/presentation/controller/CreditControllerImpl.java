@@ -6,14 +6,14 @@ import businesslogicservice.creditBLService.CreditBLService;
 import presentation.creditui.CreditControllerService;
 import vo.CreditVO;
 
-public class CreditControllerImpl implements CreditControllerService{
+public class CreditControllerImpl implements CreditControllerService {
 
 	private CreditBLService creditBLService;
-	
-	public CreditControllerImpl(){
+
+	public CreditControllerImpl() {
 		creditBLService = new CreditController();
 	}
-	
+
 	/**
 	 * 
 	 * @param cvo

@@ -9,25 +9,25 @@ import po.UserPO;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
 
-public class LoginController implements LoginBLService{
+public class LoginController implements LoginBLService {
 
 	private RemoteController remoteController;
 	private UserDataService userdataservice;
-	
+
 	public LoginController() {
 		// TODO Auto-generated constructor stub
-		//建立与服务器端的连接
+		// 建立与服务器端的连接
 		DataServiceClientRunner runner = new DataServiceClientRunner();
 		runner.start();
 		remoteController = runner.getRemoteController();
 		userdataservice = remoteController.getUserDataService();
 	}
-	
+
 	/**
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 增加新用户
 	 */
 	@Override
@@ -36,12 +36,12 @@ public class LoginController implements LoginBLService{
 		try {
 			userdataservice.initUserDataService();
 			UserPO user = userdataservice.findUser(username);
-			
-			//如果user数据不为空，表示已有该用户信息，直接返回注册失败
-			if(user != null){
+
+			// 如果user数据不为空，表示已有该用户信息，直接返回注册失败
+			if (user != null) {
 				return ResultMessage.FALSE;
 			}
-			
+
 			user = new UserPO(id, username, password);
 			userdataservice.insertUser(user);
 			userdataservice.finishUserDataService();
@@ -49,7 +49,8 @@ public class LoginController implements LoginBLService{
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		};
+		}
+		;
 		return ResultMessage.FALSE;
 	}
 
@@ -57,7 +58,7 @@ public class LoginController implements LoginBLService{
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 登录
 	 */
 	@Override
@@ -67,10 +68,11 @@ public class LoginController implements LoginBLService{
 			userdataservice.initUserDataService();
 			UserPO user = userdataservice.findUser(username);
 			userdataservice.finishUserDataService();
-			
-			if(user == null) return ResultMessage.FALSE;
-			
-			if(user.getPassword().equals(password) && (user.getID()/10000000 == id)){
+
+			if (user == null)
+				return ResultMessage.FALSE;
+
+			if (user.getPassword().equals(password) && (user.getID() / 10000000 == id)) {
 				return ResultMessage.TRUE;
 			}
 		} catch (RemoteException e) {
@@ -84,16 +86,16 @@ public class LoginController implements LoginBLService{
 	 * 
 	 * @param username
 	 * @param password
-	 * * @param id
+	 *            * @param id
 	 * @return 注销
 	 */
 	@Override
 	public ResultMessage logout(String username) {
 		// TODO Auto-generated method stub
-		if(username != null){
+		if (username != null) {
 			return ResultMessage.TRUE;
 		}
-		
+
 		return ResultMessage.FALSE;
 	}
 

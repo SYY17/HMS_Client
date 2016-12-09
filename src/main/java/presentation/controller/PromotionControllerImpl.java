@@ -8,14 +8,14 @@ import businesslogicservice.promotionblservice.PromotionBLService;
 import presentation.promotionui.PromotionControllerService;
 import vo.PromotionVO;
 
-public class PromotionControllerImpl implements PromotionControllerService{
+public class PromotionControllerImpl implements PromotionControllerService {
 
 	private PromotionBLService promotionBLService;
-	
+
 	public PromotionControllerImpl(String ctt, Date s, int i) {
 		promotionBLService = new PromotionController();
 	}
-	
+
 	/**
 	 * 
 	 * @param pvo

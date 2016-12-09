@@ -9,22 +9,22 @@ import rmi.RemoteController;
 
 public class DataServiceClientRunner {
 	private RemoteController remoteController;
-	
+
 	/**
 	 * 
 	 * @return 获得remoteController对象
 	 */
-	public RemoteController getRemoteController(){
+	public RemoteController getRemoteController() {
 		return remoteController;
 	}
-	
+
 	/**
 	 * 提供给外界的启动数据服务的方法
 	 */
-	public void start(){
+	public void start() {
 		linkToServer();
 	}
-	
+
 	/**
 	 * 内部对于链接到服务器的实现
 	 */
@@ -41,19 +41,19 @@ public class DataServiceClientRunner {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		DataServiceClientRunner cr = new DataServiceClientRunner();
 		cr.start();
-		//cr.test();
+		// cr.test();
 		RemoteController rc = cr.getRemoteController();
 		try {
 			rc.getUserDataService().initUserDataService();
 			UserPO user = rc.getUserDataService().findUser("customer");
-			if(user != null){
-				System.out.print("User ID: "+user.getID()+"; ");
-				System.out.print("User Name: "+user.getName()+"; ");
-				System.out.println("User Password: "+user.getPassword());
+			if (user != null) {
+				System.out.print("User ID: " + user.getID() + "; ");
+				System.out.print("User Name: " + user.getName() + "; ");
+				System.out.println("User Password: " + user.getPassword());
 			}
 			rc.getUserDataService().finishUserDataService();
 		} catch (RemoteException e) {

@@ -6,23 +6,23 @@ import vo.HotelVO;
 import vo.RoomType;
 import vo.RoomVO;
 
-public class HotelInfoForOrder implements HotelInfo{
-	
+public class HotelInfoForOrder implements HotelInfo {
+
 	HotelBLService hotelController;
-	
+
 	/**
 	 * 
 	 * @param hotelName,roomType
-	 * @return 查询房间价格 
+	 * @return 查询房间价格
 	 */
-	public int getPrice(String hotelName,RoomType roomType){
+	public int getPrice(String hotelName, RoomType roomType) {
 		HotelVO hvo = hotelController.reviewHotelInfo(hotelName);
 		RoomVO room = hotelController.searchRoom(hvo.getHotelID(), po.RoomType.valueOf(roomType.toString()));
 		int price = room.getPrice();
-		
+
 		return price;
 	}
-	
+
 	/**
 	 * 
 	 * @param hotelName,roomType,changedRoomNum
@@ -33,8 +33,8 @@ public class HotelInfoForOrder implements HotelInfo{
 		// TODO Auto-generated method stub
 		HotelVO hvo = hotelController.reviewHotelInfo(hotelName);
 		RoomVO room = hotelController.searchRoom(hvo.getHotelID(), po.RoomType.valueOf(roomType.toString()));
-		RoomVO rvo = new RoomVO(room.getHotelID(), roomType, room.getTotalSum(), 
-				room.getRemainSum()+changedRoomNum, room.getPrice());
+		RoomVO rvo = new RoomVO(room.getHotelID(), roomType, room.getTotalSum(), room.getRemainSum() + changedRoomNum,
+				room.getPrice());
 		hotelController.ModifyRoom(rvo);
 	}
 
@@ -49,7 +49,7 @@ public class HotelInfoForOrder implements HotelInfo{
 		HotelVO hvo = hotelController.reviewHotelInfo(hotelName);
 		RoomVO room = hotelController.searchRoom(hvo.getHotelID(), po.RoomType.valueOf(roomType.toString()));
 		int roomNum = room.getTotalSum();
-		
+
 		return roomNum;
 	}
 

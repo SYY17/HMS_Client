@@ -37,7 +37,7 @@ public class LogFrame extends Application {
 	Stage stage;
 	int identity;
 	IDHelper idHelper;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		stage = primaryStage;
@@ -45,16 +45,16 @@ public class LogFrame extends Application {
 		root.setId("panel_log");
 		Scene scene = new Scene(root, 800, 600);
 		scene.getStylesheets().add(this.getClass().getResource("logFrame.css").toExternalForm());
-		
-		//title
+
+		// title
 		Label label = new Label("酒店管理系统");
 		label.setLayoutX(315.0);
 		label.setLayoutY(59.0);
 		label.setFont(new Font(30.0));
 		label.setId("label_title");
 		root.getChildren().add(label);
-		
-		//rect_Big
+
+		// rect_Big
 		Rectangle rectBig = new Rectangle();
 		root.getChildren().add(rectBig);
 		rectBig.setArcHeight(5.0);
@@ -66,8 +66,8 @@ public class LogFrame extends Application {
 		rectBig.setLayoutY(145.0);
 		rectBig.setStrokeWidth(2.0);
 		rectBig.setEffect(new DropShadow());
-		
-		//body_Panel
+
+		// body_Panel
 		Pane body = new Pane();
 		root.getChildren().add(body);
 		body.setLayoutX(93.0);
@@ -75,19 +75,19 @@ public class LogFrame extends Application {
 		body.prefHeight(123.0);
 		body.prefWidth(159.0);
 		body.setId("panel_body");
-		
-		//login_Panel
+
+		// login_Panel
 		login = this.initialLoginPane();
-		
-		//choose_Type
+
+		// choose_Type
 		Label choose = new Label("请选择操作类型");
 		body.getChildren().add(choose);
 		choose.setLayoutX(-6.0);
 		choose.setLayoutY(14.0);
 		choose.setFont(new Font(14.0));
-		
-		//type
-		ChoiceBox <String> type = new ChoiceBox<String>();
+
+		// type
+		ChoiceBox<String> type = new ChoiceBox<String>();
 		type.setCursor(Cursor.HAND);
 		body.getChildren().add(type);
 		type.setLayoutX(7.0);
@@ -101,22 +101,22 @@ public class LogFrame extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				if(type.getValue().equals("注册")){
+				if (type.getValue().equals("注册")) {
 					root.getChildren().remove(login);
 					register = initialRegisterPane();
 					root.getChildren().add(register);
-				}else{
+				} else {
 					root.getChildren().remove(register);
 					login = initialLoginPane();
 					root.getChildren().add(login);
 				}
 			}
-			
+
 		});
 		type.setEffect(new DropShadow());
 		type.setId("choicebox_type");
-		
-		//rect_Small
+
+		// rect_Small
 		Rectangle rectSmall = new Rectangle();
 		root.getChildren().add(rectSmall);
 		rectSmall.setArcHeight(5.0);
@@ -128,32 +128,32 @@ public class LogFrame extends Application {
 		rectSmall.setLayoutY(190.0);
 		rectSmall.setStrokeWidth(2.0);
 		rectSmall.setEffect(new DropShadow());
-		
+
 		root.getChildren().add(login);
-//		primaryStage.initStyle(StageStyle.DECORATED);
+		// primaryStage.initStyle(StageStyle.DECORATED);
 		primaryStage.setTitle("欢迎使用酒店管理系统");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
-	private Pane initialLoginPane(){
-		//login_Panel
+
+	private Pane initialLoginPane() {
+		// login_Panel
 		Pane login = new Pane();
 		login.setLayoutX(173.0);
 		login.setLayoutY(208.0);
 		login.prefHeight(184.0);
 		login.prefWidth(361.0);
 		login.setId("panel_login");
-		
-		//label_Id
+
+		// label_Id
 		Label type = new Label("请选择用户类型");
 		login.getChildren().add(type);
 		type.setLayoutX(65.0);
 		type.setLayoutY(10.0);
 		type.setFont(new Font(14.0));
-		
-		//identity
-		ChoiceBox <String> id = new ChoiceBox<String>();
+
+		// identity
+		ChoiceBox<String> id = new ChoiceBox<String>();
 		id.setCursor(Cursor.HAND);
 		login.getChildren().add(id);
 		id.setLayoutX(181.0);
@@ -164,15 +164,15 @@ public class LogFrame extends Application {
 		id.setValue("客户");
 		id.setEffect(new DropShadow());
 		id.setId("choicebox_id");
-		
-		//Label_Name
+
+		// Label_Name
 		Label name = new Label("用户名");
 		login.getChildren().add(name);
 		name.setLayoutX(121.0);
 		name.setLayoutY(59.0);
 		name.setFont(new Font(14.0));
-		
-		//TextField_Name
+
+		// TextField_Name
 		TextField nameField = new TextField();
 		login.getChildren().add(nameField);
 		nameField.setLayoutX(181.0);
@@ -181,15 +181,15 @@ public class LogFrame extends Application {
 		nameField.setCursor(Cursor.HAND);
 		nameField.setEffect(new DropShadow());
 		nameField.setId("input");
-		
-		//Label_Password
+
+		// Label_Password
 		Label password = new Label("密码");
 		login.getChildren().add(password);
 		password.setLayoutX(135.0);
 		password.setLayoutY(106.0);
 		password.setFont(new Font(14.0));
-		
-		//PasswordField_Password
+
+		// PasswordField_Password
 		PasswordField passwordField = new PasswordField();
 		login.getChildren().add(passwordField);
 		passwordField.setLayoutX(181.0);
@@ -198,8 +198,8 @@ public class LogFrame extends Application {
 		passwordField.setCursor(Cursor.HAND);
 		passwordField.setEffect(new DropShadow());
 		passwordField.setId("input");
-		
-		//Button_login
+
+		// Button_login
 		Button loginButton = new Button("登录");
 		login.getChildren().add(loginButton);
 		loginButton.setMnemonicParsing(false);
@@ -212,7 +212,7 @@ public class LogFrame extends Application {
 		loginButton.setEffect(new DropShadow());
 		loginButton.setId("button_login");
 		loginButton.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
@@ -220,42 +220,42 @@ public class LogFrame extends Application {
 				String username = nameField.getText();
 				String password = passwordField.getText();
 				ResultMessage result = loginController.login(username, password, parseID(id));
-				if(result == ResultMessage.TRUE){
-					//初始化ID
+				if (result == ResultMessage.TRUE) {
+					// 初始化ID
 					idHelper = IDHelper.getInstance();
 					UserControllerService userController = new UserControllerImpl();
 					UserVO uvo = userController.searchByUserName(username);
 					idHelper.initialID(uvo.getID());
 					identity = updateIdentity(uvo.getID());
 					jumpToMainFrame();
-				}else{
-					//弹出登录失败对话框
+				} else {
+					// 弹出登录失败对话框
 				}
 			}
-			
+
 		});
-		
+
 		return login;
 	}
-	
-	private Pane initialRegisterPane(){
-		//register_Panel
+
+	private Pane initialRegisterPane() {
+		// register_Panel
 		Pane register = new Pane();
 		register.setLayoutX(173.0);
 		register.setLayoutY(208.0);
 		register.prefHeight(184.0);
 		register.prefWidth(361.0);
 		register.setId("panel_register");
-		
-		//label_Id
+
+		// label_Id
 		Label type = new Label("请选择用户类型");
 		register.getChildren().add(type);
 		type.setLayoutX(65.0);
 		type.setLayoutY(10.0);
 		type.setFont(new Font(14.0));
-		
-		//identity
-		ChoiceBox <String> id = new ChoiceBox<String>();
+
+		// identity
+		ChoiceBox<String> id = new ChoiceBox<String>();
 		id.setCursor(Cursor.HAND);
 		register.getChildren().add(id);
 		id.setLayoutX(181.0);
@@ -266,15 +266,15 @@ public class LogFrame extends Application {
 		id.setValue("客户");
 		id.setEffect(new DropShadow());
 		id.setId("choicebox_id");
-		
-		//Label_Name
+
+		// Label_Name
 		Label name = new Label("用户名");
 		register.getChildren().add(name);
 		name.setLayoutX(121.0);
 		name.setLayoutY(57.0);
 		name.setFont(new Font(14.0));
-		
-		//TextField_Name
+
+		// TextField_Name
 		TextField nameField = new TextField();
 		register.getChildren().add(nameField);
 		nameField.setLayoutX(181.0);
@@ -283,15 +283,15 @@ public class LogFrame extends Application {
 		nameField.setCursor(Cursor.HAND);
 		nameField.setEffect(new DropShadow());
 		nameField.setId("input");
-		
-		//Label_Password
+
+		// Label_Password
 		Label password = new Label("密码");
 		register.getChildren().add(password);
 		password.setLayoutX(135.0);
 		password.setLayoutY(104.0);
 		password.setFont(new Font(14.0));
-		
-		//PasswordField_Password
+
+		// PasswordField_Password
 		PasswordField passwordField = new PasswordField();
 		register.getChildren().add(passwordField);
 		passwordField.setLayoutX(181.0);
@@ -300,15 +300,15 @@ public class LogFrame extends Application {
 		passwordField.setCursor(Cursor.HAND);
 		passwordField.setEffect(new DropShadow());
 		passwordField.setId("input");
-		
-		//Label_PasswordConfirm
+
+		// Label_PasswordConfirm
 		Label passwordConfirm = new Label("密码确认");
 		register.getChildren().add(passwordConfirm);
 		passwordConfirm.setLayoutX(107.0);
 		passwordConfirm.setLayoutY(151.0);
 		passwordConfirm.setFont(new Font(14.0));
-		
-		//PasswordField_PasswordConfirm
+
+		// PasswordField_PasswordConfirm
 		PasswordField passwordConfirmField = new PasswordField();
 		register.getChildren().add(passwordConfirmField);
 		passwordConfirmField.setLayoutX(181.0);
@@ -317,8 +317,8 @@ public class LogFrame extends Application {
 		passwordConfirmField.setCursor(Cursor.HAND);
 		passwordConfirmField.setEffect(new DropShadow());
 		passwordConfirmField.setId("input");
-		
-		//Button_register
+
+		// Button_register
 		Button registerButton = new Button("注册");
 		register.getChildren().add(registerButton);
 		registerButton.setMnemonicParsing(false);
@@ -331,7 +331,7 @@ public class LogFrame extends Application {
 		registerButton.setEffect(new DropShadow());
 		registerButton.setId("button_register");
 		registerButton.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
@@ -339,51 +339,51 @@ public class LogFrame extends Application {
 				String username = nameField.getText();
 				String password = passwordField.getText();
 				String confirm = passwordConfirmField.getText();
-				if(!password.equals(confirm)){
-					//提示两次输入不一致
+				if (!password.equals(confirm)) {
+					// 提示两次输入不一致
 					return;
 				}
 				ResultMessage result = loginController.addNewUser(username, password, identity);
-				if(result == ResultMessage.TRUE){
-					//提示注册成功，确认跳转至登录选项
+				if (result == ResultMessage.TRUE) {
+					// 提示注册成功，确认跳转至登录选项
 					System.out.println("Registered!");
-				}else{
-					//弹出注册失败对话框
+				} else {
+					// 弹出注册失败对话框
 				}
 			}
 		});
-		
+
 		return register;
 	}
-	
+
 	private int parseID(ChoiceBox<String> id) {
 		// TODO Auto-generated method stub
 		String s = id.getValue();
-		
-		if(s.equals("客户")){
+
+		if (s.equals("客户")) {
 			return 1;
-		}else if(s.equals("酒店工作人员")){
+		} else if (s.equals("酒店工作人员")) {
 			return 2;
-		}else if(s.equals("网站营销人员")){
+		} else if (s.equals("网站营销人员")) {
 			return 3;
 		}
 		return 4;
 	}
-	
-	private void jumpToMainFrame(){
-		if(identity == 4){
+
+	private void jumpToMainFrame() {
+		if (identity == 4) {
 			new Manager_start().start(stage);
-		}else if(identity == 3){
+		} else if (identity == 3) {
 			new Saler_start().start(stage);
-		}else if(identity == 2){
+		} else if (identity == 2) {
 			new Hotel_start().start(stage);
-		}else{
+		} else {
 			new User_start().start(stage);
 		}
 	}
-	
-	private int updateIdentity(int id){
-		int i = id/10000000;
+
+	private int updateIdentity(int id) {
+		int i = id / 10000000;
 		return i;
 	}
 

@@ -15,7 +15,7 @@ public class SystemUserData {
 	private final SimpleStringProperty username = new SimpleStringProperty();
 	private final SimpleStringProperty identity = new SimpleStringProperty();
 	private final SimpleStringProperty operation = new SimpleStringProperty();
-	
+
 	public SystemUserData(String id, String username, String identity, String operation) {
 		// TODO Auto-generated constructor stub
 		this.id.set(id);
@@ -23,7 +23,7 @@ public class SystemUserData {
 		this.identity.set(identity);
 		this.operation.set(operation);
 	}
-	
+
 	/**
 	 * 
 	 * @return 用户ID
@@ -58,9 +58,10 @@ public class SystemUserData {
 		button.setMaxSize(20, 20);
 		button.setMinSize(20, 20);
 		button.setCursor(Cursor.HAND);
-		button.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("deleteuser.png").toString()), null, null, null, null)));
+		button.setBackground(new Background(new BackgroundImage(
+				new Image(getClass().getResource("deleteuser.png").toString()), null, null, null, null)));
 		button.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
@@ -68,40 +69,40 @@ public class SystemUserData {
 				userController.deleteUser(Integer.valueOf(getId()));
 			}
 		});
-		
+
 		return button;
 	}
-	
+
 	/**
 	 * 
 	 * @param id
 	 */
-	public void setId(String id){
+	public void setId(String id) {
 		this.id.set(id);
 	}
-	
+
 	/**
 	 * 
 	 * @param username
 	 */
-	public void setUsername(String username){
+	public void setUsername(String username) {
 		this.username.set(username);
 	}
-	
+
 	/**
 	 * 
 	 * @param identity
 	 */
-	public void setIdentity(String identity){
+	public void setIdentity(String identity) {
 		this.identity.set(identity);
 	}
-	
+
 	/**
 	 * 
 	 * @param operation
 	 */
-	public void setOperation(String operation){
+	public void setOperation(String operation) {
 		this.operation.set(operation);
 	}
-	
+
 }

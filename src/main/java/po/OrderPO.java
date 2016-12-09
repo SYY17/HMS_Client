@@ -20,7 +20,7 @@ public class OrderPO implements Serializable {
 	Date checkIn;
 	Date checkOut;
 
-	public OrderPO(int orderid, String un,String hn, OrderStatus orderstatus, int pr, RoomType rT, int rn, Timestamp s,
+	public OrderPO(int orderid, String un, String hn, OrderStatus orderstatus, int pr, RoomType rT, int rn, Timestamp s,
 			Date ci, Date co) {
 		orderID = orderid;
 		orderStatus = orderstatus;

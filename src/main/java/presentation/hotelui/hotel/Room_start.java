@@ -24,7 +24,7 @@ public class Room_start extends Application {
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.initStyle(StageStyle.DECORATED);
+			// primaryStage.initStyle(StageStyle.DECORATED);
 			Room_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
@@ -34,7 +34,6 @@ public class Room_start extends Application {
 		}
 	}
 
-	
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		TableView<RoomData> roomView = (TableView<RoomData>) root.lookup("#roomView");
@@ -43,15 +42,16 @@ public class Room_start extends Application {
 		data.clear();
 		ObservableList<TableColumn<RoomData, ?>> observableList = roomView.getColumns();
 		initiateObservableList(observableList);
-		
-		int id = 20905098;         /*    传入id?     */
-		
+
+		int id = 20905098; /* 传入id? */
+
 		ArrayList<RoomVO> roomList = hotelController.searchRooms(id);
-		if(roomList!=null){
-		for (int i = 0; i < roomList.size(); i++) {
-			RoomVO rvo = roomList.get(i);
-			data.add(new RoomData(rvo.getHotelID(), rvo.getRoomType(), rvo.getTotalSum(), rvo.getRemainSum(), rvo.getPrice()));
-		}
+		if (roomList != null) {
+			for (int i = 0; i < roomList.size(); i++) {
+				RoomVO rvo = roomList.get(i);
+				data.add(new RoomData(rvo.getHotelID(), rvo.getRoomType(), rvo.getTotalSum(), rvo.getRemainSum(),
+						rvo.getPrice()));
+			}
 		}
 		roomView.setItems(data);
 
@@ -63,7 +63,7 @@ public class Room_start extends Application {
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("remainSum"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

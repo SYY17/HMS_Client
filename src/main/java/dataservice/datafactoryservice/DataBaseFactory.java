@@ -8,8 +8,12 @@ import dataservice.userdataservice.UserDataService;
 
 public interface DataBaseFactory {
 	public UserDataService getUserData();
+
 	public OrderDataService getOrderData();
+
 	public HotelDataService getHotelData();
+
 	public PromotionDataService getPromotionData();
+
 	public CreditDataService getCreditData();
 }

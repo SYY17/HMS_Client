@@ -5,7 +5,8 @@ import vo.PromotionVO;
 
 public class PromotionDataHelper {
 
-	public PromotionData toPromotionData(PromotionVO pvo){
-		return new PromotionData( pvo.getID(), pvo.getPromotionName(), pvo.getStartTime(), pvo.getStopTime(), pvo.getContent());
+	public PromotionData toPromotionData(PromotionVO pvo) {
+		return new PromotionData(pvo.getID(), pvo.getPromotionName(), pvo.getStartTime(), pvo.getStopTime(),
+				pvo.getContent());
 	}
 }
