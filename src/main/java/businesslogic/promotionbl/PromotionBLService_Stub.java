@@ -2,6 +2,7 @@ package businesslogic.promotionbl;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
@@ -154,6 +155,12 @@ public class PromotionBLService_Stub implements PromotionBLService{
 			return ResultMessage.TRUE;
 		}
 		else return ResultMessage.FALSE;
+	}
+
+	@Override
+	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

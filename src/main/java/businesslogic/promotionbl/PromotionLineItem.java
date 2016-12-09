@@ -3,7 +3,7 @@ package businesslogic.promotionbl;
 import java.sql.Date;
 
 import po.PromotionPO;
-import vo.PromotionType;
+import po.PromotionType;
 public class PromotionLineItem {
 	
 	String promotionName;

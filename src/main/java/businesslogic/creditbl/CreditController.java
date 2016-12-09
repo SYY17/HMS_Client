@@ -17,6 +17,12 @@ public class CreditController implements CreditBLService{
 	
 	private RemoteController remoteController;
 	
+	public CreditController(){
+		DataServiceClientRunner runner = new DataServiceClientRunner();
+		runner.start();
+		remoteController = runner.getRemoteController();
+	}
+	
 	/**
 	 * 
 	 * @param cvo

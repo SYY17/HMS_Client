@@ -97,18 +97,18 @@
 								<Font name="System Bold" size="14.0" />
 							</font>
 						</Label>
-						<TableView id="table" layoutX="8.0" layoutY="48.0" prefHeight="361.0" prefWidth="772.0">
-							<columns>
-								<TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="52.0" prefWidth="52.0" resizable="false" sortable="false" text="编号" />
-                        <TableColumn id="col_even" editable="false" maxWidth="603.0" prefWidth="113.0" resizable="false" sortable="false" text="名称" />
-								<TableColumn id="col_odd" editable="false" maxWidth="681.0" prefWidth="144.0" resizable="false" sortable="false" text="起始时间" />
-                        <TableColumn id="col_even" editable="false" maxWidth="505.0" minWidth="77.95857238769531" prefWidth="145.0" resizable="false" sortable="false" text="结束时间" />
-								<TableColumn id="col_odd" editable="false" maxWidth="514.0" minWidth="80.0" prefWidth="329.0" resizable="false" sortable="false" text="内容" />
-							</columns>
-							<effect>
-								<DropShadow />
-							</effect>
-						</TableView>
+                  <TableView fx:id="promotionTableView" layoutX="9.0" layoutY="44.0" prefHeight="361.0" prefWidth="773.0">
+                     <columns>
+                        <TableColumn id="col_odd" editable="false" maxWidth="108.0" minWidth="44.0" prefWidth="108.0" resizable="false" sortable="false" text="编号" />
+                        <TableColumn id="col_even" editable="false" maxWidth="659.0" minWidth="45.0" prefWidth="113.0" resizable="false" sortable="false" text="名称" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="602.0" minWidth="38.0" prefWidth="134.0" resizable="false" sortable="false" text="起始时间" />
+                        <TableColumn id="col_even" editable="false" maxWidth="503.0" minWidth="77.95857238769531" prefWidth="135.0" resizable="false" sortable="false" text="结束时间" />
+                        <TableColumn id="col_odd" editable="false" maxWidth="579.0" minWidth="77.0" prefWidth="346.0" resizable="false" sortable="false" text="内容" />
+                     </columns>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TableView>
 					</children>
 				</Pane>
 			</children>

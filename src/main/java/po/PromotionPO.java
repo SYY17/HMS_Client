@@ -3,8 +3,6 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
-import vo.PromotionType;
-
 public class PromotionPO implements Serializable, Promotion{
 	/**
 	 * 

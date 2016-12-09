@@ -2,25 +2,21 @@ package presentation.hotelui.hotel;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import presentation.loginui.LogFrame;
 import presentation.mainui.Hotel_start;
-import vo.PromotionVO;
 
 public class Promotion_controller {
 	
 	public static Stage stage;
-	private final ObservableList<PromotionData> data = FXCollections.observableArrayList();
 	public PromotionBLService promotionBlService = new PromotionController();
+	@FXML
 	public ListView<String> promotionListView;
 
 	@FXML
@@ -36,18 +32,6 @@ public class Promotion_controller {
 	@FXML
 	private void onAdd(ActionEvent event){
 		new CreatePromotion_start().start(stage);
-	}
-	
-	@FXML
-    private void initialize() {
-		data.clear();
-		ArrayList<PromotionVO> pvo = promotionBlService.getAllPromotion(/* id = */20905098);//
-		ArrayList<String> content = new ArrayList<String>();
-		for(int i=0;i<pvo.size();i++){
-			content.add(pvo.get(i).getPromotionName());
-		}
-		ObservableList<String> strList = FXCollections.observableArrayList(content);
-		promotionListView.setItems(strList);
 	}
 	
 	@FXML

@@ -36,7 +36,30 @@ public class PromotionInfoHotelImpl implements PromotionInfo{
 	@Override
 	public PromotionType getPromotionType() {
 		// TODO Auto-generated method stub
-		return promotionLineItem.getPromotionType();
+		return converse(promotionLineItem.getPromotionType());
 	}
 
+	public vo.PromotionType converse(po.PromotionType pt){
+		vo.PromotionType pp = vo.PromotionType.FULL_CUT;
+		
+		if(pt == po.PromotionType.FULL_CUT){
+			pp = vo.PromotionType.FULL_CUT;
+		}else if(pt == po.PromotionType.DISCOUNT){
+			pp = vo.PromotionType.DISCOUNT;
+		}
+		
+		return pp;
+	}
+	
+	public po.PromotionType converse(vo.PromotionType pt){
+		po.PromotionType pp = po.PromotionType.FULL_CUT;
+		
+		if(pt == vo.PromotionType.FULL_CUT){
+			pp = po.PromotionType.FULL_CUT;
+		}else if(pt == vo.PromotionType.DISCOUNT){
+			pp = po.PromotionType.DISCOUNT;
+		}
+		
+		return pp;
+	}
 }
