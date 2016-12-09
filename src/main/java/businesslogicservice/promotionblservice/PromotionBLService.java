@@ -2,6 +2,7 @@ package businesslogicservice.promotionblservice;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import businesslogicservice.ResultMessage;
 import vo.DiscountPromotionVO;
@@ -81,4 +82,12 @@ public interface PromotionBLService {
 	 * @return 删除营销策略
 	 */
 	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo);
+	
+	/**
+	 * 
+	 * @param id
+	 * @param presentTime
+	 * @return 按照当时时间查找营销策略
+	 */
+	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime);
 }

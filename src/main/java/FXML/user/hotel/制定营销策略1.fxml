@@ -74,7 +74,7 @@
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <ListView layoutX="20.0" layoutY="38.0" prefHeight="161.0" prefWidth="750.0">
+                  <ListView fx:id="promotionListView" layoutX="20.0" layoutY="38.0" prefHeight="161.0" prefWidth="750.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -89,7 +89,7 @@
                         <DropShadow />
                      </effect>
                   </Rectangle>
-                  <TextArea id="description" layoutX="111.0" layoutY="340.0" prefHeight="53.0" prefWidth="576.0">
+                  <TextArea fx:id="description" layoutX="111.0" layoutY="340.0" prefHeight="53.0" prefWidth="576.0">
                      <effect>
                         <DropShadow />
                      </effect></TextArea>
@@ -98,7 +98,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField id="promotionName" layoutX="118.0" layoutY="223.0" prefHeight="27.0" prefWidth="185.0">
+                  <TextField fx:id="promotionName" layoutX="118.0" layoutY="223.0" prefHeight="27.0" prefWidth="185.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -113,12 +113,12 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker id="startTime" layoutX="114.0" layoutY="259.0">
+                  <DatePicker fx:id="startTime" layoutX="114.0" layoutY="259.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </DatePicker>
-                  <DatePicker id="stopTime" layoutX="114.0" layoutY="297.0">
+                  <DatePicker fx:id="stopTime" layoutX="114.0" layoutY="297.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -139,17 +139,17 @@
                      </font>
                   </Label>
                   <Label layoutX="412.0" layoutY="311.0" text="普通折扣" />
-                  <ChoiceBox id="promotionType" layoutX="515.0" layoutY="224.0" prefWidth="150.0">
+                  <ChoiceBox fx:id="promotionType" layoutX="515.0" layoutY="224.0" prefWidth="150.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </ChoiceBox>
-                  <TextField id="every" layoutX="515.0" layoutY="267.0" prefHeight="27.0" prefWidth="84.0">
+                  <TextField fx:id="every" layoutX="515.0" layoutY="267.0" prefHeight="27.0" prefWidth="84.0">
                      <effect>
                         <DropShadow />
                      </effect>
                   </TextField>
-                  <TextField id="discount" layoutX="515.0" layoutY="306.0" prefHeight="27.0" prefWidth="71.0">
+                  <TextField fx:id="discount" layoutX="515.0" layoutY="306.0" prefHeight="27.0" prefWidth="71.0">
                      <effect>
                         <DropShadow />
                      </effect>
@@ -164,7 +164,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField id="cut" layoutX="623.0" layoutY="268.0" prefHeight="27.0" prefWidth="71.0">
+                  <TextField fx:id="cut" layoutX="623.0" layoutY="268.0" prefHeight="27.0" prefWidth="71.0">
                      <effect>
                         <DropShadow />
                      </effect>

@@ -101,13 +101,13 @@
 								<Font name="System Bold" size="14.0" />
 							</font>
 						</Label>
-						<TableView id="table" layoutX="16.0" layoutY="23.0" prefHeight="160.0" prefWidth="777.0">
+						<TableView fx:id="promotionTableView" layoutX="11.0" layoutY="27.0" prefHeight="160.0" prefWidth="777.0">
 							<columns>
-								<TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="44.0" prefWidth="51.0" resizable="false" sortable="false" text="编号" />
-                        <TableColumn id="col_even" editable="false" maxWidth="659.0" minWidth="45.0" prefWidth="145.0" resizable="false" sortable="false" text="名称" />
-								<TableColumn id="col_odd" editable="false" maxWidth="602.0" minWidth="38.0" prefWidth="136.0" resizable="false" sortable="false" text="起始时间" />
-                        <TableColumn id="col_even" editable="false" maxWidth="503.0" minWidth="77.95857238769531" prefWidth="134.0" resizable="false" sortable="false" text="结束时间" />
-								<TableColumn id="col_odd" editable="false" maxWidth="579.0" minWidth="77.0" prefWidth="370.0" resizable="false" sortable="false" text="内容" />
+								<TableColumn id="col_odd" editable="false" maxWidth="108.0" minWidth="44.0" prefWidth="108.0" resizable="false" sortable="false" text="编号" />
+                        <TableColumn id="col_even" editable="false" maxWidth="659.0" minWidth="45.0" prefWidth="113.0" resizable="false" sortable="false" text="名称" />
+								<TableColumn id="col_odd" editable="false" maxWidth="602.0" minWidth="38.0" prefWidth="134.0" resizable="false" sortable="false" text="起始时间" />
+                        <TableColumn id="col_even" editable="false" maxWidth="503.0" minWidth="77.95857238769531" prefWidth="135.0" resizable="false" sortable="false" text="结束时间" />
+								<TableColumn id="col_odd" editable="false" maxWidth="579.0" minWidth="77.0" prefWidth="346.0" resizable="false" sortable="false" text="内容" />
 							</columns>
 							<effect>
 								<DropShadow />
@@ -129,12 +129,12 @@
 						<Font name="System Bold" size="14.0" />
 					</font>
 				</Label>
-				<Button layoutX="717.0" layoutY="128.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="提交">
+				<Button layoutX="717.0" layoutY="128.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="30.0" prefWidth="60.0" text="提交">
 					<effect>
 						<DropShadow />
 					</effect>
 				</Button>
-            <TextArea id="promotionDescription" layoutX="92.0" layoutY="94.0" prefHeight="68.0" prefWidth="595.0">
+            <TextArea fx:id="description" layoutX="92.0" layoutY="94.0" prefHeight="68.0" prefWidth="595.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -149,7 +149,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="promotionName" layoutX="96.0" layoutY="-34.0" prefHeight="27.0" prefWidth="185.0">
+            <TextField fx:id="promotionName" layoutX="96.0" layoutY="-34.0" prefHeight="27.0" prefWidth="185.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -159,12 +159,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <DatePicker id="startTime" layoutX="92.0" layoutY="10.0">
+            <DatePicker fx:id="startTime" layoutX="92.0" layoutY="10.0">
                <effect>
                   <DropShadow />
                </effect>
             </DatePicker>
-            <DatePicker id="stopTime" layoutX="92.0" layoutY="53.0">
+            <DatePicker fx:id="stopTime" layoutX="92.0" layoutY="53.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -179,7 +179,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox id="promotionType" layoutX="567.0" layoutY="-30.0" prefWidth="150.0">
+            <ChoiceBox fx:id="promotionType" layoutX="567.0" layoutY="-30.0" prefWidth="150.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -195,17 +195,17 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="every" layoutX="568.0" layoutY="17.0" prefHeight="27.0" prefWidth="84.0">
+            <TextField fx:id="every" layoutX="568.0" layoutY="17.0" prefHeight="27.0" prefWidth="84.0">
                <effect>
                   <DropShadow />
                </effect>
             </TextField>
-            <TextField id="cut" layoutX="684.0" layoutY="18.0" prefHeight="27.0" prefWidth="84.0">
+            <TextField fx:id="cut" layoutX="684.0" layoutY="18.0" prefHeight="27.0" prefWidth="84.0">
                <effect>
                   <DropShadow />
                </effect>
             </TextField>
-            <TextField id="discount" layoutX="568.0" layoutY="53.0" prefHeight="27.0" prefWidth="71.0">
+            <TextField fx:id="discount" layoutX="568.0" layoutY="53.0" prefHeight="27.0" prefWidth="71.0">
                <effect>
                   <DropShadow />
                </effect>

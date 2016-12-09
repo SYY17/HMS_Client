@@ -91,7 +91,13 @@ public class PromotionList {
 		String ctt = promotionLineItem.getContent();
 		Date s = promotionLineItem.getStartTime();
 		Date sp = promotionLineItem.getStopTime();
-		PromotionType pt = promotionLineItem.getPromotionType();
+		PromotionType pt = null;//
+		if(promotionLineItem.getPromotionType() == po.PromotionType.FULL_CUT){
+			pt = vo.PromotionType.FULL_CUT;
+		}
+		if(promotionLineItem.getPromotionType() == po.PromotionType.DISCOUNT){
+			pt = vo.PromotionType.DISCOUNT;
+		}
 		int i = promotionLineItem.getID();
 		return new PromotionVO(pn, ctt , s, sp, pt, i);
 	}

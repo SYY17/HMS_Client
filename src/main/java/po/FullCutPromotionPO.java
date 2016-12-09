@@ -2,9 +2,6 @@ package po;
 
 import java.sql.Date;
 
-import vo.Promotion;
-import vo.PromotionType;
-
 public class FullCutPromotionPO extends PromotionPO {
 
 	double every;
