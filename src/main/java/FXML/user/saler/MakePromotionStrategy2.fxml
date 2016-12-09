@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -13,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerUI_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -71,7 +79,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="495.0" />
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="促销策略列表">
                <cursor>
@@ -151,7 +159,7 @@
                   </Label>
                </center>
             </BorderPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="185.0" layoutX="647.0" layoutY="313.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="185.0" layoutX="647.0" layoutY="313.0" opacity="0.8" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="681.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/client.png" />
@@ -248,7 +256,7 @@
                   <Tooltip text="总计已制定的营销策略数" />
                </tooltip>
             </Label>
-            <TableView fx:id="promotionTableView" layoutX="160.0" layoutY="180.0" prefHeight="361.0" prefWidth="477.0">
+            <TableView fx:id="promotionTableView" layoutX="160.0" layoutY="180.0" prefHeight="394.0" prefWidth="477.0">
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="181.0" minWidth="44.0" prefWidth="77.0" resizable="false" sortable="false" text="编号" />
                   <TableColumn id="col_even" editable="false" maxWidth="659.0" minWidth="45.0" prefWidth="87.0" resizable="false" sortable="false" text="名称" />
@@ -256,9 +264,6 @@
                   <TableColumn id="col_even" editable="false" maxWidth="503.0" minWidth="77.95857238769531" prefWidth="104.0" resizable="false" sortable="false" text="结束时间" />
                   <TableColumn id="col_odd" editable="false" maxWidth="579.0" minWidth="77.0" prefWidth="106.0" resizable="false" sortable="false" text="内容" />
                </columns>
-               <effect>
-                  <DropShadow />
-               </effect>
             </TableView>
          </children>
       </Pane>

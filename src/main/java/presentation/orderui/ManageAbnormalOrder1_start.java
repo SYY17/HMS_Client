@@ -26,7 +26,7 @@ public class ManageAbnormalOrder1_start extends Application {
 		try {
 			Parent root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder1.fxml"));
-//			initiateTableView(root);
+			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
 			ManageAbnormalOrder1_controller.stage = primaryStage;

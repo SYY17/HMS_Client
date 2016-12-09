@@ -67,19 +67,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="495.0" />
             <ImageView fitHeight="429.0" fitWidth="400.0" layoutX="187.0" layoutY="111.0" opacity="0.44" pickOnBounds="true" preserveRatio="true" />
-            <TableView id="applyTable" fx:id="OrderInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="353.0" prefWidth="439.0">
+            <TableView id="applyTable" fx:id="OrderInfoTable" layoutX="165.0" layoutY="175.0" pickOnBounds="false" prefHeight="394.0" prefWidth="469.0">
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="编号" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="109.0" minWidth="109.0" prefWidth="109.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="用户名" />
-                  <TableColumn id="col_even" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="订单发起日期" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="查看" />
+                  <TableColumn id="col_even" editable="false" maxWidth="109.0" minWidth="109.0" prefWidth="109.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="用户名" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="订单发起日期" />
+                  <TableColumn id="col_even" editable="false" maxWidth="72.0" minWidth="40.0" prefWidth="72.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="查看" />
                </columns>
-               <effect>
-                  <DropShadow />
-               </effect>
             </TableView>
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新异常订单">
                <cursor>
@@ -159,7 +156,7 @@
                   </Label>
                </center>
             </BorderPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="185.0" layoutX="647.0" layoutY="313.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="185.0" layoutX="647.0" layoutY="313.0" opacity="0.8" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="681.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/client.png" />
