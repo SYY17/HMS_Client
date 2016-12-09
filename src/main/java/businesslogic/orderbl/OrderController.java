@@ -180,10 +180,6 @@ public class OrderController implements OrderBLService {
 			return ResultMessage.FALSE;
 		}
 	}
-	
-	private int getOrderID(){
-		return 0;
-	}
 
 	// public static void main(String[] args) {
 	// try {

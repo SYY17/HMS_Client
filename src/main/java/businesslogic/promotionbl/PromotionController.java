@@ -11,7 +11,6 @@ import po.PromotionPO;
 import rmi.RemoteController;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
-import vo.PromotionType;
 import vo.PromotionVO;
 
 public class PromotionController implements PromotionBLService{

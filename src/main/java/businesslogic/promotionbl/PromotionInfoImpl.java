@@ -3,7 +3,6 @@ package businesslogic.promotionbl;
 import java.sql.Timestamp;
 
 import businesslogic.orderbl.PromotionInfo;
-import vo.PromotionVO;
 
 public class PromotionInfoImpl implements PromotionInfo {
 
