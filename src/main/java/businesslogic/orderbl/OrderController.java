@@ -120,9 +120,31 @@ public class OrderController implements OrderBLService {
 	@Override
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut) {
-		return new OrderVO(0, userName, hotelName, OrderStatus.Unfilled,
-				promotionInfo.getFinalPrice(hotelName,setTime,hotelInfo.getPrice(hotelName, roomType)* roomNumber), roomType, roomNumber, setTime, checkIn,
-				checkOut);
+		boolean mark = true;
+		ArrayList<OrderPO> list = new ArrayList<OrderPO>();
+		try {
+			list = orderDataService.findOrderByHotelName(hotelName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < list.size(); i++) {
+			if (conflictTime(list.get(i), checkIn, checkOut)) {
+				mark = false;
+				break;
+			}
+		}
+		if (mark) {
+			return new OrderVO(0, userName, hotelName, OrderStatus.Unfilled,
+					promotionInfo.getFinalPrice(hotelName, setTime,
+							hotelInfo.getPrice(hotelName, roomType) * roomNumber),
+					roomType, roomNumber, setTime, checkIn, checkOut);
+		} else {
+			return null;
+		}
+	}
+	
+	private boolean conflictTime(OrderPO orderPO, Date checkIn,Date checkOut){
+		return true;
 	}
 
 	/**
@@ -180,8 +202,8 @@ public class OrderController implements OrderBLService {
 			return ResultMessage.FALSE;
 		}
 	}
-	
-	private int getOrderID(){
+
+	private int getOrderID() {
 		return 0;
 	}
 
