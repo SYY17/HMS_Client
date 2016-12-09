@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
@@ -16,25 +15,25 @@
          <children>
             <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/bg_3.jpg" />
+                  <Image url="@../../login/icon/blue.jpg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="7.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="786.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="92.0" layoutX="7.0" layoutY="7.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="786.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="475.0" layoutX="7.0" layoutY="109.0" opacity="0.54" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="145.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="456.0" layoutX="7.0" layoutY="109.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="153.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="40.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="30.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/usermanage_wh.png" />
+                  <Image url="@../../login/icon/usermanage.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="310.0" onMouseClicked="#onManageSystemUser" text="用户管理" textFill="#fffdfd">
+            <Label layoutX="51.0" layoutY="230.0" onMouseClicked="#onManageSystemUser" text="用户管理">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -42,12 +41,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="76.0" fitWidth="66.0" layoutX="46.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="80.0" layoutX="39.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/applycheck_wh.png" />
+                  <Image url="@../../login/icon/applycheck.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="423.0" onMouseClicked="#onManageHotelCreatingApplication" text="申请一览" textFill="WHITE">
+            <Label layoutX="50.0" layoutY="378.0" onMouseClicked="#onManageHotelCreatingApplication" text="申请一览">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -55,12 +54,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="41.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="72.0" fitWidth="100.0" layoutX="30.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/hotelinfo_wh.png" />
+                  <Image url="@../../login/icon/message.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="530.0" text="酒店管理" textFill="WHITE">
+            <Label layoutX="58.0" layoutY="507.0" text="站内信">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -68,16 +67,20 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2e78b9" height="456.0" layoutX="172.0" layoutY="109.0" opacity="0.38" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="417.0">
                <effect>
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="495.0" />
-            <TableView id="applyTable" fx:id="applyInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="353.0" prefWidth="439.0">
+            <ImageView fitHeight="444.0" fitWidth="400.0" layoutX="187.0" layoutY="113.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/middle_back.jpg" />
+               </image>
+            </ImageView>
+            <TableView id="applyTable" fx:id="applyInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="337.0" prefWidth="395.0">
                <columns>
-                  <TableColumn id="col_odd" editable="false" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="编号" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="109.0" minWidth="109.0" prefWidth="109.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="申请用户" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="编号" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="申请用户" />
                   <TableColumn id="col_even" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="酒店名称" />
                   <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="查看" />
                </columns>
@@ -93,17 +96,9 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="104.0" layoutY="34.0" text="酒店管理系统" textFill="WHITE">
+            <Label layoutX="104.0" layoutY="34.0" text="酒店管理系统">
                <font>
                   <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新申请查看">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -111,12 +106,25 @@
                   <Image url="@../../login/icon/logo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="99.0" fitWidth="99.0" layoutX="672.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="456.0" layoutX="602.0" layoutY="109.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="191.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="649.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/defaultuser.png" />
                </image>
             </ImageView>
-            <BorderPane layoutX="649.0" layoutY="239.0" prefHeight="27.0" prefWidth="145.0">
+            <Label layoutX="663.0" layoutY="144.0" text="当前用户">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <BorderPane layoutX="601.0" layoutY="283.0" prefHeight="27.0" prefWidth="191.0">
                <center>
                   <Label fx:id="username" text="admin" BorderPane.alignment="CENTER">
                      <cursor>
@@ -128,159 +136,29 @@
                   </Label>
                </center>
             </BorderPane>
-            <BorderPane layoutX="667.0" layoutY="275.0" prefHeight="27.0" prefWidth="127.0">
-               <center>
-                  <Label fx:id="date" text="2016-12-08" BorderPane.alignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </center>
-            </BorderPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="160.0" layoutX="647.0" layoutY="313.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
-            <Label fx:id="hotelSum" layoutX="742.0" layoutY="372.0" text="0">
+            <Button layoutX="676.0" layoutY="316.0" maxHeight="23.0" maxWidth="42.0" minHeight="23.0" minWidth="42.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="23.0" prefWidth="42.0" text="注销">
+               <effect>
+                  <DropShadow />
+               </effect>
                <cursor>
-                  <Cursor fx:constant="DEFAULT" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
-            </Label>
-            <Label layoutX="736.0" layoutY="353.0" text="酒店">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="736.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+            </Button>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="650.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/hotelworker.png" />
+                  <Image url="@../../login/icon/datecheck.png" />
                </image>
             </ImageView>
-            <Label fx:id="userSum" layoutX="688.0" layoutY="372.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册客户数" />
-               </tooltip>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
-            <Label layoutX="679.0" layoutY="353.0" text="客户">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="678.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/client.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="666.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/datecheck_small.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="61.0" layoutY="197.0" text="首页" textFill="WHITE">
+            <Label layoutX="670.0" layoutY="497.0" text="日期查看">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
-            </Label>
-            <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="35.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/frontpage_wh.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="711.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/defaultuser_wh.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="754.0" layoutY="81.0" onMouseClicked="#onLogout" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/logout.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="679.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/saler.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="735.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/manager.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="667.0" layoutY="421.0" text="营销人员">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="724.0" layoutY="421.0" text="管理人员">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="salerSum" layoutX="688.0" layoutY="440.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统营销人员数" />
-               </tooltip>
-            </Label>
-            <Label fx:id="managerSum" layoutX="742.0" layoutY="440.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统管理人员数" />
-               </tooltip>
-            </Label>
-            <Label fx:id="hotelSum1" layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
             </Label>
          </children>
       </Pane>
