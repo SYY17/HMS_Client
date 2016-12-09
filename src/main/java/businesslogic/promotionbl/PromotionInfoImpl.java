@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import businesslogic.hotelbl.HotelController;
 import businesslogic.orderbl.PromotionInfo;
+import vo.PromotionVO;
 
 public class PromotionInfoImpl implements PromotionInfo {
 
