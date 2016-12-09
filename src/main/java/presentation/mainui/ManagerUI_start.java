@@ -1,5 +1,8 @@
 package presentation.mainui;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -22,7 +25,7 @@ public class ManagerUI_start extends Application {
 			Scene scene = new Scene(root, 800, 600);
 			ManagerUI_controller.stage = primaryStage;
 			this.initiateHelper();
-			this.initiateUserName(root);
+			this.initiateElements(root);
 			
 			//print，待删除
 			System.out.println(id);
@@ -35,6 +38,16 @@ public class ManagerUI_start extends Application {
 	}
 	
 	/**
+	 * 初始化各组件的总方法
+	 * @param root
+	 */
+	private void initiateElements(Parent root) {
+		// TODO Auto-generated method stub
+		initiateDate(root);
+		initiateUserName(root);
+	}
+
+	/**
 	 * 获取当前用户ID
 	 */
 	private void initiateHelper(){
@@ -44,12 +57,25 @@ public class ManagerUI_start extends Application {
 	
 	/**
 	 * 初始化当前用户用户名
+	 * @param root
 	 */
 	private void initiateUserName(Parent root){
 		Label username = (Label) root.lookup("#username");
 		UserControllerService userController = new UserControllerImpl();
 		String name = userController.searchByUserID(id);
 		username.setText(name);
+	}
+	
+	/**
+	 * 初始化当前日期
+	 * @param root
+	 */
+	private void initiateDate(Parent root){
+		Label date = (Label) root.lookup("#date");
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String text = format.format(today);
+		date.setText(text);
 	}
 	
 	public static void main(String[] args) {
