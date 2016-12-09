@@ -55,7 +55,7 @@ public class Promotion_start extends Application {
 		ArrayList<PromotionVO> pvo = promotionBlService.getAllPromotion(/* id = */20902341);//
 		ArrayList<String> content = new ArrayList<String>();
 		for(int i=0;i<pvo.size();i++){
-			content.add(pvo.get(i).getPromotionName());
+			content.add( pvo.get(i).getPromotionName() + "                     " + pvo.get(i).getContent());
 		}
 		ObservableList<String> strList = FXCollections.observableArrayList(content);
 		promotionListView.setItems(strList);

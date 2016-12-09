@@ -287,29 +287,18 @@
                   <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
                </tooltip>
             </Label>
-            <ListView fx:id="promotionListView" layoutX="183.0" layoutY="192.0" prefHeight="332.0" prefWidth="436.0">
+            <ListView fx:id="promotionListView" layoutX="175.0" layoutY="192.0" prefHeight="332.0" prefWidth="457.0">
                <effect>
                   <DropShadow />
                </effect>
             </ListView>
-            <Button fx:id="button_add" layoutX="400.0" layoutY="539.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="30.0" prefWidth="60.0" text="新增">
+            <Button fx:id="button_add" layoutX="560.0" layoutY="539.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="新增">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <effect>
                   <DropShadow />
                </effect>
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="button_return" layoutX="489.0" layoutY="539.0" mnemonicParsing="false" onAction="#onReturn" prefHeight="30.0" prefWidth="60.0" text="返回">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
                <font>
                   <Font size="13.0" />
                </font>

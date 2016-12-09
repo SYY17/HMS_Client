@@ -80,11 +80,6 @@ public class CreatePromotion_controller {
 			promotionBlService.addDiscountPromotion(new DiscountPromotionVO( name, content, time, sp, pte, /* id = */20905098, Double.parseDouble(discountText)));
 		}
 	}
-	
-	@FXML
-	private void onReturn(ActionEvent event){
-		new Promotion_start().start(stage);
-	}
     
 	@FXML
 	private void onReviewOrderList(ActionEvent event) throws IOException {

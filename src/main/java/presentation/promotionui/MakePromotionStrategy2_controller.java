@@ -27,11 +27,6 @@ public class MakePromotionStrategy2_controller {
 	}
 	
 	@FXML
-	private void onReturn(ActionEvent event) throws Exception {
-		new MakePromotionStrategy1_start().start(stage);
-	}
-	
-	@FXML
 	private void onOrderManage(ActionEvent event) throws Exception {
 		new ManageAbnormalOrder1_start().start(stage);
 	}

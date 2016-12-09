@@ -25,11 +25,6 @@ public class Promotion_controller {
 	}
 	
 	@FXML
-	private void onReturn(ActionEvent event){
-		new Hotel_start().start(stage);
-	}
-	
-	@FXML
 	private void onAdd(ActionEvent event){
 		new CreatePromotion_start().start(stage);
 	}

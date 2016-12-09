@@ -57,11 +57,6 @@ public class MakePromotionStrategy1_controller {
 		new LogFrame().start(stage);
 	}
 	
-	@FXML
-	private void onReturn(ActionEvent event) throws IOException {
-		new Saler_start().start(stage);
-	}
-	
 	/*
 	 * 具体该策略的开始时间以及编号的赋予需要补充
 	 */
