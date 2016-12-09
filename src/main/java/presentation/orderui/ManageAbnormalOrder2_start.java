@@ -22,7 +22,7 @@ public class ManageAbnormalOrder2_start extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder2.fxml"));
-			initiateTableView(root);
+//			initiateTableView(root);
 			
 			Scene scene = new Scene(root, 800, 600);
 //			scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
