@@ -1,7 +1,6 @@
 package vo;
 
 import java.io.*;
-import java.util.*;
 
 public class HotelVO implements Serializable {
 	/**

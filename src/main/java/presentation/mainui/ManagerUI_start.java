@@ -21,7 +21,7 @@ public class ManagerUI_start extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/manager/ManagerUI2.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/manager/ManagerUI.fxml"));
 			Scene scene = new Scene(root, 800, 600);
 			ManagerUI_controller.stage = primaryStage;
 			this.initiateHelper();

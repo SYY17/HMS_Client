@@ -28,7 +28,7 @@ public class ManageSystemUser_start2 extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			Parent root = FXMLLoader
-					.load(getClass().getClassLoader().getResource("FXML/user/manager/ManageSystemUser2.fxml"));
+					.load(getClass().getClassLoader().getResource("FXML/user/manager/ManageSystemUser.fxml"));
 			this.initiateHelper();
 			this.initiateTableView(root);
 			this.initiateElements(root);
