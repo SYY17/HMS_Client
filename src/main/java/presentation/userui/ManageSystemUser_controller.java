@@ -1,23 +1,22 @@
 package presentation.userui;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import presentation.controller.LoginControllerImpl;
 import presentation.controller.UserControllerImpl;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
+import presentation.loginui.LoginControllerService;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.ManagerUI_start;
 import vo.UserVO;
@@ -25,35 +24,76 @@ import vo.UserVO;
 public class ManageSystemUser_controller {
 
 	public static Stage stage;
-	public ImageView refreshButton;
-	public Label refreshLabel;
-	public TableView<UserData> userTable;
-	public TableColumn<UserData, String> idColumn;
-	public TableColumn<UserData, String> usernameColumn;
-	public TableColumn<UserData, String> identityColumn;
-	public TableColumn<UserData, String> startColumn;
-	public TableColumn<UserData, Button> operationColumn;
-
-	private UserDataHelper userDataHelper;
-	private final ObservableList<UserData> data = FXCollections.observableArrayList();
 
 	@FXML
-	private void onClickedRefreshButton(MouseEvent event) throws IOException {
-		UserControllerService userController = new UserControllerImpl();
+	private TableView<SystemUserData> applyInfoTable;
 
-		data.clear();
-		ObservableList<TableColumn<UserData, ?>> observableList = userTable.getColumns();
-		initiateObservableList(observableList);
+	@FXML
+	private ImageView return_icon;
 
-		ArrayList<UserVO> list = userController.getAllUsers();
+	@FXML
+	private Label return_button;
 
-		userDataHelper = new UserDataHelper();
+	@FXML
+	private TextField search_field;
 
-		for (int i = 0; i < list.size(); i++) {
-			data.add(userDataHelper.toUserData(list.get(i)));
+	@FXML
+	private ImageView search_button;
+
+	@FXML
+	private ImageView add_button;
+
+	@FXML
+	private TextField username_field;
+
+	@FXML
+	private ChoiceBox<String> id_choicebox;
+
+	@FXML
+	private Label username;
+
+	private ObservableList<SystemUserData> data;
+
+	@FXML
+	private void onManageSystemUser(MouseEvent event) throws Exception {
+		new ManageSystemUser_start().start(stage);
+	}
+
+	@FXML
+	private void onManageHotelCreatingApplication(MouseEvent event) throws Exception {
+		new ManageHotelCreatingApplication_start().start(stage);
+	}
+
+	@FXML
+	private void onEnteredReturn(MouseEvent event) throws Exception {
+		return_button.setTextFill(Paint.valueOf("#ffffff"));
+	}
+
+	@FXML
+	private void onExitedReturn(MouseEvent event) throws Exception {
+		return_button.setTextFill(Paint.valueOf("#000000"));
+	}
+
+	@FXML
+	private void onClickedReturn(MouseEvent event) throws Exception {
+		new ManagerUI_start().start(stage);
+	}
+
+	@FXML
+	private void onAddNewUser(MouseEvent event) throws Exception {
+		// 在observablelist中添加value
+		String text = username_field.getText();
+
+		if (text.equals("")) {
+			// 提示未输入用户名
+		} else if (text.length() > 12) {
+			// 提示字数过多
+		} else {
+			LoginControllerService loginController = new LoginControllerImpl();
+			loginController.addNewUser(text, "000000", this.parseID(id_choicebox));
 		}
 
-		userTable.setItems(data);
+		this.refreshTableView();
 	}
 
 	@FXML
@@ -61,38 +101,46 @@ public class ManageSystemUser_controller {
 		new LoginUI_start().start(stage);
 	}
 
-	@FXML
-	private void onReturn(ActionEvent event) throws Exception {
-		new ManagerUI_start().start(stage);
-	}
+	/**
+	 * 刷新表内数据
+	 * 
+	 * @param root
+	 */
+	private void refreshTableView() {
 
-	@FXML
-	private void onManageSystemUser(ActionEvent event) throws Exception {
-		new ManageSystemUser_start().start(stage);
-	}
+		// 建立observablelist以更新数据
+		UserControllerService userController = new UserControllerImpl();
 
-	@FXML
-	private void onManageHotelCreatingApplication(ActionEvent event) throws Exception {
-		new ManageHotelCreatingApplication_start().start(stage);
-	}
+		data = applyInfoTable.getItems();
+		data.clear();
 
-	@FXML
-	private void onAbout(ActionEvent event) throws Exception {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setHeaderText("据说这是大作业");
-		alert.showAndWait();
+		SystemUserDataHelper systemUserDataHelper = new SystemUserDataHelper();
+
+		ArrayList<UserVO> list = userController.getAllUsers();
+		for (int i = 0; i < list.size(); i++) {
+			UserVO uvo = list.get(i);
+			data.add(systemUserDataHelper.toSystemUserData(uvo));
+		}
+		applyInfoTable.setItems(data);
 	}
 
 	/**
-	 * 初始化数据表
 	 * 
-	 * @param observableList
+	 * @param id
+	 * @return 转换成对应数字ID
 	 */
-	private void initiateObservableList(ObservableList<TableColumn<UserData, ?>> observableList) {
-		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("username"));
-		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("identity"));
-		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("start"));
-		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("operation"));
+	private int parseID(ChoiceBox<String> id) {
+		// TODO Auto-generated method stub
+		String s = id.getValue();
+
+		if (s.equals("客户")) {
+			return 1;
+		} else if (s.equals("酒店工作人员")) {
+			return 2;
+		} else if (s.equals("网站营销人员")) {
+			return 3;
+		}
+		return 4;
 	}
+
 }

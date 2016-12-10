@@ -7,7 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
 import presentation.loginui.LoginUI_start;
-import presentation.userui.ManageSystemUser_start2;
+import presentation.userui.ManageSystemUser_start;
 
 public class ManagerUI_controller {
 
@@ -29,7 +29,7 @@ public class ManagerUI_controller {
 
 	@FXML
 	private void onManageSystemUser(MouseEvent event) throws Exception {
-		new ManageSystemUser_start2().start(stage);
+		new ManageSystemUser_start().start(stage);
 	}
 
 	@FXML
