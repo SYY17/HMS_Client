@@ -70,12 +70,13 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="495.0" />
             <ImageView fitHeight="429.0" fitWidth="400.0" layoutX="187.0" layoutY="111.0" opacity="0.44" pickOnBounds="true" preserveRatio="true" />
-            <TableView id="applyTable" fx:id="OrderInfoTable" layoutX="165.0" layoutY="175.0" pickOnBounds="false" prefHeight="394.0" prefWidth="469.0">
+            <TableView fx:id="newAbnormalOrderTableView" layoutX="165.0" layoutY="175.0" pickOnBounds="false" prefHeight="394.0" prefWidth="469.0">
                <columns>
-                  <TableColumn id="col_odd" editable="false" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="编号" />
-                  <TableColumn id="col_even" editable="false" maxWidth="109.0" minWidth="109.0" prefWidth="109.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="用户名" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="227.0" minWidth="227.0" prefWidth="227.0" resizable="false" sortable="false" style="-fx-background-color: #859ebb; -fx-font-size: 12px;" text="订单发起日期" />
-                  <TableColumn id="col_even" editable="false" maxWidth="72.0" minWidth="40.0" prefWidth="72.0" resizable="false" sortable="false" style="-fx-background-color: #7f8996; -fx-font-size: 12px;" text="查看" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="102.0" minWidth="60.0" prefWidth="92.0" resizable="false" sortable="false" text="编号" />
+                  <TableColumn id="col_even" editable="false" maxWidth="157.40640258789062" minWidth="42.0" prefWidth="120.64572143554688" resizable="false" sortable="false" text="用户名" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="227.0" minWidth="118.59365844726562" prefWidth="155.35433959960938" resizable="false" sortable="false" text="订单发起日期" />
+                  <TableColumn id="col_even" editable="false" maxWidth="169.0" minWidth="40.0" prefWidth="75.737548828125" resizable="false" sortable="false" text="总价" />
+                  <TableColumn id="col_even" editable="false" maxWidth="169.0" minWidth="17.14794921875" prefWidth="25.0" resizable="false" sortable="false" />
                </columns>
             </TableView>
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新异常订单">

@@ -34,8 +34,8 @@ public class MakePromotionStrategy1_start extends Application {
 			Parent root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("FXML/user/saler/MakePromotionStrategy1.fxml"));
 			initDatePicker(root);
-			initChoiceBox(root);
-			initiateTableView(root);
+//			initChoiceBox(root);
+//			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
 			MakePromotionStrategy1_controller.stage = primaryStage;

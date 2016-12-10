@@ -116,19 +116,25 @@
             <BorderPane layoutX="649.0" layoutY="239.0" prefHeight="27.0" prefWidth="145.0" />
             <TableView fx:id="manageAbnormalOrderTableView" layoutX="164.0" layoutY="175.0" prefHeight="393.0" prefWidth="616.0">
                <columns>
-                  <TableColumn id="col_odd" editable="false" maxWidth="80.0" minWidth="55.61962890625" prefWidth="55.61962890625" resizable="false" sortable="false" text="编号" />
-                  <TableColumn id="col_even" editable="false" maxWidth="130.0" minWidth="70.75625610351562" prefWidth="70.75625610351562" resizable="false" sortable="false" text="用户" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="603.0" minWidth="80.0" prefWidth="115.794921875" resizable="false" sortable="false" text="入住时间" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="56.33929443359375" prefWidth="118.20510864257812" resizable="false" sortable="false" text="预计离开时间" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="578.6607055664062" minWidth="80.0" prefWidth="90.27328491210938" resizable="false" sortable="false" text="客房类型" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="425.2265625" minWidth="55.4193115234375" prefWidth="77.82916259765625" resizable="false" sortable="false" text="客房数量" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="40.91845703125" prefWidth="81.68792724609375" resizable="false" sortable="false" text="订单总价" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="111.0" minWidth="55.61962890625" prefWidth="109.0" resizable="false" sortable="false" text="编号" />
+                  <TableColumn id="col_even" editable="false" maxWidth="130.0" minWidth="55.0" prefWidth="66.0" resizable="false" sortable="false" text="用户" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="603.0" minWidth="80.0" prefWidth="87.0" resizable="false" sortable="false" text="入住时间" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="56.33929443359375" prefWidth="104.0" resizable="false" sortable="false" text="预计离开时间" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="578.6607055664062" minWidth="71.0" prefWidth="75.0" resizable="false" sortable="false" text="客房类型" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="425.2265625" minWidth="55.4193115234375" prefWidth="76.0" resizable="false" sortable="false" text="客房数量" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="554.1047973632812" minWidth="40.91845703125" prefWidth="73.0" resizable="false" sortable="false" text="订单总价" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="26.0" resizable="false" sortable="false" />
                </columns>
-               <effect>
-                  <DropShadow />
-               </effect>
             </TableView>
-            <TextField layoutX="613.0" layoutY="133.0" text="查询用户" />
+            <TextField layoutX="613.0" layoutY="133.0" promptText="查询用户" />
+            <ImageView fx:id="search_button" fitHeight="23.0" fitWidth="23.0" layoutX="756.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../../login/icon/search.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Label fx:id="hotelSum1" layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">

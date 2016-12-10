@@ -1,19 +1,18 @@
 package presentation.promotionui;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.creditui.ManageUserCredit1_start;
 import presentation.hotelui.hotel.PromotionData;
@@ -49,22 +48,43 @@ public class MakePromotionStrategy1_controller {
 	final PromotionType[] pt = { PromotionType.FULL_CUT, PromotionType.DISCOUNT };
 	@FXML
 	public TextField discount;
+	@FXML
+	public Label submit;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws Exception {
+	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
 
 	@FXML
-	private void onReturn(ActionEvent event) throws IOException {
+	private void onHomePage(MouseEvent event) throws Exception {
 		new Saler_start().start(stage);
 	}
+
+	@FXML
+	private void onMakePromotionStrategy(MouseEvent event) throws Exception {
+		new MakePromotionStrategy1_start().start(stage);
+	}
+
+	@FXML
+	private void onManageCredit(MouseEvent event) throws Exception {
+		new ManageUserCredit1_start().start(stage);
+	}
+
+	@FXML
+	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
+		new ManageAbnormalOrder1_start().start(stage);
+	}
+//	@FXML
+//	private void onReturn(ActionEvent event) throws IOException {
+//		new Saler_start().start(stage);
+//	}
 
 	/*
 	 * 具体该策略的开始时间以及编号的赋予需要补充
 	 */
 	@FXML
-	private void onSubmit(ActionEvent event) throws Exception {
+	private void onSubmit(MouseEvent event) throws Exception {
 		String name = promotionName.getText();
 		String content = description.getText();
 
@@ -96,27 +116,6 @@ public class MakePromotionStrategy1_controller {
 		}
 	}
 
-	@FXML
-	private void onOrderManage(ActionEvent event) throws Exception {
-		new ManageAbnormalOrder1_start().start(stage);
-	}
-
-	@FXML
-	private void onPromotionManage(ActionEvent event) throws Exception {
-		new MakePromotionStrategy1_start().start(stage);
-	}
-
-	@FXML
-	private void onCreditManage(ActionEvent event) throws Exception {
-		new ManageUserCredit1_start().start(stage);
-	}
-
-	@FXML
-	private void onAbout(ActionEvent event) throws Exception {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setHeaderText("据说这是大作业");
-		alert.showAndWait();
-	}
 
 	public Date strToDate(String strDate) {
 		String str = strDate;

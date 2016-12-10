@@ -48,6 +48,7 @@ public class ManageAbnormalOrder1_start extends Application {
 		// 查找tableview
 		TableView<OrderData> manageAbnormalOrderTableView = (TableView<OrderData>) root
 				.lookup("#manageAbnormalOrderTableView");
+		System.out.println(manageAbnormalOrderTableView);
 
 		// 建立observablelist以更新数据
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
@@ -59,17 +60,9 @@ public class ManageAbnormalOrder1_start extends Application {
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
 
-		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */20905098);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderDataHelper().toOrderData(ovo));
-		}
-		orderList = orderControllerService.reviewOrder(/* id = */12098013);
-		for (int i = 0; i < orderList.size(); i++) {
-			OrderVO ovo = orderList.get(i);
-
-			// 建议建立一个创建OrderData对象的方法
 			data.add(new OrderDataHelper().toOrderData(ovo));
 		}
 		manageAbnormalOrderTableView.setItems(data);

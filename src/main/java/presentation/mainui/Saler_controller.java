@@ -36,5 +36,4 @@ public class Saler_controller {
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
 		new ManageAbnormalOrder1_start().start(stage);
 	}
-
 }
