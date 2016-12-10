@@ -66,11 +66,9 @@ public class MakePromotionStrategy1_start extends Application {
 	 * 初始化DatePicker
 	 */
 	public void initDatePicker(Parent root) {
-		@SuppressWarnings("unchecked")
 		// 查找startTime
 		DatePicker startTime = (DatePicker) root.lookup("#startTime");
 
-		@SuppressWarnings("unchecked")
 		// 查找stopTime
 		DatePicker stopTime = (DatePicker) root.lookup("#stopTime");
 

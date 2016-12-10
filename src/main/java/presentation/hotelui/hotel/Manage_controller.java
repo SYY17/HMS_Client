@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.mainui.Hotel_start;
 
 public class Manage_controller {
@@ -15,10 +15,10 @@ public class Manage_controller {
 	public static Label nameLabel;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
+	private void onLogout(ActionEvent event) throws Exception {
 		// JOptionPane.showMessageDialog(null, "注销成功", "提示",
 		// JOptionPane.PLAIN_MESSAGE);
-		new LogFrame().start(stage);
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

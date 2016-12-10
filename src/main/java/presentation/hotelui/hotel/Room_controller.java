@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
 import presentation.hotelui.HotelControllerService;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.mainui.Hotel_start;
 import vo.RoomType;
 import vo.RoomVO;
@@ -26,10 +26,10 @@ public class Room_controller {
 	public static TableView<RoomData> roomView;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
+	private void onLogout(ActionEvent event) throws Exception {
 		// JOptionPane.showMessageDialog(null, "注销成功", "提示",
 		// JOptionPane.PLAIN_MESSAGE);
-		new LogFrame().start(stage);
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

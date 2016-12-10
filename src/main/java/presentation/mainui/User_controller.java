@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.userui.user.AllOrder_start;
 
 import presentation.userui.user.DetailedInfomation_start;
@@ -15,8 +15,8 @@ public class User_controller {
 	public static Stage stage;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

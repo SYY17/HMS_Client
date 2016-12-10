@@ -1,12 +1,10 @@
 package presentation.creditui;
 
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.orderui.ManageAbnormalOrder1_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
 
@@ -15,8 +13,8 @@ public class ManageUserCredit2_controller {
 	public static Stage stage;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

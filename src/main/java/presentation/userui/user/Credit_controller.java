@@ -15,7 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.mainui.User_start;
 
 public class Credit_controller {
@@ -26,8 +26,8 @@ public class Credit_controller {
 	public TableView<CreditData> creditTable;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

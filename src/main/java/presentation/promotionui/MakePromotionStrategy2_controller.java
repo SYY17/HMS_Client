@@ -1,7 +1,5 @@
 package presentation.promotionui;
 
-import java.io.IOException;
-
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.event.ActionEvent;
@@ -11,7 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import presentation.creditui.ManageUserCredit1_start;
 import presentation.hotelui.hotel.PromotionData;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.orderui.ManageAbnormalOrder1_start;
 
 public class MakePromotionStrategy2_controller {
@@ -22,8 +20,8 @@ public class MakePromotionStrategy2_controller {
 	public TableView<PromotionData> promotionTableView;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

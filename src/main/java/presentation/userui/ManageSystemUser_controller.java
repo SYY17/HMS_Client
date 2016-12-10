@@ -18,8 +18,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.controller.UserControllerImpl;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
-import presentation.loginui.LogFrame;
-import presentation.mainui.Manager_start;
+import presentation.loginui.LoginUI_start;
+import presentation.mainui.ManagerUI_start;
 import vo.UserVO;
 
 public class ManageSystemUser_controller {
@@ -57,13 +57,13 @@ public class ManageSystemUser_controller {
 	}
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML
 	private void onReturn(ActionEvent event) throws Exception {
-		new Manager_start().start(stage);
+		new ManagerUI_start().start(stage);
 	}
 
 	@FXML

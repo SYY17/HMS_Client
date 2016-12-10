@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.mainui.Hotel_start;
 
 public class Promotion_controller {
@@ -19,8 +19,8 @@ public class Promotion_controller {
 	public ListView<String> promotionListView;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

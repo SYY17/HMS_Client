@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
 import vo.PromotionType;
@@ -46,8 +46,8 @@ public class CreatePromotion_controller {
 	public TextField discount;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
-		new LogFrame().start(stage);
+	private void onLogout(ActionEvent event) throws Exception {
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import presentation.mainui.Hotel_start;
 
 public class Update_controller {
@@ -14,10 +14,10 @@ public class Update_controller {
 	public static Stage stage;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
+	private void onLogout(ActionEvent event) throws Exception {
 		// JOptionPane.showMessageDialog(null, "注销成功", "提示",
 		// JOptionPane.PLAIN_MESSAGE);
-		new LogFrame().start(stage);
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML

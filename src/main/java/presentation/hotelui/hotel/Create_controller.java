@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
 import presentation.hotelui.HotelControllerService;
-import presentation.loginui.LogFrame;
+import presentation.loginui.LoginUI_start;
 import vo.HotelVO;
 
 public class Create_controller {
@@ -25,10 +25,10 @@ public class Create_controller {
 	public static TextArea descriptionText;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws IOException {
+	private void onLogout(ActionEvent event) throws Exception {
 		// JOptionPane.showMessageDialog(null, "注销成功", "提示",
 		// JOptionPane.PLAIN_MESSAGE);
-		new LogFrame().start(stage);
+		new LoginUI_start().start(stage);
 	}
 
 	@FXML
