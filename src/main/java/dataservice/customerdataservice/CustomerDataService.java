@@ -13,5 +13,17 @@ public interface CustomerDataService extends Remote{
 	 * @return 根据用户名查找并返回顾客信息
 	 * @throws RemoteException
 	 */
-	public CustomerPO findUser(String username) throws RemoteException;
+	public CustomerPO getCustomerInfo(String username) throws RemoteException;
+	
+	/**
+	 * 
+	 * @throws RemoteException
+	 */
+	public void initCustomerDataService() throws RemoteException;
+
+	/**
+	 * 
+	 * @throws RemoteException
+	 */
+	public void finishCustomerDataService() throws RemoteException;
 }
