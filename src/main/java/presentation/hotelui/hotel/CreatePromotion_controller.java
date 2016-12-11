@@ -13,6 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
 import vo.DiscountPromotionVO;
@@ -46,12 +47,12 @@ public class CreatePromotion_controller {
 	public TextField discount;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws Exception {
+	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
 
 	@FXML
-	private void onSubmit(ActionEvent event) {
+	private void onSubmit(MouseEvent event) throws Exception {
 		String name = promotionName.getText();
 		String content = description.getText();
 
@@ -81,11 +82,6 @@ public class CreatePromotion_controller {
 			promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
 					/* id = */20905098, Double.parseDouble(discountText)));
 		}
-	}
-
-	@FXML
-	private void onReturn(ActionEvent event) {
-		new Promotion_start().start(stage);
 	}
 
 	@FXML

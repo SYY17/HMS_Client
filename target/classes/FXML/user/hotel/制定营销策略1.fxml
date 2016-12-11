@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerUI_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.CreatePromotion_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -225,7 +225,7 @@
                   <DropShadow />
                </effect>
             </TextField>
-            <Label layoutX="724.0" layoutY="519.0" text="提交" textFill="#0d0d0d">
+            <Label layoutX="724.0" layoutY="519.0" onMouseClicked="#onSubmit" text="提交" textFill="#0d0d0d">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

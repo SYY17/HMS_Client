@@ -12,7 +12,7 @@ public class DetailedInformation_start extends Application {
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/常用信息.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/DetailedInformation.fxml"));
 			Scene scene = new Scene(root, 800, 600);
 			DetailedInformation_controller.stage = primaryStage;
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

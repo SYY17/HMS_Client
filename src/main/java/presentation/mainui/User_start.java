@@ -10,7 +10,7 @@ public class User_start extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/UserUI.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/UserUI2.fxml"));
 			Scene scene = new Scene(root, 800, 600);
 			User_controller.stage = primaryStage;
 			primaryStage.setScene(scene);

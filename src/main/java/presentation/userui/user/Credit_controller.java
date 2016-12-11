@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.User_start;
@@ -21,46 +22,31 @@ import presentation.mainui.User_start;
 public class Credit_controller {
 
 	public static Stage stage;
-	private final ObservableList<CreditData> data = FXCollections.observableArrayList();
-	public CreditBLService creditBlService = new CreditController();
 	public TableView<CreditData> creditTable;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws Exception {
+	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
 
 	@FXML
-	private void onBack(ActionEvent event) throws IOException {
-		new User_start().start(stage);
-	}
-
-	@FXML
-	private void initialize() {
-		data.clear();
-		ObservableList<TableColumn<CreditData, ?>> observableList = creditTable.getColumns();
-		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("time"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("history"));
-
-		ArrayList<Date> timeList = creditBlService.getHistoryDate(/* id = */20905098);
-		ArrayList<Integer> historyList = creditBlService
-				.getHistoryChange(/* id = */20905098);
-
-		for (int i = 0; i < timeList.size(); i++) {
-			data.add(new CreditData(timeList.get(i), historyList.get(i)));
-		}
-
-		creditTable.setItems(data);
-	}
-
-	@FXML
-	private void onShowOrder(ActionEvent event) throws IOException {
+	private void onOrderManage(MouseEvent event) throws Exception {
 		new AllOrder_start().start(stage);
 	}
+	
+	@FXML
+	private void onHomepage(MouseEvent event) throws Exception {
+		new User_start().start(stage);
+	}
+	
+	@FXML
+	private void onHistory(MouseEvent event) throws IOException {
+		new Credit_start().start(stage);
+	}
 
 	@FXML
-	private void onDetailedInfo(ActionEvent event) {
-		new DetailedInfomation_start().start(stage);
+	private void onInfoManage(MouseEvent event) {
+		new DetailedInformation_start().start(stage);
 	}
 
 }

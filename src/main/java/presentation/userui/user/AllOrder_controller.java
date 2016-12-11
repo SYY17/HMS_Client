@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.controller.OrderControllerImpl;
 import presentation.loginui.LoginUI_start;
@@ -33,23 +34,28 @@ public class AllOrder_controller {
 	public TableView<OrderData> finishedOrderTableView;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws Exception {
+	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
-
+	
 	@FXML
-	private void onBack(ActionEvent event) throws IOException {
-		new User_start().start(stage);
-	}
-
-	@FXML
-	private void onShowOrder(ActionEvent event) throws IOException {
+	private void onOrderManage(MouseEvent event) throws Exception {
 		new AllOrder_start().start(stage);
 	}
+	
+	@FXML
+	private void onHomepage(MouseEvent event) throws Exception {
+		new User_start().start(stage);
+	}
+	
+	@FXML
+	private void onHistory(MouseEvent event) throws IOException {
+		new Credit_start().start(stage);
+	}
 
 	@FXML
-	private void onDetailedInfo(ActionEvent event) {
-		new DetailedInfomation_start().start(stage);
+	private void onInfoManage(MouseEvent event) {
+		new DetailedInformation_start().start(stage);
 	}
 
 	@FXML

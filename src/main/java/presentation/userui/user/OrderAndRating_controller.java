@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
 import presentation.hotelui.HotelControllerService;
@@ -24,23 +25,28 @@ public class OrderAndRating_controller {
 	public static TextArea hotelInfoText;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws Exception {
+	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
 
 	@FXML
-	private void onBack(ActionEvent event) throws IOException {
-		new User_start().start(stage);
-	}
-
-	@FXML
-	private void onShowOrder(ActionEvent event) throws IOException {
+	private void onOrderManage(MouseEvent event) throws Exception {
 		new AllOrder_start().start(stage);
 	}
+	
+	@FXML
+	private void onHomepage(MouseEvent event) throws Exception {
+		new User_start().start(stage);
+	}
+	
+	@FXML
+	private void onHistory(MouseEvent event) throws IOException {
+		new Credit_start().start(stage);
+	}
 
 	@FXML
-	private void onDetailedInfo(ActionEvent event) {
-		new DetailedInfomation_start().start(stage);
+	private void onInfoManage(MouseEvent event) {
+		new DetailedInformation_start().start(stage);
 	}
 
 	@FXML

@@ -1,4 +1,3 @@
-/FXML/
 /businesslogic/
 /businesslogicservice/
 /dataservice/
@@ -7,4 +6,5 @@
 /rmi/
 /runner/
 /vo/
+/META-INF/
 /FXML/

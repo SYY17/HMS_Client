@@ -7,6 +7,7 @@ import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.Hotel_start;
@@ -19,17 +20,12 @@ public class Promotion_controller {
 	public ListView<String> promotionListView;
 
 	@FXML
-	private void onLogout(ActionEvent event) throws Exception {
+	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
 
 	@FXML
-	private void onReturn(ActionEvent event) {
-		new Hotel_start().start(stage);
-	}
-
-	@FXML
-	private void onAdd(ActionEvent event) {
+	private void onAdd(MouseEvent event) {
 		new CreatePromotion_start().start(stage);
 	}
 
