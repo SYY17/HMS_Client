@@ -93,10 +93,11 @@ public class DetailedInformation_start extends Application {
 	public void initialize(Parent root){
 		UserBLService userBlService = new UserController();
 		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
+		String username = uvo.getName();
 		
 		// 查找name
 		TextField name = (TextField) root.lookup("#name");
-		name.setText(uvo.getName());
+		name.setText(username);
 		name.setEditable(false);
 		
 		// 查找phone

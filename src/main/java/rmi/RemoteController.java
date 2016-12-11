@@ -3,6 +3,7 @@ package rmi;
 import java.rmi.Remote;
 
 import dataservice.creditdataservice.CreditDataService;
+import dataservice.customerdataservice.CustomerDataService;
 import dataservice.datafactoryservice.DataFactoryService;
 import dataservice.discountpromotiondataservice.DiscountPromotionDataService;
 import dataservice.fullcutpromotiondataservice.FullCutPromotionDataService;
@@ -111,6 +112,14 @@ public class RemoteController {
 	 */
 	public DiscountPromotionDataService getDiscountPromotionDataService() {
 		return (DiscountPromotionDataService) remote;
+	}
+	
+	/**
+	 * 
+	 * @return 获得顾客信息服务
+	 */
+	public CustomerDataService getCustomerDataService() {
+		return (CustomerDataService) remote;
 	}
 
 	/**
