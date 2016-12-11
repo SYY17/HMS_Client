@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.Saler_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.SalerUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -243,7 +243,7 @@
                   <Image url="@../../login/icon/promotionnum.png" />
                </image>
             </ImageView>
-            <Label fx:id="abnormalSum1" layoutX="742.0" layoutY="470.0" text="0">
+            <Label fx:id="promotionSum" layoutX="742.0" layoutY="470.0" text="0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -256,16 +256,13 @@
             </Label>
          </children>
       </Pane>
-      <Label fx:id="hotelSum1" layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">
+      <Label onMouseClicked="#onLogout" layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
-         <tooltip>
-            <Tooltip text="系统已注册酒店数" />
-         </tooltip>
       </Label>
    </children>
 </Pane>

@@ -2,12 +2,26 @@ package presentation.mainui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
 
-public class Hotel_controller {
+public class HotelUI_controller {
 
 	public static Stage stage;
+	
+	@FXML
+	private Label username;
+	
+	@FXML
+	private Label homepage;
+	
+	@FXML
+	private Label date;
+	
+	@FXML
+	private TableView<OrderData> orderInfoTable;
 
 	@FXML
 	private void onLogout(ActionEvent event) throws Exception {

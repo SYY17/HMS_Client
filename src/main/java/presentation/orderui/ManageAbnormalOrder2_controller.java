@@ -5,7 +5,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.creditui.ManageUserCredit1_start;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.Saler_start;
+import presentation.mainui.SalerUI_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
 import presentation.promotionui.MakePromotionStrategy2_start;
 
@@ -20,7 +20,7 @@ public class ManageAbnormalOrder2_controller {
 
 	@FXML
 	private void onHomePage(MouseEvent event) throws Exception {
-		new Saler_start().start(stage);
+		new SalerUI_start().start(stage);
 	}
 
 	@FXML

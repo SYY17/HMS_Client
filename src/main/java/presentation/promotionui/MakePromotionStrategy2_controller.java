@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import presentation.creditui.ManageUserCredit1_start;
 import presentation.hotelui.hotel.PromotionData;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.Saler_start;
+import presentation.mainui.SalerUI_start;
 import presentation.orderui.ManageAbnormalOrder1_start;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
@@ -61,7 +61,7 @@ public class MakePromotionStrategy2_controller {
 
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new Saler_start().start(stage);
+		new SalerUI_start().start(stage);
 	}
 
 	@FXML

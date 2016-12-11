@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
 import presentation.hotelui.HotelControllerService;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.Hotel_start;
+import presentation.mainui.HotelUI_start;
 import vo.RoomType;
 import vo.RoomVO;
 
@@ -68,7 +68,7 @@ public class Room_controller {
 	private void onReturn(ActionEvent event) {
 		// JOptionPane.showMessageDialog(null, "返回成功", "提示",
 		// JOptionPane.PLAIN_MESSAGE);
-		new Hotel_start().start(stage);
+		new HotelUI_start().start(stage);
 	}
 
 	@FXML

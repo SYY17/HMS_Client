@@ -13,22 +13,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 
-public class ManagerUI_start extends Application {
-
+public class HotelUI_start extends Application {
+	
 	private IDHelper idHelper;
 	private int id;
-
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/manager/ManagerUI.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/HotelUI.fxml"));
 			Scene scene = new Scene(root, 800, 600);
-			ManagerUI_controller.stage = primaryStage;
+			HotelUI_controller.stage = primaryStage;
 			this.initiateHelper();
 			this.initiateElements(root);
-
-			// print，待删除
-			System.out.println(id);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
 			primaryStage.show();
@@ -36,23 +33,19 @@ public class ManagerUI_start extends Application {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * 初始化界面组件
-	 * @param root
-	 */
-	private void initiateElements(Parent root) {
-		// TODO Auto-generated method stub
-		initiateUserName(root);
-		initiateDate(root);
-	}
-
+	
 	/**
 	 * 获取当前用户ID
 	 */
 	private void initiateHelper() {
 		idHelper = IDHelper.getInstance();
 		id = idHelper.getID();
+	}
+
+	private void initiateElements(Parent root) {
+		// TODO Auto-generated method stub
+		initiateUserName(root);
+		initiateDate(root);
 	}
 	
 	/**
@@ -77,9 +70,5 @@ public class ManagerUI_start extends Application {
 		String name = userController.searchByUserID(id);
 		username.setText(name);
 	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
+	
 }

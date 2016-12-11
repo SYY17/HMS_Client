@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 import presentation.controller.IDHelper;
 import presentation.controller.LoginControllerImpl;
 import presentation.controller.UserControllerImpl;
-import presentation.mainui.Hotel_start;
+import presentation.mainui.HotelUI_start;
 import presentation.mainui.ManagerUI_start;
-import presentation.mainui.Saler_start;
+import presentation.mainui.SalerUI_start;
 import presentation.mainui.UserUI_start;
 import presentation.userui.UserControllerService;
 import vo.UserVO;
@@ -146,9 +146,9 @@ public class LoginUI_controller {
 		if (identity == 4) {
 			new ManagerUI_start().start(stage);
 		} else if (identity == 3) {
-			new Saler_start().start(stage);
+			new SalerUI_start().start(stage);
 		} else if (identity == 2) {
-			new Hotel_start().start(stage);
+			new HotelUI_start().start(stage);
 		} else {
 			new UserUI_start().start(stage);
 		}

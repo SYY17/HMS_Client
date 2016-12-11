@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.Hotel_start;
+import presentation.mainui.HotelUI_start;
 
 public class Promotion_controller {
 
