@@ -30,6 +30,10 @@ public class DetailedInformation_start extends Application {
 	private IDHelper idHelper;
 	private int id;
 
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
