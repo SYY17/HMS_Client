@@ -78,6 +78,9 @@
                   <TableColumn id="col_even" editable="false" maxWidth="169.0" minWidth="40.0" prefWidth="75.737548828125" resizable="false" sortable="false" text="总价" />
                   <TableColumn id="col_even" editable="false" maxWidth="169.0" minWidth="17.14794921875" prefWidth="25.0" resizable="false" sortable="false" />
                </columns>
+               <effect>
+                  <DropShadow />
+               </effect>
             </TableView>
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新异常订单">
                <cursor>
@@ -256,7 +259,7 @@
             </Label>
          </children>
       </Pane>
-      <Label onMouseClicked="#onLogout" layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">
+      <Label layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>

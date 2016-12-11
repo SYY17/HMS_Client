@@ -200,7 +200,7 @@
                   <Image url="@../../login/icon/logout.png" />
                </image>
             </ImageView>
-            <Label layoutX="723.0" layoutY="80.0" onMouseClicked="#onLogout" text="注销" textFill="WHITE">
+            <Label layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

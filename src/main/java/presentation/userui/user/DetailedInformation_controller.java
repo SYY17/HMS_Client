@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -14,18 +15,30 @@ import presentation.mainui.UserUI_start;
 public class DetailedInformation_controller {
 
 	public static Stage stage;
+	
 	@FXML
-	TextField name;
+	private TextField name;
+	
 	@FXML
-	TextField phone;
+	private TextField phone;
+	
 	@FXML
-	TextField email;
+	private TextField email;
+	
 	@FXML
-	TextField address;
+	private TextField address;
+	
 	@FXML
-	DatePicker birth;
+	private Label date;
+	
 	@FXML
-	Button modify;
+	private Label username;
+	
+	@FXML
+	private DatePicker birth;
+	
+	@FXML
+	private Button modify;
 	
 	@FXML
 	private void onModify(MouseEvent event) throws Exception {
