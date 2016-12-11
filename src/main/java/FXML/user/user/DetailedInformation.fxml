@@ -331,7 +331,7 @@
                   <Image url="@../../login/icon/password.png" />
                </image>
             </ImageView>
-            <Button fx:id="modify" layoutX="472.0" layoutY="226.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="64.0" style="-fx-background-color: #ffffff;" text="修改">
+            <Button fx:id="modify" layoutX="472.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#onModify" prefHeight="23.0" prefWidth="64.0" style="-fx-background-color: #ffffff;" text="修改">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -434,25 +434,12 @@
                   <InnerShadow choke="0.51" color="#93989e" />
                </effect>
             </TextField>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="346.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="484.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/edit.png" />
                </image>
             </ImageView>
-            <Label fx:id="edit" layoutX="350.0" layoutY="525.0" text="编辑">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="427.0" layoutY="485.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/save.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="save" layoutX="432.0" layoutY="525.0" text="保存">
+            <Label fx:id="edit" layoutX="488.0" layoutY="523.0" onMouseClicked="#onEdit" text="编辑">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

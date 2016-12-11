@@ -9,31 +9,27 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
 import presentation.hotelui.hotel.PromotionData;
 import vo.UserVO;
 
-public class DetailedInformation_start extends Application {
+public class DetailedInformationModify_start extends Application {
 
 	private final String pattern = "yyyy-MM-dd";
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/DetailedInformation.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/常用信息.fxml"));
 			initialize(root);
 			initDatePicker(root);
 			Scene scene = new Scene(root, 800, 600);
-			DetailedInformation_controller.stage = primaryStage;
-			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			// primaryStage.initStyle(StageStyle.DECORATED);
+			DetailedInformationModify_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
 			primaryStage.show();
@@ -50,23 +46,23 @@ public class DetailedInformation_start extends Application {
 		// 查找name
 		TextField name = (TextField) root.lookup("#name");
 		name.setText(uvo.getName());
-		name.setEditable(false);
 		
 		// 查找phone
 		TextField phone = (TextField) root.lookup("#phone");
 		phone.setText("phoneCannotGet");
-		phone.setEditable(false);
 		
 		// 查找email
 		TextField email = (TextField) root.lookup("#email");
 		email.setText("emailCannotGet");
-		email.setEditable(false);
 		
 		// 查找address
 		TextField address = (TextField) root.lookup("#address");
-		address.setText("addressCannotGet");		
-		address.setEditable(false);
+		address.setText("addressCannotGet");	
 		
+
+		// 查找name
+				TextField password = (TextField) root.lookup("#password");
+				password.setText(uvo.getPassword());
 	}
 	
 	/*
@@ -103,7 +99,6 @@ public class DetailedInformation_start extends Application {
 		birth.setPromptText(pattern.toLowerCase());
 
 		birth.setValue(LocalDate.now());//..............
-		birth.setEditable(false);
 	}
 
 }
