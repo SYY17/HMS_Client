@@ -1,6 +1,7 @@
 package presentation.userui.user;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import businesslogic.creditbl.CreditController;
@@ -11,19 +12,29 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.IDHelper;
+import presentation.controller.UserControllerImpl;
+import presentation.userui.UserControllerService;
 
 public class Credit_start extends Application {
 
+	private IDHelper idHelper;
+	private int id;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/信用.fxml"));
 			initiateTableView(root);
+			this.initiateHelper();
+			this.initiateElements(root);
+			
 			Scene scene = new Scene(root, 800, 600);
 			Credit_controller.stage = primaryStage;
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -58,9 +69,9 @@ public class Credit_start extends Application {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("time"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("history"));
 
-		ArrayList<Date> timeList = creditBlService.getHistoryDate(/* id = */20905098);
+		ArrayList<Date> timeList = creditBlService.getHistoryDate(id);
 		ArrayList<Integer> historyList = creditBlService
-				.getHistoryChange(/* id = */20905098);
+				.getHistoryChange(id);
 
 		for (int i = 0; i < timeList.size(); i++) {
 			data.add(new CreditData(timeList.get(i), historyList.get(i)));
@@ -69,4 +80,44 @@ public class Credit_start extends Application {
 		creditTable.setItems(data);
 	}
 
+	/**
+	 * 初始化界面组件
+	 * @param root
+	 */
+	private void initiateElements(Parent root) {
+		// TODO Auto-generated method stub
+		initiateUserName(root);
+		initiateDate(root);
+	}
+
+	/**
+	 * 获取当前用户ID
+	 */
+	private void initiateHelper() {
+		idHelper = IDHelper.getInstance();
+		id = idHelper.getID();
+	}
+	
+	/**
+	 * 初始化当前日期
+	 * @param root
+	 */
+	private void initiateDate(Parent root){
+		Label date = (Label) root.lookup("#date");
+		java.util.Date time = new java.util.Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String text = format.format(time);
+		date.setText(text);
+	}
+
+	/**
+	 * 初始化当前用户用户名
+	 * @param root
+	 */
+	private void initiateUserName(Parent root) {
+		Label username = (Label) root.lookup("#username");
+		UserControllerService userController = new UserControllerImpl();
+		String name = userController.searchByUserID(id);
+		username.setText(name);
+	}
 }

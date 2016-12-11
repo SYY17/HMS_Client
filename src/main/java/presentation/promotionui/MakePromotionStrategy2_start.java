@@ -147,7 +147,7 @@ public class MakePromotionStrategy2_start extends Application {
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("promotionStop"));
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("promotionContent"));
 
-		ArrayList<PromotionVO> promotionList = promotionBlService.getAllPromotion(20902341);
+		ArrayList<PromotionVO> promotionList = promotionBlService.getAllPromotion(33333333);//........
 
 		for (int i = 0; i < promotionList.size(); i++) {
 			PromotionVO pvo = promotionList.get(i);
