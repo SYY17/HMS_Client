@@ -2,7 +2,6 @@ package presentation.userui.user;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -30,12 +29,12 @@ public class DetailedInformation_controller {
 	
 	@FXML
 	private void onModify(MouseEvent event) throws Exception {
-		new DetailedInformationModify_start().start(stage);
+		new DetailedInformation_start().start(stage);
 	}
 	
 	@FXML
 	private void onEdit(MouseEvent event) throws Exception {
-		new DetailedInformationModify_start().start(stage);
+		new DetailedInformation_start().start(stage);
 	}
 	
 	@FXML

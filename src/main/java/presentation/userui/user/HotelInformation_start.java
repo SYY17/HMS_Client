@@ -91,7 +91,6 @@ public class HotelInformation_start extends Application {
 	 * @param root
 	 */
 	private void initiateTextArea(Parent root) {
-		@SuppressWarnings("unchecked")
 		// 查找description
 		TextArea description  = (TextArea) root
 				.lookup("#description");

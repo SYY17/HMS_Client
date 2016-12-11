@@ -9,14 +9,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-import presentation.hotelui.hotel.PromotionData;
 import vo.UserVO;
 
 public class DetailedInformation_start extends Application {
@@ -46,7 +42,6 @@ public class DetailedInformation_start extends Application {
 		UserBLService userBlService = new UserController();
 		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(/*id=*/400000000));
 		
-		@SuppressWarnings("unchecked")
 		// 查找name
 		TextField name = (TextField) root.lookup("#name");
 		name.setText(uvo.getName());
@@ -76,7 +71,7 @@ public class DetailedInformation_start extends Application {
 		// 查找birth
 		DatePicker birth = (DatePicker) root.lookup("#birth");
 
-		StringConverter converter = new StringConverter<LocalDate>() {
+		StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
 			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
 
 			@Override
