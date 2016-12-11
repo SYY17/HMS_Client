@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import businesslogic.customerbl.CustomerController;
 import businesslogic.userbl.UserController;
+import businesslogicservice.customerBLService.CustomerBLService;
 import businesslogicservice.userblservice.UserBLService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ import javafx.util.StringConverter;
 import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
+import vo.CustomerVO;
 import vo.UserVO;
 
 public class DetailedInformation_start extends Application {
@@ -34,7 +37,6 @@ public class DetailedInformation_start extends Application {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/DetailedInformation.fxml"));
 			initiateHelper();
 			initialize(root);
-			initDatePicker(root);
 			Scene scene = new Scene(root, 800, 600);
 			DetailedInformation_controller.stage = primaryStage;
 			this.initiateHelper();
@@ -94,6 +96,10 @@ public class DetailedInformation_start extends Application {
 		UserBLService userBlService = new UserController();
 		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
 		String username = uvo.getName();
+		CustomerBLService customerBLService = new CustomerController();
+		CustomerVO  cvo = customerBLService.getCustomerInfo(username);
+		
+		initDatePicker(root, cvo.getBirthday().toString());
 		
 		// 查找name
 		TextField name = (TextField) root.lookup("#name");
@@ -102,12 +108,12 @@ public class DetailedInformation_start extends Application {
 		
 		// 查找phone
 		TextField phone = (TextField) root.lookup("#phone");
-		phone.setText("phoneCannotGet");
+		phone.setText(cvo.getPhoneNumber());
 		phone.setEditable(false);
 		
 		// 查找email
 		TextField email = (TextField) root.lookup("#email");
-		email.setText("emailCannotGet");
+		email.setText(cvo.getEmail());
 		email.setEditable(false);
 		
 		// 查找address
@@ -120,7 +126,7 @@ public class DetailedInformation_start extends Application {
 	/*
 	 * 初始化DatePicker
 	 */
-	public void initDatePicker(Parent root) {
+	public void initDatePicker(Parent root, String birthday) {
 		// 查找birth
 		DatePicker birth = (DatePicker) root.lookup("#birth");
 
@@ -150,8 +156,8 @@ public class DetailedInformation_start extends Application {
 		birth.setConverter(converter);
 		birth.setPromptText(pattern.toLowerCase());
 
-		birth.setValue(LocalDate.now());//..............
+		birth.setValue(converter.fromString(birthday));//..............
 		birth.setEditable(false);
 	}
-
+	
 }
