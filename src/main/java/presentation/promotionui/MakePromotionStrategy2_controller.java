@@ -2,7 +2,10 @@ package presentation.promotionui;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
@@ -88,7 +91,14 @@ public class MakePromotionStrategy2_controller {
 		String everyText = every.getText();
 		String cutText = cut.getText();
 		String discountText = discount.getText();
-
+		/*
+		System.out.println("HHH");
+		LocalDate lc = startTime.getValue();
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-mm-dd");
+		String formattedDate = lc.toString(fmt);
+		System.out.println(startTime);
+		System.out.println("HHH");
+*/
 		Date time = strToDate(startTime.getPromptText());
 		Date sp = strToDate(stopTime.getPromptText());
 
@@ -109,7 +119,7 @@ public class MakePromotionStrategy2_controller {
 
 		if (pte == PromotionType.DISCOUNT) {
 			promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
-					/* id = */20905098, Double.parseDouble(discountText)));
+					/* id = */20905098, Double.parseDouble(discountText)/10));
 		}
 	}
 

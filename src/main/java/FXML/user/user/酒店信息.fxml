@@ -280,12 +280,12 @@
                   <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
                </tooltip>
             </Label>
-            <TextArea layoutX="165.0" layoutY="159.0" prefHeight="112.0" prefWidth="470.0" promptText="酒店名称,评分,位置,简要介绍">
+            <TextArea fx:id="description" layoutX="165.0" layoutY="159.0" prefHeight="112.0" prefWidth="470.0" promptText="酒店名称,评分,位置,简要介绍">
                <effect>
                   <DropShadow />
                </effect>
             </TextArea>
-            <TableView layoutX="166.0" layoutY="317.0" prefHeight="213.0" prefWidth="470.0">
+            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="317.0" prefHeight="213.0" prefWidth="470.0">
                <columns>
                   <TableColumn prefWidth="89.0" text="房间类型" />
                   <TableColumn prefWidth="68.0" text="总数量" />
