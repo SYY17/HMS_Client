@@ -8,7 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.User_start;
+import presentation.mainui.UserUI_start;
 
 public class HotelInformation_controller {
 
@@ -30,7 +30,7 @@ public class HotelInformation_controller {
 	
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new User_start().start(stage);
+		new UserUI_start().start(stage);
 	}
 	
 	@FXML

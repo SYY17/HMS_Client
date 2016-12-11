@@ -6,7 +6,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.User_start;
+import presentation.mainui.UserUI_start;
 
 public class Credit_controller {
 
@@ -25,7 +25,7 @@ public class Credit_controller {
 	
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new User_start().start(stage);
+		new UserUI_start().start(stage);
 	}
 	
 	@FXML

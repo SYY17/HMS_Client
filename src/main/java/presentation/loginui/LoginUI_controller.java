@@ -17,7 +17,7 @@ import presentation.controller.UserControllerImpl;
 import presentation.mainui.Hotel_start;
 import presentation.mainui.ManagerUI_start;
 import presentation.mainui.Saler_start;
-import presentation.mainui.User_start;
+import presentation.mainui.UserUI_start;
 import presentation.userui.UserControllerService;
 import vo.UserVO;
 
@@ -150,7 +150,7 @@ public class LoginUI_controller {
 		} else if (identity == 2) {
 			new Hotel_start().start(stage);
 		} else {
-			new User_start().start(stage);
+			new UserUI_start().start(stage);
 		}
 	}
 

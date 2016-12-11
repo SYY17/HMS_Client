@@ -14,7 +14,7 @@ import presentation.controller.HotelControllerImpl;
 import presentation.hotelui.HotelControllerService;
 import presentation.hotelui.hotel.Manage_start;
 import presentation.loginui.LoginUI_start;
-import presentation.mainui.User_start;
+import presentation.mainui.UserUI_start;
 import vo.HotelVO;
 
 public class OrderAndRating_controller {
@@ -36,7 +36,7 @@ public class OrderAndRating_controller {
 	
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new User_start().start(stage);
+		new UserUI_start().start(stage);
 	}
 	
 	@FXML

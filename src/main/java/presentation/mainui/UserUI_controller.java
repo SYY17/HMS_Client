@@ -2,8 +2,8 @@ package presentation.mainui;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
@@ -11,9 +11,27 @@ import presentation.userui.user.AllOrder_start;
 import presentation.userui.user.Credit_start;
 import presentation.userui.user.DetailedInformation_start;
 
-public class User_controller {
+public class UserUI_controller {
 
 	public static Stage stage;
+	
+	@FXML
+	private Label ordermanage;
+	
+	@FXML
+	private Label infoManage;
+	
+	@FXML
+	private Label history;
+	
+	@FXML
+	private Label username;
+	
+	@FXML
+	private Label homepage;
+	
+	@FXML
+	private Label date;
 
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
@@ -27,7 +45,7 @@ public class User_controller {
 	
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new User_start().start(stage);
+		new UserUI_start().start(stage);
 	}
 	
 	@FXML
