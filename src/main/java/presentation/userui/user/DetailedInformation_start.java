@@ -32,6 +32,7 @@ public class DetailedInformation_start extends Application {
 		// TODO Auto-generated method stub
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/DetailedInformation.fxml"));
+			initiateHelper();
 			initialize(root);
 			initDatePicker(root);
 			Scene scene = new Scene(root, 800, 600);
@@ -91,7 +92,7 @@ public class DetailedInformation_start extends Application {
 
 	public void initialize(Parent root){
 		UserBLService userBlService = new UserController();
-		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(/*id=*/400000000));
+		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
 		
 		// 查找name
 		TextField name = (TextField) root.lookup("#name");
