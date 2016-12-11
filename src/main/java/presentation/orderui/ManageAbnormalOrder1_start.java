@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.OrderControllerImpl;
+import vo.OrderStatus;
 import vo.OrderVO;
 
 public class ManageAbnormalOrder1_start extends Application {
@@ -60,7 +61,7 @@ public class ManageAbnormalOrder1_start extends Application {
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
 
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000,OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));
@@ -81,6 +82,7 @@ public class ManageAbnormalOrder1_start extends Application {
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("roomType"));
 		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("price"));
+		observableList.get(7).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 
 }

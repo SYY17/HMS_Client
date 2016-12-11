@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import presentation.controller.IDHelper;
+import vo.OrderStatus;
 import presentation.controller.OrderControllerImpl;
 import presentation.controller.UserControllerImpl;
 import presentation.orderui.OrderControllerService;
@@ -113,7 +114,7 @@ public class SalerUI_start extends Application {
 		ObservableList<TableColumn<OrderData, ?>> observableList = newAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
 
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000,OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));
@@ -131,5 +132,6 @@ public class SalerUI_start extends Application {
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userName"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("checkIn"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("price"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 }

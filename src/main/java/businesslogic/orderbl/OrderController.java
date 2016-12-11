@@ -97,11 +97,10 @@ public class OrderController implements OrderBLService {
 	public ArrayList<OrderVO> reviewOrder(int id, OrderStatus orderStatus) {
 		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
 		try {
-			list = getOrderByUserID(id);
-			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getOrderStatus().toString().equals(orderStatus.toString())) {
-					list.remove(i);
-					i--;
+			ArrayList<OrderVO> listTemp = getOrderByUserID(id);
+			for (int i = 0; i < listTemp.size(); i++) {
+				if (listTemp.get(i).getOrderStatus().toString().equals(orderStatus.toString())) {
+					list.add(listTemp.get(i));
 				}
 			}
 		} catch (RemoteException e) {
