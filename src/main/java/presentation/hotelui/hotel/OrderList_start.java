@@ -22,7 +22,7 @@ public class OrderList_start extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/执行用户订单1.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/执行用户订单.fxml"));
 			initiateTableView(root);
 
 			Scene scene = new Scene(root, 800, 600);

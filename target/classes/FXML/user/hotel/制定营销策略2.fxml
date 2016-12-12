@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.Promotion_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -291,7 +291,7 @@
                   <DropShadow />
                </effect>
             </ListView>
-            <Label layoutX="551.0" layoutY="548.0" onMouseClicked="#onAdd" text="新增" textFill="#0d0d0d">
+            <Label layoutX="551.0" layoutY="548.0" text="新增" textFill="#0d0d0d">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

@@ -35,11 +35,6 @@ public class Promotion_controller {
 	}
 
 	@FXML
-	private void onExecute(ActionEvent event) throws IOException {
-		new Execute_start().start(stage);
-	}
-
-	@FXML
 	private void onManage(ActionEvent event) throws IOException {
 		new Manage_start().start(stage);
 	}
@@ -47,10 +42,5 @@ public class Promotion_controller {
 	@FXML
 	private void onReviewPromotion(ActionEvent event) throws IOException {
 		new Promotion_start().start(stage);
-	}
-
-	@FXML
-	private void onCreatePromotion(ActionEvent event) throws IOException {
-		new CreatePromotion_start().start(stage);
 	}
 }

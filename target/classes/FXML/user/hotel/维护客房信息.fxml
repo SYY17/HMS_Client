@@ -1,173 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.Room_controller">
    <children>
-      <Pane id="panel_top" prefHeight="80.0" prefWidth="800.0">
+      <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <Label id="default" layoutX="32.0" layoutY="28.0" text="欢迎您">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label id="username" layoutX="100.0" layoutY="29.0" text="admin">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label id="default" layoutX="610.0" layoutY="28.0" text="日期">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label id="date" layoutX="665.0" layoutY="29.0" text="2016-10-10">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Button id="logout" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#onLogout" text="注销">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/bg_3.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="92.0" layoutX="7.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="786.0">
                <effect>
                   <DropShadow />
                </effect>
-            </Button>
-            <Label layoutX="337.0" layoutY="25.0" text="酒店管理系统">
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="475.0" layoutX="7.0" layoutY="109.0" opacity="0.54" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="145.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="44.0" layoutY="230.0" onMouseClicked="#onReviewOrderList" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/orderview_wh.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="310.0" text="订单管理" textFill="#fffdfd">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="40.0" layoutY="342.0" onMouseClicked="#onReviewPromotion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/promotion_wh.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="423.0" text="策略管理" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="41.0" layoutY="454.0" onMouseClicked="#onManage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/hotelinfo_wh.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="530.0" text="酒店管理" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="304.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="641.0" />
+            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新申请消息" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="104.0" layoutY="34.0" text="酒店管理系统" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLabel" layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="酒店名称">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/logo.png" />
+               </image>
+            </ImageView>
+            <BorderPane layoutX="667.0" layoutY="275.0" prefHeight="27.0" prefWidth="127.0" />
+            <Label layoutX="61.0" layoutY="197.0" text="首页" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="35.0" layoutY="124.0" onMouseClicked="#onMain" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/frontpage_wh.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="711.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/defaultuser_wh.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="754.0" layoutY="81.0" onMouseClicked="#onLogout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../login/icon/logout.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="hotelSum1" layoutX="723.0" layoutY="80.0" onMouseClicked="#onLogout" text="注销" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="系统已注册酒店数" />
+               </tooltip>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#030303" height="25.0" layoutX="152.0" layoutY="411.0" opacity="0.54" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="641.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="153.0" layoutX="153.0" layoutY="430.0" onMouseClicked="#onUpdate" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="641.0" />
+            <TableView fx:id="roomView" layoutX="175.0" layoutY="213.0" prefHeight="179.0" prefWidth="601.0">
+               <columns>
+                  <TableColumn prefWidth="135.0" text="房间类型" />
+                  <TableColumn prefWidth="166.0" text="总客房数" />
+                  <TableColumn prefWidth="156.0" text="剩余客房数" />
+                  <TableColumn prefWidth="143.0" text="价格" />
+               </columns>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TableView>
+            <TextField fx:id="remainText" layoutX="265.0" layoutY="531.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <ChoiceBox fx:id="typeChoice" layoutX="258.0" layoutY="460.0" prefWidth="150.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+            <Label layoutX="175.0" layoutY="532.0" text="剩余客房数：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="176.0" layoutY="461.0" text="房间类型：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="679.0" layoutY="529.0" onMouseClicked="#onUpdate" prefHeight="27.0" prefWidth="44.0" text="更新">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane id="panel_body" layoutY="80.0" prefHeight="445.0" prefWidth="800.0">
-         <children>
-            <Pane layoutX="5.0" layoutY="45.0" prefHeight="415.0" prefWidth="790.0">
-               <children>
-                  <Rectangle fill="#cfd6dd" height="415.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="790.0" />
-                  <Label layoutX="335.0" layoutY="14.0" text="客房信息">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Rectangle fill="WHITE" height="173.0" layoutX="6.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="773.0">
-                     <effect>
-                        <DropShadow />
-                     </effect></Rectangle>
-                  <Label layoutX="16.0" layoutY="248.0" text="房间类型：">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="15.0" layoutY="319.0" text="剩余客房数：">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="button_update" layoutX="716.0" layoutY="371.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="30.0" prefWidth="60.0" text="更新">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-                  <ChoiceBox fx:id="typeChoice" layoutX="98.0" layoutY="247.0" prefWidth="150.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ChoiceBox>
-                  <TextField fx:id="remainText" layoutX="105.0" layoutY="318.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </TextField>
-                  <Label layoutX="15.0" layoutY="285.0" text="总客房数：">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="totalText" layoutX="105.0" layoutY="284.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </TextField>
-                  <TableView fx:id="roomView" layoutX="5.0" layoutY="41.0" prefHeight="179.0" prefWidth="773.0">
-                    <columns>
-                      <TableColumn prefWidth="193.0" text="房间类型" />
-                      <TableColumn prefWidth="193.0" text="总客房数" />
-                        <TableColumn prefWidth="193.0" text="剩余客房数" />
-                        <TableColumn prefWidth="194.0" text="价格" />
-                    </columns>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </TableView>
-               </children>
-            </Pane>
-            <MenuBar layoutX="5.0" prefHeight="25.0" prefWidth="790.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect>
-               <menus>
-                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="订单管理(O)">
-                     <items>
-                        <MenuItem fx:id="Item_review" mnemonicParsing="false" onAction="#onReviewOrderList" text="订单浏览" />
-                        <MenuItem fx:id="Item_execute" mnemonicParsing="false" onAction="#onExecute" text="订单执行" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="信息管理(I)">
-                     <items>
-                        <MenuItem fx:id="Item_Manage" mnemonicParsing="false" onAction="#onManage" text="酒店信息" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="营销策略(P)">
-                     <items>
-                        <MenuItem fx:id="Item_promotion" mnemonicParsing="false" onAction="#onReviewPromotion" text="营销策略浏览" />
-                        <MenuItem fx:id="Item_createPromotion" mnemonicParsing="false" onAction="#onCreatePromotion" text="营销策略制定" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="酒店评价(R)">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="评价查看" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" style="-fx-font-weight: bold;" text="帮助(H)">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="关于" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-         </children>
-      </Pane>
-      <Button fx:id="button_return" layoutX="720.0" layoutY="556.0" mnemonicParsing="false" onAction="#onReturn" prefHeight="30.0" prefWidth="60.0" text="返回">
-         <effect>
-            <DropShadow />
-         </effect>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
    </children>
 </Pane>

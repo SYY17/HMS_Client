@@ -12,6 +12,7 @@ import presentation.hotelui.HotelControllerService;
 import vo.RoomVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,6 +23,7 @@ public class Room_start extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/维护客房信息.fxml"));
 			initiateTableView(root);
+			initChoiceBox(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// primaryStage.initStyle(StageStyle.DECORATED);
@@ -34,6 +36,19 @@ public class Room_start extends Application {
 		}
 	}
 
+	/*
+	 * 初始化ChoiceBox
+	 */
+	public void initChoiceBox(Parent root) {
+		@SuppressWarnings("unchecked")
+		// 查找promotionType
+		ChoiceBox<Object> roomType = (ChoiceBox<Object>) root.lookup("#typeChoice");
+
+		//roomType.setItems(FXCollections.observableArrayList("SINGLE_ROOM","STANDARD_ROOM","TRIPLE_ROOM","KING_SIZE_ROOM","SUITE"));
+		roomType.setItems(FXCollections.observableArrayList("单人间","标准间","三人间","总统套房","套间"));
+		
+	}
+	
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		TableView<RoomData> roomView = (TableView<RoomData>) root.lookup("#roomView");
