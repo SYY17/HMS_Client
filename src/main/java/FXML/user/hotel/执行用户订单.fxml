@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.Modify_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.OrderList_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -33,11 +33,8 @@
                <image>
                   <Image url="@../../login/icon/orderview_wh.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
-            <Label layoutX="48.0" layoutY="310.0" onMouseClicked="#onReviewOrderList" text="订单管理" textFill="#fffdfd">
+            <Label layoutX="48.0" layoutY="310.0" text="订单管理" textFill="#fffdfd">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -49,11 +46,8 @@
                <image>
                   <Image url="@../../login/icon/promotion_wh.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
-            <Label layoutX="48.0" layoutY="423.0" onMouseClicked="#onReviewPromotion" text="策略管理" textFill="WHITE">
+            <Label layoutX="48.0" layoutY="423.0" text="策略管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -77,7 +71,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="640.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="641.0" />
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新申请消息" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -91,7 +85,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="nameLabel" layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="酒店名称">
+            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="待确认订单：">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -104,9 +98,8 @@
                   <Image url="@../../login/icon/logo.png" />
                </image>
             </ImageView>
-            <BorderPane layoutX="649.0" layoutY="239.0" prefHeight="27.0" prefWidth="145.0" />
             <BorderPane layoutX="667.0" layoutY="275.0" prefHeight="27.0" prefWidth="127.0" />
-            <Label fx:id="homepage" layoutX="61.0" layoutY="197.0" onMouseClicked="#onMain" text="首页" textFill="WHITE">
+            <Label layoutX="61.0" layoutY="197.0" text="首页" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -118,9 +111,6 @@
                <image>
                   <Image url="@../../login/icon/frontpage_wh.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="711.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -146,82 +136,25 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
-            <TextArea fx:id="descriptionText" layoutX="232.0" layoutY="344.0" prefHeight="186.0" prefWidth="532.0">
+            <TableView fx:id="orderListTableView" layoutX="163.0" layoutY="207.0" prefHeight="315.0" prefWidth="621.0">
+               <columns>
+                  <TableColumn prefWidth="101.0" text="编号" />
+                  <TableColumn prefWidth="102.0" text="申请人" />
+                  <TableColumn prefWidth="108.0" text="时间" />
+                  <TableColumn prefWidth="111.0" text="客房类型" />
+                  <TableColumn prefWidth="103.0" text="客房数量" />
+                  <TableColumn prefWidth="95.0" text="总价" />
+               </columns>
                <effect>
                   <DropShadow />
                </effect>
-            </TextArea>
-            <TextField fx:id="phoneText" layoutX="258.0" layoutY="304.0" prefHeight="28.0" prefWidth="506.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="starText" layoutX="232.0" layoutY="269.0" prefHeight="28.0" prefWidth="532.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="businessAreaText" layoutX="232.0" layoutY="234.0" prefHeight="28.0" prefWidth="532.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="addressText" layoutX="232.0" layoutY="197.0" prefHeight="28.0" prefWidth="532.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <Label layoutX="187.0" layoutY="344.0" text="简介：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="183.0" layoutY="307.0" text="联系方式：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="187.0" layoutY="273.0" text="星级：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="187.0" layoutY="238.0" text="商圈：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="187.0" layoutY="201.0" text="地址：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="confirmLabel" layoutX="627.0" layoutY="546.0" onMouseClicked="#onConfirm" prefHeight="27.0" prefWidth="45.0" text="确认">
+            </TableView>
+            <Label layoutX="660.0" layoutY="540.0" onMouseClicked="#onExecute" prefHeight="27.0" prefWidth="80.0" text="确认执行">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="699.0" layoutY="546.0" onMouseClicked="#onCancel" prefHeight="27.0" prefWidth="45.0" text="取消">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
