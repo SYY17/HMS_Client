@@ -16,7 +16,7 @@ public class HotelInformation_controller {
 	@FXML
 	TextArea description;
 	@FXML
-	TableView<HotelData暂时先不删> hotelTableView;
+	TableView</*HotelData暂时先不删*/ ?> hotelTableView;
 	
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
