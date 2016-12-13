@@ -11,22 +11,22 @@ import businesslogicservice.userblservice.UserBLService;
 import vo.UserVO;
 
 public class UserBLServiceTest {
-	private UserBLService userBlService;
-	int id;
+	private UserBLService userController;
 	String name;
 	String password;
-	UserVO userVO;
-	ArrayList<UserVO> userList;
+	int id;
+	UserVO uvo;
 
 	/**
 	 * 初始化
 	 */
 	@Before
 	public void setUp() throws Exception {
-		id = 00000000;
-		name = "User";
-		password = "00000000";
-		userVO = new UserVO(id, name, password);
+		name = "testuser";
+		password = "000000";
+		id = 1;
+		uvo = new UserVO(id, name, password);
+		userController = new UserController();
 	}
 
 	/**
@@ -34,8 +34,66 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testAddUser() {
-		userBlService = new UserController();
-		assertEquals(ResultMessage.TRUE, userBlService.addUser(userVO));
+		assertEquals(ResultMessage.TRUE, userController.addUser(uvo));
+		uvo = userController.searchByUserName(name);
+		id = uvo.getID();
+	}
+	
+	/**
+	 * 按照用户名搜索用户的测试用例套件
+	 */
+	@Test
+	public void testSearchByUserName() {
+		uvo = userController.searchByUserName(name);
+		assertTrue(uvo != null);
+	}
+	
+	/**
+	 * 按照ID搜索用户的测试用例套件
+	 */
+	@Test
+	public void testSearchByID() {
+		uvo = userController.searchByUserName(name);
+		id = uvo.getID();
+		String username = userController.searchByUserID(id);
+		assertEquals(name, username);
+	}
+	
+	/**
+	 * 修改用户的测试用例套件
+	 */
+	@Test
+	public void modifyUser() {
+		password = "666666";
+		uvo = new UserVO(id, name, password);
+		assertEquals(ResultMessage.TRUE, userController.modifyUser(uvo));
+	}
+	
+	/**
+	 * 获得所有用户的测试用例套件
+	 */
+	@Test
+	public void testGetAllUsers() {
+		uvo = userController.searchByUserName(name);
+		id = uvo.getID();
+		ArrayList<UserVO> list = userController.getAllUsers();
+		assertTrue(list != null);
+		
+		UserVO temp = null;
+		boolean flag = false;
+		for(int i = 0; i < list.size(); i++){
+			temp = list.get(i);
+			if(temp.getName().equals(name)){
+				flag = true;
+				break;
+			}
+		}
+		
+		assertTrue(flag);
+		if(flag == true){
+			assertEquals(id, temp.getID());
+			assertEquals(password, temp.getPassword());
+		}
 	}
 
 	/**
@@ -43,35 +101,10 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void deleteUser() {
-		userBlService = new UserController();
-		assertEquals(ResultMessage.TRUE, userBlService.deleteUser(userVO.getID()));
-	}
-
-	/**
-	 * 修改用户的测试用例套件
-	 */
-	@Test
-	public void modifyAddUser() {
-		userBlService = new UserController();
-		assertEquals(ResultMessage.TRUE, userBlService.modifyUser(userVO));
-	}
-
-	/**
-	 * 按照ID搜索用户的测试用例套件
-	 */
-	@Test
-	public void testSearchByUserName() {
-		userBlService = new UserController();
-		assertEquals(userList, userBlService.searchByUserName(""));
-	}
-
-	/**
-	 * 获得所有用户的测试用例套件
-	 */
-	@Test
-	public void testGetAllUsers() {
-		userBlService = new UserController();
-		assertEquals(userList, userBlService.getAllUsers());
+		assertEquals(ResultMessage.TRUE, userController.deleteUser(id));
+		
+		//删除后信息不存在
+		assertTrue(userController.searchByUserID(id) == null);
 	}
 
 }
