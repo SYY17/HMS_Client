@@ -27,7 +27,7 @@ public class LoginController implements LoginBLService {
 	 * 
 	 * @param username
 	 * @param password
-	 *            * @param id
+	 * @param id
 	 * @return 增加新用户
 	 */
 	@Override
