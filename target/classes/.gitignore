@@ -1,9 +1,6 @@
-/businesslogic/
-/businesslogicservice/
-/dataservice/
-/po/
 /presentation/
 /rmi/
 /runner/
 /vo/
+/META-INF/
 /FXML/

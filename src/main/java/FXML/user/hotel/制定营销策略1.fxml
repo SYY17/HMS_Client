@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -24,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerUI_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.ManagerUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -51,7 +43,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="48.0" layoutY="310.0" onMouseClicked="#onReviewOrderList" text="订单管理" textFill="#fffdfd">
+            <Label fx:id="orderManage" layoutX="48.0" layoutY="310.0" onMouseClicked="#onOrderManage" text="订单管理" textFill="#fffdfd">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -67,7 +59,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="48.0" layoutY="423.0" onMouseClicked="#onReviewPromotion" text="策略管理" textFill="WHITE">
+            <Label fx:id="promotionManage" layoutX="48.0" layoutY="423.0" onMouseClicked="#onPromotionManage" text="策略管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -83,7 +75,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="48.0" layoutY="530.0" onMouseClicked="#onManage" text="酒店管理" textFill="WHITE">
+            <Label fx:id="hotelManage" layoutX="48.0" layoutY="530.0" onMouseClicked="#onHotelManage" text="酒店管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -119,7 +111,7 @@
                </image>
             </ImageView>
             <BorderPane layoutX="667.0" layoutY="275.0" prefHeight="27.0" prefWidth="127.0" />
-            <Label layoutX="61.0" layoutY="197.0" onMouseClicked="#onMain" text="首页" textFill="WHITE">
+            <Label fx:id="homepage" layoutX="61.0" layoutY="197.0" onMouseClicked="#onHomepage" text="首页" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -245,7 +237,7 @@
                   <DropShadow />
                </effect>
             </TextField>
-            <Label layoutX="724.0" layoutY="519.0" text="提交" textFill="#0d0d0d">
+            <Label fx:id="submit" layoutX="724.0" layoutY="519.0" onMouseClicked="#onSubmit" text="提交" textFill="#0d0d0d">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

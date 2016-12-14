@@ -36,7 +36,7 @@
                   <Image url="@../../login/icon/orderview_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="310.0" text="订单管理" textFill="#fffdfd">
+            <Label fx:id="orderManage" layoutX="48.0" layoutY="310.0" onMouseClicked="#onOrderManage" text="订单管理" textFill="#fffdfd">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -49,7 +49,7 @@
                   <Image url="@../../login/icon/promotion_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="423.0" text="策略管理" textFill="WHITE">
+            <Label fx:id="promotionManage" layoutX="48.0" layoutY="423.0" onMouseClicked="#onPromotionManage" text="策略管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -62,7 +62,7 @@
                   <Image url="@../../login/icon/hotelinfo_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="530.0" text="酒店管理" textFill="WHITE">
+            <Label fx:id="hotelManage" layoutX="48.0" layoutY="530.0" onMouseClicked="#onHotelManage" text="酒店管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -161,7 +161,7 @@
                   <Image url="@../../login/icon/datecheck_small.png" />
                </image>
             </ImageView>
-            <Label layoutX="61.0" layoutY="197.0" text="首页" textFill="WHITE">
+            <Label fx:id="homepage" layoutX="61.0" layoutY="197.0" onMouseClicked="#onHomepage" text="首页" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -291,7 +291,7 @@
                   <DropShadow />
                </effect>
             </ListView>
-            <Label layoutX="551.0" layoutY="548.0" text="新增" textFill="#0d0d0d">
+            <Label fx:id="add" layoutX="551.0" layoutY="548.0" onMouseClicked="#onAdd" text="新增" textFill="#0d0d0d">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

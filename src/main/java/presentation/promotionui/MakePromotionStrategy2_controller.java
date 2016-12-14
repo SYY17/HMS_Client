@@ -32,7 +32,8 @@ import vo.PromotionVO;
 public class MakePromotionStrategy2_controller {
 
 	public static Stage stage;
-
+	public static int id;
+	
 	public PromotionBLService promotionBlService = new PromotionController();
 	@FXML
 	public TableView<PromotionData> promotionTableView;
@@ -110,7 +111,7 @@ public class MakePromotionStrategy2_controller {
 		}
 
 		promotionBlService.addPromotion(
-				new PromotionVO(name, content, time, sp, pte, /* id = */20905098));//
+				new PromotionVO(name, content, time, sp, pte, id));//
 
 		if (pte == PromotionType.FULL_CUT) {
 			promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,

@@ -33,8 +33,9 @@ public class MakePromotionStrategy1_start extends Application {
 		try {
 			Parent root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("FXML/user/saler/MakePromotionStrategy1.fxml"));
-			initiateTableView(root);
+			
 			this.initiateHelper();
+			initiateTableView(root);
 			this.initiateElements(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
@@ -74,7 +75,7 @@ public class MakePromotionStrategy1_start extends Application {
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("promotionStop"));
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("promotionContent"));
 
-		ArrayList<PromotionVO> promotionList = promotionBlService.getAllPromotion(33333333);//
+		ArrayList<PromotionVO> promotionList = promotionBlService.getAllPromotion(id);//
 
 		for (int i = 0; i < promotionList.size(); i++) {
 			PromotionVO pvo = promotionList.get(i);

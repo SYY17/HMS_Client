@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import presentation.controller.IDHelper;
 import vo.PromotionVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,11 +25,15 @@ import javafx.scene.control.ListView;
 public class CreatePromotion_start extends Application {
 
 	private final String pattern = "yyyy-MM-dd";
+	
+	private IDHelper idHelper;
+	private int id;
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/制定营销策略1.fxml"));
+			this.initiateHelper();//
 			initDatePicker(root);
 			initChoiceBox(root);
 			initiateTableView(root);
@@ -36,6 +41,7 @@ public class CreatePromotion_start extends Application {
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// primaryStage.initStyle(StageStyle.DECORATED);
 			CreatePromotion_controller.stage = primaryStage;
+			CreatePromotion_controller.id = id;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
 			primaryStage.show();
@@ -139,7 +145,7 @@ public class CreatePromotion_start extends Application {
 
 		data.clear();
 		ArrayList<PromotionVO> pvo = promotionBlService
-				.getAllPromotion(/* id = */20902341);//
+				.getAllPromotion(id);//
 		ArrayList<String> content = new ArrayList<String>();
 		for (int i = 0; i < pvo.size(); i++) {
 			content.add(pvo.get(i).getPromotionName());
@@ -147,4 +153,13 @@ public class CreatePromotion_start extends Application {
 		ObservableList<String> strList = FXCollections.observableArrayList(content);
 		promotionListView.setItems(strList);
 	}
+	
+	/**
+	 * 获取当前用户ID
+	 */
+	private void initiateHelper() {
+		idHelper = IDHelper.getInstance();
+		id = idHelper.getID();
+	}
+	
 }

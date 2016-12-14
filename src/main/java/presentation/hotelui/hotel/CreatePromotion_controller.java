@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
+import presentation.mainui.HotelUI_start;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
 import vo.PromotionType;
@@ -24,6 +25,8 @@ import vo.PromotionVO;
 public class CreatePromotion_controller {
 
 	public static Stage stage;
+	public static int id;
+	
 	public PromotionBLService promotionBlService = new PromotionController();
 	@FXML
 	public ListView<String> promotionListView;
@@ -71,7 +74,7 @@ public class CreatePromotion_controller {
 		}
 
 		promotionBlService.addPromotion(
-				new PromotionVO(name, content, time, sp, pte, /* id = */20902341));//
+				new PromotionVO(name, content, time, sp, pte, id));//
 
 		if (pte == PromotionType.FULL_CUT) {
 			promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
@@ -85,18 +88,23 @@ public class CreatePromotion_controller {
 	}
 
 	@FXML
-	private void onReviewOrderList(ActionEvent event) throws IOException {
+	private void onHomepage(MouseEvent event) throws Exception {
+		new HotelUI_start().start(stage);
+	}
+	
+	@FXML
+	private void onOrderManage(MouseEvent event) throws Exception {
 		new OrderList_start().start(stage);
 	}
-
+	
 	@FXML
-	private void onManage(ActionEvent event) throws IOException {
-		new Manage_start().start(stage);
-	}
-
-	@FXML
-	private void onReviewPromotion(ActionEvent event) throws IOException {
+	private void onPromotionManage(MouseEvent event) throws Exception {
 		new Promotion_start().start(stage);
+	}
+	
+	@FXML
+	private void onHotelManage(MouseEvent event) throws Exception {
+		new Manage_start().start(stage);
 	}
 
 	public Date strToDate(String strDate) {

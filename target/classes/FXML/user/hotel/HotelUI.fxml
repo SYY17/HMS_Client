@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.HotelUI_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.HotelUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -34,7 +37,7 @@
                   <Image url="@../../login/icon/orderview_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="310.0" text="订单管理" textFill="#fffdfd">
+            <Label fx:id="orderManage" layoutX="48.0" layoutY="310.0" onMouseClicked="#onOrderManage" text="订单管理" textFill="#fffdfd">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -47,7 +50,7 @@
                   <Image url="@../../login/icon/promotion_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="423.0" text="策略管理" textFill="WHITE">
+            <Label fx:id="promotionManage" layoutX="48.0" layoutY="423.0" onMouseClicked="#onPromotionManage" text="策略管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -60,7 +63,7 @@
                   <Image url="@../../login/icon/hotelinfo_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="530.0" text="酒店管理" textFill="WHITE">
+            <Label fx:id="hotelManage" layoutX="48.0" layoutY="530.0" onMouseClicked="#onHotelManage" text="酒店管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -172,7 +175,7 @@
                   <Image url="@../../login/icon/datecheck_small.png" />
                </image>
             </ImageView>
-            <Label layoutX="61.0" layoutY="197.0" text="首页" textFill="WHITE">
+            <Label fx:id="homepage" layoutX="61.0" layoutY="197.0" onMouseClicked="#onHomepage" text="首页" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

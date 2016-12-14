@@ -28,19 +28,24 @@ public class Promotion_controller {
 	private void onAdd(MouseEvent event) {
 		new CreatePromotion_start().start(stage);
 	}
-
+	
 	@FXML
-	private void onReviewOrderList(ActionEvent event) throws IOException {
+	private void onHomepage(MouseEvent event) throws Exception {
+		new HotelUI_start().start(stage);
+	}
+	
+	@FXML
+	private void onOrderManage(MouseEvent event) throws Exception {
 		new OrderList_start().start(stage);
 	}
-
+	
 	@FXML
-	private void onManage(ActionEvent event) throws IOException {
-		new Manage_start().start(stage);
-	}
-
-	@FXML
-	private void onReviewPromotion(ActionEvent event) throws IOException {
+	private void onPromotionManage(MouseEvent event) throws Exception {
 		new Promotion_start().start(stage);
+	}
+	
+	@FXML
+	private void onHotelManage(MouseEvent event) throws Exception {
+		new Manage_start().start(stage);
 	}
 }
