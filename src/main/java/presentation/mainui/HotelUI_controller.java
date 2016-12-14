@@ -58,26 +58,25 @@ public class HotelUI_controller {
 	// }
 	//
 	//
-	// @FXML
-	// private void onReviewOrderList(ActionEvent event) throws IOException {
-	// new OrderList_start().start(stage);
-	// }
+	 @FXML
+	 private void onOrderList(ActionEvent event) throws Exception {
+	 new OrderList_start().start(stage);
+	}
+	
+	 @FXML
+	 private void onMain(ActionEvent event) throws Exception {
+	 new HotelUI_start().start(stage);
+	 }
 	//
-	// @FXML
-	// private void onExecute(ActionEvent event) throws IOException { //no use
-	// of its existence, further consideration needed
-	// new Execute_start().start(stage);
-	// }
+	 @FXML
+	 private void onManage(ActionEvent event) throws Exception {
+	new Manage_start().start(stage);
+	}
 	//
-	// @FXML
-	// private void onManage(ActionEvent event) throws IOException {
-	// new Manage_start().start(stage);
-	// }
-	//
-	// @FXML
-	// private void onReviewPromotion(ActionEvent event) throws IOException {
-	// new Promotion_start().start(stage);
-	// }
+	 @FXML
+	 private void onReviewPromotion(ActionEvent event) throws Exception {
+	 new Promotion_start().start(stage);
+	 }
 	//
 	// @FXML
 	// private void onCreatePromotion(ActionEvent event) throws IOException {
