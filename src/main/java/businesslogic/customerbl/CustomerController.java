@@ -26,6 +26,24 @@ public class CustomerController implements CustomerBLService{
 	/**
 	 * 
 	 * @param username
+	 * @return 添加新的顾客信息
+	 */
+	public boolean addNewCustomer(String username){
+		boolean result = false;
+		try {
+			customerDataService.initCustomerDataService();
+			result = customerDataService.insertCustomer(username);
+			customerDataService.finishCustomerDataService();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * 
+	 * @param username
 	 * @return 根据用户名查找并返回顾客信息
 	 * @throws RemoteException
 	 */
@@ -70,6 +88,24 @@ public class CustomerController implements CustomerBLService{
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	
+	/**
+	 * 
+	 * @param username
+	 * @return 删除顾客信息
+	 */
+	public boolean deleteCustomer(String username){
+		boolean result = false;
+		try {
+			customerDataService.initCustomerDataService();
+			result = customerDataService.deleteCustomer(username);
+			customerDataService.finishCustomerDataService();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
