@@ -51,11 +51,23 @@ public class CustomerController implements CustomerBLService{
 	
 	/**
 	 * 
+	 * @param cvo
+	 * @return 更新顾客信息
+	 * @throws RemoteException
+	 */
+	@Override
+	public boolean setCustomerInfo(CustomerVO cvo) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	/**
+	 * 
 	 * @param cpo
 	 * @return VO, PO转换方法
 	 */
 	private CustomerVO convert(CustomerPO cpo){
-		CustomerVO cvo = new CustomerVO(cpo.getID(), cpo.getName(), cpo.getPassword(), cpo.getBirthday(), cpo.getPhoneNumber(), cpo.getEmail());
+		CustomerVO cvo = new CustomerVO(cpo.getID(), cpo.getName(), cpo.getPassword(), cpo.getBirthday(), cpo.getPhoneNumber(), cpo.getEmail(), cpo.getAddress());
 		return cvo;
 	}
 	

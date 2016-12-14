@@ -1,6 +1,7 @@
 package businesslogicservice.customerBLService;
 
 import java.rmi.RemoteException;
+
 import vo.CustomerVO;
 
 public interface CustomerBLService {
@@ -12,4 +13,12 @@ public interface CustomerBLService {
 	 * @throws RemoteException
 	 */
 	public CustomerVO getCustomerInfo(String username);
+	
+	/**
+	 * 
+	 * @param cvo
+	 * @return 更新顾客信息
+	 * @throws RemoteException
+	 */
+	public boolean setCustomerInfo(CustomerVO cvo) throws RemoteException;
 }

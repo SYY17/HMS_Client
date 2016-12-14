@@ -10,17 +10,19 @@ public class CustomerVO extends UserVO {
 	Date birthday;
 	String phoneNumber;
 	String email;
+	String address;
 
-	public CustomerVO(int i, String n, String p, Date b, String pN, String e) {
+	public CustomerVO(int i, String n, String p, Date b, String pN, String e, String a) {
 		// TODO Auto-generated constructor stub
 		super(i, n, p);
 		birthday = b;
 		phoneNumber = pN;
 		email = e;
+		address = a;
 	}
 
-	public CustomerVO(UserVO uvo, Date b, String pN, String e) {
-		this(uvo.getID(), uvo.getName(), uvo.getPassword(), b, pN, e);
+	public CustomerVO(UserVO uvo, Date b, String pN, String e, String a) {
+		this(uvo.getID(), uvo.getName(), uvo.getPassword(), b, pN, e, a);
 	}
 
 	/**
@@ -45,5 +47,13 @@ public class CustomerVO extends UserVO {
 	 */
 	public String getEmail() {
 		return email;
+	}
+	
+	/**
+	 * 
+	 * @return 获取用户地址
+	 */
+	public String getAddress(){
+		return address;
 	}
 }
