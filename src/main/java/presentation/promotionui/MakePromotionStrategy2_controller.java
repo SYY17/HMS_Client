@@ -1,12 +1,7 @@
 package presentation.promotionui;
 
-import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.event.ActionEvent;

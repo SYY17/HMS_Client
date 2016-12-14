@@ -20,5 +20,5 @@ public interface CustomerBLService {
 	 * @return 更新顾客信息
 	 * @throws RemoteException
 	 */
-	public boolean setCustomerInfo(CustomerVO cvo) throws RemoteException;
+	public boolean setCustomerInfo(CustomerVO cvo);
 }

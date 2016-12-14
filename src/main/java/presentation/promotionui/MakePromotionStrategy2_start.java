@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import presentation.controller.IDHelper;
-import presentation.hotelui.hotel.CreatePromotion_controller;
 import presentation.hotelui.hotel.PromotionData;
 import vo.PromotionVO;
 
@@ -79,7 +78,7 @@ public class MakePromotionStrategy2_start extends Application {
 		// 查找stopTime
 		DatePicker stopTime = (DatePicker) root.lookup("#stopTime");
 
-		StringConverter converter = new StringConverter<LocalDate>() {
+		StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
 			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
 
 			@Override

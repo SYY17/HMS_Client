@@ -4,9 +4,7 @@ package presentation.hotelui.hotel;
 import java.io.IOException;
 
 import businesslogicservice.ResultMessage;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;

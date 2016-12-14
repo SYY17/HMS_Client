@@ -5,18 +5,17 @@ import java.sql.Date;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
-import vo.PromotionType;
 import vo.PromotionVO;
 
 public class PromotionBLService_Driver {
 
 	public void drive(PromotionBLService promotionBLService) {
 		PromotionVO pvo = new PromotionVO(null, null, null, null, null, 0);
-		String promotionName = null;
+		//String promotionName = null;
 		String content = null;
 		Date start = null;
-		Date stop = null;
-		PromotionType pt = null;
+		//Date stop = null;
+		//PromotionType pt = null;
 		int id = 0;
 		ResultMessage result = promotionBLService.addPromotion(pvo);
 		if (result == ResultMessage.TRUE)

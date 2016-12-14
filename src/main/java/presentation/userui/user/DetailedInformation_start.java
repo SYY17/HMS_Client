@@ -122,7 +122,7 @@ public class DetailedInformation_start extends Application {
 		
 		// 查找address
 		TextField address = (TextField) root.lookup("#address");
-		address.setText("addressCannotGet");		
+		address.setText(cvo.getAddress());		
 		address.setEditable(false);
 		
 	}

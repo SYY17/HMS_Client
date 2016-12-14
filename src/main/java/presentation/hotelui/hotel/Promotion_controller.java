@@ -1,10 +1,7 @@
 package presentation.hotelui.hotel;
 
-import java.io.IOException;
-
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;

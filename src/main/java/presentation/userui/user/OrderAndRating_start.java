@@ -46,6 +46,7 @@ public class OrderAndRating_start extends Application {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void initiateHotelInfoText(Parent root) {
 		TextArea hotelInfoText = (TextArea) root.lookup("#hotelInfoText");
 
@@ -59,6 +60,7 @@ public class OrderAndRating_start extends Application {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		TableView<OrderData> orderAndRatingTableView = (TableView<OrderData>) root.lookup("#orderAndRatingTableView");

@@ -56,9 +56,21 @@ public class CustomerController implements CustomerBLService{
 	 * @throws RemoteException
 	 */
 	@Override
-	public boolean setCustomerInfo(CustomerVO cvo) throws RemoteException {
+	public boolean setCustomerInfo(CustomerVO cvo){
 		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		
+		try {
+			CustomerPO cpo = this.convert(cvo);
+			customerDataService.initCustomerDataService();
+			result = customerDataService.updateCustomerInfo(cpo);
+			customerDataService.finishCustomerDataService();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	/**
@@ -69,6 +81,16 @@ public class CustomerController implements CustomerBLService{
 	private CustomerVO convert(CustomerPO cpo){
 		CustomerVO cvo = new CustomerVO(cpo.getID(), cpo.getName(), cpo.getPassword(), cpo.getBirthday(), cpo.getPhoneNumber(), cpo.getEmail(), cpo.getAddress());
 		return cvo;
+	}
+	
+	/**
+	 * 
+	 * @param cvo
+	 * @return PO, VO转换方法
+	 */
+	private CustomerPO convert(CustomerVO cvo){
+		CustomerPO cpo = new CustomerPO(cvo.getID(), cvo.getName(), cvo.getPassword(), cvo.getBirthday(), cvo.getPhoneNumber(), cvo.getEmail(), cvo.getAddress());
+		return cpo;
 	}
 	
 }

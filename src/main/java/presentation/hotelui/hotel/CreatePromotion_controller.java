@@ -1,6 +1,5 @@
 package presentation.hotelui.hotel;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 

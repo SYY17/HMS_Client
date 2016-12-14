@@ -18,7 +18,7 @@ import vo.PromotionVO;
 import vo.RoomType;
 
 public class OrderBLServiceTest {
-	private OrderBLService orderBlService;
+	OrderBLService orderBLService;
 	int orderID;
 	OrderStatus orderStatus;
 	int price;
@@ -58,8 +58,8 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void testReviewOrder() {
-		orderBlService = new OrderController();
-		assertEquals(orderList, orderBlService.reviewOrder(00000000));
+		orderBLService = new OrderController();
+		assertEquals(orderList, orderBLService.reviewOrder(00000000));
 	}
 
 	/**
@@ -67,8 +67,8 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void testReviewOrder2() {
-		orderBlService = new OrderController();
-		assertEquals(orderList, orderBlService.reviewOrder(00000000, OrderStatus.Finished));
+		orderBLService = new OrderController();
+		assertEquals(orderList, orderBLService.reviewOrder(00000000, OrderStatus.Finished));
 	}
 
 	/**
@@ -76,8 +76,8 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void testCancelOrder() {
-		orderBlService = new OrderController();
-		assertEquals(ResultMessage.TRUE, orderBlService.cancelOrder(orderVO));
+		orderBLService = new OrderController();
+		assertEquals(ResultMessage.TRUE, orderBLService.cancelOrder(orderVO));
 	}
 
 	/**
@@ -86,9 +86,9 @@ public class OrderBLServiceTest {
 	@Test
 	public void testCreate(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut) {
-		orderBlService = new OrderController();
+		orderBLService = new OrderController();
 		assertEquals(orderVO,
-				orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut));
+				orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut));
 	}
 
 	/**
@@ -96,8 +96,8 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void testAddOrder() {
-		orderBlService = new OrderController();
-		assertEquals(ResultMessage.TRUE, orderBlService.addOrder(orderVO));
+		orderBLService = new OrderController();
+		assertEquals(ResultMessage.TRUE, orderBLService.addOrder(orderVO));
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void testComplainOrder() {
-		orderBlService = new OrderController();
-		assertEquals(ResultMessage.TRUE, orderBlService.complainOrder(orderID, orderStatus));
+		orderBLService = new OrderController();
+		assertEquals(ResultMessage.TRUE, orderBLService.complainOrder(orderID, orderStatus));
 	}
 
 }

@@ -11,7 +11,7 @@ import businesslogicservice.userblservice.UserBLService;
 import vo.UserVO;
 
 public class UserBLServiceTest {
-	private UserBLService userController;
+	UserBLService userBLService;
 	String name;
 	String password;
 	int id;
@@ -26,7 +26,7 @@ public class UserBLServiceTest {
 		password = "000000";
 		id = 1;
 		uvo = new UserVO(id, name, password);
-		userController = new UserController();
+		userBLService = new UserController();
 	}
 
 	/**
@@ -34,8 +34,8 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testAddUser() {
-		assertEquals(ResultMessage.TRUE, userController.addUser(uvo));
-		uvo = userController.searchByUserName(name);
+		assertEquals(ResultMessage.TRUE, userBLService.addUser(uvo));
+		uvo = userBLService.searchByUserName(name);
 		id = uvo.getID();
 	}
 	
@@ -44,7 +44,7 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testSearchByUserName() {
-		uvo = userController.searchByUserName(name);
+		uvo = userBLService.searchByUserName(name);
 		assertTrue(uvo != null);
 	}
 	
@@ -53,9 +53,9 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testSearchByID() {
-		uvo = userController.searchByUserName(name);
+		uvo = userBLService.searchByUserName(name);
 		id = uvo.getID();
-		String username = userController.searchByUserID(id);
+		String username = userBLService.searchByUserID(id);
 		assertEquals(name, username);
 	}
 	
@@ -66,7 +66,7 @@ public class UserBLServiceTest {
 	public void modifyUser() {
 		password = "666666";
 		uvo = new UserVO(id, name, password);
-		assertEquals(ResultMessage.TRUE, userController.modifyUser(uvo));
+		assertEquals(ResultMessage.TRUE, userBLService.modifyUser(uvo));
 	}
 	
 	/**
@@ -74,9 +74,9 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void testGetAllUsers() {
-		uvo = userController.searchByUserName(name);
+		uvo = userBLService.searchByUserName(name);
 		id = uvo.getID();
-		ArrayList<UserVO> list = userController.getAllUsers();
+		ArrayList<UserVO> list = userBLService.getAllUsers();
 		assertTrue(list != null);
 		
 		UserVO temp = null;
@@ -101,10 +101,10 @@ public class UserBLServiceTest {
 	 */
 	@Test
 	public void deleteUser() {
-		assertEquals(ResultMessage.TRUE, userController.deleteUser(id));
+		assertEquals(ResultMessage.TRUE, userBLService.deleteUser(id));
 		
 		//删除后信息不存在
-		assertTrue(userController.searchByUserID(id) == null);
+		assertTrue(userBLService.searchByUserID(id) == null);
 	}
 
 }

@@ -17,7 +17,6 @@ import presentation.controller.OrderControllerImpl;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import presentation.orderui.OrderDataHelper;
-import vo.OrderStatus;
 import vo.OrderVO;
 
 public class ManageUserCredit2_start extends Application{

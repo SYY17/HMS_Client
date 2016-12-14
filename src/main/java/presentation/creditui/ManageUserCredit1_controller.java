@@ -7,7 +7,6 @@ import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.orderui.ManageAbnormalOrder1_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
-import presentation.promotionui.MakePromotionStrategy2_start;
 
 public class ManageUserCredit1_controller {
 

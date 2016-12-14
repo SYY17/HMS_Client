@@ -13,8 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.UserControllerImpl;
-import presentation.userui.SystemUserData;
-import presentation.userui.SystemUserDataHelper;
 import presentation.userui.UserControllerService;
 import presentation.userui.UserData;
 import presentation.userui.UserDataHelper;

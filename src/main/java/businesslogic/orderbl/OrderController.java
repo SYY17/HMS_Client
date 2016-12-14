@@ -147,7 +147,7 @@ public class OrderController implements OrderBLService {
 	private boolean conflictTime(OrderPO orderPO, Date checkIn,Date checkOut){
 		boolean mark = true;
 		
-		return true;
+		return mark;
 	}
 
 	/**
