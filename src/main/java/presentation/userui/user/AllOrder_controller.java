@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.UserUI_start;
@@ -24,6 +25,7 @@ import vo.OrderVO;
 public class AllOrder_controller {
 
 	public static Stage stage;
+	private IDHelper idHelper;
 	private final ObservableList<OrderData> data = FXCollections.observableArrayList();
 	public OrderControllerService orderControllerService = new OrderControllerImpl();
 	public TableView<OrderData> allOrderTableView;
@@ -36,17 +38,17 @@ public class AllOrder_controller {
 	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onOrderManage(MouseEvent event) throws Exception {
 		new AllOrder_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
 		new UserUI_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onHistory(MouseEvent event) throws IOException {
 		new Credit_start().start(stage);
@@ -92,9 +94,10 @@ public class AllOrder_controller {
 		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomType"));
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 
+		idHelper = IDHelper.getInstance();
 		data.clear();
 		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */40000000);
+				.reviewOrder(/* id = */idHelper.getID());
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			if (isValid(orderStatus, ovo)) {

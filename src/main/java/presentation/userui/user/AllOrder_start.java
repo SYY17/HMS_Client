@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
@@ -48,6 +49,7 @@ public class AllOrder_start extends Application {
 	 * @param root
 	 */
 	private void initiateTableView(Parent root) {
+		IDHelper idHelper = IDHelper.getInstance();
 		@SuppressWarnings("unchecked")
 		// 查找tableview
 		TableView<OrderData> allOrderTableView = (TableView<OrderData>) root.lookup("#allOrderTableView");
@@ -68,7 +70,7 @@ public class AllOrder_start extends Application {
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 
 		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */40000000);
+				.reviewOrder(/* id = */idHelper.getID());
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));
