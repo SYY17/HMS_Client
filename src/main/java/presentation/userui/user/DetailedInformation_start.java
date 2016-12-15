@@ -96,7 +96,7 @@ public class DetailedInformation_start extends Application {
 		username.setText(name);
 	}
 
-	public void initialize(Parent root){
+	private void initialize(Parent root){
 		UserBLService userBlService = new UserController();
 		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
 		String username = uvo.getName();
@@ -130,7 +130,7 @@ public class DetailedInformation_start extends Application {
 	/*
 	 * 初始化DatePicker
 	 */
-	public void initDatePicker(Parent root, String birthday) {
+	private void initDatePicker(Parent root, String birthday) {
 		// 查找birth
 		DatePicker birth = (DatePicker) root.lookup("#birth");
 
@@ -160,7 +160,7 @@ public class DetailedInformation_start extends Application {
 		birth.setConverter(converter);
 		birth.setPromptText(pattern.toLowerCase());
 
-		birth.setValue(converter.fromString(birthday));//..............
+		birth.setValue(converter.fromString(birthday));
 		birth.setEditable(false);
 	}
 	

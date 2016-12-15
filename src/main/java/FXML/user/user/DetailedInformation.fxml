@@ -442,32 +442,45 @@
                   <InnerShadow choke="0.51" color="#93989e" />
                </effect>
             </TextField>
-            <ImageView fitHeight="39.0" fitWidth="38.0" layoutX="453.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/save.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="save" layoutX="458.0" layoutY="520.0" onMouseClicked="#onEdit" text="保存">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="edit" layoutX="331.0" layoutY="523.0" onMouseClicked="#onEdit" text="编辑">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="327.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="icon_edit" fitHeight="40.0" fitWidth="40.0" layoutX="506.0" layoutY="482.0" onMouseClicked="#onEdit" onMouseEntered="#onEnteredEdit" onMouseExited="#onExitedEdit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/edit.png" />
                </image>
             </ImageView>
+            <Label fx:id="label_edit" layoutX="510.0" layoutY="523.0" onMouseClicked="#onEdit" onMouseEntered="#onEnteredEdit" onMouseExited="#onExitedEdit" text="编辑">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="icon_save" disable="true" fitHeight="40.0" fitWidth="40.0" layoutX="506.0" layoutY="482.0" onMouseClicked="#onSave" onMouseEntered="#onEnteredSave" onMouseExited="#onExitedSave" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../login/icon/save.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_save" disable="true" layoutX="510.0" layoutY="523.0" onMouseClicked="#onSave" onMouseEntered="#onEnteredSave" onMouseExited="#onExitedSave" text="保存" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="icon_cancel" disable="true" fitHeight="40.0" fitWidth="40.0" layoutX="572.0" layoutY="482.0" onMouseClicked="#onCancel" onMouseEntered="#onEnteredCancel" onMouseExited="#onExitedCancel" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../login/icon/cancel.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_cancel" disable="true" layoutX="576.0" layoutY="523.0" onMouseClicked="#onCancel" onMouseEntered="#onEnteredCancel" onMouseExited="#onExitedCancel" text="取消" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
