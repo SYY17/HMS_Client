@@ -147,10 +147,11 @@ public class OrderController implements OrderBLService {
 				}
 			}
 			if (mark) {
-				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Abnormal,
-						promotionInfo.getFinalPrice(hotelName, setTime,
-								/* hotelInfo.getPrice(hotelName, roomType) */1 * roomNumber),
-						roomType, roomNumber, setTime, checkIn, checkOut);
+				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
+						/*
+						 * promotionInfo.getFinalPrice(hotelName, setTime,
+						 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
+						 */1, roomType, roomNumber, setTime, checkIn, checkOut);
 				orderDataService.insertOrder(VOToPO(ovoTemp));
 				return ovoTemp;
 			}

@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
+import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
 import presentation.hotelui.HotelControllerService;
 import presentation.orderui.OrderControllerService;
@@ -62,6 +63,7 @@ public class OrderAndRating_start extends Application {
 
 	@SuppressWarnings("unused")
 	private void initiateTableView(Parent root) {
+		IDHelper idHelper = IDHelper.getInstance();
 		@SuppressWarnings("unchecked")
 		TableView<OrderData> orderAndRatingTableView = (TableView<OrderData>) root.lookup("#orderAndRatingTableView");
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
@@ -70,7 +72,7 @@ public class OrderAndRating_start extends Application {
 		ObservableList<TableColumn<OrderData, ?>> observableList = orderAndRatingTableView.getColumns();
 		initiateObservableList(observableList);
 		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */20905098);
+				.reviewOrder(idHelper.getID());
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));
