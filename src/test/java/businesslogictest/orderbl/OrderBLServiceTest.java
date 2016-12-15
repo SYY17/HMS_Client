@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import businesslogic.orderbl.OrderController;
-import businesslogic.orderbl.UserInfo;
-import businesslogic.userbl.UserInfoForOrder;
 import businesslogicservice.orderblservice.OrderBLService;
 import vo.OrderStatus;
 import vo.OrderVO;
@@ -28,8 +26,6 @@ public class OrderBLServiceTest {
 	private Timestamp setTime;
 	private Date checkIn;
 	private Date checkOut;
-	private OrderVO orderVO;
-
 	@Before
 	public void setUp() throws Exception {
 		orderBlService = new OrderController();
@@ -43,7 +39,7 @@ public class OrderBLServiceTest {
 		setTime = Timestamp.valueOf("2016-12-14 14:47:36.000000");
 		checkIn = Date.valueOf("2016-12-15");
 		checkOut = Date.valueOf("2016-12-15");
-		orderVO = new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime, checkIn,
+		new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime, checkIn,
 				checkOut);
 	}
 
