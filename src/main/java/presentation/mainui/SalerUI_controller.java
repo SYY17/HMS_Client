@@ -5,9 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.creditui.ManageUserCredit1_start;
+import presentation.creditui.ManageUserCredit_start;
 import presentation.loginui.LoginUI_start;
-import presentation.orderui.ManageAbnormalOrder1_start;
+import presentation.orderui.ManageAbnormalOrder_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
 
 public class SalerUI_controller {
@@ -72,7 +72,7 @@ public class SalerUI_controller {
 	 */
 	@FXML
 	private void onManageCredit(MouseEvent event) throws Exception {
-		new ManageUserCredit1_start().start(stage);
+		new ManageUserCredit_start().start(stage);
 	}
 
 	/**
@@ -82,6 +82,6 @@ public class SalerUI_controller {
 	 */
 	@FXML
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
-		new ManageAbnormalOrder1_start().start(stage);
+		new ManageAbnormalOrder_start().start(stage);
 	}
 }

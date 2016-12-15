@@ -1,14 +1,14 @@
-package presentation.creditui;
+package presentation.orderui;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.creditui.ManageUserCredit_start;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
-import presentation.orderui.ManageAbnormalOrder1_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
 
-public class ManageUserCredit2_controller {
+public class ManageAbnormalOrderAndCredit_controller {
 
 	public static Stage stage;
 
@@ -29,11 +29,11 @@ public class ManageUserCredit2_controller {
 
 	@FXML
 	private void onManageCredit(MouseEvent event) throws Exception {
-		new ManageUserCredit1_start().start(stage);
+		new ManageUserCredit_start().start(stage);
 	}
 
 	@FXML
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
-		new ManageAbnormalOrder1_start().start(stage);
+		new ManageAbnormalOrder_start().start(stage);
 	}
 }

@@ -14,20 +14,23 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.OrderControllerImpl;
+import presentation.controller.UserControllerImpl;
+import presentation.controller.UserNameHelper;
+import presentation.userui.UserControllerService;
 import vo.OrderStatus;
 import vo.OrderVO;
 
-public class ManageAbnormalOrder2_start extends Application{
+public class ManageAbnormalOrderAndCredit_start extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder2.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrderAndCredit.fxml"));
 			initiateTableView(root);
 			
 			Scene scene = new Scene(root, 800, 600);
 //			scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
-			ManageAbnormalOrder2_controller.stage = primaryStage;
+			ManageAbnormalOrderAndCredit_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("管理异常订单");
 			primaryStage.show();
@@ -42,10 +45,12 @@ public class ManageAbnormalOrder2_start extends Application{
 		System.out.println(manageAbnormalOrderTableView);
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
 		OrderControllerService orderControllerService = new OrderControllerImpl();
+		UserControllerService userControllerService = new UserControllerImpl();
+		int userID = userControllerService.searchByUserName(UserNameHelper.getInstance().getUserName()).getID();
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */10916231,OrderStatus.Abnormal);
+		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(userID,OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));

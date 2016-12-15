@@ -16,7 +16,7 @@ import presentation.controller.OrderControllerImpl;
 import vo.OrderStatus;
 import vo.OrderVO;
 
-public class ManageAbnormalOrder1_start extends Application {
+public class ManageAbnormalOrder_start extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
@@ -26,11 +26,11 @@ public class ManageAbnormalOrder1_start extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			Parent root = FXMLLoader
-					.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder1.fxml"));
+					.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
-			ManageAbnormalOrder1_controller.stage = primaryStage;
+			ManageAbnormalOrder_controller.stage = primaryStage;
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("管理异常订单");
 			primaryStage.show();
