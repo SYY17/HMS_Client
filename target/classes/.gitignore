@@ -1,13 +1,9 @@
-/presentation/
-/rmi/
-/runner/
-/vo/
-<<<<<<< Updated upstream
-/META-INF/
-/FXML/
 /businesslogic/
 /businesslogicservice/
 /dataservice/
 /po/
-=======
->>>>>>> Stashed changes
+/presentation/
+/rmi/
+/runner/
+/vo/
+/META-INF/

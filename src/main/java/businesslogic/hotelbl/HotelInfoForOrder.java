@@ -9,6 +9,10 @@ import vo.RoomVO;
 public class HotelInfoForOrder implements HotelInfo {
 
 	HotelBLService hotelController;
+	
+	public HotelInfoForOrder() {
+		hotelController = new HotelController();
+	}
 
 	/**
 	 * 

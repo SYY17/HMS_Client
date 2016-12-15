@@ -6,7 +6,6 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 import businesslogic.promotionbl.PromotionController;
-import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import vo.PromotionType;
 import vo.PromotionVO;
@@ -14,21 +13,27 @@ import vo.PromotionVO;
 public class PromotionBLServiceTest {
 
 	private PromotionBLService promotionBLService;
-	PromotionVO p1;
-	PromotionVO p2;
-	long time;
-	long sp;
+	private String promotionName;
+	private String content;
+	private PromotionType promotionType;
+	private Date start;
+	private Date stop;
+	private int id;
+	private PromotionVO promotionVO;
 
 	/**
 	 * 初始化
 	 */
 	@Before
 	public void setUp() throws Exception {
-		time = System.currentTimeMillis();
-		sp = System.currentTimeMillis() + 10000;
-		p1 = new PromotionVO("双十一折扣", "双十一下订单八折优惠", new Date(time), new Date(sp), PromotionType.DISCOUNT, 20920010);
-		p2 = new PromotionVO("订单完成满减", "订单完成后获得信用值增加百分之五", new Date(time), new Date(sp), PromotionType.FULL_CUT,
-				30925005);
+		promotionBLService = new PromotionController();
+		id = 30161215;
+		promotionName = "两年后的满减";
+		content = "2019年即可满减";
+		promotionType = PromotionType.FULL_CUT;
+		start = Date.valueOf("2019-11-01");
+		stop = Date.valueOf("2019-12-01");
+		promotionVO = new PromotionVO(promotionName, content, start, stop, promotionType, id);
 	}
 
 	/**
@@ -36,14 +41,7 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testAddPromotion() {
-		promotionBLService = new PromotionController();
-		ResultMessage message;
-		message = promotionBLService.addPromotion(p1);
-		assertEquals(ResultMessage.TRUE, message);
-		message = promotionBLService.addPromotion(p1);
-		assertEquals(ResultMessage.FALSE, message);
-		message = promotionBLService.addPromotion(p2);
-		assertEquals(ResultMessage.TRUE, message);
+		
 	}
 
 	/**
@@ -51,25 +49,7 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testSearchPromotion() {
-		promotionBLService = new PromotionController();
-		ArrayList<PromotionVO> list;
-		ResultMessage message;
-		list = promotionBLService.searchByContent(20920010, "双十一下订单八折优惠");
-		assertEquals(p1.getPromotionName(), list.get(0).getPromotionName());//
-		assertEquals(p1.getID(), list.get(0).getID());
-		assertEquals(p1.getContent(), list.get(0).getContent());
-		assertEquals(p1.getStartTime(), list.get(0).getStartTime());
-		assertEquals(p1.getStopTime(), list.get(0).getStopTime());//
-		assertEquals(p1.getPromotionType(), list.get(0).getPromotionType());//
-		list = promotionBLService.searchByStartTime(20920010, new Date(time));
-		assertEquals(p1.getPromotionName(), list.get(0).getPromotionName());
-		assertEquals(p1.getID(), list.get(0).getID());
-		assertEquals(p1.getContent(), list.get(0).getContent());
-		assertEquals(p1.getStartTime(), list.get(0).getStartTime());
-		assertEquals(p1.getStopTime(), list.get(0).getStopTime());
-		assertEquals(p1.getPromotionType(), list.get(0).getPromotionType());
-		message = promotionBLService.searchPromotion(p1);
-		assertEquals(ResultMessage.TRUE, message);
+		
 	}
 
 	/**
@@ -77,14 +57,70 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testDeletePromotion() {
-		promotionBLService = new PromotionController();
-		ResultMessage message;
-		message = promotionBLService.deletePromotion(p1);
-		assertEquals(ResultMessage.TRUE, message);
-		message = promotionBLService.deletePromotion(p1);
-		assertEquals(ResultMessage.FALSE, message);
-		message = promotionBLService.deletePromotion(p2);
-		assertEquals(ResultMessage.TRUE, message);
+		
+	}
+	
+	/**
+	 * @return 获取所有营销策略的信息列表
+	 */
+	@Test
+	public void testGetAllPromotion() {
+		
+	}
+	
+	/**
+	 * @return 按照内容查找营销策略
+	 */
+	@Test
+	public void testSearchPromotionByContent() {
+		
 	}
 
+	/**
+	 * @return 按照起始时间查找营销策略
+	 */
+	@Test
+	public void testSearchPromotionByStartTime() {
+		
+	}
+	
+	/**
+	 * @return 制定满减策略
+	 */
+	@Test
+	public void testAddFullCutPromotion() {
+		
+	}
+	
+	/**
+	 * @return 删除营销策略
+	 */
+	@Test
+	public void testDeleteFullCutPromotion() {
+		
+	}
+	
+	/**
+	 * @return 制定折扣策略
+	 */
+	@Test
+	public void testAddDiscountPromotion() {
+		
+	}
+	
+	/**
+	 * @return 删除营销策略
+	 */
+	@Test
+	public void testDeleteDiscountPromotion() {
+		
+	}
+
+	/**
+	 * @return 按照当时时间查找营销策略
+	 */
+	@Test
+	public void testSearchPresentPromotion() {
+		
+	}
 }

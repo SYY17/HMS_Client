@@ -140,7 +140,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
 	}
 
 	@Override
-	public ResultMessage deletePromotion(FullCutPromotionVO fvo) {
+	public ResultMessage deleteFullCutPromotion(FullCutPromotionVO fvo) {
 		// TODO Auto-generated method stub
 		if (fvo != null) {
 			return ResultMessage.TRUE;

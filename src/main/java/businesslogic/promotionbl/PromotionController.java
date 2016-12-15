@@ -249,7 +249,7 @@ public class PromotionController implements PromotionBLService {
 	}
 
 	@Override
-	public ResultMessage deletePromotion(FullCutPromotionVO fvo) {
+	public ResultMessage deleteFullCutPromotion(FullCutPromotionVO fvo) {
 		// TODO Auto-generated method stub
 		try {
 			remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
