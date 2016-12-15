@@ -3,6 +3,8 @@ package businesslogictest.promotionbl;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
+
 import org.junit.Before;
 import org.junit.Test;
 import businesslogic.promotionbl.PromotionController;
@@ -19,6 +21,7 @@ public class PromotionBLServiceTest {
 	private Date start;
 	private Date stop;
 	private int id;
+	private Timestamp presentTime;
 	private PromotionVO promotionVO;
 
 	/**
@@ -33,6 +36,7 @@ public class PromotionBLServiceTest {
 		promotionType = PromotionType.FULL_CUT;
 		start = Date.valueOf("2019-11-01");
 		stop = Date.valueOf("2019-12-01");
+		presentTime = Timestamp.valueOf("2019-11-21");
 		promotionVO = new PromotionVO(promotionName, content, start, stop, promotionType, id);
 	}
 
@@ -41,23 +45,48 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testAddPromotion() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
 		
+		PromotionVO pvo = promotionBLService.searchByContent(id, content).get(0);
+		
+		assertEquals( promotionName, pvo.getPromotionName());
+		assertEquals( content, pvo.getContent());
+		assertEquals( start, pvo.getStartTime());
+		assertEquals( stop, pvo.getStopTime());
+		assertEquals( promotionType, pvo.getPromotionType());
+		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
 	}
 
-	/**
-	 * 查询营销策略的测试用例套件
-	 */
+	/*
 	@Test
 	public void testSearchPromotion() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
 		
-	}
+		PromotionVO pvo = promotionBLService.searchPromotion(promotionVO);
+		
+		assertEquals( promotionName, pvo.getPromotionName());
+		assertEquals( content, pvo.getContent());
+		assertEquals( start, pvo.getStartTime());
+		assertEquals( stop, pvo.getStopTime());
+		assertEquals( promotionType, pvo.getPromotionType());
+		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
+	}*/
 
 	/**
 	 * 删除营销策略的测试用例套件
 	 */
 	@Test
 	public void testDeletePromotion() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
+		promotionBLService.deletePromotion(promotionVO);
 		
+		ArrayList<PromotionVO> pvoList = promotionBLService.searchByContent(id, content);
+		assertEquals(pvoList, null);
 	}
 	
 	/**
@@ -65,7 +94,19 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testGetAllPromotion() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
 		
+		ArrayList<PromotionVO> pvoList = promotionBLService.getAllPromotion(id);
+		PromotionVO pvo = pvoList.get(0);
+		
+		assertEquals( promotionName, pvo.getPromotionName());
+		assertEquals( content, pvo.getContent());
+		assertEquals( start, pvo.getStartTime());
+		assertEquals( stop, pvo.getStopTime());
+		assertEquals( promotionType, pvo.getPromotionType());
+		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
 	}
 	
 	/**
@@ -73,7 +114,19 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testSearchPromotionByContent() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
 		
+		ArrayList<PromotionVO> pvoList = promotionBLService.searchByContent(id, content);
+		PromotionVO pvo = pvoList.get(0);
+		
+		assertEquals( promotionName, pvo.getPromotionName());
+		assertEquals( content, pvo.getContent());
+		assertEquals( start, pvo.getStartTime());
+		assertEquals( stop, pvo.getStopTime());
+		assertEquals( promotionType, pvo.getPromotionType());
+		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
 	}
 
 	/**
@@ -81,39 +134,19 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testSearchPromotionByStartTime() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
 		
-	}
-	
-	/**
-	 * @return 制定满减策略
-	 */
-	@Test
-	public void testAddFullCutPromotion() {
+		ArrayList<PromotionVO> pvoList = promotionBLService.searchByStartTime(id, start);
+		PromotionVO pvo = pvoList.get(0);
 		
-	}
-	
-	/**
-	 * @return 删除营销策略
-	 */
-	@Test
-	public void testDeleteFullCutPromotion() {
-		
-	}
-	
-	/**
-	 * @return 制定折扣策略
-	 */
-	@Test
-	public void testAddDiscountPromotion() {
-		
-	}
-	
-	/**
-	 * @return 删除营销策略
-	 */
-	@Test
-	public void testDeleteDiscountPromotion() {
-		
+		assertEquals( promotionName, pvo.getPromotionName());
+		assertEquals( content, pvo.getContent());
+		assertEquals( start, pvo.getStartTime());
+		assertEquals( stop, pvo.getStopTime());
+		assertEquals( promotionType, pvo.getPromotionType());
+		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
 	}
 
 	/**
@@ -121,6 +154,17 @@ public class PromotionBLServiceTest {
 	 */
 	@Test
 	public void testSearchPresentPromotion() {
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
 		
+		PromotionVO pvo = promotionBLService.searchPromotionPresent(id, presentTime);
+		
+		assertEquals( promotionName, pvo.getPromotionName());
+		assertEquals( content, pvo.getContent());
+		assertEquals( start, pvo.getStartTime());
+		assertEquals( stop, pvo.getStopTime());
+		assertEquals( promotionType, pvo.getPromotionType());
+		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
 	}
 }
