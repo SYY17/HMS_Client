@@ -30,7 +30,7 @@ public interface OrderBLService {
 	 * @param ovo
 	 * @return 取消订单
 	 */
-	public ResultMessage cancelOrder(OrderVO ovo);
+	public ResultMessage cancelOrder(int id);
 
 	/**
 	 * 
@@ -49,5 +49,5 @@ public interface OrderBLService {
 	 * @param id
 	 * @return 处理异常订单
 	 */
-	public ResultMessage complainOrder(int id, OrderStatus status);
+	public ResultMessage changeOrderStatus(int id, OrderStatus status);
 }

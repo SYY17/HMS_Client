@@ -151,7 +151,7 @@ public class OrderData {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				OrderControllerService orderController = new OrderControllerImpl();
-				orderController.complainOrder(getOrderID(), OrderStatus.Finished);
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished);
 			}
 		});
 

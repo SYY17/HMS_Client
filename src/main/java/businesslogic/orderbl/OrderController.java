@@ -45,6 +45,13 @@ public class OrderController implements OrderBLService {
 				opo.getCheckOut());
 	}
 
+	private OrderPO VOToPO(OrderVO ovo) {
+		return new OrderPO(ovo.getOrderID(), ovo.getUserName(), ovo.getHotelName(),
+				po.OrderStatus.valueOf(ovo.getOrderStatus().toString()), ovo.getPrice(),
+				po.RoomType.valueOf(ovo.getRoomType().toString()), ovo.getRoomNumber(), ovo.getSetTime(),
+				ovo.getCheckIn(), ovo.getCheckOut());
+	}
+
 	/**
 	 * 
 	 * @param id
@@ -120,30 +127,39 @@ public class OrderController implements OrderBLService {
 	@Override
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut) {
-
-		boolean mark = true;
-		ArrayList<OrderPO> list = new ArrayList<OrderPO>();
 		try {
+			orderDataService.initOrderDataService();
+			boolean mark = true;
+			int maxOrderID = 0;
+			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
+			ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
+			listTemp = orderDataService.findOrder();
 			list = orderDataService.findOrderByHotelName(hotelName);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		if (list != null) {
+			for (int i = 0; i < listTemp.size(); i++) {
+				if (maxOrderID < listTemp.get(i).getOrderID()) {
+					maxOrderID = listTemp.get(i).getOrderID();
+				}
+			}
 			for (int i = 0; i < list.size(); i++) {
 				if (conflictTime(list.get(i), checkIn, checkOut)) {
 					mark = false;
 					break;
 				}
 			}
+			if (mark) {
+				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Abnormal,
+						promotionInfo.getFinalPrice(hotelName, setTime,
+								/* hotelInfo.getPrice(hotelName, roomType) */1 * roomNumber),
+						roomType, roomNumber, setTime, checkIn, checkOut);
+				orderDataService.insertOrder(VOToPO(ovoTemp));
+				return ovoTemp;
+			}
+			orderDataService.finishOrderDataService();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		if (mark) {
-			return new OrderVO(0, userName, hotelName, OrderStatus.Unfilled,
-					promotionInfo.getFinalPrice(hotelName, setTime,
-							hotelInfo.getPrice(hotelName, roomType) * roomNumber),
-					roomType, roomNumber, setTime, checkIn, checkOut);
-		} else {
-			return null;
-		}
+		return null;
 	}
 
 	// TODO finish the method
@@ -158,10 +174,10 @@ public class OrderController implements OrderBLService {
 	 * @return 取消订单
 	 */
 	@Override
-	public ResultMessage cancelOrder(OrderVO ovo) {
+	public ResultMessage cancelOrder(int id) {
 		try {
 			orderDataService.initOrderDataService();
-			orderDataService.deleteOrder(ovo.getOrderID());
+			orderDataService.deleteOrder(id);
 			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
@@ -177,7 +193,7 @@ public class OrderController implements OrderBLService {
 	 * @return 处理异常订单
 	 */
 	@Override
-	public ResultMessage complainOrder(int id, OrderStatus status) {
+	public ResultMessage changeOrderStatus(int id, OrderStatus status) {
 		po.OrderStatus orderStatus = po.OrderStatus.valueOf(status.toString());
 		try {
 			orderDataService.initOrderDataService();
@@ -190,14 +206,13 @@ public class OrderController implements OrderBLService {
 		}
 	}
 
-	 public static void main(String[] args) {
-	 try {
-	 System.out.println(new
-	 OrderController().getOrderByUserID(21214001).get(0).getUserName());
-	 } catch (RemoteException e) {
-	 // TODO Auto-generated catch block
-	 e.printStackTrace();
-	 }
-	 }
+	public static void main(String[] args) {
+		try {
+			System.out.println(new OrderController().getOrderByUserID(21214001).get(0).getUserName());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

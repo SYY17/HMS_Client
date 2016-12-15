@@ -47,8 +47,8 @@ public class OrderControllerImpl implements OrderControllerService {
 	 * @return 取消订单
 	 */
 	@Override
-	public ResultMessage cancelOrder(OrderVO ovo) {
-		return orderBLService.cancelOrder(ovo);
+	public ResultMessage cancelOrder(int id) {
+		return orderBLService.cancelOrder(id);
 	}
 
 	/**
@@ -72,8 +72,8 @@ public class OrderControllerImpl implements OrderControllerService {
 	 * @return 处理异常订单
 	 */
 	@Override
-	public ResultMessage complainOrder(int id, OrderStatus status) {
-		return orderBLService.complainOrder(id, status);
+	public ResultMessage changeOrderStatus(int id, OrderStatus status) {
+		return orderBLService.changeOrderStatus(id, status);
 	}
 
 }
