@@ -1,6 +1,9 @@
 package presentation.userui.user;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -83,6 +86,7 @@ public class DetailedInformation_controller {
 	@FXML
 	private void onSave(MouseEvent event) throws Exception {
 		this.setEditMode(false);
+		this.upload();
 	}
 	
 	@FXML
@@ -178,14 +182,13 @@ public class DetailedInformation_controller {
 		birth.setEditable(mode);
 	}
 	
+	/**
+	 * 总体更新方法
+	 */
 	private void update(){
-		IDHelper idHelper = IDHelper.getInstance();
-		int id = idHelper.getID();
-		UserBLService userBlService = new UserController();
-		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
-		String username = uvo.getName();
+		String username = this.getUserName();
 		CustomerBLService customerBLService = new CustomerController();
-		CustomerVO  cvo = customerBLService.getCustomerInfo(username);
+		CustomerVO cvo = customerBLService.getCustomerInfo(username);
 		
 		initDatePicker(cvo.getBirthday().toString());
 		
@@ -197,8 +200,9 @@ public class DetailedInformation_controller {
 		
 	}
 	
-	/*
+	/**
 	 * 初始化DatePicker
+	 * @param birthday
 	 */
 	public void initDatePicker(String birthday) {
 		// 设置birth
@@ -231,6 +235,53 @@ public class DetailedInformation_controller {
 
 		birth.setValue(converter.fromString(birthday));
 		birth.setEditable(false);
+	}
+	
+	/**
+	 * 上传信息
+	 */
+	private void upload(){
+		String username = this.getUserName();
+		CustomerBLService customerBLService = new CustomerController();
+		UserVO uvo = new UserVO(0, username, null);
+		
+		//获取生日: 获取的LocalDate -> String -> java.util.Date -> java.sql.Date
+		LocalDate birthday = birth.getValue();
+		String pattern = "yyyy-MM-dd";
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+		String day = dateFormatter.format(birthday);
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		java.util.Date date;
+		try {
+			date = format.parse(day);
+			Date time = new Date(date.getTime());
+			
+			//获取其他信息
+			String phoneNumber = phone.getText();
+			String email = this.email.getText();
+			String address = this.address.getText();
+			
+			CustomerVO cvo = new CustomerVO(uvo, time, phoneNumber, email, address);
+			
+			customerBLService.setCustomerInfo(cvo);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @return 获取当前用户用户名
+	 */
+	private String getUserName(){
+		IDHelper idHelper = IDHelper.getInstance();
+		int id = idHelper.getID();
+		UserBLService userBlService = new UserController();
+		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
+		String username = uvo.getName();
+		return username;
 	}
 
 }

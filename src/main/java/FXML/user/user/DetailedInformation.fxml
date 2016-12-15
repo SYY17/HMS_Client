@@ -414,7 +414,7 @@
                   <Image url="@../../login/icon/birth.png" />
                </image>
             </ImageView>
-            <DatePicker fx:id="birth" layoutX="228.0" layoutY="405.0" prefHeight="23.0" prefWidth="153.0">
+            <DatePicker fx:id="birth" layoutX="228.0" layoutY="405.0" prefHeight="23.0" prefWidth="153.0" showWeekNumbers="true">
                <effect>
                   <InnerShadow choke="0.51" color="#93989e" />
                </effect>

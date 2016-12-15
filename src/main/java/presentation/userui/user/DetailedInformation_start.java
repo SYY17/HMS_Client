@@ -96,12 +96,16 @@ public class DetailedInformation_start extends Application {
 		username.setText(name);
 	}
 
+	/**
+	 * 总体初始化方法
+	 * @param root
+	 */
 	private void initialize(Parent root){
 		UserBLService userBlService = new UserController();
 		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
 		String username = uvo.getName();
 		CustomerBLService customerBLService = new CustomerController();
-		CustomerVO  cvo = customerBLService.getCustomerInfo(username);
+		CustomerVO cvo = customerBLService.getCustomerInfo(username);
 		
 		initDatePicker(root, cvo.getBirthday().toString());
 		
@@ -127,8 +131,9 @@ public class DetailedInformation_start extends Application {
 		
 	}
 	
-	/*
+	/**
 	 * 初始化DatePicker
+	 * @param birthday
 	 */
 	private void initDatePicker(Parent root, String birthday) {
 		// 查找birth
