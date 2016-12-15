@@ -25,6 +25,9 @@ public class OrderBLServiceTest {
 	private Date checkIn;
 	private Date checkOut;
 
+	/**
+	 * 初始化
+	 */
 	@Before
 	public void setUp() throws Exception {
 		orderBlService = new OrderController();
@@ -37,6 +40,9 @@ public class OrderBLServiceTest {
 		checkOut = Date.valueOf("2016-12-15");
 	}
 
+	/**
+	 * 创建订单的测试用例套件
+	 */
 	@Test
 	public void testCreate() {
 		orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut);
@@ -58,6 +64,9 @@ public class OrderBLServiceTest {
 		assertEquals("汉庭嘿嘿嘿", ovoTemp.getHotelName());
 	}
 
+	/**
+	 * 浏览异常订单的测试用例套件
+	 */
 	@Test
 	public void testReviewOrderIntOrderStatus() {
 		OrderVO ovoTemp = orderBlService.reviewOrder(21215001, OrderStatus.Finished).get(0);
@@ -68,6 +77,9 @@ public class OrderBLServiceTest {
 		assertEquals(list.size(), 0);
 	}
 	
+	/**
+	 * 删除订单的测试用例套件
+	 */
 	@Test
 	public void testCancelOrder() {
 		orderBlService.cancelOrder(3);
@@ -75,6 +87,9 @@ public class OrderBLServiceTest {
 		assertEquals(0, size);
 	}
 
+	/**
+	 * 改变订单状态的测试用例套件
+	 */
 	@Test
 	public void testChangeOrderStatus() {
 		orderBlService.changeOrderStatus(2, OrderStatus.Abnormal);
