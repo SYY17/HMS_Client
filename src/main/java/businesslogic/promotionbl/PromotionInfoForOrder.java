@@ -23,7 +23,11 @@ public class PromotionInfoForOrder implements PromotionInfo {
 
 		PromotionVO pvo = pc.searchPromotionPresent(hotelId, setTime);
 
-		double finalPrice = -1;
+		if(pvo==null){
+			return initialPrice;
+		}
+		
+		double finalPrice;
 		finalPrice = pvo.calculatePayment(initialPrice);
 
 		return (int) finalPrice;
