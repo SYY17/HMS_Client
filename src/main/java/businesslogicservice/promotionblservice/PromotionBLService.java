@@ -74,7 +74,7 @@ public interface PromotionBLService {
 	 * @param fvo
 	 * @return 删除营销策略
 	 */
-	public ResultMessage deletePromotion(FullCutPromotionVO fvo);
+	public ResultMessage deleteFullCutPromotion(FullCutPromotionVO fvo);
 
 	/**
 	 * 
