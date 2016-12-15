@@ -42,12 +42,6 @@ public interface OrderControllerService {
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut);
 
-	/**
-	 * 
-	 * @param ovo
-	 * @return 增加订单
-	 */
-	public ResultMessage addOrder(OrderVO ovo);
 
 	/**
 	 * 

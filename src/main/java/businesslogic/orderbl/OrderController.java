@@ -57,10 +57,11 @@ public class OrderController implements OrderBLService {
 			listPO = orderDataService.findOrder();
 		} else {
 			String name = userInfo.searchByUserID(id);
-			if (id >= 20000000) {
+			if (id < 20000000) {
 				listPO = orderDataService.findOrderByUserName(name);
 			} else {
 				listPO = orderDataService.findOrderByHotelName(name);
+				System.out.println(listPO.size());
 			}
 		}
 
@@ -127,10 +128,12 @@ public class OrderController implements OrderBLService {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		for (int i = 0; i < list.size(); i++) {
-			if (conflictTime(list.get(i), checkIn, checkOut)) {
-				mark = false;
-				break;
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				if (conflictTime(list.get(i), checkIn, checkOut)) {
+					mark = false;
+					break;
+				}
 			}
 		}
 		if (mark) {
@@ -142,11 +145,10 @@ public class OrderController implements OrderBLService {
 			return null;
 		}
 	}
-	
-	//TODO finish the method
-	private boolean conflictTime(OrderPO orderPO, Date checkIn,Date checkOut){
-		boolean mark = true;
-		
+
+	// TODO finish the method
+	private boolean conflictTime(OrderPO orderPO, Date checkIn, Date checkOut) {
+		boolean mark = false;
 		return mark;
 	}
 
@@ -160,24 +162,6 @@ public class OrderController implements OrderBLService {
 		try {
 			orderDataService.initOrderDataService();
 			orderDataService.deleteOrder(ovo.getOrderID());
-			orderDataService.finishOrderDataService();
-			return ResultMessage.TRUE;
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.FALSE;
-		}
-	}
-
-	/**
-	 * 
-	 * @param ovo
-	 * @return 增加订单
-	 */
-	@Override
-	public ResultMessage addOrder(OrderVO ovo) {
-		try {
-			orderDataService.initOrderDataService();
-			orderDataService.insertOrder(null);
 			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
@@ -206,14 +190,14 @@ public class OrderController implements OrderBLService {
 		}
 	}
 
-	// public static void main(String[] args) {
-	// try {
-	// System.out.println(new
-	// OrderController().getOrderByUserID(20905098).get(0).getUserID());
-	// } catch (RemoteException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
+	 public static void main(String[] args) {
+	 try {
+	 System.out.println(new
+	 OrderController().getOrderByUserID(21214001).get(0).getUserName());
+	 } catch (RemoteException e) {
+	 // TODO Auto-generated catch block
+	 e.printStackTrace();
+	 }
+	 }
 
 }

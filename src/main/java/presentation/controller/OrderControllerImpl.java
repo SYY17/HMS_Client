@@ -64,15 +64,6 @@ public class OrderControllerImpl implements OrderControllerService {
 		return orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut);
 	}
 
-	/**
-	 * 
-	 * @param ovo
-	 * @return 增加订单
-	 */
-	@Override
-	public ResultMessage addOrder(OrderVO ovo) {
-		return orderBLService.addOrder(ovo);
-	}
 
 	/**
 	 * 

@@ -1,112 +1,96 @@
 package businesslogictest.orderbl;
 
 import static org.junit.Assert.*;
+
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import businesslogic.orderbl.OrderController;
-import businesslogicservice.ResultMessage;
+import businesslogic.orderbl.UserInfo;
+import businesslogic.userbl.UserInfoForOrder;
 import businesslogicservice.orderblservice.OrderBLService;
-import vo.HotelVO;
 import vo.OrderStatus;
 import vo.OrderVO;
-import vo.PromotionType;
-import vo.PromotionVO;
 import vo.RoomType;
 
 public class OrderBLServiceTest {
-	OrderBLService orderBLService;
-	int orderID;
-	OrderStatus orderStatus;
-	int price;
-	String userName;
-	Timestamp setTime;
-	Date checkIn;
-	Date checkOut;
-	int roomNumber;
-	String hotelName;
-	OrderVO orderVO;
-	HotelVO hotelVO;
-	PromotionVO promotionVO;
-	RoomType roomType;
-	ArrayList<OrderVO> orderList;
+	private OrderBLService orderBlService;
+	private int orderID;
+	private String userName;
+	private String hotelName;
+	private OrderStatus orderStatus;
+	private int price;
+	private RoomType roomType;
+	private int roomNumber;
+	private Timestamp setTime;
+	private Date checkIn;
+	private Date checkOut;
+	private OrderVO orderVO;
 
-	/**
-	 * 初始化
-	 */
 	@Before
 	public void setUp() throws Exception {
-		userName = null;
-		setTime = null;
-		checkIn = null;
-		checkOut = null;
-		roomNumber = 0;
-		hotelName = null;
-		orderList = null;
+		orderBlService = new OrderController();
+		orderID = 18;
+		userName = "庄刚轻";
+		hotelName = "盘丝洞";
+		orderStatus = OrderStatus.Abnormal;
+		price = 200;
+		roomType = RoomType.KING_SIZE_ROOM;
+		roomNumber = 2;
+		setTime = Timestamp.valueOf("2016-12-14 14:47:36.000000");
+		checkIn = Date.valueOf("2016-12-15");
+		checkOut = Date.valueOf("2016-12-15");
 		orderVO = new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime, checkIn,
 				checkOut);
-		hotelVO = new HotelVO(orderID, hotelName, hotelName, hotelName, hotelName, orderID, orderID, null, hotelName);
-		promotionVO = new PromotionVO("双十一优惠", "双十一下订单八折优惠", new Date(System.currentTimeMillis()),
-				new Date(System.currentTimeMillis() * 2), PromotionType.DISCOUNT, 20920010);//
-	}
-
-	/**
-	 * 浏览全部订单的测试用例套件
-	 */
-	@Test
-	public void testReviewOrder() {
-		orderBLService = new OrderController();
-		assertEquals(orderList, orderBLService.reviewOrder(00000000));
 	}
 
 	/**
 	 * 浏览异常订单的测试用例套件
 	 */
-	@Test
-	public void testReviewOrder2() {
-		orderBLService = new OrderController();
-		assertEquals(orderList, orderBLService.reviewOrder(00000000, OrderStatus.Finished));
+	public void testReviewOrderInt() {
+		// 系统管理人员&网站营销人员
+		assertNotEquals(null, orderBlService.reviewOrder(40000000).get(0));
+
+		// 顾客&酒店
+		OrderVO ovoTemp = orderBlService.reviewOrder(21214001).get(0);
+		assertEquals(userName, ovoTemp.getUserName());
+		assertEquals(hotelName, ovoTemp.getHotelName());
+		assertEquals(orderStatus.toString(), ovoTemp.getOrderStatus().toString());
+		assertEquals(price, ovoTemp.getPrice());
+		assertEquals(roomType.toString(), ovoTemp.getRoomType().toString());
+		assertEquals(roomNumber, ovoTemp.getRoomNumber());
+		assertEquals(setTime.getTime(), ovoTemp.getSetTime().getTime());
+		assertEquals(checkIn.toString(), ovoTemp.getCheckIn().toString());
+		assertEquals(checkOut.toString(), ovoTemp.getCheckOut().toString());
 	}
 
-	/**
-	 * 取消订单的测试用例套件
-	 */
 	@Test
-	public void testCancelOrder() {
-		orderBLService = new OrderController();
-		assertEquals(ResultMessage.TRUE, orderBLService.cancelOrder(orderVO));
+	public void testReviewOrderIntOrderStatus() {
+		fail("Not yet implemented");
 	}
 
-	/**
-	 * 创建订单的测试用例套件
-	 */
 	@Test
 	public void testCreate(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut) {
-		orderBLService = new OrderController();
-		assertEquals(orderVO,
-				orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut));
+		fail("Not yet implemented");
 	}
-
-	/**
-	 * 增加订单的测试用例套件
-	 */
+	
 	@Test
-	public void testAddOrder() {
-		orderBLService = new OrderController();
-		assertEquals(ResultMessage.TRUE, orderBLService.addOrder(orderVO));
+	public void testCancelOrder() {
+		fail("Not yet implemented");
 	}
 
-	/**
-	 * 处理异常订单的测试用例套件
-	 */
+	@Test
+	public void testCreate() {
+		fail("Not yet implemented");
+	}
+
 	@Test
 	public void testComplainOrder() {
-		orderBLService = new OrderController();
-		assertEquals(ResultMessage.TRUE, orderBLService.complainOrder(orderID, orderStatus));
+		fail("Not yet implemented");
 	}
 
 }
