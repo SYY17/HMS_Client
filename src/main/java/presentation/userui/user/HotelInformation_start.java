@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
@@ -100,8 +101,8 @@ public class HotelInformation_start extends Application {
 	 */
 	private void initiateObservableList(ObservableList<TableColumn<RoomData, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("roomType"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("totalNum"));
-		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("vacantNum"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("totalSum"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("remainSum"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
 
@@ -113,15 +114,41 @@ public class HotelInformation_start extends Application {
 	 */
 	private void initiateTextArea(Parent root) {
 		// 查找description
-		TextArea description  = (TextArea) root
-				.lookup("#description");
+		TextArea description  = (TextArea) root.lookup("#description");
+		
+		// 查找HName
+		Label HName  = (Label) root.lookup("#HName");
+		
+		// 查找HAdress
+		Label HAddress  = (Label) root.lookup("#HAddress");
+			
+		// 查找HBA
+		Label HBA  = (Label) root.lookup("#HBA");
+		
+		// 查找HPhone
+		Label HPhone  = (Label) root.lookup("#HPhone");
+		
+		// 查找HRating
+		Label HRating  = (Label) root.lookup("#HRating");
 		
 		HotelBLService hotelBLService = new HotelController();
 		ArrayList<HotelVO> hotelList = hotelBLService.searchHotel(hotelname);
-		
 		HotelVO hvo = hotelList.get(0);
-		description.setText(hvo.getHotelName()+"\n"+hvo.getRating()+"\n"+hvo.getHotelAddress()+"\n"+hvo.getBusinessArea()+"\n"+hvo.getHotelDescription()
-		+"\n"+hvo.getPhoneNumber());
+		
+		String name = hvo.getHotelName();
+		String rating = String.valueOf(hvo.getRating());
+		String address = hvo.getHotelAddress();
+		String businessArea = hvo.getBusinessArea();
+		String des = hvo.getHotelDescription();
+		String cell = hvo.getPhoneNumber();
+		
+		HName.setText(name);
+		HRating.setText(rating);
+		HAddress.setText(address);
+		HBA.setText(businessArea);
+		HPhone.setText(cell);
+		description.setText(des);
+		description.setEditable(false);
 	}
 	
 	/**

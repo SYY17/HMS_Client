@@ -280,12 +280,12 @@
                   <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
                </tooltip>
             </Label>
-            <TextArea fx:id="description" layoutX="165.0" layoutY="159.0" prefHeight="112.0" prefWidth="470.0" promptText="酒店名称,评分,位置,简要介绍">
+            <TextArea fx:id="description" layoutX="165.0" layoutY="230.0" prefHeight="80.0" prefWidth="470.0" promptText="简要介绍">
                <effect>
                   <DropShadow />
                </effect>
             </TextArea>
-            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="317.0" prefHeight="213.0" prefWidth="470.0">
+            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="213.0" prefWidth="470.0">
                <columns>
                   <TableColumn prefWidth="121.0" text="房间类型" />
                   <TableColumn prefWidth="106.0" text="总数量" />
@@ -296,6 +296,31 @@
                   <DropShadow />
                </effect>
             </TableView>
+            <Label fx:id="HRating" layoutX="571.0" layoutY="120.0" text="评分">
+               <font>
+                  <Font name="Heiti SC Light" size="38.0" />
+               </font>
+            </Label>
+            <Label fx:id="HAddress" layoutX="187.0" layoutY="165.0" prefHeight="28.0" prefWidth="245.0" text="地址">
+               <font>
+                  <Font name="Kefa Regular" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="HBA" layoutX="488.0" layoutY="165.0" prefHeight="28.0" prefWidth="153.0" text="商圈">
+               <font>
+                  <Font name="Heiti TC Light" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="HPhone" layoutX="188.0" layoutY="198.0" prefHeight="28.0" prefWidth="261.0" text="电话那就长一点好了">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="HName" layoutX="165.0" layoutY="117.0" prefHeight="46.0" prefWidth="386.0" text="酒店名称有多长不知道">
+               <font>
+                  <Font name="Hiragino Sans W8" size="37.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
