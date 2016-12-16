@@ -1,7 +1,10 @@
 package presentation.userui.user;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javafx.fxml.FXML;
@@ -72,8 +75,39 @@ public class MakeOrder_controller {
 		String date = initiateUserName();
 		String username = initiateDate();
 		
-		OrderControllerService orderControllerService = new OrderControllerImpl();
-		
+		try{
+			Date ci;
+			Date co;
+			LocalDate startIns = checkIn.getValue();
+			LocalDate stopIns = checkOut.getValue();
+			String pattern = "yyyy-MM-dd";
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+			String ciday = dateFormatter.format(startIns);
+			String coday = dateFormatter.format(stopIns);
+			SimpleDateFormat format = new SimpleDateFormat(pattern);
+			java.util.Date date1;
+			java.util.Date date2;
+			
+			date1 = format.parse(ciday);
+			date2 = format.parse(coday);
+			ci = new Date(date1.getTime());
+			co= new Date(date2.getTime());
+			
+			int singleNum = 0,standardNum = 0,kingNum = 0,suiteNum = 0,tripleNum = 0;
+			singleNum = parseNum(singlebox);
+			standardNum = parseNum(standardbox);
+			kingNum = parseNum(kingbox);
+			suiteNum = parseNum(suitebox);
+			tripleNum = parseNum(triplebox);
+			
+			//用户名，酒店名，入住时间，离开时间,所有预定房间类型以及数量都获得了，还有setTime没有得到需要补充
+			
+			OrderControllerService orderController = new OrderControllerImpl();
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**

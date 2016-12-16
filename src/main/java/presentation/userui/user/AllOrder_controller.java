@@ -35,6 +35,11 @@ public class AllOrder_controller {
 	public TableView<OrderData> finishedOrderTableView;
 
 	@FXML
+	private void onRate(MouseEvent event) throws Exception {
+		new OrderAndRating_start().start(stage);
+	}
+	
+	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
