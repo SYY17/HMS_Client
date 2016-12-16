@@ -12,7 +12,7 @@ public class PromotionControllerImpl implements PromotionControllerService {
 
 	private PromotionBLService promotionBLService;
 
-	public PromotionControllerImpl(String ctt, Date s, int i) {
+	public PromotionControllerImpl() {
 		promotionBLService = new PromotionController();
 	}
 

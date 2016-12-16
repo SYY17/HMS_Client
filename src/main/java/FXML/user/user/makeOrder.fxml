@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.HotelInformation_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.MakeOrder_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -285,12 +286,11 @@
                   <DropShadow />
                </effect>
             </TextArea>
-            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="213.0" prefWidth="470.0">
+            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="213.0" prefWidth="219.0">
                <columns>
-                  <TableColumn prefWidth="121.0" text="房间类型" />
-                  <TableColumn prefWidth="106.0" text="总数量" />
-                  <TableColumn prefWidth="129.0" text="空余数" />
-                  <TableColumn prefWidth="113.0" text="价格" />
+                  <TableColumn prefWidth="101.0" text="房间类型" />
+                  <TableColumn prefWidth="61.0" text="空余数" />
+                  <TableColumn prefWidth="56.0" text="价格" />
                </columns>
                <effect>
                   <DropShadow />
@@ -301,17 +301,17 @@
                   <Font name="Heiti SC Light" size="38.0" />
                </font>
             </Label>
-            <Label fx:id="HAddress" layoutX="206.0" layoutY="165.0" prefHeight="28.0" prefWidth="245.0" text="地址">
+            <Label fx:id="HAddress" layoutX="216.0" layoutY="165.0" prefHeight="28.0" prefWidth="245.0" text="地址">
                <font>
                   <Font name="Kefa Regular" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="HBA" layoutX="494.0" layoutY="165.0" prefHeight="28.0" prefWidth="153.0" text="商圈">
+            <Label fx:id="HBA" layoutX="493.0" layoutY="165.0" prefHeight="28.0" prefWidth="153.0" text="商圈">
                <font>
                   <Font name="Heiti TC Light" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="HPhone" layoutX="205.0" layoutY="198.0" prefHeight="28.0" prefWidth="261.0" text="电话那就长一点好了">
+            <Label fx:id="HPhone" layoutX="216.0" layoutY="198.0" prefHeight="28.0" prefWidth="261.0" text="电话那就长一点好了">
                <font>
                   <Font size="22.0" />
                </font>
@@ -321,22 +321,52 @@
                   <Font name="Hiragino Sans W8" size="37.0" />
                </font>
             </Label>
-            <Label fx:id="order" layoutX="551.0" layoutY="545.0" onMouseClicked="#onOrder" text="去下单">
+            <ChoiceBox fx:id="singlebox" layoutX="513.0" layoutY="332.0" prefHeight="27.0" prefWidth="76.0" />
+            <Label layoutX="401.0" layoutY="337.0" text="SINGLE">
                <font>
-                  <Font name="HanziPen SC Regular" size="26.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="155.0" layoutY="165.0" text="地址:">
+            <Label layoutX="394.0" layoutY="377.0" text="STANDARD">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="403.0" layoutY="419.0" text="TRIPLE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="398.0" layoutY="462.0" text="KING_SIZE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="408.0" layoutY="505.0" text="SUITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="standardbox" layoutX="513.0" layoutY="377.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="triplebox" layoutX="513.0" layoutY="419.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="kingbox" layoutX="513.0" layoutY="462.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="suitebox" layoutX="513.0" layoutY="505.0" prefHeight="27.0" prefWidth="76.0" />
+            <Label fx:id="submit" layoutX="572.0" layoutY="548.0" onMouseClicked="#onSubmit" text="提交">
+               <font>
+                  <Font name="Hiragino Sans W6" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="161.0" layoutY="165.0" text="地址:">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="155.0" layoutY="198.0" text="电话:">
+            <Label layoutX="161.0" layoutY="198.0" text="电话:">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="441.0" layoutY="165.0" text="商圈:">
+            <Label layoutX="440.0" layoutY="165.0" text="商圈:">
                <font>
                   <Font size="22.0" />
                </font>

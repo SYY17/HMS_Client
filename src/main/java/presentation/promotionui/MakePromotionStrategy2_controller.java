@@ -18,11 +18,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.controller.PromotionControllerImpl;
+import presentation.controller.UserControllerImpl;
 import presentation.creditui.ManageUserCredit_start;
 import presentation.hotelui.hotel.PromotionData;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.orderui.ManageAbnormalOrder_start;
+import presentation.userui.UserControllerService;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
 import vo.PromotionType;
@@ -33,7 +36,7 @@ public class MakePromotionStrategy2_controller {
 	public static Stage stage;
 	public static int id;
 	
-	public PromotionBLService promotionBlService = new PromotionController();
+	//public PromotionBLService promotionBlService = new PromotionController();
 	@FXML
 	public TableView<PromotionData> promotionTableView;
 	@FXML
@@ -99,6 +102,7 @@ public class MakePromotionStrategy2_controller {
 		java.util.Date date1;
 		java.util.Date date2;
 		try {
+			PromotionControllerService promotionController = new PromotionControllerImpl();
 			date1 = format.parse(startday);
 			date2 = format.parse(stopday);
 			time = new Date(date1.getTime());
@@ -112,15 +116,15 @@ public class MakePromotionStrategy2_controller {
 			String discountText = discount.getText();
 			
 			PromotionType pte;
-			if (promotionType.getSelectionModel().equals("FullCut")) {
+			if (promotionType.getValue().equals("FullCut")) {
 				pte = pt[0];
 			} else {
 				pte = pt[1];
 			}
 
-			promotionBlService.addPromotion(
+			promotionController.addPromotion(
 					new PromotionVO(name, content, time, sp, pte, id));//
-
+/*
 			if (pte == PromotionType.FULL_CUT) {
 				promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
 						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
@@ -129,7 +133,7 @@ public class MakePromotionStrategy2_controller {
 			if (pte == PromotionType.DISCOUNT) {
 				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
 						id, Double.parseDouble(discountText)/10));
-			}
+			}*/
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -12,11 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
@@ -26,9 +26,10 @@ import presentation.hotelui.HotelControllerService;
 import presentation.hotelui.hotel.RoomData;
 import presentation.userui.UserControllerService;
 import vo.HotelVO;
+import vo.RoomType;
 import vo.RoomVO;
 
-public class HotelInformation_start extends Application {
+public class MakeOrder_start extends Application  {
 
 	private IDHelper idHelper;
 	private int id;
@@ -39,20 +40,19 @@ public class HotelInformation_start extends Application {
 	}
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/酒店信息.fxml"));
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/makeOrder.fxml"));
 			initiateTableView(root);
 			initiateTextArea(root);
+			initiateChoiceBox(root);
 			this.initiateHelper();
 			this.initiateElements(root);
 			
 			Scene scene = new Scene(root, 800, 600);
-			HotelInformation_controller.hotelname = hotelname;//
-			HotelInformation_controller.stage = primaryStage;
-			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			// primaryStage.initStyle(StageStyle.DECORATED);
+			MakeOrder_controller.stage = primaryStage;
+			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
 			primaryStage.show();
@@ -61,10 +61,57 @@ public class HotelInformation_start extends Application {
 		}
 	}
 
-	public static void main(String[] args) {
-		launch(args);
+	/**
+	 * 对于选择框中的内容进行初始化
+	 * 
+	 * @param root
+	 */
+	@SuppressWarnings("unchecked")
+	private void initiateChoiceBox(Parent root){
+		ChoiceBox<String> singlebox = (ChoiceBox<String>) root.lookup("#singlebox");
+		ChoiceBox<String> standardbox = (ChoiceBox<String>) root.lookup("#standardbox");
+		ChoiceBox<String> triplebox = (ChoiceBox<String>) root.lookup("#triplebox");
+		ChoiceBox<String> kingbox = (ChoiceBox<String>) root.lookup("#kingbox");
+		ChoiceBox<String> suitebox = (ChoiceBox<String>) root.lookup("#suitebox");
+		
+		singlebox.setItems(FXCollections.observableArrayList(getNum("single")));
+		standardbox.setItems(FXCollections.observableArrayList(getNum("standard")));
+		triplebox.setItems(FXCollections.observableArrayList(getNum("triple")));
+		kingbox.setItems(FXCollections.observableArrayList(getNum("king")));
+		suitebox.setItems(FXCollections.observableArrayList(getNum("suite")));
+		
+		
 	}
-
+	
+	public ArrayList<String> getNum(String roomType){
+		ArrayList<String> s = new ArrayList<String>();
+		RoomType ty = null;
+		
+		switch(roomType){
+		case "single":ty = RoomType.SINGLE_ROOM;break;
+		case "standard":ty = RoomType.STANDARD_ROOM;break;
+		case "triple":ty = RoomType.TRIPLE_ROOM;break;
+		case "king":ty = RoomType.KING_SIZE_ROOM;break;
+		case "suite":ty = RoomType.SUITE;break;
+		}
+		
+		int instant =0;
+		HotelControllerService hotelController = new HotelControllerImpl();
+		ArrayList<RoomVO> roomList = hotelController.searchRooms(hotelController.searchHotel(hotelname).get(0).getHotelID());//morendiyige
+		if (roomList != null) {
+			for (int i = 0; i < roomList.size(); i++) {
+				RoomVO rvo = roomList.get(i);
+				if(rvo.getRoomType()==ty && rvo.getRemainSum()!=0){
+					instant =rvo.getRemainSum();
+				}
+			}
+		}
+		
+		for(int i=0;i<=instant;i++){
+			s.add(String.valueOf(i));
+		}
+		return s;
+	}
 	/**
 	 * 初始化表内数据
 	 * 
@@ -102,12 +149,11 @@ public class HotelInformation_start extends Application {
 	 */
 	private void initiateObservableList(ObservableList<TableColumn<RoomData, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("roomType"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("totalSum"));
-		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("remainSum"));
-		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("price"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("remainSum"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("price"));
 	}
 
-
+	
 	/**
 	 * 初始化description
 	 * 

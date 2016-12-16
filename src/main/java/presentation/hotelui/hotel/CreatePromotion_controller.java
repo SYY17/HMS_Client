@@ -84,7 +84,7 @@ public class CreatePromotion_controller {
 			String discountText = discount.getText();
 			
 			PromotionType pte;
-			if (promotionType.getSelectionModel().equals("FullCut")) {
+			if (promotionType.getValue().equals("FullCut")) {
 				pte = pt[0];
 			} else {
 				pte = pt[1];
