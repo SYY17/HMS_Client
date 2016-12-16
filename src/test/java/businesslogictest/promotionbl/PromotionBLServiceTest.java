@@ -36,7 +36,7 @@ public class PromotionBLServiceTest {
 		promotionType = PromotionType.FULL_CUT;
 		start = Date.valueOf("2019-11-01");
 		stop = Date.valueOf("2019-12-01");
-		presentTime = Timestamp.valueOf("2019-11-21");
+		presentTime = Timestamp.valueOf("2019-11-21 00:00:00");
 		promotionVO = new PromotionVO(promotionName, content, start, stop, promotionType, id);
 	}
 

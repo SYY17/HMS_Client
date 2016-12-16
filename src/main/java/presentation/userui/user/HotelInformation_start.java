@@ -31,6 +31,11 @@ public class HotelInformation_start extends Application {
 
 	private IDHelper idHelper;
 	private int id;
+	public static String hotelname;
+	
+	public void setName(String s){
+		hotelname = s;
+	}
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -77,7 +82,7 @@ public class HotelInformation_start extends Application {
 		ObservableList<TableColumn<RoomData, ?>> observableList = hotelTableView.getColumns();
 		initiateObservableList(observableList);
 
-		ArrayList<RoomVO> roomList = hotelController.searchRooms(id);
+		ArrayList<RoomVO> roomList = hotelController.searchRooms(hotelController.searchHotel(hotelname).get(0).getHotelID());//morendiyige
 		if (roomList != null) {
 			for (int i = 0; i < roomList.size(); i++) {
 				RoomVO rvo = roomList.get(i);
@@ -112,7 +117,7 @@ public class HotelInformation_start extends Application {
 				.lookup("#description");
 		
 		HotelBLService hotelBLService = new HotelController();
-		ArrayList<HotelVO> hotelList = hotelBLService.searchHotel("name");
+		ArrayList<HotelVO> hotelList = hotelBLService.searchHotel(hotelname);
 		
 		HotelVO hvo = hotelList.get(0);
 		description.setText(hvo.getHotelName()+"\n"+hvo.getRating()+"\n"+hvo.getHotelAddress()+"\n"+hvo.getBusinessArea()+"\n"+hvo.getHotelDescription()

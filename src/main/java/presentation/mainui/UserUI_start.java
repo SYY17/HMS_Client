@@ -1,22 +1,33 @@
 package presentation.mainui;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import businesslogic.hotelbl.HotelController;
+import businesslogicservice.hotelBLService.HotelBLService;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
+import vo.HotelVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 
 public class UserUI_start extends Application {
 	
 	private IDHelper idHelper;
 	private int id;
+	private String hotelname;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -26,6 +37,7 @@ public class UserUI_start extends Application {
 			UserUI_controller.stage = primaryStage;
 			this.initiateHelper();
 			this.initiateElements(root);
+			initialize(root);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
 			primaryStage.show();
@@ -69,5 +81,50 @@ public class UserUI_start extends Application {
 		UserControllerService userController = new UserControllerImpl();
 		String name = userController.searchByUserID(id);
 		username.setText(name);
+	}
+	
+	/**
+	 * 总体初始化方法
+	 * @param root
+	 */
+	private void initialize(Parent root){
+		@SuppressWarnings("unchecked")
+		// 查找hotelList
+		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
+		
+		/*
+		@SuppressWarnings("unchecked")
+		TextField searchTextField = (TextField) root.lookup("#searchTextField");
+		*/
+		
+		// 建立observablelist以更新数据
+		//final ObservableList<HotelData> data = FXCollections.observableArrayList();
+		HotelBLService hotelBlService = new HotelController();
+
+		//data.clear();
+		ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
+		
+		ArrayList<String> content = new ArrayList<String>();
+		for (int i = 0; i < hvo.size(); i++) {
+			content.add(hvo.get(i).getHotelName());
+		}
+		
+		ObservableList<String> strList = FXCollections.observableArrayList(content);
+		hotelList.setItems(strList);
+				
+		hotelList.getSelectionModel().selectedItemProperty().addListener(
+				new ChangeListener<String>(){
+
+					@Override
+					public void changed(ObservableValue<? extends String> observable, String oldValue,
+							String newValue) {
+						// TODO Auto-generated method stub
+						//searchTextField.setText(newValue);
+						hotelname = newValue;
+						UserUI_controller.hotelname = hotelname;
+					}
+					
+				}
+				);
 	}
 }

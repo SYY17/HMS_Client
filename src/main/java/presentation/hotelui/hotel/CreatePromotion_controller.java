@@ -1,7 +1,10 @@
 package presentation.hotelui.hotel;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
@@ -55,34 +58,53 @@ public class CreatePromotion_controller {
 
 	@FXML
 	private void onSubmit(MouseEvent event) throws Exception {
-		String name = promotionName.getText();
-		String content = description.getText();
+		Date time;
+		Date sp;
+		
+		LocalDate startIns = startTime.getValue();
+		LocalDate stopIns = stopTime.getValue();
+		String pattern = "yyyy-MM-dd";
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+		String startday = dateFormatter.format(startIns);
+		String stopday = dateFormatter.format(stopIns);
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		java.util.Date date1;
+		java.util.Date date2;
+		try {
+			date1 = format.parse(startday);
+			date2 = format.parse(stopday);
+			time = new Date(date1.getTime());
+			sp = new Date(date2.getTime());
+			
+			String name = promotionName.getText();
+			String content = description.getText();
 
-		String everyText = every.getText();
-		String cutText = cut.getText();
-		String discountText = discount.getText();
+			String everyText = every.getText();
+			String cutText = cut.getText();
+			String discountText = discount.getText();
+			
+			PromotionType pte;
+			if (promotionType.getSelectionModel().equals("FullCut")) {
+				pte = pt[0];
+			} else {
+				pte = pt[1];
+			}
 
-		Date time = strToDate(startTime.getPromptText());
-		Date sp = strToDate(stopTime.getPromptText());
+			promotionBlService.addPromotion(
+					new PromotionVO(name, content, time, sp, pte, id));//
 
-		PromotionType pte;
-		if (promotionType.getSelectionModel().equals("FullCut")) {
-			pte = pt[0];
-		} else {
-			pte = pt[1];
-		}
+			if (pte == PromotionType.FULL_CUT) {
+				promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
+						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
+			}
 
-		promotionBlService.addPromotion(
-				new PromotionVO(name, content, time, sp, pte, id));//
-
-		if (pte == PromotionType.FULL_CUT) {
-			promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
-					/* id = */20905098, Double.parseDouble(everyText), Double.parseDouble(cutText)));
-		}
-
-		if (pte == PromotionType.DISCOUNT) {
-			promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
-					/* id = */20905098, Double.parseDouble(discountText)));
+			if (pte == PromotionType.DISCOUNT) {
+				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
+						id, Double.parseDouble(discountText)/10));
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
