@@ -29,7 +29,7 @@ public class ManagerUI_controller {
 
 	@FXML
 	private void onManageSystemUser(MouseEvent event) throws Exception {
-		new ManageSystemUser_start().start(stage);
+		ManageSystemUser_start.getInstance().start(stage);
 	}
 
 	@FXML

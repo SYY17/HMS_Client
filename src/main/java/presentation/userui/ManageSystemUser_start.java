@@ -22,10 +22,24 @@ import vo.UserVO;
 
 public class ManageSystemUser_start extends Application {
 
+	private static ManageSystemUser_start instance;
+	
 	private SystemUserDataHelper systemUserDataHelper;
 	private IDHelper idHelper;
 	private int id;
 	Parent root;
+	
+	private ManageSystemUser_start() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	//单件模式
+	public static ManageSystemUser_start getInstance(){
+		if(instance == null){
+			instance = new ManageSystemUser_start();
+		}
+		return instance;
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -44,6 +58,13 @@ public class ManageSystemUser_start extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 提供给对外的刷新方法
+	 */
+	public void refreshTableView(){
+		this.initiateTableView(root);
 	}
 
 	/**
@@ -139,10 +160,6 @@ public class ManageSystemUser_start extends Application {
 		ChoiceBox<String> id_choicebox = (ChoiceBox<String>) root.lookup("#id_choicebox");
 		id_choicebox.setItems(FXCollections.observableArrayList("客户", "酒店工作人员", "网站营销人员", "网站管理人员"));
 		id_choicebox.setValue("客户");
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 
 }

@@ -76,7 +76,7 @@ public class SystemUserData {
 				
 				UserControllerService userController = new UserControllerImpl();
 				userController.deleteUser(Integer.valueOf(getId()));
-				
+				ManageSystemUser_start.getInstance().refreshTableView();
 			}
 		});
 
