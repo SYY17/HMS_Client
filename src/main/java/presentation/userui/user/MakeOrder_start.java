@@ -1,6 +1,8 @@
 package presentation.userui.user;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,12 +15,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
 import presentation.controller.HotelControllerImpl;
 import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
@@ -31,6 +37,7 @@ import vo.RoomVO;
 
 public class MakeOrder_start extends Application  {
 
+	private final String pattern = "yyyy-MM-dd";
 	private IDHelper idHelper;
 	private int id;
 	public static String hotelname;
@@ -49,6 +56,7 @@ public class MakeOrder_start extends Application  {
 			initiateChoiceBox(root);
 			this.initiateHelper();
 			this.initiateElements(root);
+			initDatePicker(root);
 			
 			Scene scene = new Scene(root, 800, 600);
 			MakeOrder_controller.stage = primaryStage;
@@ -61,6 +69,68 @@ public class MakeOrder_start extends Application  {
 		}
 	}
 
+	/*
+	 * 初始化DatePicker
+	 */
+	public void initDatePicker(Parent root) {
+		// 查找checkIn
+		DatePicker checkIn = (DatePicker) root.lookup("#checkIn");
+
+		// 查找checkOut
+		DatePicker checkOut = (DatePicker) root.lookup("#checkOut");
+
+		StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+			@Override
+			public String toString(LocalDate date) {
+				if (date != null) {
+					return dateFormatter.format(date);
+				} else {
+					return "";
+				}
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.isEmpty()) {
+					return LocalDate.parse(string, dateFormatter);
+				} else {
+					return null;
+				}
+			}
+		};
+
+		checkIn.setShowWeekNumbers(true);
+		checkIn.setConverter(converter);
+		checkIn.setPromptText(pattern.toLowerCase());
+
+		checkOut.setShowWeekNumbers(true);
+		checkOut.setConverter(converter);
+		checkOut.setPromptText(pattern.toLowerCase());
+
+		checkIn.setValue(LocalDate.now());
+
+		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+			@Override
+			public DateCell call(final DatePicker datePicker) {
+				return new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						super.updateItem(item, empty);
+
+						if (item.isBefore(checkIn.getValue().plusDays(1))) {
+							setDisable(true);
+							setStyle("-fx-background-color: #ffc0cb;");
+						}
+					}
+				};
+			}
+		};
+		checkOut.setDayCellFactory(dayCellFactory);
+		checkOut.setValue(checkIn.getValue().plusDays(1));
+	}
+	
 	/**
 	 * 对于选择框中的内容进行初始化
 	 * 
