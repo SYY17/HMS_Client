@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.alertui.Alert;
 import presentation.controller.IDHelper;
 import presentation.controller.LoginControllerImpl;
 import presentation.controller.UserControllerImpl;
@@ -59,6 +60,8 @@ public class LoginUI_controller {
 	private PasswordField register_confirm;
 
 	private IDHelper idHelper;
+	
+	private Alert alert;
 
 	/**
 	 * 登录按钮的监听事件
@@ -84,7 +87,9 @@ public class LoginUI_controller {
 			jumpToMainFrame(identity);
 		} else {
 			// 弹出登录失败对话框
-			System.out.println("Login Failed!");
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, "登录失败，请检查您的用户名和密码！", "登录失败");
+			this.refreshLoginPane();
 		}
 	}
 
@@ -104,7 +109,14 @@ public class LoginUI_controller {
 		String confirm = register_confirm.getText();
 		if (!password.equals(confirm)) {
 			// 提示两次输入不一致
-			System.out.println("Not Match!");
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, "注册失败，您的两次密码输入不一致！", "注册失败");
+			return;
+		}
+		if(password.length()<6){
+			//提示密码过短
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, "注册失败，您输入的密码过短！", "注册失败");
 			return;
 		}
 		int identity = parseID(register_id);
@@ -112,9 +124,13 @@ public class LoginUI_controller {
 		ResultMessage result = loginController.addNewUser(username, password, identity);
 		if (result == ResultMessage.TRUE) {
 			// 提示注册成功，确认跳转至登录选项
-			System.out.println("Registered!");
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, "注册成功，请您登录！", "注册成功");
+			this.refreshPane();
 		} else {
 			// 弹出注册失败对话框
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, "注册失败，该用户名已存在！", "注册失败");
 		}
 	}
 
@@ -153,5 +169,30 @@ public class LoginUI_controller {
 			new UserUI_start().start(stage);
 		}
 	}
+	
+	/**
+	 * 重置登录面板的输入框
+	 */
+	private void refreshLoginPane(){
+		login_password.clear();
+		login_username.clear();
+	}
+	
+	/**
+	 * 注册成功刷新面板
+	 */
+	private void refreshPane() {
+		choicebox_type.setValue("登录");
+		register_username.clear();
+		register_password.clear();
+		register_confirm.clear();
+		
+		message.setText("找到最适合您的酒店");
 
+		panel_login.setVisible(true);
+		panel_login.setDisable(false);
+
+		panel_register.setVisible(false);
+		panel_register.setDisable(true);
+	}
 }

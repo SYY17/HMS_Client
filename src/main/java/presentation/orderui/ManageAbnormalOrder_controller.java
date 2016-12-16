@@ -7,13 +7,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.controller.UserControllerImpl;
 import presentation.controller.UserNameHelper;
 import presentation.creditui.ManageUserCredit_start;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
-import presentation.userui.UserControllerService;
 
 public class ManageAbnormalOrder_controller {
 

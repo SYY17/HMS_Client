@@ -22,11 +22,24 @@ public class Alert {
 	
 //	static ImageView icon = new ImageView();
 	
+	private static Alert alert;
+	
+	private Alert() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static Alert getInstance(){
+		if(alert == null){
+			alert = new Alert();
+		}
+		return alert;
+	}
+	
 	public enum Response {
 		YES, CANCEL
 	};
 
-	private static Response buttonSelected = Response.CANCEL;
+	private Response buttonSelected = Response.CANCEL;
 
 	static class Dialog extends Stage {
 		public Dialog(String title, Stage owner, Scene scene) {
@@ -52,8 +65,9 @@ public class Alert {
 	 * @param title
 	 * @return 返回用户选择的结果
 	 */
-	public static Response showConfirmDialog(Stage owner, String message, String title) {
-		Pane root = initiatePane("icon/warning.png", "警告", message);
+	public Response showConfirmDialog(Stage owner, String message, String title) {
+		String url = this.getClass().getClassLoader().getResource("presentation/alertui/icon/warning.png").toString();
+		Pane root = initiatePane(url, "警告", message);
 		Scene scene = new Scene(root);
 		final Dialog dialog = new Dialog(title, owner, scene);
 		
@@ -101,8 +115,9 @@ public class Alert {
 	 * @param message
 	 * @param title
 	 */
-	public static void showMessageDialog(Stage owner, String message, String title) {
-		Pane root = initiatePane("icon/error.png", "错误", message);
+	public void showMessageDialog(Stage owner, String message, String title) {
+		String url = this.getClass().getClassLoader().getResource("presentation/alertui/icon/error.png").toString();
+		Pane root = initiatePane(url, "错误", message);
 		Scene scene = new Scene(root);
 		final Dialog dialog = new Dialog(title, owner, scene);
 		
@@ -150,6 +165,7 @@ public class Alert {
 		border.setArcWidth(5.0);
 		border.setArcHeight(5.0);
 		border.setFill(Paint.valueOf("WHITE"));
+		border.setStroke(Paint.valueOf("BLACK"));
 		border.setStrokeWidth(2.0);
 		border.setStrokeType(StrokeType.INSIDE);
 		border.setOpacity(0.31);

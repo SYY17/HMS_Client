@@ -19,7 +19,7 @@
       </Rectangle>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="138.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../login/icon/warning.png" />
+            <Image url="@../../presentation/alertui/icon/warning.png" />
          </image>
       </ImageView>
       <Label layoutX="173.0" layoutY="29.0" text="警告">
