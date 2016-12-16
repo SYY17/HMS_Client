@@ -1,6 +1,8 @@
 package presentation.userui;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -23,11 +25,12 @@ public class ManageSystemUser_start extends Application {
 	private SystemUserDataHelper systemUserDataHelper;
 	private IDHelper idHelper;
 	private int id;
+	Parent root;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader
+			root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("FXML/user/manager/ManageSystemUser.fxml"));
 			this.initiateHelper();
 			this.initiateTableView(root);
@@ -100,7 +103,20 @@ public class ManageSystemUser_start extends Application {
 	 */
 	private void initiateElements(Parent root) {
 		initiateUserName(root);
+		initiateDate(root);
 		initiateChoiceBox(root);
+	}
+	
+	/**
+	 * 初始化当前日期
+	 * @param root
+	 */
+	private void initiateDate(Parent root){
+		Label date = (Label) root.lookup("#date");
+		Date time = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String text = format.format(time);
+		date.setText(text);
 	}
 
 	/**

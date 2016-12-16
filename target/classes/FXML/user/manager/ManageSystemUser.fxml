@@ -84,7 +84,7 @@
                   </Glow>
                </effect>
             </TextField>
-            <ImageView fx:id="search_button" fitHeight="23.0" fitWidth="23.0" layoutX="598.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="search_button" fitHeight="23.0" fitWidth="23.0" layoutX="598.0" layoutY="147.0" onMouseClicked="#onSearch" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

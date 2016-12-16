@@ -26,9 +26,6 @@ public class ManagerUI_start extends Application {
 			ManagerUI_controller.stage = primaryStage;
 			this.initiateHelper();
 			this.initiateElements(root);
-
-			// print，待删除
-			System.out.println(id);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("酒店管理系统");
 			primaryStage.show();
@@ -76,10 +73,6 @@ public class ManagerUI_start extends Application {
 		UserControllerService userController = new UserControllerImpl();
 		String name = userController.searchByUserID(id);
 		username.setText(name);
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 
 }

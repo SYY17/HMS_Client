@@ -51,6 +51,9 @@ public class ManageSystemUser_controller {
 
 	@FXML
 	private Label username;
+	
+	@FXML
+	private Label date;
 
 	private ObservableList<SystemUserData> data;
 
@@ -79,6 +82,27 @@ public class ManageSystemUser_controller {
 		new ManagerUI_start().start(stage);
 	}
 
+	@FXML
+	private void onSearch(MouseEvent event) throws Exception {
+		String text = search_field.getText();
+		
+		// 建立observablelist以更新数据
+		UserControllerService userController = new UserControllerImpl();
+
+		data = applyInfoTable.getItems();
+		data.clear();
+
+		SystemUserDataHelper systemUserDataHelper = new SystemUserDataHelper();
+
+		ArrayList<UserVO> list = userController.getAllUsers();
+		for (int i = 0; i < list.size(); i++) {
+			UserVO uvo = list.get(i);
+			if(uvo.getName().contains(text))
+			data.add(systemUserDataHelper.toSystemUserData(uvo));
+		}
+		applyInfoTable.setItems(data);
+	}
+	
 	@FXML
 	private void onAddNewUser(MouseEvent event) throws Exception {
 		// 在observablelist中添加value

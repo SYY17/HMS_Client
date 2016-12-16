@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import presentation.alertui.Alert;
+import presentation.alertui.Alert.Response;
 import presentation.controller.UserControllerImpl;
 
 public class SystemUserData {
@@ -65,8 +67,16 @@ public class SystemUserData {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				Alert alert = Alert.getInstance();
+				Response response = alert.showConfirmDialog(ManageSystemUser_controller.stage, "您是否确认删除该用户？", "删除确认");
+				
+				if(response == Response.CANCEL){
+					return;
+				}
+				
 				UserControllerService userController = new UserControllerImpl();
 				userController.deleteUser(Integer.valueOf(getId()));
+				
 			}
 		});
 
