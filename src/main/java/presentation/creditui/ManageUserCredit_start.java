@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
-import presentation.userui.UserData;
+import presentation.userui.UserDataForManageUserCredit;
 import presentation.userui.UserDataHelper;
 import vo.UserVO;
 
@@ -47,15 +47,15 @@ public class ManageUserCredit_start extends Application {
 		@SuppressWarnings("unchecked")
 
 		// 查找tableview
-		TableView<UserData> UserListTable = (TableView<UserData>) root.lookup("#UserListTable");
+		TableView<UserDataForManageUserCredit> UserListTable = (TableView<UserDataForManageUserCredit>) root.lookup("#UserListTable");
 		System.out.println(UserListTable);
 		// 建立observablelist以更新数据
-		final ObservableList<UserData> data = FXCollections.observableArrayList();
+		final ObservableList<UserDataForManageUserCredit> data = FXCollections.observableArrayList();
 
 		UserControllerService userController = new UserControllerImpl();
 
 		data.clear();
-		ObservableList<TableColumn<UserData, ?>> observableList = UserListTable.getColumns();
+		ObservableList<TableColumn<UserDataForManageUserCredit, ?>> observableList = UserListTable.getColumns();
 		initiateObservableList(observableList);
 
 		userDataHelper = new UserDataHelper();
@@ -63,7 +63,9 @@ public class ManageUserCredit_start extends Application {
 		ArrayList<UserVO> list = userController.getAllUsers();
 		for (int i = 0; i < list.size(); i++) {
 			UserVO uvo = list.get(i);
-			data.add(userDataHelper.toUserData(uvo));
+			if (uvo.getID() < 20000000) {
+				data.add(userDataHelper.toUserDataForManageUserCredit(uvo));
+			}
 		}
 		UserListTable.setItems(data);
 	}
@@ -73,11 +75,12 @@ public class ManageUserCredit_start extends Application {
 	 * 
 	 * @param observableList
 	 */
-	private void initiateObservableList(ObservableList<TableColumn<UserData, ?>> observableList) {
+	private void initiateObservableList(ObservableList<TableColumn<UserDataForManageUserCredit, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("username"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("start"));
-		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("operation"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("credit"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 
 	public static void main(String[] args) {

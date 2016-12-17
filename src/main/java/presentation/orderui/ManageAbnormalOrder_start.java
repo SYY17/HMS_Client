@@ -58,6 +58,8 @@ public class ManageAbnormalOrder_start extends Application {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	/**
 	 * 初始化表内数据

@@ -1,5 +1,6 @@
 package presentation.userui;
 
+import presentation.controller.CreditControllerImpl;
 import vo.UserVO;
 
 public class UserDataHelper {
@@ -46,5 +47,19 @@ public class UserDataHelper {
 		String temp = String.valueOf(id);
 		String result = temp.substring(1, 3) + "-" + temp.substring(3, 5);
 		return result;
+	}
+	
+	/**
+	 * 将UserVO,CreditVO对象转换为UserDataForManageUserCredit对象
+	 * 
+	 * @param uvo
+	 */
+	public UserDataForManageUserCredit toUserDataForManageUserCredit(UserVO uvo) {
+		String id = String.valueOf(uvo.getID());
+		String username = uvo.getName();
+		String start = getStart(uvo.getID());
+		String credit = String.valueOf(new CreditControllerImpl().getCredit(uvo.getID()).getCredit());
+
+		return new UserDataForManageUserCredit(id, username, start, credit);
 	}
 }

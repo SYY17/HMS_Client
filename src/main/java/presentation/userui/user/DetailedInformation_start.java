@@ -106,7 +106,6 @@ public class DetailedInformation_start extends Application {
 		String username = uvo.getName();
 		CustomerBLService customerBLService = new CustomerController();
 		CustomerVO cvo = customerBLService.getCustomerInfo(username);
-		
 		initDatePicker(root, cvo.getBirthday().toString());
 		
 		// 查找name

@@ -18,6 +18,7 @@ import presentation.orderui.OrderDataForSalerUI;
 import presentation.orderui.OrderDataHelper;
 import presentation.userui.UserControllerService;
 import vo.OrderVO;
+import vo.UserVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -26,31 +27,35 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class SalerUI_start extends Application {
-	
+
 	private IDHelper idHelper;
 	private int id;
 	private static SalerUI_start instance;
 	private Parent root;
-	
+	private OrderControllerService orderControllerService;
+
 	private SalerUI_start() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	//单件模式
-	public static SalerUI_start getInstance(){
-		if(instance == null){
+
+	// 单件模式
+	public static SalerUI_start getInstance() {
+		if (instance == null) {
 			instance = new SalerUI_start();
 		}
 		return instance;
 	}
+
 	/**
 	 * 提供给对外的刷新方法
 	 */
-	public void refreshTableView(){
+	public void refreshTableView() {
 		this.initiateTableView(root);
 	}
+
 	@Override
 	public void start(Stage primaryStage) {
+		orderControllerService = new OrderControllerImpl();
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/SalerUI.fxml"));
 			initiateTableView(root);
@@ -65,19 +70,22 @@ public class SalerUI_start extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		launch(args);
-//	}
-	
+
+	// public static void main(String[] args) {
+	// launch(args);
+	// }
+
 	/**
 	 * 初始化界面组件
+	 * 
 	 * @param root
 	 */
 	private void initiateElements(Parent root) {
 		// TODO Auto-generated method stub
 		initiateUserName(root);
 		initiateDate(root);
+		initiateUserSum(root);
+		initiateHotelSum(root);
 	}
 
 	/**
@@ -87,12 +95,13 @@ public class SalerUI_start extends Application {
 		idHelper = IDHelper.getInstance();
 		id = idHelper.getID();
 	}
-	
+
 	/**
 	 * 初始化当前日期
+	 * 
 	 * @param root
 	 */
-	private void initiateDate(Parent root){
+	private void initiateDate(Parent root) {
 		Label date = (Label) root.lookup("#date");
 		Date time = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -102,6 +111,7 @@ public class SalerUI_start extends Application {
 
 	/**
 	 * 初始化当前用户用户名
+	 * 
 	 * @param root
 	 */
 	private void initiateUserName(Parent root) {
@@ -110,7 +120,41 @@ public class SalerUI_start extends Application {
 		String name = userController.searchByUserID(id);
 		username.setText(name);
 	}
-	
+
+	/**
+	 * 初始化用户数
+	 * 
+	 * @param root
+	 */
+	private void initiateUserSum(Parent root) {
+		Label userSum = (Label) root.lookup("#userSum");
+		ArrayList<UserVO> list = new UserControllerImpl().getAllUsers();
+		int num = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getID() < 20000000) {
+				num++;
+			}
+		}
+		userSum.setText(String.valueOf(num));
+	}
+
+	/**
+	 * 初始化酒店数
+	 * 
+	 * @param root
+	 */
+	private void initiateHotelSum(Parent root) {
+		Label hotelSum = (Label) root.lookup("#hotelSum");
+		ArrayList<UserVO> list = new UserControllerImpl().getAllUsers();
+		int num = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getID() >= 20000000 && list.get(i).getID() < 30000000) {
+				num++;
+			}
+		}
+		hotelSum.setText(String.valueOf(num));
+	}
+
 	/**
 	 * 初始化表内数据
 	 * 
@@ -126,14 +170,12 @@ public class SalerUI_start extends Application {
 		// 建立observablelist以更新数据
 		final ObservableList<OrderDataForSalerUI> data = FXCollections.observableArrayList();
 
-		// OrderBLService orderBLService = new OrderController();
-		OrderControllerService orderControllerService = new OrderControllerImpl();
-
 		data.clear();
 		ObservableList<TableColumn<OrderDataForSalerUI, ?>> observableList = newAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
 
-		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000,OrderStatus.Abnormal);
+		ArrayList<OrderVO> orderList = orderControllerService
+				.reviewOrder(/* id = */40000000, OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderDataForSalerUI(ovo));

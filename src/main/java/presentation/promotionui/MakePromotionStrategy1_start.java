@@ -22,6 +22,7 @@ import presentation.controller.UserControllerImpl;
 import presentation.hotelui.hotel.PromotionData;
 import presentation.userui.UserControllerService;
 import vo.PromotionVO;
+import vo.UserVO;
 
 public class MakePromotionStrategy1_start extends Application {
 	
@@ -93,6 +94,8 @@ public class MakePromotionStrategy1_start extends Application {
 		// TODO Auto-generated method stub
 		initiateUserName(root);
 		initiateDate(root);
+		initiateUserSum(root);
+		initiateHotelSum(root);
 	}
 
 	/**
@@ -124,5 +127,39 @@ public class MakePromotionStrategy1_start extends Application {
 		UserControllerService userController = new UserControllerImpl();
 		String name = userController.searchByUserID(id);
 		username.setText(name);
+	}
+	
+	/**
+	 * 初始化用户数
+	 * 
+	 * @param root
+	 */
+	private void initiateUserSum(Parent root) {
+		Label userSum = (Label) root.lookup("#userSum");
+		ArrayList<UserVO> list = new UserControllerImpl().getAllUsers();
+		int num = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getID() < 20000000) {
+				num++;
+			}
+		}
+		userSum.setText(String.valueOf(num));
+	}
+
+	/**
+	 * 初始化酒店数
+	 * 
+	 * @param root
+	 */
+	private void initiateHotelSum(Parent root) {
+		Label hotelSum = (Label) root.lookup("#hotelSum");
+		ArrayList<UserVO> list = new UserControllerImpl().getAllUsers();
+		int num = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getID() >= 20000000 && list.get(i).getID() < 30000000) {
+				num++;
+			}
+		}
+		hotelSum.setText(String.valueOf(num));
 	}
 }
