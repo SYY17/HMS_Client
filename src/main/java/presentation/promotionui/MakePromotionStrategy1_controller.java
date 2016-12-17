@@ -28,7 +28,7 @@ public class MakePromotionStrategy1_controller {
 
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new SalerUI_start().start(stage);
+		SalerUI_start.getInstance().start(stage);
 	}
 
 	@FXML
@@ -43,7 +43,7 @@ public class MakePromotionStrategy1_controller {
 
 	@FXML
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
-		new ManageAbnormalOrder_start().start(stage);
+		ManageAbnormalOrder_start.getInstance().start(stage);
 	}
 	
 	@FXML

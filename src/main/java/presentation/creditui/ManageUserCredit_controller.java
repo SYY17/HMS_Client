@@ -25,7 +25,7 @@ public class ManageUserCredit_controller {
 
 	@FXML
 	private void onHomePage(MouseEvent event) throws Exception {
-		new SalerUI_start().start(stage);
+		SalerUI_start.getInstance().start(stage);
 	}
 
 	@FXML
@@ -40,7 +40,7 @@ public class ManageUserCredit_controller {
 
 	@FXML
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
-		new ManageAbnormalOrder_start().start(stage);
+		ManageAbnormalOrder_start.getInstance().start(stage);
 	}
 	
 	@FXML
@@ -48,7 +48,7 @@ public class ManageUserCredit_controller {
 		if (event.getCode().equals(KeyCode.ENTER)){
 			String userName = searchUser.getText();
 			UserNameHelper.getInstance().initialUserName(userName);
-			new ManageAbnormalOrderAndCredit_start().start(stage);
+			ManageAbnormalOrderAndCredit_start.getInstance().start(stage);
 		}
 	}
 }

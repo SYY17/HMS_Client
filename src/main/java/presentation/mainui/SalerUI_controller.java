@@ -52,7 +52,7 @@ public class SalerUI_controller {
 	 */
 	@FXML
 	private void onHomePage(MouseEvent event) throws Exception {
-		new SalerUI_start().start(stage);
+		SalerUI_start.getInstance().start(stage);
 	}
 
 	/**
@@ -82,6 +82,6 @@ public class SalerUI_controller {
 	 */
 	@FXML
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
-		new ManageAbnormalOrder_start().start(stage);
+		ManageAbnormalOrder_start.getInstance().start(stage);
 	}
 }

@@ -5,10 +5,19 @@ import java.sql.Timestamp;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import presentation.controller.OrderControllerImpl;
+import presentation.mainui.SalerUI_start;
 import vo.RoomType;
 import vo.OrderStatus;
 
-public class OrderData {
+public class OrderDataForManageAbnormalOrderAndCredit {
 	private final SimpleIntegerProperty orderID = new SimpleIntegerProperty();
 	private final SimpleStringProperty userName = new SimpleStringProperty();
 	private final SimpleStringProperty orderStatus = new SimpleStringProperty();
@@ -19,8 +28,9 @@ public class OrderData {
 	private final SimpleStringProperty roomType = new SimpleStringProperty();
 	private final SimpleIntegerProperty roomNumber = new SimpleIntegerProperty();
 	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
+	private final SimpleStringProperty operation = new SimpleStringProperty();
 
-	public OrderData(int orderID, String userName, OrderStatus orderStatus, String hotelName, Timestamp setTime,
+	public OrderDataForManageAbnormalOrderAndCredit(int orderID, String userName, OrderStatus orderStatus, String hotelName, Timestamp setTime,
 			Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
 		this.orderID.set(orderID);
 		this.userName.set(userName);
@@ -125,5 +135,32 @@ public class OrderData {
 
 	public void setPrice(int price) {
 		this.price.set(price);
+	}
+	
+	public Button getOperation() {
+		Button button = new Button();
+		button.setPrefSize(20, 20);
+		button.setMaxSize(20, 20);
+		button.setMinSize(20, 20);
+		button.setCursor(Cursor.HAND);
+		
+		button.setBackground(new Background(new BackgroundImage(
+				new Image(getClass().getResource("orderhandle.png").toString()), null, null, null, null)));
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				OrderControllerService orderController = new OrderControllerImpl();
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished);
+				ManageAbnormalOrderAndCredit_start.getInstance().refreshTableView();
+			}
+		});
+
+		return button;
+	}
+
+	public void setOperation(String operation) {
+		this.operation.set(operation);
 	}
 }

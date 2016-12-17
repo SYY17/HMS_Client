@@ -17,15 +17,35 @@ import vo.OrderStatus;
 import vo.OrderVO;
 
 public class ManageAbnormalOrder_start extends Application {
-
-	public static void main(String[] args) {
-		launch(args);
+	private static ManageAbnormalOrder_start instance;
+	private Parent root;
+	
+	private ManageAbnormalOrder_start() {
+		// TODO Auto-generated constructor stub
 	}
+	
+	//单件模式
+	public static ManageAbnormalOrder_start getInstance(){
+		if(instance == null){
+			instance = new ManageAbnormalOrder_start();
+		}
+		return instance;
+	}
+	/**
+	 * 提供给对外的刷新方法
+	 */
+	public void refreshTableView(){
+		this.initiateTableView(root);
+	}
+
+//	public static void main(String[] args) {
+//		launch(args);
+//	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			Parent root = FXMLLoader
+			root = FXMLLoader
 					.load(getClass().getClassLoader().getResource("FXML/user/saler/ManageAbnormalOrder.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
@@ -47,24 +67,24 @@ public class ManageAbnormalOrder_start extends Application {
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找tableview
-		TableView<OrderData> manageAbnormalOrderTableView = (TableView<OrderData>) root
+		TableView<OrderDataForManageAbnormalOrder> manageAbnormalOrderTableView = (TableView<OrderDataForManageAbnormalOrder>) root
 				.lookup("#manageAbnormalOrderTableView");
 		System.out.println(manageAbnormalOrderTableView);
 
 		// 建立observablelist以更新数据
-		final ObservableList<OrderData> data = FXCollections.observableArrayList();
+		final ObservableList<OrderDataForManageAbnormalOrder> data = FXCollections.observableArrayList();
 
 		// OrderBLService orderBLService = new OrderController();
 		OrderControllerService orderControllerService = new OrderControllerImpl();
 
 		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = manageAbnormalOrderTableView.getColumns();
+		ObservableList<TableColumn<OrderDataForManageAbnormalOrder, ?>> observableList = manageAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
 
 		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000,OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderDataHelper().toOrderData(ovo));
+			data.add(new OrderDataHelper().toOrderDataForManageAbnormalOrder(ovo));
 		}
 		manageAbnormalOrderTableView.setItems(data);
 	}
@@ -74,7 +94,7 @@ public class ManageAbnormalOrder_start extends Application {
 	 * 
 	 * @param observableList
 	 */
-	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
+	private void initiateObservableList(ObservableList<TableColumn<OrderDataForManageAbnormalOrder, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userName"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("checkIn"));

@@ -14,7 +14,7 @@ import vo.OrderStatus;
 import presentation.controller.OrderControllerImpl;
 import presentation.controller.UserControllerImpl;
 import presentation.orderui.OrderControllerService;
-import presentation.orderui.OrderData;
+import presentation.orderui.OrderDataForSalerUI;
 import presentation.orderui.OrderDataHelper;
 import presentation.userui.UserControllerService;
 import vo.OrderVO;
@@ -29,11 +29,30 @@ public class SalerUI_start extends Application {
 	
 	private IDHelper idHelper;
 	private int id;
+	private static SalerUI_start instance;
+	private Parent root;
 	
+	private SalerUI_start() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	//单件模式
+	public static SalerUI_start getInstance(){
+		if(instance == null){
+			instance = new SalerUI_start();
+		}
+		return instance;
+	}
+	/**
+	 * 提供给对外的刷新方法
+	 */
+	public void refreshTableView(){
+		this.initiateTableView(root);
+	}
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/SalerUI.fxml"));
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/saler/SalerUI.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			SalerUI_controller.stage = primaryStage;
@@ -47,9 +66,9 @@ public class SalerUI_start extends Application {
 		}
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
+//	public static void main(String[] args) {
+//		launch(args);
+//	}
 	
 	/**
 	 * 初始化界面组件
@@ -100,24 +119,24 @@ public class SalerUI_start extends Application {
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找tableview
-		TableView<OrderData> newAbnormalOrderTableView = (TableView<OrderData>) root
+		TableView<OrderDataForSalerUI> newAbnormalOrderTableView = (TableView<OrderDataForSalerUI>) root
 				.lookup("#newAbnormalOrderTableView");
 		System.out.println(newAbnormalOrderTableView);
 
 		// 建立observablelist以更新数据
-		final ObservableList<OrderData> data = FXCollections.observableArrayList();
+		final ObservableList<OrderDataForSalerUI> data = FXCollections.observableArrayList();
 
 		// OrderBLService orderBLService = new OrderController();
 		OrderControllerService orderControllerService = new OrderControllerImpl();
 
 		data.clear();
-		ObservableList<TableColumn<OrderData, ?>> observableList = newAbnormalOrderTableView.getColumns();
+		ObservableList<TableColumn<OrderDataForSalerUI, ?>> observableList = newAbnormalOrderTableView.getColumns();
 		initiateObservableList(observableList);
 
 		ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */40000000,OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderDataHelper().toOrderData(ovo));
+			data.add(new OrderDataHelper().toOrderDataForSalerUI(ovo));
 		}
 		newAbnormalOrderTableView.setItems(data);
 	}
@@ -127,7 +146,7 @@ public class SalerUI_start extends Application {
 	 * 
 	 * @param observableList
 	 */
-	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
+	private void initiateObservableList(ObservableList<TableColumn<OrderDataForSalerUI, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("orderID"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("userName"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("checkIn"));

@@ -162,7 +162,7 @@ public class LoginUI_controller {
 		if (identity == 4) {
 			new ManagerUI_start().start(stage);
 		} else if (identity == 3) {
-			new SalerUI_start().start(stage);
+			SalerUI_start.getInstance().start(stage);
 		} else if (identity == 2) {
 			new HotelUI_start().start(stage);
 		} else {

@@ -60,7 +60,7 @@ public class MakePromotionStrategy2_controller {
 
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
-		new SalerUI_start().start(stage);
+		SalerUI_start.getInstance().start(stage);
 	}
 
 	@FXML
@@ -75,7 +75,7 @@ public class MakePromotionStrategy2_controller {
 
 	@FXML
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
-		new ManageAbnormalOrder_start().start(stage);
+		ManageAbnormalOrder_start.getInstance().start(stage);
 	}
 
 
@@ -141,27 +141,6 @@ public class MakePromotionStrategy2_controller {
 		}
 	}
 
-	@FXML
-	private void onOrderManage(ActionEvent event) throws Exception {
-		new ManageAbnormalOrder_start().start(stage);
-	}
-
-	@FXML
-	private void onPromotionManage(ActionEvent event) throws Exception {
-		new MakePromotionStrategy2_start().start(stage);
-	}
-
-	@FXML
-	private void onCreditManage(ActionEvent event) throws Exception {
-		new ManageUserCredit_start().start(stage);
-	}
-
-	@FXML
-	private void onAbout(ActionEvent event) throws Exception {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setHeaderText("据说这是大作业");
-		alert.showAndWait();
-	}
 
 	public Date strToDate(String strDate) {
 		String str = strDate;
