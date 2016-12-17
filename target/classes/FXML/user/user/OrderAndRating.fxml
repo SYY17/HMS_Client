@@ -134,11 +134,11 @@
             <TableView fx:id="orderAndRatingTableView" layoutX="173.0" layoutY="145.0" prefHeight="145.0" prefWidth="600.0">
                <columns>
                   <TableColumn prefWidth="120.0" text="酒店名称" />
-                  <TableColumn prefWidth="103.0" text="入住时间" />
-                  <TableColumn prefWidth="109.0" text="预计离开时间" />
-                  <TableColumn prefWidth="95.0" text="房间类型" />
-                  <TableColumn prefWidth="104.0" text="房间数量" />
-                  <TableColumn prefWidth="68.0" text="单价" />
+                  <TableColumn prefWidth="117.0" text="入住时间" />
+                  <TableColumn prefWidth="123.0" text="房间类型" />
+                  <TableColumn prefWidth="94.0" text="房间数量" />
+                  <TableColumn prefWidth="112.0" text="单价" />
+                  <TableColumn prefWidth="33.0" />
                </columns>
                <effect>
                   <DropShadow />

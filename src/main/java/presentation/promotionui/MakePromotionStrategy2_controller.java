@@ -6,8 +6,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import businesslogic.promotionbl.PromotionController;
-import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -19,13 +17,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.controller.PromotionControllerImpl;
-import presentation.controller.UserControllerImpl;
 import presentation.creditui.ManageUserCredit_start;
 import presentation.hotelui.hotel.PromotionData;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.orderui.ManageAbnormalOrder_start;
-import presentation.userui.UserControllerService;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
 import vo.PromotionType;
@@ -124,16 +120,21 @@ public class MakePromotionStrategy2_controller {
 
 			promotionController.addPromotion(
 					new PromotionVO(name, content, time, sp, pte, id));//
-/*
+			
+			System.out.println("JJ");
+
+//			Timestamp timestamp = new Timestamp(new java.util.Date().getTime());
+//			long t = timestamp.getTime();
+			
 			if (pte == PromotionType.FULL_CUT) {
-				promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
+				promotionController.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
 						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
 			}
 
 			if (pte == PromotionType.DISCOUNT) {
-				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
+				promotionController.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
 						id, Double.parseDouble(discountText)/10));
-			}*/
+			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

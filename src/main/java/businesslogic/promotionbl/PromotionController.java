@@ -41,8 +41,8 @@ public class PromotionController implements PromotionBLService {
 			remoteController.getPromotionDataService().initPromotionDataService();
 			ArrayList<PromotionPO> listPromotion = remoteController.getPromotionDataService()
 					.findsPromotion(pvo.getID(), pvo.getContent(), pvo.getStartTime());
-
-			if (listPromotion != null) {
+			
+			if (listPromotion != null && listPromotion.size()!=0) {
 				return ResultMessage.FALSE;
 			}
 

@@ -318,7 +318,7 @@
             </Label>
             <Label fx:id="HName" layoutX="165.0" layoutY="117.0" prefHeight="46.0" prefWidth="386.0" text="酒店名称有多长不知道">
                <font>
-                  <Font name="Hiragino Sans W8" size="37.0" />
+                  <Font size="37.0" />
                </font>
             </Label>
             <Label fx:id="order" layoutX="551.0" layoutY="545.0" onMouseClicked="#onOrder" text="去下单">

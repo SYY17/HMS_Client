@@ -2,8 +2,11 @@ package presentation.promotionui;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import businesslogicservice.ResultMessage;
+import vo.DiscountPromotionVO;
+import vo.FullCutPromotionVO;
 import vo.PromotionVO;
 
 public interface PromotionControllerService {
@@ -51,4 +54,40 @@ public interface PromotionControllerService {
 	 * @return 按照起始时间查找营销策略
 	 */
 	public ArrayList<PromotionVO> searchByStartTime(int id, Date start);
+
+	/**
+	 * 
+	 * @param fvo
+	 * @return 制定满减策略
+	 */
+	public ResultMessage addFullCutPromotion(FullCutPromotionVO fvo);
+
+	/**
+	 * 
+	 * @param dvo
+	 * @return 制定折扣策略
+	 */
+	public ResultMessage addDiscountPromotion(DiscountPromotionVO dvo);
+
+	/**
+	 * 
+	 * @param fvo
+	 * @return 删除营销策略
+	 */
+	public ResultMessage deleteFullCutPromotion(FullCutPromotionVO fvo);
+
+	/**
+	 * 
+	 * @param dvo
+	 * @return 删除营销策略
+	 */
+	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo);
+
+	/**
+	 * 
+	 * @param id
+	 * @param presentTime
+	 * @return 按照当时时间查找营销策略
+	 */
+	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime);
 }

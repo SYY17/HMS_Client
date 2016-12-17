@@ -2,10 +2,14 @@ package presentation.controller;
 
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
+
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import presentation.promotionui.PromotionControllerService;
+import vo.DiscountPromotionVO;
+import vo.FullCutPromotionVO;
 import vo.PromotionVO;
 
 public class PromotionControllerImpl implements PromotionControllerService {
@@ -82,6 +86,62 @@ public class PromotionControllerImpl implements PromotionControllerService {
 	public ArrayList<PromotionVO> searchByStartTime(int id, Date start) {
 		// TODO Auto-generated method stub
 		return promotionBLService.searchByStartTime(id, start);
+	}
+
+	/**
+	 * 
+	 * @param fvo
+	 * @return 制定满减策略
+	 */
+	@Override
+	public ResultMessage addFullCutPromotion(FullCutPromotionVO fvo) {
+		// TODO Auto-generated method stub
+		return promotionBLService.addFullCutPromotion(fvo);
+	}
+
+	/**
+	 * 
+	 * @param dvo
+	 * @return 制定折扣策略
+	 */
+	@Override
+	public ResultMessage addDiscountPromotion(DiscountPromotionVO dvo) {
+		// TODO Auto-generated method stub
+		return promotionBLService.addDiscountPromotion(dvo);
+	}
+
+	/**
+	 * 
+	 * @param fvo
+	 * @return 删除营销策略
+	 */
+	@Override
+	public ResultMessage deleteFullCutPromotion(FullCutPromotionVO fvo) {
+		// TODO Auto-generated method stub
+		return promotionBLService.deleteFullCutPromotion(fvo);
+	}
+
+	/**
+	 * 
+	 * @param dvo
+	 * @return 删除营销策略
+	 */
+	@Override
+	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo) {
+		// TODO Auto-generated method stub
+		return promotionBLService.deleteDiscountPromotion(dvo);
+	}
+
+	/**
+	 * 
+	 * @param id
+	 * @param presentTime
+	 * @return 按照当时时间查找营销策略
+	 */
+	@Override
+	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime) {
+		// TODO Auto-generated method stub
+		return promotionBLService.searchPromotionPresent(id, presentTime);
 	}
 
 }

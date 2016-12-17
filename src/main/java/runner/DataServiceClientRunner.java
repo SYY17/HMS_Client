@@ -4,7 +4,12 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import po.UserPO;
+import java.sql.Date;
+import java.util.ArrayList;
+
+import dataservice.fullcutpromotiondataservice.FullCutPromotionDataService;
+import po.FullCutPromotionPO;
+import po.PromotionType;
 import rmi.RemoteController;
 
 public class DataServiceClientRunner {
@@ -48,14 +53,12 @@ public class DataServiceClientRunner {
 		// cr.test();
 		RemoteController rc = cr.getRemoteController();
 		try {
-			rc.getUserDataService().initUserDataService();
-			UserPO user = rc.getUserDataService().findUser("customer");
-			if (user != null) {
-				System.out.print("User ID: " + user.getID() + "; ");
-				System.out.print("User Name: " + user.getName() + "; ");
-				System.out.println("User Password: " + user.getPassword());
-			}
-			rc.getUserDataService().finishUserDataService();
+			FullCutPromotionDataService fc = rc.getFullCutPromotionDataService();
+			fc.initFullCutPromotionDataService();
+			fc.insertFullCutPromotion(new FullCutPromotionPO("Sixth","SixthPromotion",Date.valueOf("2016-12-01"),Date.valueOf("2016-12-31"),PromotionType.FULL_CUT,20902341,200,20));
+			ArrayList<FullCutPromotionPO> list = fc.findsFullPromotion(20902341);
+			System.out.println(list.get(0).getContent());
+			fc.finishFullCutPromotionDataService();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

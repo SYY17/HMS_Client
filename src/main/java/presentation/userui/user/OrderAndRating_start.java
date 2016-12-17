@@ -83,10 +83,10 @@ public class OrderAndRating_start extends Application {
 	private void initiateObservableList(ObservableList<TableColumn<OrderData, ?>> observableList) {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("hotelName"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("checkIn"));
-		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("checkOut"));
-		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("roomType"));
-		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("price"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("roomType"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("price"));
+		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("operation"));
 	}
 
 	public static void main(String[] args) {
