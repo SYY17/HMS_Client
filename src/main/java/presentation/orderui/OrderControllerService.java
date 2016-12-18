@@ -40,7 +40,7 @@ public interface OrderControllerService {
 	 * @return 创建订单
 	 */
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
-			Date checkIn, Date checkOut);
+			Date checkIn, Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild);
 
 
 	/**

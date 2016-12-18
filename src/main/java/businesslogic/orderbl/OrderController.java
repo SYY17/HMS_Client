@@ -42,14 +42,14 @@ public class OrderController implements OrderBLService {
 		return new OrderVO(opo.getOrderID(), opo.getUserName(), opo.getHotelName(),
 				OrderStatus.valueOf(opo.getOrderStatus().toString()), opo.getPrice(),
 				RoomType.valueOf(opo.getRoomType().toString()), opo.getRoomNumber(), opo.getSetTime(), opo.getCheckIn(),
-				opo.getCheckOut());
+				opo.getCheckOut(),opo.getDeadline(),opo.getPredictNumber(),opo.getHaveChild());
 	}
 
 	private OrderPO VOToPO(OrderVO ovo) {
 		return new OrderPO(ovo.getOrderID(), ovo.getUserName(), ovo.getHotelName(),
 				po.OrderStatus.valueOf(ovo.getOrderStatus().toString()), ovo.getPrice(),
 				po.RoomType.valueOf(ovo.getRoomType().toString()), ovo.getRoomNumber(), ovo.getSetTime(),
-				ovo.getCheckIn(), ovo.getCheckOut());
+				ovo.getCheckIn(), ovo.getCheckOut(),ovo.getDeadline(),ovo.getPredictNumber(),ovo.getHaveChild());
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class OrderController implements OrderBLService {
 	 */
 	@Override
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
-			Date checkIn, Date checkOut) {
+			Date checkIn, Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
 		try {
 			orderDataService.initOrderDataService();
 			boolean mark = true;
@@ -151,7 +151,7 @@ public class OrderController implements OrderBLService {
 						/*
 						 * promotionInfo.getFinalPrice(hotelName, setTime,
 						 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
-						 */1, roomType, roomNumber, setTime, checkIn, checkOut);
+						 */1, roomType, roomNumber, setTime, checkIn, checkOut,deadline,predictNumber,haveChild);
 				orderDataService.insertOrder(VOToPO(ovoTemp));
 				return ovoTemp;
 			}

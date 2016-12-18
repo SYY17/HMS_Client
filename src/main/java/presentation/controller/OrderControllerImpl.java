@@ -60,10 +60,10 @@ public class OrderControllerImpl implements OrderControllerService {
 	 */
 	@Override
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
-			Date checkIn, Date checkOut) {
-		return orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut);
+			Date checkIn, Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
+		return orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut, deadline,
+				predictNumber, haveChild);
 	}
-
 
 	/**
 	 * 

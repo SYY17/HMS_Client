@@ -30,6 +30,9 @@ public class OrderBLServiceTest {
 	private Timestamp setTime;
 	private Date checkIn;
 	private Date checkOut;
+	private Timestamp deadline;
+	private int predictNumber;
+	private boolean haveChild;
 	public static int orderID;
 	public static final int ADMIN_ID = 10916231;
 
@@ -41,12 +44,15 @@ public class OrderBLServiceTest {
 		orderBlService = new OrderController();
 		userInfo = new UserInfoForOrder();
 		userName = userInfo.searchByUserID(ADMIN_ID);
-		hotelName = "盘丝洞";
+		hotelName = "中国";
 		roomType = RoomType.KING_SIZE_ROOM;
 		roomNumber = 2;
 		setTime = Timestamp.valueOf("2016-12-14 14:47:36.000000");
 		checkIn = Date.valueOf("2016-12-15");
 		checkOut = Date.valueOf("2016-12-15");
+		deadline = Timestamp.valueOf("2016-12-14 14:47:36.000000");
+		predictNumber = 10;
+		haveChild = true;
 	}
 
 	/**
@@ -54,7 +60,8 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void test1_Create() {
-		orderID = orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut).getOrderID();
+		orderID = orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut, deadline,
+				predictNumber, haveChild).getOrderID();
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals(userName, ovoTemp.getUserName());
 	}
@@ -70,7 +77,7 @@ public class OrderBLServiceTest {
 		// 顾客&酒店
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals("admin", ovoTemp.getUserName());
-		assertEquals("盘丝洞", ovoTemp.getHotelName());
+		assertEquals("中国", ovoTemp.getHotelName());
 	}
 
 	/**
@@ -80,12 +87,12 @@ public class OrderBLServiceTest {
 	public void test3_ReviewOrderIntOrderStatus() {
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID, OrderStatus.Unfilled).get(0);
 		assertEquals("admin", ovoTemp.getUserName());
-		assertEquals("盘丝洞", ovoTemp.getHotelName());
+		assertEquals("中国", ovoTemp.getHotelName());
 
 		ArrayList<OrderVO> list = orderBlService.reviewOrder(ADMIN_ID, OrderStatus.Canceled);
 		assertEquals(list.size(), 0);
 	}
-	
+
 	/**
 	 * 改变订单状态的测试用例套件
 	 */
@@ -94,7 +101,7 @@ public class OrderBLServiceTest {
 		orderBlService.changeOrderStatus(orderID, OrderStatus.Abnormal);
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals(OrderStatus.Abnormal.toString(), ovoTemp.getOrderStatus().toString());
-		
+
 		orderBlService.changeOrderStatus(orderID, OrderStatus.Finished);
 		ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals(OrderStatus.Finished.toString(), ovoTemp.getOrderStatus().toString());
