@@ -26,7 +26,7 @@ public class DataServiceClientRunner {
 	/**
 	 * 提供给外界的启动数据服务的方法
 	 */
-	public void start() {
+	public void start() { 
 		linkToServer();
 	}
 
