@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
+import vo.DiscountPromotionVO;
+import vo.FullCutPromotionVO;
 import vo.PromotionType;
 import vo.PromotionVO;
 
@@ -23,6 +25,11 @@ public class PromotionBLServiceTest {
 	private int id;
 	private Timestamp presentTime;
 	private PromotionVO promotionVO;
+	private FullCutPromotionVO fullCutPromotionVO;
+	private DiscountPromotionVO discountPromotionVO;
+	private double every;
+	private double cut;
+	private double discount;
 
 	/**
 	 * 初始化
@@ -37,7 +44,12 @@ public class PromotionBLServiceTest {
 		start = Date.valueOf("2019-11-01");
 		stop = Date.valueOf("2019-12-01");
 		presentTime = Timestamp.valueOf("2019-11-21 00:00:00");
+		every = 200;
+		cut = 20;
+		discount = 0.9;
 		promotionVO = new PromotionVO(promotionName, content, start, stop, promotionType, id);
+		fullCutPromotionVO = new FullCutPromotionVO(promotionName, content, start, stop, promotionType, id, every, cut);
+		discountPromotionVO = new DiscountPromotionVO(promotionName, content, start, stop, promotionType, id, discount);
 	}
 
 	/**
@@ -166,6 +178,98 @@ public class PromotionBLServiceTest {
 		assertEquals( stop, pvo.getStopTime());
 		assertEquals( promotionType, pvo.getPromotionType());
 		assertEquals(id, pvo.getID());
+		promotionBLService.deletePromotion(promotionVO);
+	}
+	
+	/**
+	 * @return 制定满减策略
+	 */
+	/*@Test
+	public void testAddFullCutPromotion(){
+		fullCutPromotionVO = new FullCutPromotionVO( promotionName, content, start, stop, promotionType, id, every, cut);
+		promotionBLService.addFullCutPromotion(fullCutPromotionVO);
+		
+		FullCutPromotionVO fvo = promotionBLService.searchFullCutByContent(id, content).get(0);
+		
+		assertEquals( promotionName, fvo.getPromotionName());
+		assertEquals( content, fvo.getContent());
+		assertEquals( start, fvo.getStartTime());
+		assertEquals( stop, fvo.getStopTime());
+		assertEquals( promotionType, fvo.getPromotionType());
+		assertEquals(id, fvo.getID());
+		promotionBLService.deleteFullCutPromotion(fullCutPromotionVO);
+	}*/
+	
+	/**
+	 * @return 制定折扣策略
+	 */
+	/*@Test
+	public void testAddDiscountPromotion(){
+		discountPromotionVO = new DiscountPromotionVO( promotionName, content, start, stop, promotionType, id, discount);
+		promotionBLService.addDiscountPromotion(discountPromotionVO);
+		
+		DiscountPromotionVO fvo = promotionBLService.searchDiscountByContent(id, content).get(0);
+		
+		assertEquals( promotionName, fvo.getPromotionName());
+		assertEquals( content, fvo.getContent());
+		assertEquals( start, fvo.getStartTime());
+		assertEquals( stop, fvo.getStopTime());
+		assertEquals( promotionType, fvo.getPromotionType());
+		assertEquals(id, fvo.getID());
+		promotionBLService.deleteDiscountPromotion(discountPromotionVO);
+	}*/
+	
+	/**
+	 * @return 删除营销策略
+	 */
+	/*@Test
+	public void testDeleteFullCutPromotion(){
+		fullCutPromotionVO = new FullCutPromotionVO( promotionName, content, start, stop, promotionType, id, every, cut);
+		promotionBLService.addFullCutPromotion(fullCutPromotionVO);
+		promotionBLService.deleteFullCutPromotion(fullCutPromotionVO);
+		
+		ArrayList<FullCutPromotionVO> pvoList = promotionBLService.searchFullCutByContent(id, content);
+		ArrayList<FullCutPromotionVO> pvoList2 = new ArrayList<FullCutPromotionVO>();
+		assertEquals(pvoList, pvoList2);
+	}*/
+	
+	/**
+	 * @return 删除营销策略
+	 */
+	/*@Test
+	public void testDeleteDiscountPromotion(){
+		discountPromotionVO = new DiscountPromotionVO( promotionName, content, start, stop, promotionType, id, discount);
+		promotionBLService.addDiscountPromotion(discountPromotionVO);
+		promotionBLService.deleteDiscountPromotion(discountPromotionVO);
+		
+		ArrayList<DiscountPromotionVO> pvoList = promotionBLService.searchDiscountByContent(id, content);
+		ArrayList<DiscountPromotionVO> pvoList2 = new ArrayList<DiscountPromotionVO>();
+		assertEquals(pvoList, pvoList2);
+	}*/
+	
+	/**
+	 * 
+	 * @param id
+	 * @param presentTime
+	 * @return 按照当时时间查找营销策略
+	 */
+	@Test
+	public void testGetPromotionPresent(){
+		String dateStr = "2019-11-20 22:22:22";  
+		Timestamp p = Timestamp.valueOf(dateStr);  
+		
+		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
+		promotionBLService.addPromotion(promotionVO);
+		
+		PromotionVO fvo = promotionBLService.searchPromotionPresent(id, p);
+		
+		assertEquals( promotionName, fvo.getPromotionName());
+		assertEquals( content, fvo.getContent());
+		assertEquals( start, fvo.getStartTime());
+		assertEquals( stop, fvo.getStopTime());
+		assertEquals( promotionType, fvo.getPromotionType());
+		assertEquals(id, fvo.getID());
+		
 		promotionBLService.deletePromotion(promotionVO);
 	}
 }

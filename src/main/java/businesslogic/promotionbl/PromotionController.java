@@ -403,4 +403,108 @@ public class PromotionController implements PromotionBLService {
 
 		return pp;
 	}
+
+	@Override
+	public ArrayList<FullCutPromotionVO> searchFullCutByContent(int id, String content) {
+		// TODO Auto-generated method stub
+		ArrayList<FullCutPromotionVO> list = new ArrayList<FullCutPromotionVO>();
+		try {
+			FullCutPromotionVO pvo;
+			remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
+			ArrayList<FullCutPromotionPO> listPromotion = remoteController.getFullCutPromotionDataService().findsFullPromotion(id, content);
+
+			if (listPromotion == null) {
+				list = null;
+			} else {
+				for (int i = 0; i < listPromotion.size(); i++) {
+					pvo = new FullCutPromotionVO(listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(),
+							listPromotion.get(i).getStartTime(), listPromotion.get(i).getStopTime(),
+							converse(listPromotion.get(i).getPromotionType()), listPromotion.get(i).getID(),listPromotion.get(i).getEvery(),listPromotion.get(i).getCut());
+					list.add(pvo);
+				}
+			}
+			remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public ArrayList<FullCutPromotionVO> searchFullCutByStartTime(int id, Date start) {
+		// TODO Auto-generated method stub
+		ArrayList<FullCutPromotionVO> list = new ArrayList<FullCutPromotionVO>();
+		try {
+			FullCutPromotionVO pvo;
+			remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
+			ArrayList<FullCutPromotionPO> listPromotion = remoteController.getFullCutPromotionDataService().findsFullPromotion(id, start);
+
+			if (listPromotion == null) {
+				list = null;
+			} else {
+				for (int i = 0; i < listPromotion.size(); i++) {
+					pvo = new FullCutPromotionVO(listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(),
+							listPromotion.get(i).getStartTime(), listPromotion.get(i).getStopTime(),
+							converse(listPromotion.get(i).getPromotionType()), listPromotion.get(i).getID(),listPromotion.get(i).getEvery(),listPromotion.get(i).getCut());
+					list.add(pvo);
+				}
+			}
+			remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public ArrayList<DiscountPromotionVO> searchDiscountByContent(int id, String content) {
+		// TODO Auto-generated method stub
+		ArrayList<DiscountPromotionVO> list = new ArrayList<DiscountPromotionVO>();
+		try {
+			DiscountPromotionVO pvo;
+			remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
+			ArrayList<DiscountPromotionPO> listPromotion = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(id, content);
+
+			if (listPromotion == null) {
+				list = null;
+			} else {
+				for (int i = 0; i < listPromotion.size(); i++) {
+					pvo = new DiscountPromotionVO(listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(),
+							listPromotion.get(i).getStartTime(), listPromotion.get(i).getStopTime(),
+							converse(listPromotion.get(i).getPromotionType()), listPromotion.get(i).getID(),listPromotion.get(i).getDiscount());
+					list.add(pvo);
+				}
+			}
+			remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public ArrayList<DiscountPromotionVO> searchDiscountByStartTime(int id, Date start) {
+		// TODO Auto-generated method stub
+		ArrayList<DiscountPromotionVO> list = new ArrayList<DiscountPromotionVO>();
+		try {
+			DiscountPromotionVO pvo;
+			remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
+			ArrayList<DiscountPromotionPO> listPromotion = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(id, start);
+
+			if (listPromotion == null) {
+				list = null;
+			} else {
+				for (int i = 0; i < listPromotion.size(); i++) {
+					pvo = new DiscountPromotionVO(listPromotion.get(i).getPromotionName(), listPromotion.get(i).getContent(),
+							listPromotion.get(i).getStartTime(), listPromotion.get(i).getStopTime(),
+							converse(listPromotion.get(i).getPromotionType()), listPromotion.get(i).getID(),listPromotion.get(i).getDiscount());
+					list.add(pvo);
+				}
+			}
+			remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

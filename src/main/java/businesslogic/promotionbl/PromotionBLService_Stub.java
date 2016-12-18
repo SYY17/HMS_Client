@@ -163,4 +163,28 @@ public class PromotionBLService_Stub implements PromotionBLService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<FullCutPromotionVO> searchFullCutByContent(int id, String content) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<FullCutPromotionVO> searchFullCutByStartTime(int id, Date start) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<DiscountPromotionVO> searchDiscountByContent(int id, String content) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<DiscountPromotionVO> searchDiscountByStartTime(int id, Date start) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

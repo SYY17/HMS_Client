@@ -90,4 +90,36 @@ public interface PromotionBLService {
 	 * @return 按照当时时间查找营销策略
 	 */
 	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime);
+	
+	/**
+	 * 
+	 * @param id
+	 * @param content
+	 * @return 按照内容查找营销策略
+	 */
+	public ArrayList<FullCutPromotionVO> searchFullCutByContent(int id, String content);
+
+	/**
+	 * 
+	 * @param id
+	 * @param start
+	 * @return 按照起始时间查找营销策略
+	 */
+	public ArrayList<FullCutPromotionVO> searchFullCutByStartTime(int id, Date start);
+	
+	/**
+	 * 
+	 * @param id
+	 * @param content
+	 * @return 按照内容查找营销策略
+	 */
+	public ArrayList<DiscountPromotionVO> searchDiscountByContent(int id, String content);
+
+	/**
+	 * 
+	 * @param id
+	 * @param start
+	 * @return 按照起始时间查找营销策略
+	 */
+	public ArrayList<DiscountPromotionVO> searchDiscountByStartTime(int id, Date start);
 }
