@@ -86,7 +86,8 @@ public class PromotionBLServiceTest {
 		promotionBLService.deletePromotion(promotionVO);
 		
 		ArrayList<PromotionVO> pvoList = promotionBLService.searchByContent(id, content);
-		assertEquals(pvoList, null);
+		ArrayList<PromotionVO> pvoList2 = new ArrayList<PromotionVO>();
+		assertEquals(pvoList, pvoList2);
 	}
 	
 	/**
