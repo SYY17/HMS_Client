@@ -132,7 +132,7 @@ public class DetailedInformation_controller {
 
 	@FXML
 	private void onOrderManage(MouseEvent event) throws Exception {
-		new AllOrder_start().start(stage);
+		AllOrder_start.getInstance().start(stage);
 	}
 	
 	@FXML
@@ -142,7 +142,7 @@ public class DetailedInformation_controller {
 	
 	@FXML
 	private void onHistory(MouseEvent event) throws IOException {
-		new Credit_start().start(stage);
+		Credit_start.getInstance().start(stage);
 	}
 
 	@FXML

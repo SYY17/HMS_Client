@@ -16,17 +16,31 @@ import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
-import presentation.orderui.OrderDataForSalerUI;
 import presentation.orderui.OrderDataHelper;
 import vo.OrderVO;
 
 public class AllOrder_start extends Application {
 
+	private static AllOrder_start instance;
+	private Parent root;
+	
+	private AllOrder_start() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	//单件模式
+	public static  AllOrder_start getInstance(){
+		if(instance == null){
+			instance = new  AllOrder_start();
+		}
+		return instance;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/全部订单.fxml"));
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/全部订单.fxml"));
 			initiateTableView(root);
 			Scene scene = new Scene(root, 800, 600);
 			AllOrder_controller.stage = primaryStage;

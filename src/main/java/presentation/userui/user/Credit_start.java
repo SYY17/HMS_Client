@@ -26,14 +26,30 @@ public class Credit_start extends Application {
 	private IDHelper idHelper;
 	private int id;
 	
+	private static Credit_start instance;
+	private Parent root;
+	
+	private Credit_start(){
+		
+	}
+	
+	//单件模式
+		public static  Credit_start getInstance(){
+			if(instance == null){
+				instance = new Credit_start();
+			}
+			return instance;
+		}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/信用.fxml"));
-			initiateTableView(root);
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/信用.fxml"));
+			
 			this.initiateHelper();
 			this.initiateElements(root);
+			initiateTableView(root);
 			
 			Scene scene = new Scene(root, 800, 600);
 			Credit_controller.stage = primaryStage;
@@ -69,6 +85,7 @@ public class Credit_start extends Application {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("time"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("history"));
 
+		System.out.println(id);
 		ArrayList<Date> timeList = creditBlService.getHistoryDate(id);
 		ArrayList<Integer> historyList = creditBlService
 				.getHistoryChange(id);

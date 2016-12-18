@@ -30,6 +30,17 @@ import vo.RoomVO;
 
 public class HotelInformation_start extends Application {
 
+	private static HotelInformation_start instance;
+	private Parent root;
+	
+	//单件模式
+			public static HotelInformation_start getInstance(){
+				if(instance == null){
+					instance = new HotelInformation_start();
+				}
+				return instance;
+			}
+			
 	private IDHelper idHelper;
 	private int id;
 	public static String hotelname;
@@ -42,11 +53,13 @@ public class HotelInformation_start extends Application {
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
-			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/酒店信息.fxml"));
-			initiateTableView(root);
-			initiateTextArea(root);
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/酒店信息.fxml"));
 			this.initiateHelper();
 			this.initiateElements(root);
+			
+			initiateTableView(root);
+			initiateTextArea(root);
+			
 			
 			Scene scene = new Scene(root, 800, 600);
 			HotelInformation_controller.hotelname = hotelname;//

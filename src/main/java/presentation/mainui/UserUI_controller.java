@@ -59,7 +59,7 @@ public class UserUI_controller {
 
 	@FXML
 	private void onOrderManage(MouseEvent event) throws Exception {
-		new AllOrder_start().start(stage);
+		AllOrder_start.getInstance().start(stage);
 	}
 	
 	@FXML
@@ -69,7 +69,7 @@ public class UserUI_controller {
 	
 	@FXML
 	private void onHistory(MouseEvent event) throws IOException {
-		new Credit_start().start(stage);
+		Credit_start.getInstance().start(stage);
 	}
 
 	@FXML
@@ -96,9 +96,12 @@ public class UserUI_controller {
 
 	@FXML
 	private void onGo(MouseEvent event) {
+		/*
 		HotelInformation_start a =new HotelInformation_start();
 		a.setName(hotelname);
-		a.start(stage);
+		a.start(stage);*/
+		HotelInformation_start.getInstance().setName(hotelname);
+		HotelInformation_start.getInstance().start(stage);
 	}
 	
 }

@@ -18,7 +18,6 @@ import presentation.loginui.LoginUI_start;
 import presentation.mainui.UserUI_start;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
-import presentation.orderui.OrderDataForSalerUI;
 import presentation.orderui.OrderDataHelper;
 import vo.OrderStatus;
 import vo.OrderVO;
@@ -37,7 +36,7 @@ public class AllOrder_controller {
 
 	@FXML
 	private void onRate(MouseEvent event) throws Exception {
-		new OrderAndRating_start().start(stage);
+		OrderAndRating_start.getInstance().start(stage);
 	}
 	
 	@FXML
@@ -47,7 +46,7 @@ public class AllOrder_controller {
 
 	@FXML
 	private void onOrderManage(MouseEvent event) throws Exception {
-		new AllOrder_start().start(stage);
+		AllOrder_start.getInstance().start(stage);
 	}
 
 	@FXML
@@ -57,7 +56,7 @@ public class AllOrder_controller {
 
 	@FXML
 	private void onHistory(MouseEvent event) throws IOException {
-		new Credit_start().start(stage);
+		Credit_start.getInstance().start(stage);
 	}
 
 	@FXML

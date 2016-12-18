@@ -1,5 +1,6 @@
 package presentation.orderui;
 
+import presentation.userui.user.OrderDataForRating;
 import vo.OrderVO;
 
 public class OrderDataHelper {
@@ -28,5 +29,9 @@ public class OrderDataHelper {
 				ovo.getPrice());
 	}
 
+	public OrderDataForRating toOrderDataForRating(OrderVO ovo){
+		return new OrderDataForRating(ovo.getHotelName(), ovo.getCheckIn(), ovo.getCheckOut(), ovo.getRoomType(), ovo.getRoomNumber(),
+				ovo.getPrice());
+	}
 
 }

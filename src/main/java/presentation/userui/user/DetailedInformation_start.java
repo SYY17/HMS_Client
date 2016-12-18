@@ -40,11 +40,13 @@ public class DetailedInformation_start extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/DetailedInformation.fxml"));
 			initiateHelper();
+			this.initiateElements(root);
+			
 			initialize(root);
 			Scene scene = new Scene(root, 800, 600);
 			DetailedInformation_controller.stage = primaryStage;
-			this.initiateHelper();
-			this.initiateElements(root);
+			//this.initiateHelper();
+			
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			// primaryStage.initStyle(StageStyle.DECORATED);
 			primaryStage.setScene(scene);

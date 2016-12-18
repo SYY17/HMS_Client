@@ -51,12 +51,13 @@ public class MakeOrder_start extends Application  {
 		// TODO Auto-generated method stub
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/makeOrder.fxml"));
-			initiateTableView(root);
-			initiateTextArea(root);
+			
 			initiateChoiceBox(root);
 			this.initiateHelper();
 			this.initiateElements(root);
 			initDatePicker(root);
+			initiateTableView(root);
+			initiateTextArea(root);
 			
 			Scene scene = new Scene(root, 800, 600);
 			MakeOrder_controller.stage = primaryStage;
