@@ -68,6 +68,7 @@ public class MakeOrder_controller {
 	}
 	
 
+	@SuppressWarnings("unused")
 	@FXML
 	private void onSubmit(MouseEvent event) {
 		//new DetailedInformation_start().start(stage);

@@ -7,18 +7,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
-import presentation.controller.HotelControllerImpl;
-import presentation.controller.OrderControllerImpl;
-import presentation.hotelui.HotelControllerService;
-import presentation.orderui.ManageAbnormalOrderAndCredit_start;
-import presentation.orderui.OrderControllerService;
-import vo.HotelVO;
 import vo.RoomType;
 
 public class OrderDataForRating {

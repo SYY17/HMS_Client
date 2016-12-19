@@ -69,7 +69,6 @@ public class OrderAndRating_start extends Application {
 		}
 	}
 	
-	@SuppressWarnings("unused")
 	private void initiateHotelInfoText(Parent root, String name) {
 		
 		if(name == null){
@@ -89,7 +88,6 @@ public class OrderAndRating_start extends Application {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private void initiateTableView(Parent root) {
 		IDHelper idHelper = IDHelper.getInstance();
 		@SuppressWarnings("unchecked")
