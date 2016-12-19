@@ -191,7 +191,7 @@
                   <DropShadow />
                </effect>
             </DatePicker>
-            <TextArea fx:id="description" layoutX="264.0" layoutY="477.0" prefHeight="80.0" prefWidth="421.0">
+            <TextArea fx:id="description" layoutX="264.0" layoutY="477.0" prefHeight="80.0" prefWidth="421.0" promptText="请以&quot;促销名称&quot;开头">
                <effect>
                   <DropShadow />
                </effect>

@@ -2,7 +2,8 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.Promotion_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelui.hotel.PromotionContent_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -89,12 +90,12 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="促销策略编号">
+            <Label fx:id="promotionName" layoutX="183.0" layoutY="143.0" prefHeight="35.0" prefWidth="194.0" text="策略名称">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="29.0" />
                </font>
             </Label>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -286,33 +287,48 @@
                   <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
                </tooltip>
             </Label>
-            <ListView fx:id="promotionListView" layoutX="175.0" layoutY="192.0" prefHeight="332.0" prefWidth="457.0">
+            <Label fx:id="back" layoutX="554.0" layoutY="527.0" onMouseClicked="#onBack" text="返回" textFill="#0d0d0d">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="系统已注册酒店数" />
+               </tooltip>
+            </Label>
+            <Label layoutX="194.0" layoutY="214.0" prefHeight="27.0" prefWidth="127.0" text="开始时间">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="194.0" layoutY="263.0" prefHeight="27.0" prefWidth="127.0" text="结束时间">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="content" layoutX="192.0" layoutY="339.0" prefHeight="156.0" prefWidth="409.0">
                <effect>
                   <DropShadow />
                </effect>
-            </ListView>
-            <Label fx:id="add" layoutX="551.0" layoutY="548.0" onMouseClicked="#onAdd" text="新增" textFill="#0d0d0d">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
-            </Label>
-            <Label fx:id="look" layoutX="477.0" layoutY="548.0" onMouseClicked="#onLook" text="查看" textFill="#0d0d0d">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
-            </Label>
+            </TextArea>
+            <TextField fx:id="startTime" layoutX="294.0" layoutY="214.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <TextField fx:id="stopTime" layoutX="294.0" layoutY="263.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
          </children>
       </Pane>
    </children>

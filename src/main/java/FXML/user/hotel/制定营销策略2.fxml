@@ -302,6 +302,17 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
+            <Label fx:id="look" layoutX="477.0" layoutY="548.0" onMouseClicked="#onLook" text="查看" textFill="#0d0d0d">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="系统已注册酒店数" />
+               </tooltip>
+            </Label>
          </children>
       </Pane>
    </children>

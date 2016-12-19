@@ -7,6 +7,8 @@ import java.util.Date;
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -72,6 +74,21 @@ public class Promotion_start extends Application {
 		}
 		ObservableList<String> strList = FXCollections.observableArrayList(content);
 		promotionListView.setItems(strList);
+		
+		//
+		promotionListView.getSelectionModel().selectedItemProperty().addListener(
+				new ChangeListener<String>(){
+
+					@Override
+					public void changed(ObservableValue<? extends String> observable, String oldValue,
+							String newValue) {
+						// TODO Auto-generated method stub
+						PromotionVO p = promotionBlService.searchByContent(id, newValue).get(0);//promotionContent要包含name
+						PromotionContent_start.pvo = p;
+					}
+					
+				}
+				);
 	}
 
 	/**

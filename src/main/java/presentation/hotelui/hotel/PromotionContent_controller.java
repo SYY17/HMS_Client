@@ -1,33 +1,23 @@
 package presentation.hotelui.hotel;
 
-import businesslogic.promotionbl.PromotionController;
-import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.HotelUI_start;
-public class Promotion_controller {
 
+public class PromotionContent_controller {
+	
 	public static Stage stage;
-	public PromotionBLService promotionBlService = new PromotionController();
-	@FXML
-	public ListView<String> promotionListView;
-
+	
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
 	}
 
 	@FXML
-	private void onAdd(MouseEvent event) throws Exception  {
-		new CreatePromotion_start().start(stage);
-	}
-	
-	@FXML
-	private void onLook(MouseEvent event) throws Exception {
-		new PromotionContent_start().start(stage);
+	private void onBack(MouseEvent event) {
+		new Promotion_start().start(stage);
 	}
 	
 	@FXML
