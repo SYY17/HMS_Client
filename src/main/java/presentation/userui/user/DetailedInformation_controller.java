@@ -260,8 +260,11 @@ public class DetailedInformation_controller {
 			String phoneNumber = phone.getText();
 			String email = this.email.getText();
 			String address = this.address.getText();
+			int member = 0;
+			String enterprise = "";
 			
-			CustomerVO cvo = new CustomerVO(uvo, time, phoneNumber, email, address);
+			//??????
+			CustomerVO cvo = new CustomerVO(uvo, time, phoneNumber, email, address, member, enterprise);
 			
 			customerBLService.setCustomerInfo(cvo);
 		} catch (ParseException e) {

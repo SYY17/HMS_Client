@@ -115,7 +115,7 @@ public class CustomerController implements CustomerBLService{
 	 * @return VO, PO转换方法
 	 */
 	private CustomerVO convert(CustomerPO cpo){
-		CustomerVO cvo = new CustomerVO(cpo.getID(), cpo.getName(), cpo.getPassword(), cpo.getBirthday(), cpo.getPhoneNumber(), cpo.getEmail(), cpo.getAddress());
+		CustomerVO cvo = new CustomerVO(cpo.getID(), cpo.getName(), cpo.getPassword(), cpo.getBirthday(), cpo.getPhoneNumber(), cpo.getEmail(), cpo.getAddress(), cpo.getMember(), cpo.getEnterprise());
 		return cvo;
 	}
 	
@@ -125,7 +125,7 @@ public class CustomerController implements CustomerBLService{
 	 * @return PO, VO转换方法
 	 */
 	private CustomerPO convert(CustomerVO cvo){
-		CustomerPO cpo = new CustomerPO(cvo.getID(), cvo.getName(), cvo.getPassword(), cvo.getBirthday(), cvo.getPhoneNumber(), cvo.getEmail(), cvo.getAddress());
+		CustomerPO cpo = new CustomerPO(cvo.getID(), cvo.getName(), cvo.getPassword(), cvo.getBirthday(), cvo.getPhoneNumber(), cvo.getEmail(), cvo.getAddress(), cvo.getMember(), cvo.getEnterprise());
 		return cpo;
 	}
 	

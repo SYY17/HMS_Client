@@ -11,18 +11,22 @@ public class CustomerVO extends UserVO {
 	String phoneNumber;
 	String email;
 	String address;
+	int member;
+	String enterprise;
 
-	public CustomerVO(int i, String n, String p, Date b, String pN, String e, String a) {
+	public CustomerVO(int i, String n, String p, Date b, String pN, String e, String a, int m, String et) {
 		// TODO Auto-generated constructor stub
 		super(i, n, p);
 		birthday = b;
 		phoneNumber = pN;
 		email = e;
 		address = a;
+		member = m;
+		enterprise = et;
 	}
 
-	public CustomerVO(UserVO uvo, Date b, String pN, String e, String a) {
-		this(uvo.getID(), uvo.getName(), uvo.getPassword(), b, pN, e, a);
+	public CustomerVO(UserVO uvo, Date b, String pN, String e, String a, int m, String et) {
+		this(uvo.getID(), uvo.getName(), uvo.getPassword(), b, pN, e, a, m, et);
 	}
 
 	/**
@@ -55,5 +59,21 @@ public class CustomerVO extends UserVO {
 	 */
 	public String getAddress(){
 		return address;
+	}
+	
+	/**
+	 * 
+	 * @return 获取会员种类
+	 */
+	public int getMember(){
+		return member;
+	}
+	
+	/**
+	 * 
+	 * @return 获取企业名称
+	 */
+	public String getEnterprise(){
+		return enterprise;
 	}
 }

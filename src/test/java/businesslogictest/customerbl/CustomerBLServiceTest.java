@@ -24,6 +24,8 @@ public class CustomerBLServiceTest {
 	String phoneNumber;
 	String email;
 	String address;
+	int member;
+	String enterprise;
 	
 	@Before
 	public void setUp(){
@@ -33,8 +35,10 @@ public class CustomerBLServiceTest {
 		phoneNumber = "10000000000";
 		email = "test@163.com";
 		address = "test address";
+		member = 0;
+		enterprise = "test enterprise";
 		uvo = new UserVO(10912012, name, "000000");
-		cvo = new CustomerVO(uvo, birthday, phoneNumber, email, address);
+		cvo = new CustomerVO(uvo, birthday, phoneNumber, email, address, member, enterprise);
 		customerBLService = new CustomerController();
 	}
 	
