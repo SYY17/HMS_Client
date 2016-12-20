@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +30,7 @@ public class AllOrder_controller {
 	private IDHelper idHelper;
 	private final ObservableList<OrderData> data = FXCollections.observableArrayList();
 	public OrderControllerService orderControllerService = new OrderControllerImpl();
+	public Button cancelOrder;
 	public TableView<OrderData> allOrderTableView;
 	public TableView<OrderData> unfilledOrderTableView;
 	public TableView<OrderData> canceledOrderTableView;
@@ -38,7 +41,7 @@ public class AllOrder_controller {
 	private void onRate(MouseEvent event) throws Exception {
 		OrderAndRating_start.getInstance().start(stage);
 	}
-	
+
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
@@ -67,26 +70,38 @@ public class AllOrder_controller {
 	@FXML
 	private void onAllOrder(Event event) {
 		initialTableView(allOrderTableView, null);
+		cancelOrder.setVisible(false);
 	}
 
 	@FXML
 	private void onUnfilledOrder(Event event) {
 		initialTableView(unfilledOrderTableView, OrderStatus.Unfilled);
+		cancelOrder.setVisible(true);
 	}
 
 	@FXML
 	private void onCanceledOrder(Event event) {
 		initialTableView(canceledOrderTableView, OrderStatus.Canceled);
+		cancelOrder.setVisible(false);
 	}
 
 	@FXML
 	private void onAbnormalOrder(Event event) {
 		initialTableView(abnormalOrderTableView, OrderStatus.Abnormal);
+		cancelOrder.setVisible(false);
 	}
 
 	@FXML
 	private void onFinishedOrder(Event event) {
 		initialTableView(finishedOrderTableView, OrderStatus.Finished);
+		cancelOrder.setVisible(false);
+	}
+
+	@FXML
+	private void onCancelOrder(ActionEvent event) throws Exception {
+		int orderID = unfilledOrderTableView.getSelectionModel().getSelectedItems().get(0).getOrderID();
+		orderControllerService.changeOrderStatus(orderID, OrderStatus.Canceled);
+		initialTableView(unfilledOrderTableView, OrderStatus.Unfilled);
 	}
 
 	private void initialTableView(TableView<OrderData> tableView, OrderStatus orderStatus) {

@@ -63,7 +63,11 @@ public class OrderController implements OrderBLService {
 		ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
 		listTemp = orderDataService.findOrder();
 		for (int i = 0; i < listTemp.size(); i++) {
-			checkAbnormal(listTemp.get(i).getOrderID());
+			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(listTemp.get(i).getOrderID()));
+			if (System.currentTimeMillis() > ovo.getDeadline().getTime()
+					&& ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
+				changeOrderStatus(ovo.getOrderID(), OrderStatus.Abnormal);
+			}
 		}
 		if (id >= 30000000) {
 			listPO = orderDataService.findOrder();
@@ -184,19 +188,6 @@ public class OrderController implements OrderBLService {
 			orderDataService.initOrderDataService();
 			orderDataService.deleteOrder(id);
 			orderDataService.finishOrderDataService();
-			return ResultMessage.TRUE;
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.FALSE;
-		}
-	}
-
-	private ResultMessage checkAbnormal(int id) {
-		try {
-			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
-			if (System.currentTimeMillis() > ovo.getDeadline().getTime()) {
-				changeOrderStatus(id, OrderStatus.Abnormal);
-			}
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();

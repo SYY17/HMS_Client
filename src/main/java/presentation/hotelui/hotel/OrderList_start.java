@@ -7,10 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import presentation.orderui.OrderDataHelper;
+import vo.OrderStatus;
 import vo.OrderVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -46,7 +48,7 @@ public class OrderList_start extends Application {
 		ObservableList<TableColumn<OrderData, ?>> observableList = orderListTableView.getColumns();
 		initiateObservableList(observableList);
 		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */20905098);
+				.reviewOrder(IDHelper.getInstance().getID(),OrderStatus.Unfilled);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));
