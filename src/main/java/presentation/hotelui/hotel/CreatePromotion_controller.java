@@ -10,6 +10,7 @@ import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import presentation.alertui.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -50,6 +51,8 @@ public class CreatePromotion_controller {
 	PromotionType[] pt = { PromotionType.FULL_CUT, PromotionType.DISCOUNT };
 	@FXML
 	public TextField discount;
+	
+	private Alert alert;
 
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
@@ -102,6 +105,10 @@ public class CreatePromotion_controller {
 				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
 						id, Double.parseDouble(discountText)/10));
 			}
+			
+			//
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

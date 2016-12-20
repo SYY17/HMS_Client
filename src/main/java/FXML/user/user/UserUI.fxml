@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
@@ -306,13 +307,33 @@
                   <Glow />
                </effect>
             </Label>
-            <Label fx:id="go" layoutX="560.0" layoutY="548.0" onMouseClicked="#onGo" text="前往">
+            <Label fx:id="go" layoutX="590.0" layoutY="548.0" onMouseClicked="#onGo" text="前往">
                <font>
                   <Font size="22.0" />
                </font>
                <effect>
                   <Glow />
                </effect>
+            </Label>
+            <ChoiceBox fx:id="rating" layoutX="206.0" layoutY="549.0" prefHeight="27.0" prefWidth="80.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+            <ChoiceBox fx:id="businessArea" layoutX="393.0" layoutY="549.0" prefHeight="27.0" prefWidth="80.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
+            <Label layoutX="160.0" layoutY="549.0" text="评分">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="341.0" layoutY="549.0" text="商圈">
+               <font>
+                  <Font size="23.0" />
+               </font>
             </Label>
          </children>
       </Pane>

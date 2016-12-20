@@ -117,7 +117,7 @@ public class Alert {
 	 */
 	public void showMessageDialog(Stage owner, String message, String title) {
 		String url = this.getClass().getClassLoader().getResource("presentation/alertui/icon/error.png").toString();
-		Pane root = initiatePane(url, "错误", message);
+		Pane root = initiatePane(url, "注意", message);//原来为警告
 		Scene scene = new Scene(root);
 		final Dialog dialog = new Dialog(title, owner, scene);
 		

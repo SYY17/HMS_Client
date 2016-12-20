@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.alertui.Alert;
 import presentation.controller.PromotionControllerImpl;
 import presentation.creditui.ManageUserCredit_start;
 import presentation.hotelui.hotel.PromotionData;
@@ -51,6 +52,8 @@ public class MakePromotionStrategy2_controller {
 	@FXML
 	public TextField discount;
 
+	private Alert alert;
+	
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
@@ -133,6 +136,9 @@ public class MakePromotionStrategy2_controller {
 				promotionController.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
 						id, Double.parseDouble(discountText)/10));
 			}
+			//
+			alert = Alert.getInstance();
+			alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
