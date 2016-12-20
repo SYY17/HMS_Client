@@ -1,8 +1,15 @@
 package businesslogic.creditbl;
 
 import businesslogic.orderbl.CreditInfo;
+import businesslogicservice.creditBLService.CreditBLService;
 
-public class CreditInfoImpl implements CreditInfo {
+public class CreditInfoForOrder implements CreditInfo {
+	CreditBLService creditBLService;
+
+	public CreditInfoForOrder() {
+		creditBLService = new CreditController();
+	}
+
 	/**
 	 * 
 	 * @param id
@@ -11,7 +18,7 @@ public class CreditInfoImpl implements CreditInfo {
 	@Override
 	public int getCreditByUserID(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return creditBLService.getCredit(id).getCredit();
 	}
 
 	/**
@@ -21,7 +28,6 @@ public class CreditInfoImpl implements CreditInfo {
 	 */
 	@Override
 	public void updateCreditByUserID(int id, int creditValue) {
-		// TODO Auto-generated method stub
-
+		creditBLService.addCredit(id, creditValue);
 	}
 }

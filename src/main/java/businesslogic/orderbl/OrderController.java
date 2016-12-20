@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import businesslogic.creditbl.CreditInfoImpl;
+import businesslogic.creditbl.CreditInfoForOrder;
 import businesslogic.hotelbl.HotelInfoForOrder;
 import businesslogic.promotionbl.PromotionInfoForOrder;
 import businesslogic.userbl.UserInfoForOrder;
@@ -32,7 +32,7 @@ public class OrderController implements OrderBLService {
 		runner.start();
 		remoteController = runner.getRemoteController();
 		orderDataService = remoteController.getOrderDataService();
-		creditinfo = new CreditInfoImpl();
+		creditinfo = new CreditInfoForOrder();
 		hotelInfo = new HotelInfoForOrder();
 		promotionInfo = new PromotionInfoForOrder();
 		userInfo = new UserInfoForOrder();
@@ -42,14 +42,14 @@ public class OrderController implements OrderBLService {
 		return new OrderVO(opo.getOrderID(), opo.getUserName(), opo.getHotelName(),
 				OrderStatus.valueOf(opo.getOrderStatus().toString()), opo.getPrice(),
 				RoomType.valueOf(opo.getRoomType().toString()), opo.getRoomNumber(), opo.getSetTime(), opo.getCheckIn(),
-				opo.getCheckOut(),opo.getDeadline(),opo.getPredictNumber(),opo.getHaveChild());
+				opo.getCheckOut(), opo.getDeadline(), opo.getPredictNumber(), opo.getHaveChild());
 	}
 
 	private OrderPO VOToPO(OrderVO ovo) {
 		return new OrderPO(ovo.getOrderID(), ovo.getUserName(), ovo.getHotelName(),
 				po.OrderStatus.valueOf(ovo.getOrderStatus().toString()), ovo.getPrice(),
 				po.RoomType.valueOf(ovo.getRoomType().toString()), ovo.getRoomNumber(), ovo.getSetTime(),
-				ovo.getCheckIn(), ovo.getCheckOut(),ovo.getDeadline(),ovo.getPredictNumber(),ovo.getHaveChild());
+				ovo.getCheckIn(), ovo.getCheckOut(), ovo.getDeadline(), ovo.getPredictNumber(), ovo.getHaveChild());
 	}
 
 	/**
@@ -60,6 +60,11 @@ public class OrderController implements OrderBLService {
 	private ArrayList<OrderVO> getOrderByUserID(int id) throws RemoteException {
 		orderDataService.initOrderDataService();
 		ArrayList<OrderPO> listPO = new ArrayList<OrderPO>();
+		ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
+		listTemp = orderDataService.findOrder();
+		for (int i = 0; i < listTemp.size(); i++) {
+			checkAbnormal(listTemp.get(i).getOrderID());
+		}
 		if (id >= 30000000) {
 			listPO = orderDataService.findOrder();
 		} else {
@@ -68,7 +73,6 @@ public class OrderController implements OrderBLService {
 				listPO = orderDataService.findOrderByUserName(name);
 			} else {
 				listPO = orderDataService.findOrderByHotelName(name);
-				System.out.println(listPO.size());
 			}
 		}
 
@@ -151,7 +155,7 @@ public class OrderController implements OrderBLService {
 						/*
 						 * promotionInfo.getFinalPrice(hotelName, setTime,
 						 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
-						 */1, roomType, roomNumber, setTime, checkIn, checkOut,deadline,predictNumber,haveChild);
+						 */1, roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild);
 				orderDataService.insertOrder(VOToPO(ovoTemp));
 				return ovoTemp;
 			}
@@ -187,6 +191,19 @@ public class OrderController implements OrderBLService {
 		}
 	}
 
+	private ResultMessage checkAbnormal(int id) {
+		try {
+			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
+			if (System.currentTimeMillis() > ovo.getDeadline().getTime()) {
+				changeOrderStatus(id, OrderStatus.Abnormal);
+			}
+			return ResultMessage.TRUE;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.FALSE;
+		}
+	}
+
 	/**
 	 * 
 	 * @param cvo
@@ -199,6 +216,20 @@ public class OrderController implements OrderBLService {
 		try {
 			orderDataService.initOrderDataService();
 			orderDataService.updateOrder(id, orderStatus);
+			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
+			int userID = userInfo.searchByUserName(ovo.getUserName());
+			if (orderStatus.toString().equals(OrderStatus.Canceled.toString())) {
+				if (ovo.getDeadline().getTime() - System.currentTimeMillis() < 6 * 1000 * 60 * 60) {
+					creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2);
+				}
+			} else if (orderStatus.toString().equals(OrderStatus.Abnormal.toString())) {
+				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice());
+			} else if (orderStatus.toString().equals(OrderStatus.Finished.toString())) {
+				if (orderDataService.findOrderByOrderID(id).getOrderStatus().toString().equals(OrderStatus.Abnormal)) {
+					creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+				}
+				creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+			}
 			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {

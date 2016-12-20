@@ -24,4 +24,15 @@ public class UserInfoForOrder implements UserInfo {
 		return userController.searchByUserID(id);
 	}
 
+	/**
+	 * 
+	 * @param ID
+	 * @return 根据用户名查找并返回用户ID
+	 */
+	@Override
+	public int searchByUserName(String userName) {
+		// TODO Auto-generated method stub
+
+		return userController.searchByUserName(userName).getID();
+	}
 }
