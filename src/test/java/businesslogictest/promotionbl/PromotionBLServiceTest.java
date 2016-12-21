@@ -261,7 +261,7 @@ public class PromotionBLServiceTest {
 		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
 		promotionBLService.addPromotion(promotionVO);
 		
-		PromotionVO fvo = promotionBLService.searchPromotionPresent(0,0,id, p);//又要改
+		PromotionVO fvo = promotionBLService.searchPromotionPresent(0,0,id, p,1000);//又要改
 		
 		assertEquals( promotionName, fvo.getPromotionName());
 		assertEquals( content, fvo.getContent());

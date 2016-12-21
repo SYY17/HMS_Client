@@ -297,9 +297,8 @@ public class PromotionController implements PromotionBLService {
 	}
 
 	@Override
-	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime) {
+	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime, int initialPrice) {
 		// TODO Auto-generated method stub
-		//酒店的策略  网银的策略
 		PromotionVO pvo;
 		try{
 			remoteController.getPromotionDataService().initPromotionDataService();
@@ -366,18 +365,18 @@ public class PromotionController implements PromotionBLService {
 			
 			ArrayList<Double> list = new ArrayList<Double>();
 			for(int i=0;i<available.size();i++){
-				if(available.get(i).getPromotionName().equals("生日")||available.get(i).getPromotionName().equals("三间及以上预定优惠")||available.get(i).getPromotionName().equals("合作企业客户折扣")){
+				if(available.get(i).getPromotionName().equals("生日a")||available.get(i).getPromotionName().equals("三间及以上预定优惠a")||available.get(i).getPromotionName().equals("合作企业客户折扣a")){
 					list.add(new Double(9999999));
 				}else{
 					if(available.get(i).getPromotionType() == PromotionType.DISCOUNT){
 						remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
 						DiscountPromotionPO ds = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(available.get(i).getID(), available.get(i).getContent()).get(0);
-						list.add(new Double(ds.calculatePayment(1000)));
+						list.add(new Double(ds.calculatePayment(initialPrice)));
 						remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
 					}else{
 						remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
 						FullCutPromotionPO fs = remoteController.getFullCutPromotionDataService().findsFullPromotion(available.get(i).getID(), available.get(i).getContent()).get(0);
-						list.add(new Double(fs.calculatePayment(1000)));
+						list.add(new Double(fs.calculatePayment(initialPrice)));
 						remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
 					}
 				}
@@ -411,7 +410,7 @@ public class PromotionController implements PromotionBLService {
 //
 	public static void main(String[]args){
 		PromotionController a = new PromotionController();
-		PromotionVO pc = a.searchPromotionPresent(0,0,20902341,Timestamp.valueOf("2016-12-02 00:00:00"));
+		PromotionVO pc = a.searchPromotionPresent(0,0,20902341,Timestamp.valueOf("2016-12-02 00:00:00"), 1000);
 		//System.out.println(pc.getPromotionName());
 	}
 	//
