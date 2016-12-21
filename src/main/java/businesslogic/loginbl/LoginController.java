@@ -5,7 +5,12 @@ import java.rmi.RemoteException;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.loginblservice.LoginBLService;
 import dataservice.customerdataservice.CustomerDataService;
+import dataservice.hoteldataservice.HotelDataService;
+import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
+import po.HotelPO;
+import po.RoomPO;
+import po.RoomType;
 import po.UserPO;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
@@ -15,6 +20,8 @@ public class LoginController implements LoginBLService {
 	private RemoteController remoteController;
 	private UserDataService userdataservice;
 	private CustomerDataService customerdataservice;
+	private HotelDataService hoteldataservice;
+	private RoomDataService roomdataservice;
 
 	public LoginController() {
 		// TODO Auto-generated constructor stub
@@ -49,9 +56,23 @@ public class LoginController implements LoginBLService {
 			userdataservice.insertUser(user);
 			userdataservice.finishUserDataService();
 			
-			customerdataservice.initCustomerDataService();
-			customerdataservice.insertCustomer(username);
-			customerdataservice.finishCustomerDataService();
+			if(id<20000000){
+				customerdataservice.initCustomerDataService();
+				customerdataservice.insertCustomer(username);
+				customerdataservice.finishCustomerDataService();
+			}else if(id<30000000){
+				hoteldataservice.initHotelDataService();
+				hoteldataservice.insertHotel(new HotelPO(id, "", "", "", "", 0, 0, "", ""));
+				hoteldataservice.finishHotelDataService();
+				
+				roomdataservice.initRoomDataService();
+				roomdataservice.insertRoom(new RoomPO(id, RoomType.SINGLE_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(id, RoomType.STANDARD_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(id, RoomType.SUITE, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(id, RoomType.TRIPLE_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(id, RoomType.KING_SIZE_ROOM, 0, 0, 0));
+				roomdataservice.finishRoomDataService();
+			}
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
