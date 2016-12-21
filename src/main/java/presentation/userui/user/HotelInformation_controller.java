@@ -50,4 +50,11 @@ public class HotelInformation_controller {
 		a.setName(hotelname);
 		a.start(stage);
 	}
+	
+	@FXML
+	private void onHistoryOrder(MouseEvent event) throws Exception {
+		HotelHistoryOrder_start a = new HotelHistoryOrder_start();
+		a.setName(hotelname);
+		a.start(stage);
+	}
 }

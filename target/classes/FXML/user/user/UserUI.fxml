@@ -139,31 +139,6 @@
                   </Label>
                </center>
             </BorderPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
-            <Label fx:id="orderSum" layoutX="690.0" layoutY="406.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="成功执行订单数" />
-               </tooltip>
-            </Label>
-            <Label layoutX="676.0" layoutY="387.0" text="订单数">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="681.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/handled.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="666.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/datecheck_small.png" />
@@ -206,94 +181,6 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
-            <Label layoutX="708.0" layoutY="330.0" text="我的成就">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="以下为统计数据" />
-               </tooltip>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="679.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/achievement.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="creditSum" layoutX="742.0" layoutY="406.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="我的信用值" />
-               </tooltip>
-            </Label>
-            <Label layoutX="728.0" layoutY="387.0" text="信用值">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="733.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/rate.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="681.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/promotionnum.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="677.0" layoutY="455.0" text="评价数">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="reviewSum" layoutX="690.0" layoutY="474.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="酒店评价次数" />
-               </tooltip>
-            </Label>
-            <Label layoutX="733.0" layoutY="455.0" text="排名">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="733.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/rank.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="rankSum" layoutX="742.0" layoutY="474.0" text="0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
-               </tooltip>
-            </Label>
             <TextField fx:id="searchTextField" layoutX="455.0" layoutY="147.0" prefHeight="27.0" prefWidth="127.0">
                <effect>
                   <DropShadow />
@@ -307,32 +194,32 @@
                   <Glow />
                </effect>
             </Label>
-            <ChoiceBox fx:id="rating" layoutX="201.0" layoutY="549.0" prefHeight="27.0" prefWidth="80.0">
+            <ChoiceBox fx:id="rating" layoutX="702.0" layoutY="336.0" prefHeight="27.0" prefWidth="80.0">
                <effect>
                   <DropShadow />
                </effect>
             </ChoiceBox>
-            <ChoiceBox fx:id="businessArea" layoutX="495.0" layoutY="549.0" prefHeight="27.0" prefWidth="80.0">
+            <ChoiceBox fx:id="businessArea" layoutX="702.0" layoutY="440.0" prefHeight="27.0" prefWidth="80.0">
                <effect>
                   <DropShadow />
                </effect>
             </ChoiceBox>
-            <Label layoutX="160.0" layoutY="549.0" text="评分">
+            <Label layoutX="652.0" layoutY="337.0" text="评分">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="452.0" layoutY="551.0" text="商圈">
+            <Label layoutX="652.0" layoutY="441.0" text="商圈">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="star" layoutX="349.0" layoutY="550.0" prefHeight="27.0" prefWidth="80.0">
+            <ChoiceBox fx:id="star" layoutX="702.0" layoutY="386.0" prefHeight="27.0" prefWidth="80.0">
                <effect>
                   <DropShadow />
                </effect>
             </ChoiceBox>
-            <Label layoutX="305.0" layoutY="550.0" text="星级">
+            <Label layoutX="652.0" layoutY="387.0" text="星级">
                <font>
                   <Font size="20.0" />
                </font>
@@ -342,6 +229,16 @@
                   <Image url="@search.jpg" />
                </image>
             </ImageView>
+            <Label layoutX="652.0" layoutY="498.0" text="价格">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="price" layoutX="702.0" layoutY="498.0" prefHeight="27.0" prefWidth="80.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
          </children>
       </Pane>
    </children>

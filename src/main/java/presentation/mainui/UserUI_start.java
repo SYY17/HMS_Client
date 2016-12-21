@@ -21,6 +21,7 @@ import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
 import vo.HotelVO;
+import vo.RoomVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
@@ -106,6 +107,20 @@ public class UserUI_start extends Application {
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				changeRate(root, String.valueOf(newValue));
+			}
+			
+		});
+		
+		@SuppressWarnings("unchecked")
+		// 查找star
+		ChoiceBox<String> price = (ChoiceBox<String>) root.lookup("#price");
+		price.setItems(FXCollections.observableArrayList("从高到低", "从低到高"));
+		
+		price.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener(){
+			@Override
+			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+				// TODO Auto-generated method stub
+				changePrice(root, String.valueOf(newValue));
 			}
 			
 		});
@@ -293,7 +308,96 @@ public class UserUI_start extends Application {
 					);
 		}
 	}
-	
+	//
+	/**
+	 * 
+	 * @param root
+	 * @param priceSql
+	 */
+	private void changePrice(Parent root, String priceSql){
+		if(priceSql.equals("0")){//"从高到低"
+			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
+			
+			HotelBLService hotelBlService = new HotelController();
+			
+			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
+			Map<String,Double> maps = new HashMap<String,Double>();
+			for(int i=0;i<hvo.size();i++){
+				ArrayList<RoomVO> room = hotelBlService.SearchRooms(hvo.get(i).getHotelID());
+				int small = 0;
+				for(int j=1;j<room.size();j++){
+					if(room.get(j).getPrice()<room.get(small).getPrice()){
+						small = j;
+					}
+				}
+				double pr = room.get(small).getPrice();
+				maps.put(hvo.get(i).getHotelName(), new Double(pr));
+			}
+			
+			ByValueComparator bvc = new ByValueComparator(maps);
+	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
+	        Collections.sort(content, bvc);
+	        
+			ObservableList<String> strList = FXCollections.observableArrayList(content);
+			hotelList.setItems(strList);
+					
+			hotelList.getSelectionModel().selectedItemProperty().addListener(
+					new ChangeListener<String>(){
+
+						@Override
+						public void changed(ObservableValue<? extends String> observable, String oldValue,
+								String newValue) {
+							// TODO Auto-generated method stub
+							//searchTextField.setText(newValue);
+							hotelname = newValue;
+							UserUI_controller.hotelname = hotelname;
+						}
+						
+					}
+					);
+		}else if(priceSql.equals("1")){//"从低到高"
+			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
+			
+			HotelBLService hotelBlService = new HotelController();
+			
+			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
+			Map<String,Double> maps = new HashMap<String,Double>();
+			for(int i=0;i<hvo.size();i++){
+				ArrayList<RoomVO> room = hotelBlService.SearchRooms(hvo.get(i).getHotelID());
+				int small = 0;
+				for(int j=1;j<room.size();j++){
+					if(room.get(j).getPrice()<room.get(small).getPrice()){
+						small = j;
+					}
+				}
+				double pr = room.get(small).getPrice();
+				maps.put(hvo.get(i).getHotelName(), new Double(pr));
+			}
+			
+			SByValueComparator bvc = new SByValueComparator(maps);
+	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
+	        Collections.sort(content, bvc);
+			
+			ObservableList<String> strList = FXCollections.observableArrayList(content);
+			hotelList.setItems(strList);
+					
+			hotelList.getSelectionModel().selectedItemProperty().addListener(
+					new ChangeListener<String>(){
+
+						@Override
+						public void changed(ObservableValue<? extends String> observable, String oldValue,
+								String newValue) {
+							// TODO Auto-generated method stub
+							//searchTextField.setText(newValue);
+							hotelname = newValue;
+							UserUI_controller.hotelname = hotelname;
+						}
+						
+					}
+					);
+		}
+	}
+	//
 	/**
 	 * 获取当前用户ID
 	 */
