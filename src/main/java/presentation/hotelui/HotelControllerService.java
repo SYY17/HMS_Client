@@ -16,6 +16,13 @@ public interface HotelControllerService {
 	public HotelVO reviewHotelInfo(String name);
 
 	/**
+	 * 通过id搜索酒店
+	 * 
+	 * @param id
+	 * @return hotel
+	 */
+	public HotelVO searchHotelByID(int id);
+	/**
 	 * 浏览酒店列表
 	 * 
 	 * @param

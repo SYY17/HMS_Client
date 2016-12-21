@@ -49,7 +49,30 @@ public class HotelController implements HotelBLService {
 
 		return hvo;
 	}
+	
+	@Override
+	public HotelVO searchHotelByID(int id) {
+		// TODO Auto-generated method stub
+		HotelPO hpo = null;
+		try {
+			hotelDataService.initHotelDataService();
+			hpo = hotelDataService.findsHotel("id", String.valueOf(id)).get(0);
+			hotelDataService.finishHotelDataService();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		HotelVO hvo = HotelPOtoHotelVO(hpo);
 
+		return hvo;
+	}
+	
+//	public static void main(String[] args){
+//		HotelBLService hotel = new HotelController();
+//		HotelVO hvo = hotel.searchHotelByID(20905098);
+//		System.out.println(hvo.getHotelDescription());
+//	}
+	
 	@Override
 	public ArrayList<HotelVO> reviewHotelList() {
 		// TODO Auto-generated method stub
@@ -261,4 +284,6 @@ public class HotelController implements HotelBLService {
 				 */hpo.getRating(), hpo.getStaffName(), hpo.getPhoneNumber());
 		return hvo;
 	}
+
+
 }

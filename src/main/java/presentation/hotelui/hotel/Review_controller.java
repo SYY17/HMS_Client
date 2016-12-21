@@ -13,12 +13,12 @@ import presentation.mainui.HotelUI_start;
 public class Review_controller {
 	
 	public static Stage stage;
-	public static Label nameLabel;
-	public static Label addressLabel;
-	public static Label areaLabel;
-	public static Label starLabel;
-	public static Label phoneLabel;
-	public static TextArea descriptionText;
+	public Label nameLabel;
+	public Label addressLabel;
+	public Label areaLabel;
+	public Label starLabel;
+	public Label phoneLabel;
+	public TextArea descriptionText;
 	
 	@FXML
 	private void onMain(MouseEvent event) throws IOException {

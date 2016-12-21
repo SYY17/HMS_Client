@@ -74,7 +74,7 @@ public class Modify_controller {
 			 */
 		}
 		
-		new Manage_start().start(stage);
+		new Review_start().start(stage);
 	}
 	
 	@FXML

@@ -17,6 +17,12 @@ public interface HotelBLService {
 
 	/**
 	 * 
+	 * @param id
+	 * @return 通过id查找酒店
+	 */
+	public HotelVO searchHotelByID(int id);
+	/**
+	 * 
 	 * @param
 	 * @return 浏览酒店列表
 	 */

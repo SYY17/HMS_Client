@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
+import presentation.controller.IDHelper;
 import presentation.hotelui.HotelControllerService;
 import vo.HotelVO;
 import javafx.scene.Parent;
@@ -13,10 +14,15 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class Modify_start extends Application {
+	
+	private IDHelper idHelper;
+	private int id;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/管理酒店基本信息（修改）.fxml"));
+			this.initiateHelper();
 			initiate(root);
 			Scene scene = new Scene(root, 800, 600);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -37,11 +43,12 @@ public class Modify_start extends Application {
 		TextField starText = (TextField) root.lookup("#starText");
 		TextField phoneText = (TextField) root.lookup("#phoneText");
 		TextArea descriptionText = (TextArea) root.lookup("#descriptionText");
-
-		nameLabel.setText("homeinn");// not finished
-		String name = nameLabel.getText();
-
+		
+		//initiate hotel name:
 		HotelControllerService hotelController = new HotelControllerImpl();
+		String name = hotelController.searchHotelByID(id).getHotelName();
+		nameLabel.setText(name);
+		
 		HotelVO hvo = hotelController.reviewHotelInfo(name);
 		addressText.setText(hvo.getHotelAddress());
 		businessAreaText.setText(hvo.getBusinessArea());
@@ -50,6 +57,14 @@ public class Modify_start extends Application {
 		descriptionText.setText(hvo.getHotelDescription());
 	}
 
+	/**
+	 * 获取当前用户ID
+	 */
+	private void initiateHelper() {
+		idHelper = IDHelper.getInstance();
+		id = idHelper.getID();
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

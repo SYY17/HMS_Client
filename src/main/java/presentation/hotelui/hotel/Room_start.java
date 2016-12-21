@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
+import presentation.controller.IDHelper;
 import presentation.hotelui.HotelControllerService;
 import vo.RoomVO;
 import javafx.scene.Parent;
@@ -18,10 +19,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Room_start extends Application {
+	
+	private IDHelper idHelper;
+	private int id;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/hotel/维护客房信息.fxml"));
+			this.initiateHelper();
 			initiateTableView(root);
 			initChoiceBox(root);
 			Scene scene = new Scene(root, 800, 600);
@@ -58,8 +64,6 @@ public class Room_start extends Application {
 		ObservableList<TableColumn<RoomData, ?>> observableList = roomView.getColumns();
 		initiateObservableList(observableList);
 
-		int id = 20905098; /* 传入id? */
-
 		ArrayList<RoomVO> roomList = hotelController.searchRooms(id);
 		if (roomList != null) {
 			for (int i = 0; i < roomList.size(); i++) {
@@ -77,6 +81,14 @@ public class Room_start extends Application {
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("totalSum"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("remainSum"));
 		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("price"));
+	}
+	
+	/**
+	 * 获取当前hotel ID
+	 */
+	private void initiateHelper() {
+		idHelper = IDHelper.getInstance();
+		id = idHelper.getID();
 	}
 
 	public static void main(String[] args) {

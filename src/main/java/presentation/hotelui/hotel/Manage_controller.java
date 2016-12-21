@@ -13,7 +13,9 @@ import presentation.mainui.HotelUI_start;
 public class Manage_controller {
 	
 	public static Stage stage;
-	public static Label nameLabel;
+	public Label nameLabel;
+	public Label username;
+	public Label date;
 	
 	@FXML
 	private void onMain(MouseEvent event) throws IOException {

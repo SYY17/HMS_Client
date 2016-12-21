@@ -59,6 +59,16 @@ public class HotelControllerImpl implements HotelControllerService {
 	}
 
 	/**
+	 * 通过id搜索酒店
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public HotelVO searchHotelByID(int id){
+		return hotelBLService.searchHotelByID(id);
+	}
+	/**
 	 * 浏览酒店列表
 	 * 
 	 * @param
