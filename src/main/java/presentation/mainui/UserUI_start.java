@@ -141,7 +141,7 @@ public class UserUI_start extends Application {
 		ArrayList<String> content = new ArrayList<String>();
 		for (int i = 0; i < hvo.size(); i++) {
 			if(hvo.get(i).getBusinessArea().equals(whereToSearch)){
-				content.add(hvo.get(i).getHotelName());
+				content.add(getExpression(hvo.get(i)));
 			}
 		}
 		
@@ -156,7 +156,7 @@ public class UserUI_start extends Application {
 							String newValue) {
 						// TODO Auto-generated method stub
 						//searchTextField.setText(newValue);
-						hotelname = newValue;
+						hotelname = getName(newValue);
 						UserUI_controller.hotelname = hotelname;
 					}
 					
@@ -177,7 +177,7 @@ public class UserUI_start extends Application {
 			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
 			Map<String,Double> maps = new HashMap<String,Double>();
 			for(int i=0;i<hvo.size();i++){
-				maps.put(hvo.get(i).getHotelName(), new Double(hvo.get(i).getRating()));
+				maps.put(getExpression(hvo.get(i)), new Double(hvo.get(i).getRating()));
 			}
 			
 			ByValueComparator bvc = new ByValueComparator(maps);
@@ -195,7 +195,7 @@ public class UserUI_start extends Application {
 								String newValue) {
 							// TODO Auto-generated method stub
 							//searchTextField.setText(newValue);
-							hotelname = newValue;
+							hotelname = getName(newValue);
 							UserUI_controller.hotelname = hotelname;
 						}
 						
@@ -209,13 +209,13 @@ public class UserUI_start extends Application {
 			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
 			Map<String,Double> maps = new HashMap<String,Double>();
 			for(int i=0;i<hvo.size();i++){
-				maps.put(hvo.get(i).getHotelName(), new Double(hvo.get(i).getRating()));
+				maps.put(getExpression(hvo.get(i)), new Double(hvo.get(i).getRating()));
 			}
 			
 			SByValueComparator bvc = new SByValueComparator(maps);
 	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
 	        Collections.sort(content, bvc);
-			
+	        
 			ObservableList<String> strList = FXCollections.observableArrayList(content);
 			hotelList.setItems(strList);
 					
@@ -227,7 +227,7 @@ public class UserUI_start extends Application {
 								String newValue) {
 							// TODO Auto-generated method stub
 							//searchTextField.setText(newValue);
-							hotelname = newValue;
+							hotelname = getName(newValue);
 							UserUI_controller.hotelname = hotelname;
 						}
 						
@@ -250,10 +250,42 @@ public class UserUI_start extends Application {
 			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
 			Map<String,Double> maps = new HashMap<String,Double>();
 			for(int i=0;i<hvo.size();i++){
-				maps.put(hvo.get(i).getHotelName(), new Double(hvo.get(i).getStarLevel()));
+				maps.put(getExpression(hvo.get(i)), new Double(hvo.get(i).getStarLevel()));
 			}
 			
 			ByValueComparator bvc = new ByValueComparator(maps);
+	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
+	        Collections.sort(content, bvc);
+	     
+			ObservableList<String> strList = FXCollections.observableArrayList(content);
+			hotelList.setItems(strList);
+					
+			hotelList.getSelectionModel().selectedItemProperty().addListener(
+					new ChangeListener<String>(){
+
+						@Override
+						public void changed(ObservableValue<? extends String> observable, String oldValue,
+								String newValue) {
+							// TODO Auto-generated method stub
+							//searchTextField.setText(newValue);
+							hotelname = getName(newValue);
+							UserUI_controller.hotelname = hotelname;
+						}
+						
+					}
+					);
+		}else if(howToRate.equals("1")){//"从低到高"
+			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
+			
+			HotelBLService hotelBlService = new HotelController();
+			
+			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
+			Map<String,Double> maps = new HashMap<String,Double>();
+			for(int i=0;i<hvo.size();i++){
+				maps.put(getExpression(hvo.get(i)), new Double(hvo.get(i).getStarLevel()));
+			}
+			
+			SByValueComparator bvc = new SByValueComparator(maps);
 	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
 	        Collections.sort(content, bvc);
 	        
@@ -268,39 +300,7 @@ public class UserUI_start extends Application {
 								String newValue) {
 							// TODO Auto-generated method stub
 							//searchTextField.setText(newValue);
-							hotelname = newValue;
-							UserUI_controller.hotelname = hotelname;
-						}
-						
-					}
-					);
-		}else if(howToRate.equals("1")){//"从低到高"
-			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
-			
-			HotelBLService hotelBlService = new HotelController();
-			
-			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
-			Map<String,Double> maps = new HashMap<String,Double>();
-			for(int i=0;i<hvo.size();i++){
-				maps.put(hvo.get(i).getHotelName(), new Double(hvo.get(i).getStarLevel()));
-			}
-			
-			SByValueComparator bvc = new SByValueComparator(maps);
-	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
-	        Collections.sort(content, bvc);
-			
-			ObservableList<String> strList = FXCollections.observableArrayList(content);
-			hotelList.setItems(strList);
-					
-			hotelList.getSelectionModel().selectedItemProperty().addListener(
-					new ChangeListener<String>(){
-
-						@Override
-						public void changed(ObservableValue<? extends String> observable, String oldValue,
-								String newValue) {
-							// TODO Auto-generated method stub
-							//searchTextField.setText(newValue);
-							hotelname = newValue;
+							hotelname = getName(newValue);
 							UserUI_controller.hotelname = hotelname;
 						}
 						
@@ -331,7 +331,7 @@ public class UserUI_start extends Application {
 					}
 				}
 				double pr = room.get(small).getPrice();
-				maps.put(hvo.get(i).getHotelName(), new Double(pr));
+				maps.put(getExpression(hvo.get(i)), new Double(pr));
 			}
 			
 			ByValueComparator bvc = new ByValueComparator(maps);
@@ -349,7 +349,7 @@ public class UserUI_start extends Application {
 								String newValue) {
 							// TODO Auto-generated method stub
 							//searchTextField.setText(newValue);
-							hotelname = newValue;
+							hotelname = getName(newValue);
 							UserUI_controller.hotelname = hotelname;
 						}
 						
@@ -371,13 +371,13 @@ public class UserUI_start extends Application {
 					}
 				}
 				double pr = room.get(small).getPrice();
-				maps.put(hvo.get(i).getHotelName(), new Double(pr));
+				maps.put(getExpression(hvo.get(i)), new Double(pr));
 			}
 			
 			SByValueComparator bvc = new SByValueComparator(maps);
 	        ArrayList<String> content = new ArrayList<String>(maps.keySet());
 	        Collections.sort(content, bvc);
-			
+	       
 			ObservableList<String> strList = FXCollections.observableArrayList(content);
 			hotelList.setItems(strList);
 					
@@ -389,7 +389,7 @@ public class UserUI_start extends Application {
 								String newValue) {
 							// TODO Auto-generated method stub
 							//searchTextField.setText(newValue);
-							hotelname = newValue;
+							hotelname = getName(newValue);
 							UserUI_controller.hotelname = hotelname;
 						}
 						
@@ -444,21 +444,14 @@ public class UserUI_start extends Application {
 		// 查找hotelList
 		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
 		
-		/*
-		@SuppressWarnings("unchecked")
-		TextField searchTextField = (TextField) root.lookup("#searchTextField");
-		*/
-		
-		// 建立observablelist以更新数据
-		//final ObservableList<HotelData> data = FXCollections.observableArrayList();
 		HotelBLService hotelBlService = new HotelController();
 
-		//data.clear();
 		ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
 		
 		ArrayList<String> content = new ArrayList<String>();
 		for (int i = 0; i < hvo.size(); i++) {
-			content.add(hvo.get(i).getHotelName());
+			//content.add(hvo.get(i).getHotelName());
+			content.add(getExpression(hvo.get(i)));
 		}
 		
 		ObservableList<String> strList = FXCollections.observableArrayList(content);
@@ -472,12 +465,58 @@ public class UserUI_start extends Application {
 							String newValue) {
 						// TODO Auto-generated method stub
 						//searchTextField.setText(newValue);
-						hotelname = newValue;
+						hotelname = getName(newValue);
 						UserUI_controller.hotelname = hotelname;
 					}
 					
 				}
 				);
+	}
+	
+	public String getName(String str){
+		String name;
+		int cnt = str.indexOf(" ");
+		name = str.substring(0, cnt);
+		return name;
+	}
+	/**
+	 * 
+	 * @param hvo
+	 * @return listItem
+	 */
+	public String getExpression(HotelVO hvo){
+		String str = hvo.getHotelName();
+		for(int i=0;i<20-hvo.getHotelName().length();i++){
+			str+=" ";
+		}
+		str+=hvo.getBusinessArea();
+		for(int i=0;i<40-str.length();i++){
+			str+=" ";
+		}
+		for(int i=0;i<50-str.length();i++){
+			str+=" ";
+		}
+		str+="星级：";
+		str+=String.valueOf(hvo.getStarLevel());
+		for(int i=0;i<60-str.length();i++){
+			str+=" ";
+		}
+		str+="最低价格：";
+		str+=String.valueOf(getMinPrice(hvo));
+		return str;
+	}
+	
+	public int getMinPrice(HotelVO hvo){
+		HotelBLService hotelBlService = new HotelController();
+		ArrayList<RoomVO> room = hotelBlService.SearchRooms(hvo.getHotelID());
+		int small = 0;
+			for(int j=1;j<room.size();j++){
+				if(room.get(j).getPrice()<room.get(small).getPrice()){
+					small = j;
+				}
+			}
+			int pr = room.get(small).getPrice();
+			return pr;
 	}
 }
 
