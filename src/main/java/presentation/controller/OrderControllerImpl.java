@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import businesslogic.orderbl.OrderController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
+import vo.CreditMovement;
 import presentation.orderui.OrderControllerService;
 import vo.OrderStatus;
 import vo.OrderVO;
@@ -72,8 +73,8 @@ public class OrderControllerImpl implements OrderControllerService {
 	 * @return 处理异常订单
 	 */
 	@Override
-	public ResultMessage changeOrderStatus(int id, OrderStatus status) {
-		return orderBLService.changeOrderStatus(id, status);
+	public ResultMessage changeOrderStatus(int id, OrderStatus status,CreditMovement creditMovement) {
+		return orderBLService.changeOrderStatus(id, status,creditMovement);
 	}
 
 	/**

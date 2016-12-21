@@ -23,6 +23,7 @@ import presentation.mainui.HotelUI_start;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import presentation.orderui.OrderDataHelper;
+import vo.CreditMovement;
 import vo.OrderStatus;
 import vo.OrderVO;
 
@@ -54,16 +55,16 @@ public class OrderList_controller {
 		int orderID = 0;
 		if (execute.getText().equals("确认入住")) {
 			orderID = orderListTableView.getSelectionModel().getSelectedItem().getOrderID();
-			orderControllerService.changeOrderStatus(orderID, OrderStatus.Finished);
+			orderControllerService.changeOrderStatus(orderID, OrderStatus.Finished, CreditMovement.ExecuteOrder);
 			orderControllerService.assignRoom(orderID, room.getText());
 			initialTableView(orderListTableView, OrderStatus.Unfilled);
 		} else if (execute.getText().equals("延迟入住")) {
 			orderID = abnormalOrderListTableView.getSelectionModel().getSelectedItem().getOrderID();
-			orderControllerService.changeOrderStatus(orderID, OrderStatus.Finished);
+			orderControllerService.changeOrderStatus(orderID, OrderStatus.Finished, CreditMovement.ExecuteOrder);
 			initialTableView(abnormalOrderListTableView, OrderStatus.Abnormal);
 		} else if (execute.getText().equals("确认退房")) {
 			orderID = uncheckoutOrderListTableView.getSelectionModel().getSelectedItem().getOrderID();
-			orderControllerService.changeOrderStatus(orderID, OrderStatus.Checkout);
+			orderControllerService.changeOrderStatus(orderID, OrderStatus.Checkout, CreditMovement.ExecuteOrder);
 			initialTableView(uncheckoutOrderListTableView, OrderStatus.Finished);
 		}
 	}

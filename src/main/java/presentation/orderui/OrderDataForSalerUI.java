@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import vo.CreditMovement;
 import presentation.controller.OrderControllerImpl;
 import presentation.mainui.SalerUI_start;
 import vo.RoomType;
@@ -30,8 +31,8 @@ public class OrderDataForSalerUI {
 	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
 	private final SimpleStringProperty operation = new SimpleStringProperty();
 
-	public OrderDataForSalerUI(int orderID, String userName, OrderStatus orderStatus, String hotelName, Timestamp setTime,
-			Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
+	public OrderDataForSalerUI(int orderID, String userName, OrderStatus orderStatus, String hotelName,
+			Timestamp setTime, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
 		this.orderID.set(orderID);
 		this.userName.set(userName);
 		this.orderStatus.set(orderStatus.toString());
@@ -136,14 +137,14 @@ public class OrderDataForSalerUI {
 	public void setPrice(int price) {
 		this.price.set(price);
 	}
-	
+
 	public Button getOperation() {
 		Button button = new Button();
 		button.setPrefSize(20, 20);
 		button.setMaxSize(20, 20);
 		button.setMinSize(20, 20);
 		button.setCursor(Cursor.HAND);
-		
+
 		button.setBackground(new Background(new BackgroundImage(
 				new Image(getClass().getResource("orderhandle.png").toString()), null, null, null, null)));
 		button.setOnAction(new EventHandler<ActionEvent>() {
@@ -152,7 +153,7 @@ public class OrderDataForSalerUI {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				OrderControllerService orderController = new OrderControllerImpl();
-				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished);
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished, CreditMovement.ExecuteOrder);
 				SalerUI_start.getInstance().refreshTableView();
 			}
 		});

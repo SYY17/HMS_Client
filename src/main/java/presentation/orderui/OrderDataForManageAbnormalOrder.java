@@ -14,6 +14,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import presentation.controller.OrderControllerImpl;
 import vo.RoomType;
+import vo.CreditMovement;
 import vo.OrderStatus;
 
 public class OrderDataForManageAbnormalOrder {
@@ -30,8 +31,8 @@ public class OrderDataForManageAbnormalOrder {
 	private final SimpleStringProperty operationAll = new SimpleStringProperty();
 	private final SimpleStringProperty operationHalf = new SimpleStringProperty();
 
-	public OrderDataForManageAbnormalOrder(int orderID, String userName, OrderStatus orderStatus, String hotelName, Timestamp setTime,
-			Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
+	public OrderDataForManageAbnormalOrder(int orderID, String userName, OrderStatus orderStatus, String hotelName,
+			Timestamp setTime, Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
 		this.orderID.set(orderID);
 		this.userName.set(userName);
 		this.orderStatus.set(orderStatus.toString());
@@ -136,14 +137,14 @@ public class OrderDataForManageAbnormalOrder {
 	public void setPrice(int price) {
 		this.price.set(price);
 	}
-	
+
 	public Button getOperationAll() {
 		Button button = new Button();
 		button.setPrefSize(20, 20);
 		button.setMaxSize(20, 20);
 		button.setMinSize(20, 20);
 		button.setCursor(Cursor.HAND);
-		
+
 		button.setBackground(new Background(new BackgroundImage(
 				new Image(getClass().getResource("orderhandle.png").toString()), null, null, null, null)));
 		button.setOnAction(new EventHandler<ActionEvent>() {
@@ -152,7 +153,7 @@ public class OrderDataForManageAbnormalOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				OrderControllerService orderController = new OrderControllerImpl();
-				orderController.changeOrderStatus(getOrderID(), OrderStatus.Canceled);
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.Canceled,CreditMovement.CancelOrder);
 				ManageAbnormalOrder_start.getInstance().refreshTableView();
 			}
 		});
@@ -163,14 +164,14 @@ public class OrderDataForManageAbnormalOrder {
 	public void setOperationAll(String operation) {
 		this.operationAll.set(operation);
 	}
-	
+
 	public Button getOperationHalf() {
 		Button button = new Button();
 		button.setPrefSize(20, 20);
 		button.setMaxSize(20, 20);
 		button.setMinSize(20, 20);
 		button.setCursor(Cursor.HAND);
-		
+
 		button.setBackground(new Background(new BackgroundImage(
 				new Image(getClass().getResource("orderhandle.png").toString()), null, null, null, null)));
 		button.setOnAction(new EventHandler<ActionEvent>() {
@@ -179,7 +180,7 @@ public class OrderDataForManageAbnormalOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				OrderControllerService orderController = new OrderControllerImpl();
-				orderController.changeOrderStatus(getOrderID(), OrderStatus.HalfCanceled);
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.HalfCanceled, CreditMovement.CancelOrder);
 				ManageAbnormalOrder_start.getInstance().refreshTableView();
 			}
 		});

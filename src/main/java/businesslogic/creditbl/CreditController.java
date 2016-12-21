@@ -47,7 +47,8 @@ public class CreditController implements CreditBLService {
 			creditDataService.finishCreditDataService();
 
 			userCreditHistoryDataService.initUserCreditHistoryDataService();
-			userCreditHistoryDataService.updateHistory(id, 0, new Date(System.currentTimeMillis()), null, 0);
+			userCreditHistoryDataService.updateHistory(id, 0, new Date(System.currentTimeMillis()),
+					po.CreditMovement.AddMoney, 0);
 			userCreditHistoryDataService.finishUserCreditHistoryDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {

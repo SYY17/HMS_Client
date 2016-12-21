@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import vo.CreditMovement;
 import presentation.controller.OrderControllerImpl;
 import vo.RoomType;
 import vo.OrderStatus;
@@ -151,7 +152,7 @@ public class OrderDataForManageAbnormalOrderAndCredit {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				OrderControllerService orderController = new OrderControllerImpl();
-				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished);
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished,CreditMovement.ExecuteOrder);
 				ManageAbnormalOrderAndCredit_start.getInstance().refreshTableView();
 			}
 		});

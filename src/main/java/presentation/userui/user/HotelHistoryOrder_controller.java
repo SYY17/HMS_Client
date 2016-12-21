@@ -21,6 +21,7 @@ import presentation.mainui.UserUI_start;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import presentation.orderui.OrderDataHelper;
+import vo.CreditMovement;
 import vo.OrderStatus;
 import vo.OrderVO;
 
@@ -97,7 +98,7 @@ public class HotelHistoryOrder_controller {
 	@FXML
 	private void onCancelOrder(ActionEvent event) throws Exception {
 		int orderID = unfilledOrderTableView.getSelectionModel().getSelectedItems().get(0).getOrderID();
-		orderControllerService.changeOrderStatus(orderID, OrderStatus.Canceled);
+		orderControllerService.changeOrderStatus(orderID, OrderStatus.Canceled,CreditMovement.CancelOrder);
 		initialTableView(unfilledOrderTableView, OrderStatus.Unfilled);
 	}
 

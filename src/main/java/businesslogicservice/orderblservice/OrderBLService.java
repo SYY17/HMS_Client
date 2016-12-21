@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import businesslogicservice.ResultMessage;
+import vo.CreditMovement;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.RoomType;
@@ -49,7 +50,7 @@ public interface OrderBLService {
 	 * @param id
 	 * @return 改变订单状态
 	 */
-	public ResultMessage changeOrderStatus(int id, OrderStatus status);
+	public ResultMessage changeOrderStatus(int id, OrderStatus status,CreditMovement creditMovement);
 	
 	/**
 	 * 

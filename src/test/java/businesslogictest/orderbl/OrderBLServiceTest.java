@@ -15,6 +15,7 @@ import businesslogic.orderbl.OrderController;
 import businesslogic.orderbl.UserInfo;
 import businesslogic.userbl.UserInfoForOrder;
 import businesslogicservice.orderblservice.OrderBLService;
+import vo.CreditMovement;
 import vo.OrderStatus;
 import vo.OrderVO;
 import vo.RoomType;
@@ -98,11 +99,11 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void test4_ChangeOrderStatus() {
-		orderBlService.changeOrderStatus(orderID, OrderStatus.Abnormal);
+		orderBlService.changeOrderStatus(orderID, OrderStatus.Abnormal,CreditMovement.AbnormalOrder);
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals(OrderStatus.Abnormal.toString(), ovoTemp.getOrderStatus().toString());
 
-		orderBlService.changeOrderStatus(orderID, OrderStatus.Finished);
+		orderBlService.changeOrderStatus(orderID, OrderStatus.Finished,CreditMovement.AbnormalOrder);
 		ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals(OrderStatus.Finished.toString(), ovoTemp.getOrderStatus().toString());
 	}
