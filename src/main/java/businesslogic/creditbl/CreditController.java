@@ -137,7 +137,8 @@ public class CreditController implements CreditBLService {
 			UserCreditHistoryPO tmp;
 			for (int i = 0; i < poList.size(); i++) {
 				tmp = poList.get(i);
-				list.add(new UserCreditHistoryVO(tmp.getUserId(), tmp.getChange(), tmp.getTime()));
+				list.add(new UserCreditHistoryVO(tmp.getUserId(), tmp.getChange(), tmp.getTime(),
+						tmp.getCreditMovement(), tmp.getRemain()));
 			}
 
 			rc.getUserCreditHistoryDataService().finishUserCreditHistoryDataService();

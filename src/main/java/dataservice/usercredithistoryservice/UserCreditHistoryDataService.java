@@ -2,8 +2,10 @@ package dataservice.usercredithistoryservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.util.ArrayList;
 
+import po.CreditMovement;
 import po.UserCreditHistoryPO;
 
 public interface UserCreditHistoryDataService extends Remote {
@@ -12,7 +14,7 @@ public interface UserCreditHistoryDataService extends Remote {
 	 * 
 	 * @param ucpo
 	 */
-	public void updateHistory(UserCreditHistoryPO ucpo) throws RemoteException;
+	public void updateHistory(int userID, int change, Date date, CreditMovement creditMovement, int remain) throws RemoteException;
 
 	/**
 	 * 

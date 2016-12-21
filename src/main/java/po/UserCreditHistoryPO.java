@@ -9,14 +9,18 @@ public class UserCreditHistoryPO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int userId;
-	Date time;
-	int change;
+	private int userId;
+	private Date time;
+	private int change;
+	private int remain;
+	private CreditMovement creditMovement;
 
-	public UserCreditHistoryPO(int userId, int change, Date time) {
+	public UserCreditHistoryPO(int userId, int change, Date time, CreditMovement creditMovement, int remain) {
 		this.userId = userId;
 		this.time = time;
 		this.change = change;
+		this.creditMovement = creditMovement;
+		this.remain = remain;
 	}
 
 	/**
@@ -43,4 +47,19 @@ public class UserCreditHistoryPO implements Serializable {
 		return change;
 	}
 
+	/**
+	 * 
+	 * @return 获得信用值更改细节
+	 */
+	public CreditMovement getCreditMovement() {
+		return creditMovement;
+	}
+
+	/**
+	 * 
+	 * @return 获得信用值
+	 */
+	public int getRemain() {
+		return remain;
+	}
 }
