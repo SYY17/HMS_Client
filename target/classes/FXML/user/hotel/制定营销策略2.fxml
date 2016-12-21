@@ -291,28 +291,16 @@
                   <DropShadow />
                </effect>
             </ListView>
-            <Label fx:id="add" layoutX="551.0" layoutY="548.0" onMouseClicked="#onAdd" text="新增" textFill="#0d0d0d">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
-            </Label>
-            <Label fx:id="look" layoutX="477.0" layoutY="548.0" onMouseClicked="#onLook" text="查看" textFill="#0d0d0d">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
-            </Label>
+            <ImageView fx:id="add" fitHeight="52.0" fitWidth="38.0" layoutX="594.0" layoutY="529.0" onMouseClicked="#onAdd">
+               <image>
+                  <Image url="@add.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="look" fitHeight="43.0" fitWidth="56.0" layoutX="489.0" layoutY="533.0" onMouseClicked="#onLook">
+               <image>
+                  <Image url="@look.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.LoginUI_start;
@@ -44,7 +45,7 @@ public class UserUI_controller {
 	private Label date;
 	
 	@FXML
-	private Label search;
+	private ImageView search;
 	
 	@FXML
 	private ListView<String> hotelList;

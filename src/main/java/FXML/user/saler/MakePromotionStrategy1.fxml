@@ -72,7 +72,7 @@
                </cursor>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="495.0" />
+            <Rectangle fx:id="add" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" onMouseClicked="#onAdd" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="495.0" />
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="促销策略列表">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -248,7 +248,7 @@
                   <Tooltip text="总计已制定的营销策略数" />
                </tooltip>
             </Label>
-            <TableView fx:id="promotionTableView" layoutX="160.0" layoutY="180.0" prefHeight="359.0" prefWidth="477.0">
+            <TableView fx:id="promotionTableView" layoutX="160.0" layoutY="172.0" prefHeight="359.0" prefWidth="477.0">
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="181.0" minWidth="44.0" prefWidth="77.0" resizable="false" sortable="false" text="编号" />
                   <TableColumn id="col_even" editable="false" maxWidth="659.0" minWidth="45.0" prefWidth="87.0" resizable="false" sortable="false" text="名称" />
@@ -257,17 +257,11 @@
                   <TableColumn id="col_odd" editable="false" maxWidth="579.0" minWidth="77.0" prefWidth="106.0" resizable="false" sortable="false" text="内容" />
                </columns>
             </TableView>
-            <Label fx:id="add" layoutX="579.0" layoutY="544.0" onMouseClicked="#onAdd" text="增加">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="27.0" />
-               </font>
-               <tooltip>
-                  <Tooltip text="系统已注册酒店数" />
-               </tooltip>
-            </Label>
+            <ImageView fx:id="add" fitHeight="45.0" fitWidth="48.0" layoutX="589.0" layoutY="536.0" onMouseClicked="#onAdd">
+               <image>
+                  <Image url="@add.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Label fx:id="hotelSum1" layoutX="723.0" layoutY="80.0" text="注销" textFill="WHITE">

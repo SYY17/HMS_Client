@@ -90,7 +90,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="promotionName" layoutX="183.0" layoutY="143.0" prefHeight="35.0" prefWidth="194.0" text="策略名称">
+            <Label fx:id="promotionName" layoutX="183.0" layoutY="143.0" prefHeight="35.0" prefWidth="307.0" text="策略名称应该要很长吧">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

@@ -299,14 +299,6 @@
                   <DropShadow />
                </effect>
             </TextField>
-            <Label fx:id="search" layoutX="582.0" layoutY="146.0" onMouseClicked="#onSearch" text="搜索">
-               <font>
-                  <Font size="22.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Label>
             <Label fx:id="go" layoutX="596.0" layoutY="549.0" onMouseClicked="#onGo" text="前往">
                <font>
                   <Font size="22.0" />
@@ -345,6 +337,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fx:id="search" fitHeight="37.0" fitWidth="36.0" layoutX="587.0" layoutY="141.0" onMouseClicked="#onSearch" opacity="0.96">
+               <image>
+                  <Image url="@search.jpg" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
