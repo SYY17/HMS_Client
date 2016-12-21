@@ -210,6 +210,8 @@ public class HotelController implements HotelBLService {
 					rvo.getRemainSum());
 			roomDataService.updateTotalSum(rvo.getHotelID(), po.RoomType.valueOf(rvo.getRoomType().toString()),
 					rvo.getTotalSum());
+			roomDataService.updatePrice(rvo.getHotelID(), po.RoomType.valueOf(rvo.getRoomType().toString()),
+					rvo.getPrice());
 			roomDataService.finishRoomDataService();
 			result = ResultMessage.TRUE;
 		} catch (RemoteException e) {

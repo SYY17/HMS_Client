@@ -42,7 +42,7 @@ public class Room_start extends Application {
 		}
 	}
 
-	/*
+	/**
 	 * 初始化ChoiceBox
 	 */
 	public void initChoiceBox(Parent root) {
@@ -55,6 +55,17 @@ public class Room_start extends Application {
 		
 	}
 	
+	/**
+	 * 初始化修改栏中原始数据
+	 */
+	public void initiateTexts(Parent root){
+		
+	}
+	
+	/**
+	 * 初始化order列表
+	 * @param root
+	 */
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		TableView<RoomData> roomView = (TableView<RoomData>) root.lookup("#roomView");

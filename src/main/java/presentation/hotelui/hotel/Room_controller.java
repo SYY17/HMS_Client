@@ -22,7 +22,8 @@ public class Room_controller {
 	public static Stage stage;
 	public ChoiceBox<String> typeChoice;
 	public TextField remainText;
-//	public static TextField totalText;
+	public TextField totalText;
+	public TextField priceText;
 	public TableView<RoomData> roomView;
 	
 	@FXML
@@ -57,9 +58,11 @@ public class Room_controller {
 		System.out.println(type);
 		
 		int remainSum = Integer.parseInt(remainText.getText());
+		int totalSum = Integer.parseInt(totalText.getText());
+		int price = Integer.parseInt(priceText.getText());
 		if(type!=null){
 			HotelControllerService hotelController = new HotelControllerImpl();
-			RoomVO rvo = new RoomVO(hotelID, type, 0, remainSum, 0);
+			RoomVO rvo = new RoomVO(hotelID, type, totalSum, remainSum, price);
 			ResultMessage result = hotelController.modifyRoom(rvo);
 		
 			if(result == ResultMessage.TRUE){
