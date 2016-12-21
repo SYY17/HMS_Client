@@ -2,6 +2,7 @@ package presentation.creditui;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.creditBLService.CreditBLService;
+import vo.CreditMovement;
 import vo.CreditVO;
 
 public class CreditBLService_Driver {
@@ -15,7 +16,7 @@ public class CreditBLService_Driver {
 		result = creditBLService.deleteCredit(id);
 		if (result == ResultMessage.TRUE)
 			System.out.println("Credit deleted!");
-		result = creditBLService.modifyCredit(id, credit);
+		result = creditBLService.modifyCredit(id, credit, CreditMovement.AbnormalOrder);
 		if (result == ResultMessage.TRUE)
 			System.out.println("Credit modified!");
 		CreditVO cvo = creditBLService.getCredit(id);

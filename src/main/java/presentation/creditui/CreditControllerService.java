@@ -1,6 +1,7 @@
 package presentation.creditui;
 
 import businesslogicservice.ResultMessage;
+import vo.CreditMovement;
 import vo.CreditVO;
 
 public interface CreditControllerService {
@@ -26,7 +27,7 @@ public interface CreditControllerService {
 	 * @param id
 	 * @return 维护信用值
 	 */
-	public ResultMessage modifyCredit(int id, int credit);
+	public ResultMessage modifyCredit(int id, int credit, CreditMovement creditMovement);
 
 	/**
 	 * 

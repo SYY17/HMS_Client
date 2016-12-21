@@ -6,21 +6,28 @@ import java.util.ArrayList;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.creditBLService.CreditBLService;
+import dataservice.creditdataservice.CreditDataService;
+import dataservice.usercredithistoryservice.UserCreditHistoryDataService;
 import po.CreditPO;
 import po.UserCreditHistoryPO;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
+import vo.CreditMovement;
 import vo.CreditVO;
 import vo.UserCreditHistoryVO;
 
 public class CreditController implements CreditBLService {
 
 	private RemoteController remoteController;
+	private CreditDataService creditDataService;
+	private UserCreditHistoryDataService userCreditHistoryDataService;
 
 	public CreditController() {
 		DataServiceClientRunner runner = new DataServiceClientRunner();
 		runner.start();
 		remoteController = runner.getRemoteController();
+		creditDataService = remoteController.getCreditDataService();
+		userCreditHistoryDataService = remoteController.getUserCreditHistoryDataService();
 	}
 
 	/**
@@ -33,16 +40,15 @@ public class CreditController implements CreditBLService {
 	public ResultMessage addCredit(int id, int credit) {
 		// TODO Auto-generated method stub
 		try {
-			remoteController.getCreditDataService().initCreditDataService();
-			CreditPO cpo = remoteController.getCreditDataService().findCredit(id);
-
-			if (cpo != null) {
-				return ResultMessage.FALSE;
-			}
-
+			creditDataService.initCreditDataService();
+			CreditPO cpo = creditDataService.findCredit(id);
 			cpo = new CreditPO(id, credit);
-			remoteController.getCreditDataService().insertCredit(cpo);
-			remoteController.getCreditDataService().finishCreditDataService();
+			creditDataService.insertCredit(cpo);
+			creditDataService.finishCreditDataService();
+
+			userCreditHistoryDataService.initUserCreditHistoryDataService();
+			userCreditHistoryDataService.updateHistory(id, 0, new Date(System.currentTimeMillis()), null, 0);
+			userCreditHistoryDataService.finishUserCreditHistoryDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -59,9 +65,9 @@ public class CreditController implements CreditBLService {
 	public ResultMessage deleteCredit(int id) {
 		// TODO Auto-generated method stub
 		try {
-			remoteController.getCreditDataService().initCreditDataService();
-			remoteController.getCreditDataService().deleteCredit(id);
-			remoteController.getCreditDataService().finishCreditDataService();
+			creditDataService.initCreditDataService();
+			creditDataService.deleteCredit(id);
+			creditDataService.finishCreditDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -76,20 +82,19 @@ public class CreditController implements CreditBLService {
 	 * @return 维护信用值
 	 */
 	@Override
-	public ResultMessage modifyCredit(int id, int credit) {
+	public ResultMessage modifyCredit(int id, int credit, CreditMovement creditMovement) {
 		// TODO Auto-generated method stub
 		try {
-			remoteController.getCreditDataService().initCreditDataService();
-			CreditPO cpo = remoteController.getCreditDataService().findCredit(id);
+			creditDataService.initCreditDataService();
+			int remain = creditDataService.findCredit(id).getCredit();
 
-			if (cpo == null) {
-				return ResultMessage.FALSE;
-			}
+			creditDataService.updateCredit(new CreditPO(id, credit + remain));
+			creditDataService.finishCreditDataService();
 
-			cpo = new CreditPO(id, credit);
-
-			remoteController.getCreditDataService().updateCredit(cpo);
-			remoteController.getCreditDataService().finishCreditDataService();
+			userCreditHistoryDataService.initUserCreditHistoryDataService();
+			userCreditHistoryDataService.updateHistory(id, credit, new Date(System.currentTimeMillis()),
+					po.CreditMovement.valueOf(creditMovement.toString()), credit + remain);
+			userCreditHistoryDataService.finishUserCreditHistoryDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -107,14 +112,10 @@ public class CreditController implements CreditBLService {
 		// TODO Auto-generated method stub
 		CreditVO cvo = null;
 		try {
-			remoteController.getCreditDataService().initCreditDataService();
-			CreditPO cpo = remoteController.getCreditDataService().findCredit(id);
-
-			if (cpo != null) {
-				cvo = new CreditVO(id, cpo.getCredit());
-			}
-
-			remoteController.getCreditDataService().finishCreditDataService();
+			creditDataService.initCreditDataService();
+			CreditPO cpo = creditDataService.findCredit(id);
+			cvo = new CreditVO(id, cpo.getCredit());
+			creditDataService.finishCreditDataService();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -125,14 +126,11 @@ public class CreditController implements CreditBLService {
 	public ArrayList<UserCreditHistoryVO> getHistory(int userId) {
 		// TODO Auto-generated method stub
 		ArrayList<UserCreditHistoryVO> list = new ArrayList<UserCreditHistoryVO>();
-		DataServiceClientRunner cr = new DataServiceClientRunner();
-		cr.start();
-		RemoteController rc = cr.getRemoteController();
 		try {
 			ArrayList<UserCreditHistoryPO> poList;
 
-			rc.getUserCreditHistoryDataService().initUserCreditHistoryDataService();
-			poList = rc.getUserCreditHistoryDataService().findCreditHistory(userId);
+			userCreditHistoryDataService.initUserCreditHistoryDataService();
+			poList = userCreditHistoryDataService.findCreditHistory(userId);
 
 			UserCreditHistoryPO tmp;
 			for (int i = 0; i < poList.size(); i++) {
@@ -141,36 +139,12 @@ public class CreditController implements CreditBLService {
 						tmp.getCreditMovement(), tmp.getRemain()));
 			}
 
-			rc.getUserCreditHistoryDataService().finishUserCreditHistoryDataService();
+			userCreditHistoryDataService.finishUserCreditHistoryDataService();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
-	}
-
-	@Override
-	public ArrayList<Date> getHistoryDate(int userId) {
-		// TODO Auto-generated method stub
-		ArrayList<UserCreditHistoryVO> list = getHistory(userId);
-		ArrayList<Date> date = new ArrayList<Date>();
-
-		for (int i = 0; i < list.size(); i++) {
-			date.add(list.get(i).getTime());
-		}
-		return date;
-	}
-
-	@Override
-	public ArrayList<Integer> getHistoryChange(int userId) {
-		// TODO Auto-generated method stub
-		ArrayList<UserCreditHistoryVO> list = getHistory(userId);
-		ArrayList<Integer> change = new ArrayList<Integer>();
-
-		for (int i = 0; i < list.size(); i++) {
-			change.add(list.get(i).getChange());
-		}
-		return change;
 	}
 
 }

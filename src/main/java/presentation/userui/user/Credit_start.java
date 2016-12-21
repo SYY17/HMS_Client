@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
+import vo.UserCreditHistoryVO;
 
 public class Credit_start extends Application {
 
@@ -86,12 +87,10 @@ public class Credit_start extends Application {
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("history"));
 
 		System.out.println(id);
-		ArrayList<Date> timeList = creditBlService.getHistoryDate(id);
-		ArrayList<Integer> historyList = creditBlService
-				.getHistoryChange(id);
+		ArrayList<UserCreditHistoryVO> timeList = creditBlService.getHistory(id);
 
 		for (int i = 0; i < timeList.size(); i++) {
-			data.add(new CreditData(timeList.get(i), historyList.get(i)));
+			data.add(new CreditData(timeList.get(i).getTime(), timeList.get(i).getChange()));
 		}
 
 		creditTable.setItems(data);

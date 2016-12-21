@@ -14,6 +14,7 @@ import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
 import presentation.userui.UserControllerService;
+import vo.CreditMovement;
 
 public class ManageAbnormalOrderAndCredit_controller {
 
@@ -49,23 +50,23 @@ public class ManageAbnormalOrderAndCredit_controller {
 	private void onManageAbnormalOrder(MouseEvent event) throws Exception {
 		ManageAbnormalOrder_start.getInstance().start(stage);
 	}
-	
+
 	@FXML
 	private void onEnteredCredit(MouseEvent event) throws Exception {
 		addcredit.setTextFill(Paint.valueOf("#003fff"));
 	}
-	
+
 	@FXML
 	private void onExitedCredit(MouseEvent event) throws Exception {
 		addcredit.setTextFill(Paint.valueOf("#000000"));
 	}
+
 	@FXML
 	private void onAddCredit(MouseEvent event) throws Exception {
 		int userID = userControllerService.searchByUserName(username.getText()).getID();
-		int credit = creditControllerService.getCredit(userID).getCredit();
-		credit += Integer.parseInt(money.getText()) * 100;
-		creditControllerService.modifyCredit(userID, credit);
-		this.credit.setText(credit+"");
+		int credit = Integer.parseInt(money.getText()) * 100;
+		creditControllerService.modifyCredit(userID, credit, CreditMovement.AddMoney);
+		this.credit.setText(credit + "");
 		this.money.clear();
 	}
 }

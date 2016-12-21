@@ -4,6 +4,7 @@ import businesslogic.creditbl.CreditController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.creditBLService.CreditBLService;
 import presentation.creditui.CreditControllerService;
+import vo.CreditMovement;
 import vo.CreditVO;
 
 public class CreditControllerImpl implements CreditControllerService {
@@ -44,9 +45,9 @@ public class CreditControllerImpl implements CreditControllerService {
 	 * @return 维护信用值
 	 */
 	@Override
-	public ResultMessage modifyCredit(int id, int credit) {
+	public ResultMessage modifyCredit(int id, int credit, CreditMovement creditMovement) {
 		// TODO Auto-generated method stub
-		return creditBLService.modifyCredit(id, credit);
+		return creditBLService.modifyCredit(id, credit,creditMovement);
 	}
 
 	/**
