@@ -15,13 +15,13 @@ public class PromotionInfoForOrder implements PromotionInfo {
 	 * @return 获得最终订单价格
 	 */
 	@Override
-	public int getFinalPrice(String hotelName, Timestamp setTime, int initialPrice) {
+	public int getFinalPrice(int userId, int roomNum, String hotelName, Timestamp setTime, int initialPrice) {
 		// TODO Auto-generated method stub
 		HotelController hc = new HotelController();
 		int hotelId = hc.reviewHotelInfo(hotelName).getHotelID();
 		PromotionController pc = new PromotionController();
 
-		PromotionVO pvo = pc.searchPromotionPresent(hotelId, setTime);
+		PromotionVO pvo = pc.searchPromotionPresent(userId, roomNum, hotelId, setTime);
 
 		if(pvo==null){
 			return initialPrice;

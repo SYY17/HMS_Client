@@ -139,9 +139,9 @@ public class PromotionControllerImpl implements PromotionControllerService {
 	 * @return 按照当时时间查找营销策略
 	 */
 	@Override
-	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime) {
+	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime) {
 		// TODO Auto-generated method stub
-		return promotionBLService.searchPromotionPresent(id, presentTime);
+		return promotionBLService.searchPromotionPresent(userId, roomNum, id, presentTime);
 	}
 
 }

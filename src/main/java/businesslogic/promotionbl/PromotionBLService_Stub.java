@@ -158,7 +158,7 @@ public class PromotionBLService_Stub implements PromotionBLService {
 	}
 
 	@Override
-	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime) {
+	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime) {
 		// TODO Auto-generated method stub
 		return null;
 	}

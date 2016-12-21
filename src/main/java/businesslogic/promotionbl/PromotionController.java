@@ -287,9 +287,61 @@ public class PromotionController implements PromotionBLService {
 	}
 
 	@Override
-	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime) {
+	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime) {
 		// TODO Auto-generated method stub
+		//酒店的策略  网银的策略
 		PromotionVO pvo;
+		try{
+			remoteController.getPromotionDataService().initPromotionDataService();
+			ArrayList<PromotionPO> allPromotion = remoteController.getPromotionDataService().getAllPromotion();//所有promotion 没有筛选
+			ArrayList<PromotionPO> hotelPromotion = remoteController.getPromotionDataService().findsPromotion(id);//所有酒店的promotion 没有筛选
+			
+			ArrayList<PromotionPO> available = new ArrayList<PromotionPO>();//所有时间可有的promotion
+			
+			for (int i = 0; i < hotelPromotion.size(); i++) {
+				Date startTemp = hotelPromotion.get(i).getStartTime();
+				Date stopTemp = hotelPromotion.get(i).getStopTime();
+
+				Date present = parse(parse(presentTime));
+
+				if (!afterDate(startTemp, present) && !beforeDate(stopTemp, present)) {
+					available.add(hotelPromotion.get(i));
+				}
+			}//把酒店promotion中时间可用的筛选
+			
+			for(int i=0; i < allPromotion.size();i++){
+				if(String.valueOf(allPromotion.get(i).getID()).substring(0,1) =="3"){//如果是网站营销人员的策略
+					Date startTemp = allPromotion.get(i).getStartTime();
+					Date stopTemp = allPromotion.get(i).getStopTime();
+
+					Date present = parse(parse(presentTime));
+
+					if (!afterDate(startTemp, present) && !beforeDate(stopTemp, present)) {
+							available.add(hotelPromotion.get(i));
+					}
+				}
+			}//把网站营销promotion可用的加入
+			/*
+			for(int i=0;i<available.size();i++){
+				System.out.println(available.get(i).getPromotionName());
+			}*/
+			
+			if(roomNum>=3){
+				PromotionPO ins = remoteController.getPromotionDataService().findsPromotion(id, "三间及以上预定优惠").get(0);
+				pvo = new PromotionVO(ins.getPromotionName(), ins.getContent(),
+						ins.getStartTime(), ins.getStopTime(),
+						converse(ins.getPromotionType()), ins.getID());
+				return pvo;
+			}
+			
+			remoteController.getPromotionDataService().finishPromotionDataService();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}catch (ParseException pe) {
+			pe.printStackTrace();
+		}
+		return null;
+		/*
 		try {
 			remoteController.getPromotionDataService().initPromotionDataService();
 
@@ -338,9 +390,15 @@ public class PromotionController implements PromotionBLService {
 			pe.printStackTrace();
 		}
 
-		return null;
+		return null;*/
 	}
-
+//
+	public static void main(String[]args){
+		PromotionController a = new PromotionController();
+		PromotionVO pc = a.searchPromotionPresent(0,0,20902341,Timestamp.valueOf("2016-12-02 00:00:00"));
+		//System.out.println(pc.getPromotionName());
+	}
+	//
 	public boolean beforeDate(Date first, Date second) {
 		Date d1_temp = Date.valueOf(first.toString());
 		Date d2_temp = Date.valueOf(second.toString());

@@ -89,5 +89,5 @@ public interface PromotionControllerService {
 	 * @param presentTime
 	 * @return 按照当时时间查找营销策略
 	 */
-	public PromotionVO searchPromotionPresent(int id, Timestamp presentTime);
+	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime);
 }

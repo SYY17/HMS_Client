@@ -65,7 +65,7 @@ public class MakePromotionStrategy2_start extends Application {
 		// 查找promotionType
 		ChoiceBox<Object> promotionType = (ChoiceBox<Object>) root.lookup("#promotionType");
 
-		promotionType.setItems(FXCollections.observableArrayList("FullCut", "Discount"));
+		promotionType.setItems(FXCollections.observableArrayList("满减", "折扣"));
 	}
 
 	/*

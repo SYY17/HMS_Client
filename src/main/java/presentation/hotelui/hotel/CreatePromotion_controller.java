@@ -87,22 +87,22 @@ public class CreatePromotion_controller {
 			String discountText = discount.getText();
 			
 			PromotionType pte;
-			if (promotionType.getValue().equals("FullCut")) {
+			if (promotionType.getValue().equals("满减")) {
 				pte = pt[0];
 			} else {
 				pte = pt[1];
 			}
 
 			promotionBlService.addPromotion(
-					new PromotionVO(name, content, time, sp, pte, id));//
+					new PromotionVO(name, name+":"+content, time, sp, pte, id));//
 
 			if (pte == PromotionType.FULL_CUT) {
-				promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
+				promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, name+":"+content, time, sp, pte,
 						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
 			}
 
 			if (pte == PromotionType.DISCOUNT) {
-				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
+				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, name+":"+content, time, sp, pte,
 						id, Double.parseDouble(discountText)/10));
 			}
 			

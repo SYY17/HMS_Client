@@ -263,7 +263,7 @@ public class UserUI_start extends Application {
 			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
 			
 			HotelBLService hotelBlService = new HotelController();
-
+			
 			ArrayList<HotelVO> hvo = hotelBlService.reviewHotelList();
 			Map<String,Double> maps = new HashMap<String,Double>();
 			for(int i=0;i<hvo.size();i++){

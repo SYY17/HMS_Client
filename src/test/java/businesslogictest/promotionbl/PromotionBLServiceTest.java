@@ -165,7 +165,7 @@ public class PromotionBLServiceTest {
 	/**
 	 * @return 按照当时时间查找营销策略
 	 */
-	@Test
+	/*@Test
 	public void testSearchPresentPromotion() {
 		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
 		promotionBLService.addPromotion(promotionVO);
@@ -179,7 +179,7 @@ public class PromotionBLServiceTest {
 		assertEquals( promotionType, pvo.getPromotionType());
 		assertEquals(id, pvo.getID());
 		promotionBLService.deletePromotion(promotionVO);
-	}
+	}*/
 	
 	/**
 	 * @return 制定满减策略
@@ -261,7 +261,7 @@ public class PromotionBLServiceTest {
 		promotionVO = new PromotionVO( promotionName, content, start, stop, promotionType, id);
 		promotionBLService.addPromotion(promotionVO);
 		
-		PromotionVO fvo = promotionBLService.searchPromotionPresent(id, p);
+		PromotionVO fvo = promotionBLService.searchPromotionPresent(0,0,id, p);//又要改
 		
 		assertEquals( promotionName, fvo.getPromotionName());
 		assertEquals( content, fvo.getContent());

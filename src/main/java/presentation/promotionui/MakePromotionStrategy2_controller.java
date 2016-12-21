@@ -113,14 +113,14 @@ public class MakePromotionStrategy2_controller {
 			String discountText = discount.getText();
 			
 			PromotionType pte;
-			if (promotionType.getValue().equals("FullCut")) {
+			if (promotionType.getValue().equals("满减")) {
 				pte = pt[0];
 			} else {
 				pte = pt[1];
 			}
 
 			promotionController.addPromotion(
-					new PromotionVO(name, content, time, sp, pte, id));//
+					new PromotionVO(name, name+":"+content, time, sp, pte, id));//
 			
 			System.out.println("JJ");
 
@@ -128,12 +128,12 @@ public class MakePromotionStrategy2_controller {
 //			long t = timestamp.getTime();
 			
 			if (pte == PromotionType.FULL_CUT) {
-				promotionController.addFullCutPromotion(new FullCutPromotionVO(name, content, time, sp, pte,
+				promotionController.addFullCutPromotion(new FullCutPromotionVO(name, name+":"+content, time, sp, pte,
 						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
 			}
 
 			if (pte == PromotionType.DISCOUNT) {
-				promotionController.addDiscountPromotion(new DiscountPromotionVO(name, content, time, sp, pte,
+				promotionController.addDiscountPromotion(new DiscountPromotionVO(name, name+":"+content, time, sp, pte,
 						id, Double.parseDouble(discountText)/10));
 			}
 			//
