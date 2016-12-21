@@ -8,15 +8,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
+import presentation.hotelui.hotel.PromotionData;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import presentation.orderui.OrderDataHelper;
+import vo.OrderStatus;
 import vo.OrderVO;
 
 public class AllOrder_start extends Application {
@@ -42,6 +46,7 @@ public class AllOrder_start extends Application {
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/全部订单.fxml"));
 			initiateTableView(root);
+			initiateListView(root);
 			Scene scene = new Scene(root, 800, 600);
 			AllOrder_controller.stage = primaryStage;
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -92,6 +97,42 @@ public class AllOrder_start extends Application {
 			
 		}
 			allOrderTableView.setItems(data);
+	}
+	
+	/**
+	 * 
+	 * @param root
+	 */
+	private void initiateListView(Parent root){
+		IDHelper idHelper = IDHelper.getInstance();
+		@SuppressWarnings("unchecked")
+		// 查找tableview
+		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
+		
+		@SuppressWarnings("unchecked")
+		// 查找tableview
+		Label number = (Label) root.lookup("#number");
+		
+		// 建立observablelist以更新数据
+		final ObservableList<String> data = FXCollections.observableArrayList();
+		data.clear();
+		int cnt=0;
+		 OrderControllerService orderControllerService = new OrderControllerImpl();
+		 ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */idHelper.getID());
+		 
+		 ArrayList<String> hotelname = new  ArrayList<String>();
+		 for(int i=0;i<orderList.size();i++){
+			 if(orderList.get(i).getOrderStatus() == OrderStatus.Finished){
+				 cnt++;
+				 if(!hotelname.contains(orderList.get(i).getHotelName())){
+					 hotelname.add(orderList.get(i).getHotelName());
+				 }
+			 }
+		 }
+		 
+		 ObservableList<String> strList = FXCollections.observableArrayList(hotelname);
+		 hotelList.setItems(strList);
+		 number.setText(String.valueOf(cnt));
 	}
 
 }

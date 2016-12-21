@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -24,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.AllOrder_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.AllOrder_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -140,13 +134,13 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
-            <TabPane layoutX="167.0" layoutY="141.0" prefHeight="385.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="165.0" layoutY="324.0" prefHeight="234.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab onSelectionChanged="#onAllOrder" text="       全部订单       ">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="615.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="615.0">
                            <children>
-                              <TableView fx:id="allOrderTableView" prefHeight="350.0" prefWidth="615.0">
+                              <TableView fx:id="allOrderTableView" prefHeight="200.0" prefWidth="615.0">
                                  <columns>
                                     <TableColumn prefWidth="62.1545524597168" text="编号" />
                                     <TableColumn prefWidth="78.84545135498047" text="订单状态" />
@@ -165,7 +159,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView id="allordertableview" fx:id="unfilledOrderTableView" prefHeight="393.0" prefWidth="615.0">
+                              <TableView id="allordertableview" fx:id="unfilledOrderTableView" prefHeight="200.0" prefWidth="615.0">
                                  <columns>
                                     <TableColumn prefWidth="62.1545524597168" text="编号" />
                                     <TableColumn prefWidth="78.84545135498047" text="订单状态" />
@@ -184,7 +178,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView id="allordertableview" fx:id="canceledOrderTableView" prefHeight="393.0" prefWidth="615.0">
+                              <TableView id="allordertableview" fx:id="canceledOrderTableView" prefHeight="200.0" prefWidth="615.0">
                                  <columns>
                                     <TableColumn prefWidth="62.1545524597168" text="编号" />
                                     <TableColumn prefWidth="78.84545135498047" text="订单状态" />
@@ -203,7 +197,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView id="allordertableview" fx:id="abnormalOrderTableView" prefHeight="393.0" prefWidth="615.0">
+                              <TableView id="allordertableview" fx:id="abnormalOrderTableView" prefHeight="200.0" prefWidth="615.0">
                                  <columns>
                                     <TableColumn prefWidth="62.1545524597168" text="编号" />
                                     <TableColumn prefWidth="78.84545135498047" text="订单状态" />
@@ -220,9 +214,9 @@
                   </Tab>
                   <Tab onSelectionChanged="#onFinishedOrder" text="      已执行订单      ">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="206.0" prefWidth="615.0">
                            <children>
-                              <TableView id="allordertableview" fx:id="finishedOrderTableView" prefHeight="393.0" prefWidth="615.0">
+                              <TableView id="allordertableview" fx:id="finishedOrderTableView" prefHeight="200.0" prefWidth="615.0">
                                  <columns>
                                     <TableColumn prefWidth="62.1545524597168" text="编号" />
                                     <TableColumn prefWidth="78.84545135498047" text="订单状态" />
@@ -245,6 +239,31 @@
                </font>
             </Label>
             <Button fx:id="cancelOrder" layoutX="694.0" layoutY="538.0" mnemonicParsing="false" onAction="#onCancelOrder" prefHeight="27.0" prefWidth="88.0" text="撤销订单" visible="false" />
+            <ListView fx:id="hotelList" layoutX="344.0" layoutY="158.0" prefHeight="157.0" prefWidth="437.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ListView>
+            <Label layoutX="169.0" layoutY="228.0" text="你曾住过">
+               <font>
+                  <Font name="Yuanti SC Regular" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="194.0" layoutY="272.0" text="已完成订单数">
+               <font>
+                  <Font name="Yuanti SC Regular" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="number" layoutX="292.0" layoutY="247.0" text="9">
+               <font>
+                  <Font size="57.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="107.0" fitWidth="94.0" layoutX="176.0" layoutY="117.0">
+               <image>
+                  <Image url="@orderRecord.jpg" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
