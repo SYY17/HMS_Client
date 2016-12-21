@@ -89,7 +89,7 @@ public interface PromotionBLService {
 	 * @param presentTime
 	 * @return 按照当时时间查找营销策略
 	 */
-	public PromotionVO searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime, int initialPrice);
+	public double searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime, int initialPrice);
 	
 	/**
 	 * 

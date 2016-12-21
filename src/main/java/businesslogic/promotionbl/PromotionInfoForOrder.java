@@ -21,14 +21,7 @@ public class PromotionInfoForOrder implements PromotionInfo {
 		int hotelId = hc.reviewHotelInfo(hotelName).getHotelID();
 		PromotionController pc = new PromotionController();
 
-		PromotionVO pvo = pc.searchPromotionPresent(userId, roomNum, hotelId, setTime, initialPrice);
-
-		if(pvo==null){
-			return initialPrice;
-		}
-		
-		double finalPrice;
-		finalPrice = pvo.calculatePayment(initialPrice);
+		double finalPrice = pc.searchPromotionPresent(userId, roomNum, hotelId, setTime, initialPrice);
 
 		return (int) finalPrice;
 	}

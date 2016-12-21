@@ -253,7 +253,7 @@ public class PromotionBLServiceTest {
 	 * @param presentTime
 	 * @return 按照当时时间查找营销策略
 	 */
-	@Test
+	/*@Test
 	public void testGetPromotionPresent(){
 		String dateStr = "2019-11-20 22:22:22";  
 		Timestamp p = Timestamp.valueOf(dateStr);  
@@ -271,5 +271,5 @@ public class PromotionBLServiceTest {
 		assertEquals(id, fvo.getID());
 		
 		promotionBLService.deletePromotion(promotionVO);
-	}
+	}*/
 }
