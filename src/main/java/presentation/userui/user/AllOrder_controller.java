@@ -131,6 +131,9 @@ public class AllOrder_controller {
 	private boolean isValid(OrderStatus orderStatus, OrderVO ovo) {
 		if (orderStatus == null) {
 			return true;
+		} else if (orderStatus.toString().equals(OrderStatus.Finished.toString())) {
+			return ovo.getOrderStatus().toString().equals(OrderStatus.Finished.toString())
+					|| ovo.getOrderStatus().toString().equals(OrderStatus.Checkout.toString());
 		} else {
 			return ovo.getOrderStatus().toString().equals(orderStatus.toString());
 		}

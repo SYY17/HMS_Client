@@ -27,7 +27,8 @@ public class OrderDataForManageAbnormalOrder {
 	private final SimpleStringProperty roomType = new SimpleStringProperty();
 	private final SimpleIntegerProperty roomNumber = new SimpleIntegerProperty();
 	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
-	private final SimpleStringProperty operation = new SimpleStringProperty();
+	private final SimpleStringProperty operationAll = new SimpleStringProperty();
+	private final SimpleStringProperty operationHalf = new SimpleStringProperty();
 
 	public OrderDataForManageAbnormalOrder(int orderID, String userName, OrderStatus orderStatus, String hotelName, Timestamp setTime,
 			Date checkIn, Date checkOut, RoomType roomType, int roomNumber, int price) {
@@ -136,7 +137,7 @@ public class OrderDataForManageAbnormalOrder {
 		this.price.set(price);
 	}
 	
-	public Button getOperation() {
+	public Button getOperationAll() {
 		Button button = new Button();
 		button.setPrefSize(20, 20);
 		button.setMaxSize(20, 20);
@@ -151,7 +152,7 @@ public class OrderDataForManageAbnormalOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				OrderControllerService orderController = new OrderControllerImpl();
-				orderController.changeOrderStatus(getOrderID(), OrderStatus.Finished);
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.Canceled);
 				ManageAbnormalOrder_start.getInstance().refreshTableView();
 			}
 		});
@@ -159,7 +160,34 @@ public class OrderDataForManageAbnormalOrder {
 		return button;
 	}
 
-	public void setOperation(String operation) {
-		this.operation.set(operation);
+	public void setOperationAll(String operation) {
+		this.operationAll.set(operation);
+	}
+	
+	public Button getOperationHalf() {
+		Button button = new Button();
+		button.setPrefSize(20, 20);
+		button.setMaxSize(20, 20);
+		button.setMinSize(20, 20);
+		button.setCursor(Cursor.HAND);
+		
+		button.setBackground(new Background(new BackgroundImage(
+				new Image(getClass().getResource("orderhandle.png").toString()), null, null, null, null)));
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				OrderControllerService orderController = new OrderControllerImpl();
+				orderController.changeOrderStatus(getOrderID(), OrderStatus.HalfCanceled);
+				ManageAbnormalOrder_start.getInstance().refreshTableView();
+			}
+		});
+
+		return button;
+	}
+
+	public void setOperationHalf(String operation) {
+		this.operationHalf.set(operation);
 	}
 }

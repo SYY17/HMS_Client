@@ -59,6 +59,8 @@ public class OrderData {
 			result = "完成";
 		} else if (orderStatus.get().equals(OrderStatus.Unfilled.toString())) {
 			result = "未完成";
+		} else if (orderStatus.get().equals(OrderStatus.Checkout.toString())) {
+			result = "完成";
 		}
 		return result;
 	}
@@ -73,6 +75,14 @@ public class OrderData {
 
 	public void setHotelID(String hotelName) {
 		this.hotelName.set(hotelName);
+	}
+
+	public String getSetTime() {
+		return setTime.get();
+	}
+
+	public void setSetTime(String setTime) {
+		this.setTime.set(setTime);
 	}
 
 	public String getCheckIn() {

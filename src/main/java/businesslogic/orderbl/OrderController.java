@@ -42,14 +42,15 @@ public class OrderController implements OrderBLService {
 		return new OrderVO(opo.getOrderID(), opo.getUserName(), opo.getHotelName(),
 				OrderStatus.valueOf(opo.getOrderStatus().toString()), opo.getPrice(),
 				RoomType.valueOf(opo.getRoomType().toString()), opo.getRoomNumber(), opo.getSetTime(), opo.getCheckIn(),
-				opo.getCheckOut(), opo.getDeadline(), opo.getPredictNumber(), opo.getHaveChild());
+				opo.getCheckOut(), opo.getDeadline(), opo.getPredictNumber(), opo.getHaveChild(), opo.getRoom());
 	}
 
 	private OrderPO VOToPO(OrderVO ovo) {
 		return new OrderPO(ovo.getOrderID(), ovo.getUserName(), ovo.getHotelName(),
 				po.OrderStatus.valueOf(ovo.getOrderStatus().toString()), ovo.getPrice(),
 				po.RoomType.valueOf(ovo.getRoomType().toString()), ovo.getRoomNumber(), ovo.getSetTime(),
-				ovo.getCheckIn(), ovo.getCheckOut(), ovo.getDeadline(), ovo.getPredictNumber(), ovo.getHaveChild());
+				ovo.getCheckIn(), ovo.getCheckOut(), ovo.getDeadline(), ovo.getPredictNumber(), ovo.getHaveChild(),
+				ovo.getRoom());
 	}
 
 	/**
@@ -159,7 +160,8 @@ public class OrderController implements OrderBLService {
 						/*
 						 * promotionInfo.getFinalPrice(hotelName, setTime,
 						 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
-						 */1, roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild);
+						 */1, roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild,
+						null);
 				orderDataService.insertOrder(VOToPO(ovoTemp));
 				return ovoTemp;
 			}
@@ -194,6 +196,24 @@ public class OrderController implements OrderBLService {
 			return ResultMessage.FALSE;
 		}
 	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @param room
+	 * @return 分配房间号
+	 */
+	@Override
+	public ResultMessage assignRoom(int id, String room){
+		try {
+			orderDataService.updateOrder(id, room);
+			return ResultMessage.TRUE;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.FALSE;
+	}
 
 	/**
 	 * 
@@ -203,7 +223,13 @@ public class OrderController implements OrderBLService {
 	 */
 	@Override
 	public ResultMessage changeOrderStatus(int id, OrderStatus status) {
-		po.OrderStatus orderStatus = po.OrderStatus.valueOf(status.toString());
+		po.OrderStatus orderStatus;
+		if (status.toString().equals("HalfCanceled")) {
+			orderStatus = po.OrderStatus.valueOf("Canceled");
+		} else {
+			orderStatus = po.OrderStatus.valueOf(status.toString());
+		}
+
 		try {
 			orderDataService.initOrderDataService();
 			orderDataService.updateOrder(id, orderStatus);

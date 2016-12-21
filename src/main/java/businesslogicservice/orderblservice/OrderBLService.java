@@ -47,7 +47,15 @@ public interface OrderBLService {
 	 * 
 	 * @param cvo
 	 * @param id
-	 * @return 处理异常订单
+	 * @return 改变订单状态
 	 */
 	public ResultMessage changeOrderStatus(int id, OrderStatus status);
+	
+	/**
+	 * 
+	 * @param id
+	 * @param room
+	 * @return 分配房间号
+	 */
+	public ResultMessage assignRoom(int id, String room);
 }

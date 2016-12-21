@@ -104,7 +104,8 @@ public class ManageAbnormalOrder_start extends Application {
 		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("roomType"));
 		observableList.get(5).setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 		observableList.get(6).setCellValueFactory(new PropertyValueFactory<>("price"));
-		observableList.get(7).setCellValueFactory(new PropertyValueFactory<>("operation"));
+		observableList.get(7).setCellValueFactory(new PropertyValueFactory<>("operationAll"));
+		observableList.get(8).setCellValueFactory(new PropertyValueFactory<>("operationHalf"));
 	}
 
 }

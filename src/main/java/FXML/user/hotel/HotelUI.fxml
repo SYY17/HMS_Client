@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -13,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.HotelUI_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.HotelUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -71,20 +79,16 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="#f2efef" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="495.0" />
-            <TableView id="applyTable" fx:id="orderInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="353.0" prefWidth="439.0">
+            <TableView fx:id="orderInfoTable" layoutX="183.0" layoutY="199.0" prefHeight="353.0" prefWidth="439.0">
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="编号" />
                   <TableColumn id="col_odd" editable="false" maxWidth="96.0" minWidth="96.0" prefWidth="96.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="预订者" />
-                  <TableColumn id="col_even" editable="false" maxWidth="59.0" minWidth="59.0" prefWidth="59.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="数量" />
-                  <TableColumn id="col_even" editable="false" maxWidth="86.0" minWidth="86.0" prefWidth="86.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="客房类型" />
                   <TableColumn id="col_even" editable="false" maxWidth="105.0" minWidth="105.0" prefWidth="105.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="预定时间" />
-                  <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="查看" />
+                  <TableColumn id="col_even" editable="false" maxWidth="86.0" minWidth="86.0" prefWidth="86.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="客房类型" />
+                  <TableColumn id="col_even" editable="false" maxWidth="59.0" minWidth="59.0" prefWidth="59.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="数量" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="价格" />
                </columns>
                <effect>
                   <DropShadow />
@@ -145,7 +149,7 @@
                   </Label>
                </center>
             </BorderPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" opacity="0.8" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
             <Label fx:id="hotelSum" layoutX="690.0" layoutY="406.0" text="0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />

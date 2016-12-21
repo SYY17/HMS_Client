@@ -50,4 +50,12 @@ public interface OrderControllerService {
 	 * @return 处理异常订单
 	 */
 	public ResultMessage changeOrderStatus(int id, OrderStatus status);
+	
+	/**
+	 * 
+	 * @param id
+	 * @param room
+	 * @return 分配房间
+	 */
+	public ResultMessage assignRoom(int id, String room);
 }

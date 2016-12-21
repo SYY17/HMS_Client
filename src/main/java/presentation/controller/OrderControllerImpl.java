@@ -76,4 +76,13 @@ public class OrderControllerImpl implements OrderControllerService {
 		return orderBLService.changeOrderStatus(id, status);
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @param room
+	 * @return 分配房间
+	 */
+	public ResultMessage assignRoom(int id, String room){
+		return orderBLService.assignRoom(id, room);
+	}
 }

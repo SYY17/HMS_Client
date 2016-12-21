@@ -136,17 +136,9 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
-            <Label fx:id="execute" layoutX="660.0" layoutY="540.0" onMouseClicked="#onExecute" prefHeight="27.0" prefWidth="80.0" text="确认执行">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
             <TabPane layoutX="163.0" layoutY="172.0" prefHeight="349.0" prefWidth="621.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab onSelectionChanged="#onOrderList" text="                               待确认订单                               ">
+                <Tab onSelectionChanged="#onOrderList" text="                 待确认订单                 ">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -167,7 +159,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab onSelectionChanged="#onAbnormalOrderList" text="                              异常订单                               ">
+                <Tab onSelectionChanged="#onAbnormalOrderList" text="                 异常订单                 ">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -188,8 +180,40 @@
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab onSelectionChanged="#onUncheckoutOrderList" text="                 未退房订单                 ">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="uncheckoutOrderListTableView" prefHeight="315.0" prefWidth="621.0">
+                                 <columns>
+                                    <TableColumn prefWidth="101.0" text="编号" />
+                                    <TableColumn prefWidth="102.0" text="申请人" />
+                                    <TableColumn prefWidth="108.0" text="时间" />
+                                    <TableColumn prefWidth="111.0" text="客房类型" />
+                                    <TableColumn prefWidth="103.0" text="客房数量" />
+                                    <TableColumn prefWidth="95.0" text="总价" />
+                                 </columns>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
+            <Label fx:id="mark" layoutX="163.0" layoutY="540.0" text="入住房间：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="room" layoutX="258.0" layoutY="538.0" prefHeight="27.0" prefWidth="120.0" promptText="房间号" />
+            <Button fx:id="execute" layoutX="709.0" layoutY="536.0" mnemonicParsing="false" onAction="#onExecute" text="确认执行">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

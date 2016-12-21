@@ -22,9 +22,10 @@ public class OrderPO implements Serializable {
 	Timestamp deadline;
 	int predictNumber;
 	boolean haveChild;
+	String room;
 
 	public OrderPO(int orderid, String un, String hn, OrderStatus orderstatus, int pr, RoomType rT, int rn, Timestamp s,
-			Date ci, Date co, Timestamp dl, int pn, boolean hc){
+			Date ci, Date co, Timestamp dl, int pn, boolean hc, String r) {
 		orderID = orderid;
 		orderStatus = orderstatus;
 		price = pr;
@@ -38,6 +39,7 @@ public class OrderPO implements Serializable {
 		deadline = dl;
 		predictNumber = pn;
 		haveChild = hc;
+		room = r;
 	}
 
 	/**
@@ -119,7 +121,7 @@ public class OrderPO implements Serializable {
 	public RoomType getRoomType() {
 		return roomType;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应最晚订单执行时间
@@ -127,7 +129,7 @@ public class OrderPO implements Serializable {
 	public Timestamp getDeadline() {
 		return deadline;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应预计入住人数
@@ -135,12 +137,20 @@ public class OrderPO implements Serializable {
 	public int getPredictNumber() {
 		return predictNumber;
 	}
-	
+
 	/**
 	 * 
 	 * @return 获得订单对应是否有儿童
 	 */
 	public boolean getHaveChild() {
 		return haveChild;
+	}
+
+	/**
+	 * 
+	 * @return 获得订单对应房间号
+	 */
+	public String getRoom() {
+		return room;
 	}
 }
