@@ -3,7 +3,7 @@ package vo;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class PromotionVO implements Serializable, Promotion {
+public class PromotionVO implements Serializable {
 	/**
 	 * 
 	 */
@@ -72,9 +72,8 @@ public class PromotionVO implements Serializable, Promotion {
 		return id;
 	}
 
-	@Override
+	
 	public double calculatePayment(double sum) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

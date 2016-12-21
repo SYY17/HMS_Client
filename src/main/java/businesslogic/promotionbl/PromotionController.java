@@ -2,6 +2,12 @@ package businesslogic.promotionbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import businesslogic.customerbl.CustomerController;
+import businesslogic.userbl.UserController;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -9,12 +15,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import businesslogicservice.ResultMessage;
+import businesslogicservice.customerBLService.CustomerBLService;
 import businesslogicservice.promotionblservice.PromotionBLService;
+import businesslogicservice.userblservice.UserBLService;
 import po.DiscountPromotionPO;
 import po.FullCutPromotionPO;
 import po.PromotionPO;
+import po.PromotionType;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
+import vo.CustomerVO;
 import vo.DiscountPromotionVO;
 import vo.FullCutPromotionVO;
 import vo.PromotionVO;
@@ -321,10 +331,10 @@ public class PromotionController implements PromotionBLService {
 					}
 				}
 			}//把网站营销promotion可用的加入
-			/*
+			
 			for(int i=0;i<available.size();i++){
 				System.out.println(available.get(i).getPromotionName());
-			}*/
+			}
 			
 			if(roomNum>=3){
 				PromotionPO ins = remoteController.getPromotionDataService().findsPromotion(id, "三间及以上预定优惠").get(0);
@@ -332,65 +342,71 @@ public class PromotionController implements PromotionBLService {
 						ins.getStartTime(), ins.getStopTime(),
 						converse(ins.getPromotionType()), ins.getID());
 				return pvo;
+			}//三间客房优惠
+			
+			//生日优惠
+			Date preTime = parse(parse(presentTime));
+			UserBLService userBlService = new UserController();
+			CustomerBLService customerBLService = new CustomerController();
+			CustomerVO cvo = customerBLService.getCustomerInfo(userBlService.searchByUserID(userId));
+			
+			Date birth = cvo.getBirthday();
+			Date first = getTimeSpan(preTime,-10);
+			Date second = getTimeSpan(preTime,10);
+			
+			if(!afterDate(first, birth) && !beforeDate(second, birth)){
+				PromotionPO ins = remoteController.getPromotionDataService().findsPromotion(id, "生日优惠").get(0);
+				pvo = new PromotionVO(ins.getPromotionName(), ins.getContent(),
+						ins.getStartTime(), ins.getStopTime(),
+						converse(ins.getPromotionType()), ins.getID());
+				return pvo;
+			}//
+			
+			//合作企业客户优惠
+			
+			ArrayList<Double> list = new ArrayList<Double>();
+			for(int i=0;i<available.size();i++){
+				if(available.get(i).getPromotionName().equals("生日")||available.get(i).getPromotionName().equals("三间及以上预定优惠")||available.get(i).getPromotionName().equals("合作企业客户折扣")){
+					list.add(new Double(9999999));
+				}else{
+					if(available.get(i).getPromotionType() == PromotionType.DISCOUNT){
+						remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
+						DiscountPromotionPO ds = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(available.get(i).getID(), available.get(i).getContent()).get(0);
+						list.add(new Double(ds.calculatePayment(1000)));
+						remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
+					}else{
+						remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
+						FullCutPromotionPO fs = remoteController.getFullCutPromotionDataService().findsFullPromotion(available.get(i).getID(), available.get(i).getContent()).get(0);
+						list.add(new Double(fs.calculatePayment(1000)));
+						remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
+					}
+				}
+			}//找出最低返回
+			/*
+			for(int i=0;i<list.size();i++){
+				System.out.println(list.get(i));
+			}*/
+			
+			int small = 0;
+			for(int i=1;i<list.size();i++){
+				if(list.get(i)<list.get(small)){
+					small = i;
+				}
 			}
+			//System.out.println(small);
+			pvo = new PromotionVO(available.get(small).getPromotionName(), available.get(small).getContent(),
+					available.get(small).getStartTime(), available.get(small).getStopTime(),
+					converse(available.get(small).getPromotionType()), available.get(small).getID());
 			
 			remoteController.getPromotionDataService().finishPromotionDataService();
+			
+			return pvo;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}catch (ParseException pe) {
 			pe.printStackTrace();
 		}
 		return null;
-		/*
-		try {
-			remoteController.getPromotionDataService().initPromotionDataService();
-
-			ArrayList<PromotionPO> listPromotion = remoteController.getPromotionDataService().findsPromotion(id);
-			ArrayList<PromotionPO> available = new ArrayList<PromotionPO>();
-
-			for (int i = 0; i < listPromotion.size(); i++) {
-				Date startTemp = listPromotion.get(i).getStartTime();
-				Date stopTemp = listPromotion.get(i).getStopTime();
-
-				Date present = parse(parse(presentTime));
-
-				if (!afterDate(startTemp, present) && !beforeDate(stopTemp, present)) {
-					available.add(listPromotion.get(i));
-				}
-			}
-
-			if (available.size() == 1) {
-				pvo = new PromotionVO(available.get(0).getPromotionName(), available.get(0).getContent(),
-						available.get(0).getStartTime(), available.get(0).getStopTime(),
-						converse(available.get(0).getPromotionType()), available.get(0).getID());
-				return pvo;
-			} else if (available.size() == 2) {
-				String one = String.valueOf(available.get(0).getID()).substring(0, 1);
-				String two = String.valueOf(available.get(1).getID()).substring(0, 1);
-
-				if (one == "2" && two != "2") {
-					pvo = new PromotionVO(available.get(0).getPromotionName(), available.get(0).getContent(),
-							available.get(0).getStartTime(), available.get(0).getStopTime(),
-							converse(available.get(0).getPromotionType()), available.get(0).getID());
-					return pvo;
-				} else if (two == "2" && one != "2") {
-					pvo = new PromotionVO(available.get(1).getPromotionName(), available.get(1).getContent(),
-							available.get(1).getStartTime(), available.get(1).getStopTime(),
-							converse(available.get(1).getPromotionType()), available.get(1).getID());
-					return pvo;
-				} else {
-					return null;
-				}
-			}
-
-			remoteController.getPromotionDataService().finishPromotionDataService();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ParseException pe) {
-			pe.printStackTrace();
-		}
-
-		return null;*/
 	}
 //
 	public static void main(String[]args){
@@ -399,6 +415,19 @@ public class PromotionController implements PromotionBLService {
 		//System.out.println(pc.getPromotionName());
 	}
 	//
+	
+	public Date getTimeSpan(Date holdDate, int span){
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(holdDate);
+		
+		java.util.Date utilDate = (java.util.Date)calendar.getTime();
+		calendar.add(calendar.DATE, span);
+		utilDate = (java.util.Date)calendar.getTime();
+		Date newDate = new Date(utilDate.getTime());
+		
+		return newDate;
+	}
+	
 	public boolean beforeDate(Date first, Date second) {
 		Date d1_temp = Date.valueOf(first.toString());
 		Date d2_temp = Date.valueOf(second.toString());

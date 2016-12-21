@@ -3,7 +3,7 @@ package po;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class PromotionPO implements Serializable, Promotion {
+public class PromotionPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -72,9 +72,8 @@ public class PromotionPO implements Serializable, Promotion {
 		return id;
 	}
 
-	@Override
+	
 	public double calculatePayment(double sum) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }
