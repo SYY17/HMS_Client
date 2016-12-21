@@ -285,7 +285,7 @@
                   <DropShadow />
                </effect>
             </TextArea>
-            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="213.0" prefWidth="470.0">
+            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="191.0" prefWidth="470.0">
                <columns>
                   <TableColumn prefWidth="121.0" text="房间类型" />
                   <TableColumn prefWidth="106.0" text="总数量" />
@@ -321,11 +321,6 @@
                   <Font size="37.0" />
                </font>
             </Label>
-            <Label fx:id="order" layoutX="551.0" layoutY="545.0" onMouseClicked="#onOrder" text="去下单">
-               <font>
-                  <Font name="HanziPen SC Regular" size="26.0" />
-               </font>
-            </Label>
             <Label layoutX="155.0" layoutY="165.0" text="地址:">
                <font>
                   <Font size="20.0" />
@@ -341,11 +336,16 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="historyorder" layoutX="183.0" layoutY="545.0" onMouseClicked="#onHistoryOrder" text="历史订单">
-               <font>
-                  <Font name="HanziPen SC Regular" size="26.0" />
-               </font>
-            </Label>
+            <ImageView fx:id="order" fitHeight="54.0" fitWidth="56.0" layoutX="581.0" layoutY="530.0" onMouseClicked="#onOrder">
+               <image>
+                  <Image url="@order.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="historyOrder" fitHeight="61.0" fitWidth="87.0" layoutX="178.0" layoutY="527.0" onMouseClicked="#onHistoryOrder">
+               <image>
+                  <Image url="@historyOrder.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
