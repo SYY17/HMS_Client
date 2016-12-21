@@ -210,9 +210,15 @@ public class OrderController implements OrderBLService {
 			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
 			int userID = userInfo.searchByUserName(ovo.getUserName());
 			if (orderStatus.toString().equals(OrderStatus.Canceled.toString())) {
-				if (ovo.getDeadline().getTime() - System.currentTimeMillis() < 6 * 1000 * 60 * 60) {
-					creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2);
+				if (ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
+					if (ovo.getDeadline().getTime() - System.currentTimeMillis() < 6 * 1000 * 60 * 60) {
+						creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2);
+					}
+				} else if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
+					creditinfo.updateCreditByUserID(userID, ovo.getPrice());
 				}
+			} else if (orderStatus.toString().equals(OrderStatus.HalfCanceled.toString())) {
+				creditinfo.updateCreditByUserID(userID, ovo.getPrice() / 2);
 			} else if (orderStatus.toString().equals(OrderStatus.Abnormal.toString())) {
 				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice());
 			} else if (orderStatus.toString().equals(OrderStatus.Finished.toString())) {

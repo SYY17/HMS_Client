@@ -1,5 +1,6 @@
 package presentation.mainui;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -160,6 +161,7 @@ public class SalerUI_start extends Application {
 	 * 
 	 * @param root
 	 */
+	@SuppressWarnings("deprecation")
 	private void initiateTableView(Parent root) {
 		@SuppressWarnings("unchecked")
 		// 查找tableview
@@ -178,7 +180,11 @@ public class SalerUI_start extends Application {
 				.reviewOrder(/* id = */40000000, OrderStatus.Abnormal);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			data.add(new OrderDataHelper().toOrderDataForSalerUI(ovo));
+			Date orderDate = ovo.getSetTime();
+			Date currentDate = new Timestamp(System.currentTimeMillis());
+			if (orderDate.getDay() == currentDate.getDay() && orderDate.getMonth() == currentDate.getMonth()) {
+				data.add(new OrderDataHelper().toOrderDataForSalerUI(ovo));
+			}
 		}
 		newAbnormalOrderTableView.setItems(data);
 	}

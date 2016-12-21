@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import businesslogicservice.ResultMessage;
 import businesslogicservice.loginblservice.LoginBLService;
+import dataservice.customerdataservice.CustomerDataService;
 import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 import rmi.RemoteController;
@@ -13,6 +14,7 @@ public class LoginController implements LoginBLService {
 
 	private RemoteController remoteController;
 	private UserDataService userdataservice;
+	private CustomerDataService customerdataservice;
 
 	public LoginController() {
 		// TODO Auto-generated constructor stub
@@ -21,6 +23,7 @@ public class LoginController implements LoginBLService {
 		runner.start();
 		remoteController = runner.getRemoteController();
 		userdataservice = remoteController.getUserDataService();
+		customerdataservice = remoteController.getCustomerDataService();
 	}
 
 	/**
@@ -45,6 +48,10 @@ public class LoginController implements LoginBLService {
 			user = new UserPO(id, username, password);
 			userdataservice.insertUser(user);
 			userdataservice.finishUserDataService();
+			
+			customerdataservice.initCustomerDataService();
+			customerdataservice.insertCustomer(username);
+			customerdataservice.finishCustomerDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

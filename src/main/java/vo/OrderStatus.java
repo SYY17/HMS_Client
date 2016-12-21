@@ -1,5 +1,5 @@
 package vo;
 
 public enum OrderStatus {
-	Unfilled, Finished, Abnormal, Canceled
+	Unfilled, Finished, Abnormal, Canceled, HalfCanceled
 }
