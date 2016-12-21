@@ -174,7 +174,7 @@
                   <DropShadow />
                </effect>
             </ChoiceBox>
-            <ChoiceBox fx:id="businessArea" layoutX="702.0" layoutY="440.0" prefHeight="27.0" prefWidth="80.0">
+            <ChoiceBox fx:id="businessArea" layoutX="702.0" layoutY="438.0" prefHeight="27.0" prefWidth="80.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -184,7 +184,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="652.0" layoutY="441.0" text="商圈">
+            <Label layoutX="652.0" layoutY="439.0" text="商圈">
                <font>
                   <Font size="20.0" />
                </font>
@@ -199,12 +199,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="652.0" layoutY="498.0" text="价格">
+            <Label layoutX="652.0" layoutY="490.0" text="价格">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="price" layoutX="702.0" layoutY="498.0" prefHeight="27.0" prefWidth="80.0">
+            <ChoiceBox fx:id="price" layoutX="702.0" layoutY="490.0" prefHeight="27.0" prefWidth="80.0">
                <effect>
                   <DropShadow />
                </effect>
@@ -229,6 +229,16 @@
                   <Image url="@find.png" />
                </image>
             </ImageView>
+            <Label layoutX="652.0" layoutY="535.0" text="类型">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="type" layoutX="702.0" layoutY="535.0" prefHeight="27.0" prefWidth="80.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ChoiceBox>
          </children>
       </Pane>
    </children>

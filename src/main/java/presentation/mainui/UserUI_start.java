@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import businesslogic.hotelbl.HotelController;
+import businesslogic.orderbl.OrderController;
 import businesslogicservice.hotelBLService.HotelBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,6 +23,8 @@ import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
 import vo.HotelVO;
+import vo.OrderStatus;
+import vo.OrderVO;
 import vo.RoomVO;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -124,6 +128,125 @@ public class UserUI_start extends Application {
 			}
 			
 		});
+		
+		@SuppressWarnings("unchecked")
+		// 查找star
+		ChoiceBox<String> type = (ChoiceBox<String>) root.lookup("#type");
+		type.setItems(FXCollections.observableArrayList(/*"未预定过",*/ "已预定过","所有"));
+		
+		type.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener(){
+			@Override
+			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+				// TODO Auto-generated method stub
+				changeType(root, String.valueOf(newValue));
+			}
+			
+		});
+	}
+	
+	/**
+	 * 
+	 * @param root
+	 * @param type
+	 */
+	private void changeType(Parent root, String type){
+		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
+		
+		HotelBLService hotelBlService = new HotelController();
+		ArrayList<HotelVO> all = hotelBlService.reviewHotelList();
+		
+		OrderBLService orderBlService = new OrderController();
+		ArrayList<OrderVO> orderList = orderBlService.reviewOrder(id, OrderStatus.Finished);
+		
+		ArrayList<HotelVO> reserved = new ArrayList<HotelVO>();
+		
+		for(int i=0;i<orderList.size();i++){
+			if(!reserved.contains(hotelBlService.reviewHotelInfo(orderList.get(i).getHotelName()))){
+				reserved.add(hotelBlService.reviewHotelInfo(orderList.get(i).getHotelName()));
+			}
+		}
+
+		if(type.equals("2")){//永远不会取到
+			
+			ArrayList<HotelVO> un = new ArrayList<HotelVO>();
+			for(int i=0;i<all.size();i++){
+				for(int j=0;j<reserved.size();j++){
+					if(!all.get(i).getHotelName().equals(reserved.get(i).getHotelName())){
+						un.add(all.get(i));
+					}
+				}
+			}
+			
+			 ArrayList<String> content = new ArrayList<String>();
+			 for(int i=0;i<un.size();i++){
+				 content.add(getExpression(un.get(i)));
+			 }
+			 
+			 ObservableList<String> strList = FXCollections.observableArrayList(content);
+			 hotelList.setItems(strList);
+			
+			 hotelList.getSelectionModel().selectedItemProperty().addListener(
+						new ChangeListener<String>(){
+							@Override
+							public void changed(ObservableValue<? extends String> observable, String oldValue,
+									String newValue) {
+								// TODO Auto-generated method stub
+								//searchTextField.setText(newValue);
+								hotelname = getName(newValue);
+								UserUI_controller.hotelname = hotelname;
+							}
+						}
+						);
+				
+		}else if(type.equals("0")){
+			ArrayList<String> content = new ArrayList<String>();
+			 for(int i=0;i<reserved.size();i++){
+				 content.add(getExpression(reserved.get(i)));
+			 }
+
+				ObservableList<String> strList = FXCollections.observableArrayList(content);
+				hotelList.setItems(strList);
+						
+				hotelList.getSelectionModel().selectedItemProperty().addListener(
+						new ChangeListener<String>(){
+
+							@Override
+							public void changed(ObservableValue<? extends String> observable, String oldValue,
+									String newValue) {
+								// TODO Auto-generated method stub
+								//searchTextField.setText(newValue);
+								hotelname = getName(newValue);
+								UserUI_controller.hotelname = hotelname;
+							}
+							
+						}
+						);
+		}else if(type.equals("1")){
+			ArrayList<String> content = new ArrayList<String>();
+			 for(int i=0;i<all.size();i++){
+				 content.add(getExpression(all.get(i)));
+			 }
+
+				ObservableList<String> strList = FXCollections.observableArrayList(content);
+				hotelList.setItems(strList);
+						
+				hotelList.getSelectionModel().selectedItemProperty().addListener(
+						new ChangeListener<String>(){
+
+							@Override
+							public void changed(ObservableValue<? extends String> observable, String oldValue,
+									String newValue) {
+								// TODO Auto-generated method stub
+								//searchTextField.setText(newValue);
+								hotelname = getName(newValue);
+								UserUI_controller.hotelname = hotelname;
+							}
+							
+						}
+						);
+		}
+		
+		
 	}
 	
 	/**
