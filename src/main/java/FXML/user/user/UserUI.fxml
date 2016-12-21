@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +22,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.UserUI_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.mainui.UserUI_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -72,22 +80,14 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="495.0" />
             <Label layoutX="104.0" layoutY="34.0" text="酒店管理系统" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <ListView fx:id="hotelList" layoutX="180.0" layoutY="213.0" prefHeight="311.0" prefWidth="435.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ListView>
+            <ListView fx:id="hotelList" layoutX="180.0" layoutY="213.0" prefHeight="311.0" prefWidth="435.0" />
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/logo.png" />
@@ -164,51 +164,31 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
-            <TextField fx:id="searchTextField" layoutX="488.0" layoutY="180.0" prefHeight="27.0" prefWidth="127.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextField>
-            <ChoiceBox fx:id="rating" layoutX="702.0" layoutY="336.0" prefHeight="27.0" prefWidth="80.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ChoiceBox>
-            <ChoiceBox fx:id="businessArea" layoutX="702.0" layoutY="438.0" prefHeight="27.0" prefWidth="80.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ChoiceBox>
-            <Label layoutX="652.0" layoutY="337.0" text="评分">
+            <TextField fx:id="searchTextField" layoutX="488.0" layoutY="180.0" prefHeight="27.0" prefWidth="127.0" />
+            <ChoiceBox fx:id="rating" layoutX="702.0" layoutY="355.0" prefHeight="27.0" prefWidth="80.0" />
+            <ChoiceBox fx:id="businessArea" layoutX="702.0" layoutY="448.0" prefHeight="27.0" prefWidth="80.0" />
+            <Label layoutX="652.0" layoutY="357.0" text="评分">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="652.0" layoutY="439.0" text="商圈">
+            <Label layoutX="652.0" layoutY="449.0" text="商圈">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="star" layoutX="702.0" layoutY="386.0" prefHeight="27.0" prefWidth="80.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ChoiceBox>
-            <Label layoutX="652.0" layoutY="387.0" text="星级">
+            <ChoiceBox fx:id="star" layoutX="702.0" layoutY="401.0" prefHeight="27.0" prefWidth="80.0" />
+            <Label layoutX="652.0" layoutY="402.0" text="星级">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="652.0" layoutY="490.0" text="价格">
+            <Label layoutX="652.0" layoutY="493.0" text="价格">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="price" layoutX="702.0" layoutY="490.0" prefHeight="27.0" prefWidth="80.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ChoiceBox>
+            <ChoiceBox fx:id="price" layoutX="702.0" layoutY="493.0" prefHeight="27.0" prefWidth="80.0" />
             <ImageView fx:id="go" fitHeight="47.0" fitWidth="49.0" layoutX="566.0" layoutY="528.0" onMouseClicked="#onGo">
                <image>
                   <Image url="@go.png" />
@@ -234,11 +214,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="type" layoutX="702.0" layoutY="535.0" prefHeight="27.0" prefWidth="80.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ChoiceBox>
+            <ChoiceBox fx:id="type" layoutX="702.0" layoutY="535.0" prefHeight="27.0" prefWidth="80.0" />
+            <Label layoutX="698.0" layoutY="311.0" text="筛选">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

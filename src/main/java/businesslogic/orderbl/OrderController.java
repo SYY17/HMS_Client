@@ -138,45 +138,27 @@ public class OrderController implements OrderBLService {
 			Date checkIn, Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
 		try {
 			orderDataService.initOrderDataService();
-			boolean mark = true;
 			int maxOrderID = 0;
-			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
 			ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
 			listTemp = orderDataService.findOrder();
-			list = orderDataService.findOrderByHotelName(hotelName);
 			for (int i = 0; i < listTemp.size(); i++) {
 				if (maxOrderID < listTemp.get(i).getOrderID()) {
 					maxOrderID = listTemp.get(i).getOrderID();
 				}
 			}
-			for (int i = 0; i < list.size(); i++) {
-				if (conflictTime(list.get(i), checkIn, checkOut)) {
-					mark = false;
-					break;
-				}
-			}
-			if (mark) {
-				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
-						/*
-						 * promotionInfo.getFinalPrice(hotelName, setTime,
-						 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
-						 */1, roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild,
-						null);
-				orderDataService.insertOrder(VOToPO(ovoTemp));
-				return ovoTemp;
-			}
+			OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
+					/*
+					 * promotionInfo.getFinalPrice(hotelName, setTime,
+					 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
+					 */1, roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
+			orderDataService.insertOrder(VOToPO(ovoTemp));
 			orderDataService.finishOrderDataService();
+			return ovoTemp;
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		return null;
-	}
-
-	// TODO finish the method
-	private boolean conflictTime(OrderPO orderPO, Date checkIn, Date checkOut) {
-		boolean mark = false;
-		return mark;
 	}
 
 	/**
@@ -196,7 +178,7 @@ public class OrderController implements OrderBLService {
 			return ResultMessage.FALSE;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param id
@@ -204,7 +186,7 @@ public class OrderController implements OrderBLService {
 	 * @return 分配房间号
 	 */
 	@Override
-	public ResultMessage assignRoom(int id, String room){
+	public ResultMessage assignRoom(int id, String room) {
 		try {
 			orderDataService.updateOrder(id, room);
 			return ResultMessage.TRUE;

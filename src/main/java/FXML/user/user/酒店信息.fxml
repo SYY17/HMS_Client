@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -14,7 +22,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.HotelInformation_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.HotelInformation_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -72,11 +80,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.81" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="495.0" />
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新申请消息" textFill="WHITE">
                <cursor>
@@ -125,7 +129,7 @@
                   </Label>
                </center>
             </BorderPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" opacity="0.81" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
             <Label fx:id="hotelSum" layoutX="690.0" layoutY="406.0" text="0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -280,21 +284,14 @@
                   <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
                </tooltip>
             </Label>
-            <TextArea fx:id="description" layoutX="165.0" layoutY="235.0" prefHeight="80.0" prefWidth="470.0" promptText="简要介绍">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextArea>
-            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="191.0" prefWidth="470.0">
+            <TextArea fx:id="description" layoutX="444.0" layoutY="166.0" prefHeight="92.0" prefWidth="188.0" promptText="简要介绍" />
+            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="288.0" prefHeight="235.0" prefWidth="470.0">
                <columns>
                   <TableColumn prefWidth="121.0" text="房间类型" />
                   <TableColumn prefWidth="106.0" text="总数量" />
                   <TableColumn prefWidth="129.0" text="空余数" />
                   <TableColumn prefWidth="113.0" text="价格" />
                </columns>
-               <effect>
-                  <DropShadow />
-               </effect>
             </TableView>
             <Label fx:id="HRating" layoutX="571.0" layoutY="120.0" text="评分">
                <font>
@@ -306,7 +303,7 @@
                   <Font name="Kefa Regular" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="HBA" layoutX="495.0" layoutY="162.0" prefHeight="28.0" prefWidth="153.0" text="商圈">
+            <Label fx:id="HBA" layoutX="209.0" layoutY="231.0" prefHeight="28.0" prefWidth="153.0" text="商圈">
                <font>
                   <Font name="Heiti TC Light" size="20.0" />
                </font>
@@ -326,12 +323,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="155.0" layoutY="198.0" text="电话:">
+            <Label layoutX="155.0" layoutY="199.0" text="电话:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="443.0" layoutY="165.0" text="商圈:">
+            <Label layoutX="157.0" layoutY="234.0" text="商圈:">
                <font>
                   <Font size="20.0" />
                </font>
