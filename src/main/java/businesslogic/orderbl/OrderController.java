@@ -13,6 +13,7 @@ import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
+import presentation.controller.IDHelper;
 import vo.RoomType;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
@@ -148,10 +149,9 @@ public class OrderController implements OrderBLService {
 				}
 			}
 			OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
-					/*
-					 * promotionInfo.getFinalPrice(hotelName, setTime,
-					 * hotelInfo.getPrice(hotelName, roomType) * roomNumber)
-					 */1, roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
+					promotionInfo.getFinalPrice(IDHelper.getInstance().getID(), roomNumber, hotelName, setTime,
+							hotelInfo.getPrice(hotelName, roomType) * roomNumber),
+					roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
 			orderDataService.insertOrder(VOToPO(ovoTemp));
 			orderDataService.finishOrderDataService();
 			return ovoTemp;

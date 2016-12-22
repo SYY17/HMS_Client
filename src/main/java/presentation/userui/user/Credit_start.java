@@ -93,6 +93,7 @@ public class Credit_start extends Application {
 		for (int i = 0; i < timeList.size(); i++) {
 			data.add(new CreditData(timeList.get(i).getUserId(), timeList.get(i).getTime(), timeList.get(i).getChange(),
 					timeList.get(i).getCreditMovement().toString(), timeList.get(i).getRemain()));
+			System.out.println(timeList.get(i).getCreditMovement().toString());
 		}
 
 		creditTable.setItems(data);

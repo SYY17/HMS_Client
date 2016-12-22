@@ -49,7 +49,7 @@ public class HotelController implements HotelBLService {
 
 		return hvo;
 	}
-	
+
 	@Override
 	public HotelVO searchHotelByID(int id) {
 		// TODO Auto-generated method stub
@@ -66,13 +66,13 @@ public class HotelController implements HotelBLService {
 
 		return hvo;
 	}
-	
-//	public static void main(String[] args){
-//		HotelBLService hotel = new HotelController();
-//		HotelVO hvo = hotel.searchHotelByID(20905098);
-//		System.out.println(hvo.getHotelDescription());
-//	}
-	
+
+	// public static void main(String[] args){
+	// HotelBLService hotel = new HotelController();
+	// HotelVO hvo = hotel.searchHotelByID(20905098);
+	// System.out.println(hvo.getHotelDescription());
+	// }
+
 	@Override
 	public ArrayList<HotelVO> reviewHotelList() {
 		// TODO Auto-generated method stub
@@ -287,5 +287,8 @@ public class HotelController implements HotelBLService {
 		return hvo;
 	}
 
-
+//	public static void main(String[] args) {
+//		HotelController h = new HotelController();
+//		h.ModifyRoom(new RoomVO(21214001, vo.RoomType.KING_SIZE_ROOM, 1000, 999, 10000));
+//	}
 }

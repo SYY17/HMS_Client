@@ -71,24 +71,24 @@ public class OrderList_controller {
 
 	@FXML
 	private void onOrderList(Event event) {
-//		mark.setVisible(true);
-//		room.setVisible(true);
+		mark.setVisible(true);
+		room.setVisible(true);
 		execute.setText("确认入住");
 		initialTableView(orderListTableView, OrderStatus.Unfilled);
 	}
 
 	@FXML
 	private void onAbnormalOrderList(Event event) {
-//		mark.setVisible(true);
-//		room.setVisible(true);
+		mark.setVisible(true);
+		room.setVisible(true);
 		execute.setText("延迟入住");
 		initialTableView(abnormalOrderListTableView, OrderStatus.Abnormal);
 	}
 
 	@FXML
 	private void onUncheckoutOrderList(Event event) {
-//		mark.setVisible(false);
-//		room.setVisible(false);
+		mark.setVisible(false);
+		room.setVisible(false);
 		execute.setText("确认退房");
 		initialTableView(uncheckoutOrderListTableView, OrderStatus.Finished);
 	}

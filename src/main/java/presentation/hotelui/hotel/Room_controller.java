@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.controller.HotelControllerImpl;
+import presentation.controller.IDHelper;
 import presentation.hotelui.HotelControllerService;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.HotelUI_start;
@@ -38,7 +39,7 @@ public class Room_controller {
 	
 	@FXML
 	private void onUpdate(MouseEvent event){
-		int hotelID = 20905098;
+		int hotelID = IDHelper.getInstance().getID();
 			
 		RoomType type = null;
 		if (typeChoice.getValue().equals("单人间")) {
@@ -70,7 +71,7 @@ public class Room_controller {
 				/*
 				 * 提示更新成功
 				 */
-				new Manage_start().start(stage);
+				new Room_start().start(stage);
 			}else{
 				/*
 				 * 提示更新失败

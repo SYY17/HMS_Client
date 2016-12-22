@@ -1,6 +1,7 @@
 package presentation.userui.user;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -10,8 +11,10 @@ import java.util.Date;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.alertui.Alert;
 import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
 import presentation.controller.UserControllerImpl;
@@ -19,13 +22,14 @@ import presentation.loginui.LoginUI_start;
 import presentation.mainui.UserUI_start;
 import presentation.orderui.OrderControllerService;
 import presentation.userui.UserControllerService;
+import vo.RoomType;
 
 public class MakeOrder_controller {
-	
+
 	private IDHelper idHelper;
 	private int id;
 	public static String hotelname;
-	
+
 	public static Stage stage;
 	@FXML
 	ChoiceBox<String> singlebox;
@@ -41,7 +45,9 @@ public class MakeOrder_controller {
 	DatePicker checkIn;
 	@FXML
 	DatePicker checkOut;
-	
+	@FXML 
+	Label HName;
+
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
 		new LoginUI_start().start(stage);
@@ -51,12 +57,12 @@ public class MakeOrder_controller {
 	private void onOrderManage(MouseEvent event) throws Exception {
 		AllOrder_start.getInstance().start(stage);
 	}
-	
+
 	@FXML
 	private void onHomepage(MouseEvent event) throws Exception {
 		new UserUI_start().start(stage);
 	}
-	
+
 	@FXML
 	private void onHistory(MouseEvent event) throws IOException {
 		Credit_start.getInstance().start(stage);
@@ -66,19 +72,18 @@ public class MakeOrder_controller {
 	private void onInfoManage(MouseEvent event) {
 		new DetailedInformation_start().start(stage);
 	}
-	
 
 	@SuppressWarnings("unused")
 	@FXML
 	private void onSubmit(MouseEvent event) {
-		//new DetailedInformation_start().start(stage);
+		// new DetailedInformation_start().start(stage);
 		this.initiateHelper();
-		String date = initiateUserName();
-		String username = initiateDate();
-		
-		try{
-			Date ci;
-			Date co;
+		String username = initiateUserName();
+		String date = initiateDate();
+		hotelname = HName.getText();
+		try {
+			java.sql.Date ci;
+			java.sql.Date co;
 			LocalDate startIns = checkIn.getValue();
 			LocalDate stopIns = checkOut.getValue();
 			String pattern = "yyyy-MM-dd";
@@ -88,29 +93,53 @@ public class MakeOrder_controller {
 			SimpleDateFormat format = new SimpleDateFormat(pattern);
 			java.util.Date date1;
 			java.util.Date date2;
-			
+
 			date1 = format.parse(ciday);
 			date2 = format.parse(coday);
-			ci = new Date(date1.getTime());
-			co= new Date(date2.getTime());
-			
-			int singleNum = 0,standardNum = 0,kingNum = 0,suiteNum = 0,tripleNum = 0;
+			ci = new java.sql.Date(date1.getTime());
+			co = new java.sql.Date(date2.getTime());
+
+			int singleNum = 0, standardNum = 0, kingNum = 0, suiteNum = 0, tripleNum = 0;
 			singleNum = parseNum(singlebox);
 			standardNum = parseNum(standardbox);
 			kingNum = parseNum(kingbox);
 			suiteNum = parseNum(suitebox);
 			tripleNum = parseNum(triplebox);
-			
-			//用户名，酒店名，入住时间，离开时间,所有预定房间类型以及数量都获得了，还有setTime没有得到需要补充
-			
+
+			// 用户名，酒店名，入住时间，离开时间,所有预定房间类型以及数量都获得了，还有setTime没有得到需要补充
 			OrderControllerService orderController = new OrderControllerImpl();
-			
+			if (singleNum != 0) {
+				orderController.create(username, hotelname, RoomType.SINGLE_ROOM, singleNum,
+						new Timestamp(System.currentTimeMillis()), ci, co,
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+			}
+			if (standardNum != 0) {
+				orderController.create(username, hotelname, RoomType.STANDARD_ROOM, standardNum,
+						new Timestamp(System.currentTimeMillis()), ci, co,
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+			}
+			if (kingNum != 0) {
+				orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, kingNum,
+						new Timestamp(System.currentTimeMillis()), ci, co,
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+			}
+			if (suiteNum != 0) {
+				orderController.create(username, hotelname, RoomType.SUITE, suiteNum,
+						new Timestamp(System.currentTimeMillis()), ci, co,
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+			}
+			if (tripleNum != 0) {
+				orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, tripleNum,
+						new Timestamp(System.currentTimeMillis()), ci, co,
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+			}
+			Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param id
@@ -129,12 +158,13 @@ public class MakeOrder_controller {
 		idHelper = IDHelper.getInstance();
 		id = idHelper.getID();
 	}
-	
+
 	/**
 	 * 获得当前日期
+	 * 
 	 * @param root
 	 */
-	private String initiateDate(){
+	private String initiateDate() {
 		Date time = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String text = format.format(time);
@@ -143,6 +173,7 @@ public class MakeOrder_controller {
 
 	/**
 	 * 获得当前用户用户名
+	 * 
 	 * @param root
 	 */
 	private String initiateUserName() {

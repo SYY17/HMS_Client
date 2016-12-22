@@ -27,19 +27,19 @@ public class AllOrder_start extends Application {
 
 	private static AllOrder_start instance;
 	private Parent root;
-	
+
 	private AllOrder_start() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	//单件模式
-	public static  AllOrder_start getInstance(){
-		if(instance == null){
-			instance = new  AllOrder_start();
+
+	// 单件模式
+	public static AllOrder_start getInstance() {
+		if (instance == null) {
+			instance = new AllOrder_start();
 		}
 		return instance;
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
@@ -76,7 +76,7 @@ public class AllOrder_start extends Application {
 
 		// 建立observablelist以更新数据
 		final ObservableList<OrderData> data = FXCollections.observableArrayList();
-		 OrderControllerService orderControllerService = new OrderControllerImpl();
+		OrderControllerService orderControllerService = new OrderControllerImpl();
 
 		data.clear();
 		ObservableList<TableColumn<OrderData, ?>> observableList = allOrderTableView.getColumns();
@@ -94,45 +94,47 @@ public class AllOrder_start extends Application {
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
 			data.add(new OrderDataHelper().toOrderData(ovo));
-			
+
 		}
-			allOrderTableView.setItems(data);
+		allOrderTableView.setItems(data);
 	}
-	
+
 	/**
 	 * 
 	 * @param root
 	 */
-	private void initiateListView(Parent root){
+	private void initiateListView(Parent root) {
 		IDHelper idHelper = IDHelper.getInstance();
 		@SuppressWarnings("unchecked")
 		// 查找tableview
 		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
-		
+
 		@SuppressWarnings("unchecked")
 		// 查找tableview
 		Label number = (Label) root.lookup("#number");
-		
+
 		// 建立observablelist以更新数据
 		final ObservableList<String> data = FXCollections.observableArrayList();
 		data.clear();
-		int cnt=0;
-		 OrderControllerService orderControllerService = new OrderControllerImpl();
-		 ArrayList<OrderVO> orderList = orderControllerService.reviewOrder(/* id = */idHelper.getID());
-		 
-		 ArrayList<String> hotelname = new  ArrayList<String>();
-		 for(int i=0;i<orderList.size();i++){
-			 if(orderList.get(i).getOrderStatus() == OrderStatus.Finished){
-				 cnt++;
-				 if(!hotelname.contains(orderList.get(i).getHotelName())){
-					 hotelname.add(orderList.get(i).getHotelName());
-				 }
-			 }
-		 }
-		 
-		 ObservableList<String> strList = FXCollections.observableArrayList(hotelname);
-		 hotelList.setItems(strList);
-		 number.setText(String.valueOf(cnt));
+		int cnt = 0;
+		OrderControllerService orderControllerService = new OrderControllerImpl();
+		ArrayList<OrderVO> orderList = orderControllerService
+				.reviewOrder(/* id = */idHelper.getID());
+
+		ArrayList<String> hotelname = new ArrayList<String>();
+		for (int i = 0; i < orderList.size(); i++) {
+			if (orderList.get(i).getOrderStatus() == OrderStatus.Finished
+					|| orderList.get(i).getOrderStatus() == OrderStatus.Checkout) {
+				cnt++;
+				if (!hotelname.contains(orderList.get(i).getHotelName())) {
+					hotelname.add(orderList.get(i).getHotelName());
+				}
+			}
+		}
+
+		ObservableList<String> strList = FXCollections.observableArrayList(hotelname);
+		hotelList.setItems(strList);
+		number.setText(String.valueOf(cnt));
 	}
 
 }

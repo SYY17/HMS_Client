@@ -54,13 +54,13 @@ public class CreditData {
 	}
 
 	public void setCreditMovement(String creditmovement) {
-		if(creditmovement.equals(CreditMovement.AbnormalOrder)){
+		if(creditmovement.equals(CreditMovement.AbnormalOrder.toString())){
 			this.creditmovement.set("异常订单");
-		} else if(creditmovement.equals(CreditMovement.AddMoney)){
+		} else if(creditmovement.equals(CreditMovement.AddMoney.toString())){
 			this.creditmovement.set("充值操作");
-		} else if(creditmovement.equals(CreditMovement.CancelOrder)){
+		} else if(creditmovement.equals(CreditMovement.CancelOrder.toString())){
 			this.creditmovement.set("取消订单");
-		} else if(creditmovement.equals(CreditMovement.ExecuteOrder)){
+		} else if(creditmovement.equals(CreditMovement.ExecuteOrder.toString())){
 			this.creditmovement.set("执行订单");
 		}
 	}
