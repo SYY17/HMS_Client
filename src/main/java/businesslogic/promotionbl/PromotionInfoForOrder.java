@@ -1,12 +1,15 @@
 package businesslogic.promotionbl;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import businesslogic.hotelbl.HotelController;
 import businesslogic.orderbl.PromotionInfo;
 
 public class PromotionInfoForOrder implements PromotionInfo {
 
+	public static ArrayList<String> available;
+	
 	/**
 	 * 
 	 * @param roomtype,
@@ -25,4 +28,40 @@ public class PromotionInfoForOrder implements PromotionInfo {
 		return (int) finalPrice;
 	}
 
+	public static void addString(String s){
+		if(available == null){
+			available = new ArrayList<String>();
+		}
+		available.add(s);
+	}
+	
+	public void show(){
+		for(int i=0;i<available.size();i++){
+			System.out.println(available.get(i));
+		}
+	}
+	
+	public void delete(){
+		for(int i=0;i<available.size();i++){
+			if(available.get(i).contains("9999999")){
+				available.remove(available.get(i));
+				i--;
+			}
+		}
+	}
+	
+	/**
+	 * 直接调用这个方法就可以了
+	 */
+	public void output(){
+		delete();
+		show();
+	}
+	
+	/*public static void main(String[]args){
+		PromotionInfoForOrder a = new PromotionInfoForOrder();
+		int ww = a.getFinalPrice(10916231, 2, "七天嘿嘿嘿",Timestamp.valueOf("2016-12-02 00:00:00"), 1000);
+		//System.out.println(ww);
+		a.output();
+	}*/
 }

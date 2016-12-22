@@ -331,8 +331,12 @@ public class PromotionController implements PromotionBLService {
 				}
 			}//把网站营销promotion可用的加入
 			
+			
 			/*for(int i=0;i<available.size();i++){
 				System.out.println(available.get(i).getPromotionName());
+				//pvo = new PromotionVO(available.get(i).getPromotionName(),available.get(i).getContent(),available.get(i).getStartTime(),
+					//	available.get(i).getStopTime(),converse(available.get(i).getPromotionType()),available.get(i).getID());
+				//PromotionInfoForOrder.addList(pvo);
 			}*/
 			
 			if(roomNum>=3){
@@ -341,12 +345,16 @@ public class PromotionController implements PromotionBLService {
 				if(ins.getPromotionType() == PromotionType.DISCOUNT){
 					remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
 					DiscountPromotionPO ds = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(ins.getID(), ins.getContent()).get(0);
+				
 					result = ds.calculatePayment(initialPrice);
+					PromotionInfoForOrder.addString(String.valueOf(result)+"+"+ds.getPromotionName());
 					remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
 				}else{
 					remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
 					FullCutPromotionPO fs = remoteController.getFullCutPromotionDataService().findsFullPromotion(ins.getID(), ins.getContent()).get(0);
+					
 					result = fs.calculatePayment(initialPrice);
+					PromotionInfoForOrder.addString(String.valueOf(result)+"+"+fs.getPromotionName());
 					remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
 				}
 				return result;
@@ -364,16 +372,21 @@ public class PromotionController implements PromotionBLService {
 			
 			double bir = 0;
 			if(!afterDate(first, birth) && !beforeDate(second, birth)){
-				PromotionPO ins = remoteController.getPromotionDataService().findsPromotion(id, "生日优惠").get(0);
+				PromotionPO ins = remoteController.getPromotionDataService().findsPromotion(id, "生日").get(0);
+			
 				if(ins.getPromotionType() == PromotionType.DISCOUNT){
 					remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
 					DiscountPromotionPO ds = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(ins.getID(), ins.getContent()).get(0);
+					
 					bir = ds.calculatePayment(initialPrice);
+					PromotionInfoForOrder.addString(String.valueOf(bir)+"+"+ds.getPromotionName());
 					remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
 				}else{
 					remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
 					FullCutPromotionPO fs = remoteController.getFullCutPromotionDataService().findsFullPromotion(ins.getID(), ins.getContent()).get(0);
+					
 					bir = fs.calculatePayment(initialPrice);
+					PromotionInfoForOrder.addString(String.valueOf(bir)+"+"+fs.getPromotionName());
 					remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
 				}
 				return bir;
@@ -385,23 +398,30 @@ public class PromotionController implements PromotionBLService {
 			for(int i=0;i<available.size();i++){
 				if(available.get(i).getPromotionName().equals("生日")||available.get(i).getPromotionName().equals("三间及以上预定优惠")||available.get(i).getPromotionName().equals("合作企业客户折扣")){
 					list.add(new Double(9999999));
+					PromotionInfoForOrder.addString(String.valueOf(9999999)+"+"+available.get(i).getPromotionName());
 				}else{
 					if(available.get(i).getPromotionType() == PromotionType.DISCOUNT){
 						remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
 						DiscountPromotionPO ds = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(available.get(i).getID(), available.get(i).getContent()).get(0);
 						list.add(new Double(ds.calculatePayment(initialPrice)));
+						//
+						PromotionInfoForOrder.addString(String.valueOf(ds.calculatePayment(initialPrice))+"+"+ds.getPromotionName());
 						remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
 					}else{
 						remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
 						FullCutPromotionPO fs = remoteController.getFullCutPromotionDataService().findsFullPromotion(available.get(i).getID(), available.get(i).getContent()).get(0);
 						list.add(new Double(fs.calculatePayment(initialPrice)));
+						//
+						PromotionInfoForOrder.addString(String.valueOf(fs.calculatePayment(initialPrice))+"+"+fs.getPromotionName());
 						remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
 					}
 				}
 			}//找出最低返回
 			
+			
 			/*for(int i=0;i<list.size();i++){
 				System.out.println(list.get(i));
+				//PromotionInfoForOrder.addPrice(list.get(i));
 			}*/
 			
 			int small = 0;
@@ -428,7 +448,7 @@ public class PromotionController implements PromotionBLService {
 //
 	public static void main(String[]args){
 		PromotionController a = new PromotionController();
-		double pc = a.searchPromotionPresent(0,0,20902341,Timestamp.valueOf("2016-12-02 00:00:00"), 1000);
+		double pc = a.searchPromotionPresent(10916231,2,20902341,Timestamp.valueOf("2016-12-02 00:00:00"), 1000);
 		System.out.println(pc);
 	}
 	//

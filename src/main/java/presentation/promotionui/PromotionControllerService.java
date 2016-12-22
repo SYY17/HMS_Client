@@ -72,14 +72,14 @@ public interface PromotionControllerService {
 	/**
 	 * 
 	 * @param fvo
-	 * @return 删除营销策略
+	 * @return 删除满减策略
 	 */
 	public ResultMessage deleteFullCutPromotion(FullCutPromotionVO fvo);
 
 	/**
 	 * 
 	 * @param dvo
-	 * @return 删除营销策略
+	 * @return 删除折扣策略
 	 */
 	public ResultMessage deleteDiscountPromotion(DiscountPromotionVO dvo);
 
