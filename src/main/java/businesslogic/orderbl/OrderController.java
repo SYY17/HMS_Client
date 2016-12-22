@@ -68,7 +68,7 @@ public class OrderController implements OrderBLService {
 			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(listTemp.get(i).getOrderID()));
 			if (System.currentTimeMillis() > ovo.getDeadline().getTime()
 					&& ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
-				changeOrderStatus(ovo.getOrderID(), OrderStatus.Abnormal,CreditMovement.AbnormalOrder);
+				changeOrderStatus(ovo.getOrderID(), OrderStatus.Abnormal, CreditMovement.AbnormalOrder);
 			}
 		}
 		if (id >= 30000000) {
@@ -205,7 +205,7 @@ public class OrderController implements OrderBLService {
 	 * @return 处理异常订单
 	 */
 	@Override
-	public ResultMessage changeOrderStatus(int id, OrderStatus status,CreditMovement creditMovement) {
+	public ResultMessage changeOrderStatus(int id, OrderStatus status, CreditMovement creditMovement) {
 		po.OrderStatus orderStatus;
 		if (status.toString().equals("HalfCanceled")) {
 			orderStatus = po.OrderStatus.valueOf("Canceled");
@@ -218,28 +218,28 @@ public class OrderController implements OrderBLService {
 			orderDataService.updateOrder(id, orderStatus);
 			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
 			int userID = userInfo.searchByUserName(ovo.getUserName());
-			
-			
-			if (orderStatus.toString().equals(OrderStatus.Canceled.toString())) {
+
+			if (creditMovement.toString().equals(CreditMovement.AbnormalOrder.toString())) {
+				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice());
+			}else if (creditMovement.toString().equals(CreditMovement.CancelOrder.toString())) {
 				if (ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
 					if (ovo.getDeadline().getTime() - System.currentTimeMillis() < 6 * 1000 * 60 * 60) {
 						creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2);
 					}
 				} else if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
-					creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+					if (orderStatus.toString().equals(OrderStatus.Canceled.toString())) {
+						creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+					} else if (orderStatus.toString().equals(OrderStatus.HalfCanceled.toString())) {
+						creditinfo.updateCreditByUserID(userID, ovo.getPrice() / 2);
+					}
 				}
-			} else if (orderStatus.toString().equals(OrderStatus.HalfCanceled.toString())) {
-				creditinfo.updateCreditByUserID(userID, ovo.getPrice() / 2);
-			} else if (orderStatus.toString().equals(OrderStatus.Abnormal.toString())) {
-				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice());
-			} else if (orderStatus.toString().equals(OrderStatus.Finished.toString())) {
+			} else if (creditMovement.toString().equals(CreditMovement.ExecuteOrder.toString())) {
 				if (orderDataService.findOrderByOrderID(id).getOrderStatus().toString().equals(OrderStatus.Abnormal)) {
 					creditinfo.updateCreditByUserID(userID, ovo.getPrice());
 				}
 				creditinfo.updateCreditByUserID(userID, ovo.getPrice());
 			}
-			
-			
+
 			orderDataService.finishOrderDataService();
 			return ResultMessage.TRUE;
 		} catch (RemoteException e) {
@@ -248,13 +248,8 @@ public class OrderController implements OrderBLService {
 		}
 	}
 
-	public static void main(String[] args) {
-		try {
-			System.out.println(new OrderController().getOrderByUserID(21214001).get(0).getUserName());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public static void main(String[] args) throws RemoteException {
+		System.out.println(new OrderController().reviewOrder(40000000).get(0).getUserName());
 	}
 
 }

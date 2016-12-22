@@ -63,6 +63,8 @@ public class OrderBLServiceTest {
 	public void test1_Create() {
 		orderID = orderBlService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut, deadline,
 				predictNumber, haveChild).getOrderID();
+		orderBlService.reviewOrder(ADMIN_ID);
+//		assertEquals(0, size);
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
 		assertEquals(userName, ovoTemp.getUserName());
 	}
@@ -86,7 +88,7 @@ public class OrderBLServiceTest {
 	 */
 	@Test
 	public void test3_ReviewOrderIntOrderStatus() {
-		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID, OrderStatus.Unfilled).get(0);
+		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID, OrderStatus.Abnormal).get(0);
 		assertEquals("admin", ovoTemp.getUserName());
 		assertEquals("中国", ovoTemp.getHotelName());
 
