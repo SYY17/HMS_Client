@@ -140,6 +140,12 @@ public class UserUI_start extends Application {
 			}
 			
 		});
+		
+		@SuppressWarnings("unchecked")
+		// 查找star
+		ChoiceBox<String> searchBox = (ChoiceBox<String>) root.lookup("#searchBox");
+		searchBox.setItems(FXCollections.observableArrayList("酒店名称", "星级","评分区间","有空房"));
+		
 	}
 	
 	/**
