@@ -66,7 +66,7 @@ public class ManageAbnormalOrderAndCredit_controller {
 		int userID = userControllerService.searchByUserName(username.getText()).getID();
 		int credit = Integer.parseInt(money.getText()) * 100;
 		creditControllerService.modifyCredit(userID, credit, CreditMovement.AddMoney);
-		this.credit.setText(credit + "");
+		this.credit.setText(creditControllerService.getCredit(userID).getCredit() + "");
 		this.money.clear();
 	}
 }

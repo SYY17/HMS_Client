@@ -48,9 +48,9 @@ public class Room_controller {
 			type = RoomType.STANDARD_ROOM;
 		} else if (typeChoice.getValue().equals("套间")){
 			type = RoomType.SUITE;
-		}else if (typeChoice.getSelectionModel().equals("三人间")){
+		}else if (typeChoice.getValue().equals("三人间")){
 			type = RoomType.TRIPLE_ROOM;
-		}else if (typeChoice.getSelectionModel().equals("总统套房")){
+		}else if (typeChoice.getValue().equals("总统套房")){
 			type = RoomType.KING_SIZE_ROOM;
 		}
 		

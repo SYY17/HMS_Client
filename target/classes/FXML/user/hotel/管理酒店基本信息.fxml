@@ -33,6 +33,9 @@
                <image>
                   <Image url="@../../login/icon/orderview_wh.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <Label layoutX="48.0" layoutY="310.0" onMouseClicked="#onReviewOrderList" text="订单管理" textFill="#fffdfd">
                <cursor>
@@ -46,6 +49,9 @@
                <image>
                   <Image url="@../../login/icon/promotion_wh.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <Label layoutX="48.0" layoutY="423.0" onMouseClicked="#onReviewPromotion" text="策略管理" textFill="WHITE">
                <cursor>
@@ -59,6 +65,9 @@
                <image>
                   <Image url="@../../login/icon/hotelinfo_wh.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <Label layoutX="48.0" layoutY="530.0" onMouseClicked="#onManage" text="酒店管理" textFill="WHITE">
                <cursor>
@@ -171,6 +180,9 @@
                <image>
                   <Image url="@../../login/icon/frontpage_wh.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="711.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -187,7 +199,7 @@
             </ImageView>
             <Label fx:id="hotelSum1" layoutX="723.0" layoutY="80.0" onMouseClicked="#onLogout" text="注销" textFill="WHITE">
                <cursor>
-                  <Cursor fx:constant="DEFAULT" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -290,7 +302,7 @@
                </tooltip>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="153.0" layoutX="153.0" layoutY="430.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="495.0" />
-            <Label layoutX="221.0" layoutY="226.0" onMouseClicked="#onReview" prefHeight="27.0" prefWidth="127.0" text="查看酒店信息">
+            <Label layoutX="224.0" layoutY="226.0" onMouseClicked="#onReview" prefHeight="27.0" prefWidth="127.0" text="查看酒店信息">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -298,7 +310,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="221.0" layoutY="312.0" onMouseClicked="#onModify" prefHeight="27.0" prefWidth="127.0" text="修改酒店信息">
+            <Label layoutX="223.0" layoutY="312.0" onMouseClicked="#onModify" prefHeight="27.0" prefWidth="127.0" text="修改酒店信息">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -306,7 +318,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="221.0" layoutY="493.0" onMouseClicked="#onUpdateRoom" prefHeight="27.0" prefWidth="127.0" text="更新客房信息">
+            <Label layoutX="222.0" layoutY="493.0" onMouseClicked="#onUpdateRoom" prefHeight="27.0" prefWidth="127.0" text="更新客房信息">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -314,6 +326,21 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="39.0" fitWidth="36.0" layoutX="183.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@look.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="35.0" layoutX="184.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@edit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="35.0" layoutX="184.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@edit.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
