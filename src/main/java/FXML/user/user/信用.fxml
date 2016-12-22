@@ -291,7 +291,9 @@
             <TableView fx:id="creditTable" layoutX="167.0" layoutY="231.0" prefHeight="294.0" prefWidth="463.0">
                <columns>
                   <TableColumn prefWidth="100.0" text="时间" />
-                  <TableColumn prefWidth="435.0" text="增减历史" />
+                  <TableColumn prefWidth="121.0" text="变更" />
+                  <TableColumn prefWidth="157.0" text="变更类型" />
+                  <TableColumn prefWidth="84.0" text="剩余信用" />
                </columns>
             </TableView>
             <Label layoutX="194.0" layoutY="197.0" text="信用历史">

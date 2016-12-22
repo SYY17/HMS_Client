@@ -1,5 +1,7 @@
 package businesslogic.orderbl;
 
+import vo.CreditMovement;
+
 public interface CreditInfo {
 	/**
 	 * 
@@ -13,5 +15,5 @@ public interface CreditInfo {
 	 * @param id
 	 * @return 更新用户信用值
 	 */
-	public void updateCreditByUserID(int id, int creditValue);
+	public void updateCreditByUserID(int id, int creditValue, CreditMovement creditMovement);
 }

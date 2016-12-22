@@ -220,24 +220,24 @@ public class OrderController implements OrderBLService {
 			int userID = userInfo.searchByUserName(ovo.getUserName());
 
 			if (creditMovement.toString().equals(CreditMovement.AbnormalOrder.toString())) {
-				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice());
-			}else if (creditMovement.toString().equals(CreditMovement.CancelOrder.toString())) {
+				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice(), creditMovement);
+			} else if (creditMovement.toString().equals(CreditMovement.CancelOrder.toString())) {
 				if (ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
 					if (ovo.getDeadline().getTime() - System.currentTimeMillis() < 6 * 1000 * 60 * 60) {
-						creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2);
+						creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2, creditMovement);
 					}
 				} else if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
 					if (orderStatus.toString().equals(OrderStatus.Canceled.toString())) {
-						creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+						creditinfo.updateCreditByUserID(userID, ovo.getPrice(), creditMovement);
 					} else if (orderStatus.toString().equals(OrderStatus.HalfCanceled.toString())) {
-						creditinfo.updateCreditByUserID(userID, ovo.getPrice() / 2);
+						creditinfo.updateCreditByUserID(userID, ovo.getPrice() / 2, creditMovement);
 					}
 				}
 			} else if (creditMovement.toString().equals(CreditMovement.ExecuteOrder.toString())) {
 				if (orderDataService.findOrderByOrderID(id).getOrderStatus().toString().equals(OrderStatus.Abnormal)) {
-					creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+					creditinfo.updateCreditByUserID(userID, ovo.getPrice(), creditMovement);
 				}
-				creditinfo.updateCreditByUserID(userID, ovo.getPrice());
+				creditinfo.updateCreditByUserID(userID, ovo.getPrice(), creditMovement);
 			}
 
 			orderDataService.finishOrderDataService();

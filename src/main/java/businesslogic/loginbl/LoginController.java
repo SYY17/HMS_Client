@@ -2,12 +2,16 @@ package businesslogic.loginbl;
 
 import java.rmi.RemoteException;
 
+import businesslogic.creditbl.CreditController;
 import businesslogicservice.ResultMessage;
+import businesslogicservice.creditBLService.CreditBLService;
 import businesslogicservice.loginblservice.LoginBLService;
+import dataservice.creditdataservice.CreditDataService;
 import dataservice.customerdataservice.CustomerDataService;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
+import po.CreditPO;
 import po.HotelPO;
 import po.RoomPO;
 import po.RoomType;
@@ -20,6 +24,7 @@ public class LoginController implements LoginBLService {
 	private RemoteController remoteController;
 	private UserDataService userdataservice;
 	private CustomerDataService customerdataservice;
+	private CreditBLService creditblservice;
 	private HotelDataService hoteldataservice;
 	private RoomDataService roomdataservice;
 
@@ -31,6 +36,7 @@ public class LoginController implements LoginBLService {
 		remoteController = runner.getRemoteController();
 		userdataservice = remoteController.getUserDataService();
 		customerdataservice = remoteController.getCustomerDataService();
+		creditblservice = new CreditController();
 	}
 
 	/**
@@ -54,23 +60,26 @@ public class LoginController implements LoginBLService {
 
 			user = new UserPO(id, username, password);
 			userdataservice.insertUser(user);
+			int userID = userdataservice.findUser(username).getID();
 			userdataservice.finishUserDataService();
-			
-			if(id<20000000){
+
+			if (10000000 <= userID && userID < 20000000) {
 				customerdataservice.initCustomerDataService();
 				customerdataservice.insertCustomer(username);
 				customerdataservice.finishCustomerDataService();
-			}else if(id<30000000){
+
+				creditblservice.addCredit(userID, 0);
+			} else if (20000000 <= userID && userID < 30000000) {
 				hoteldataservice.initHotelDataService();
 				hoteldataservice.insertHotel(new HotelPO(id, "", "", "", "", 0, 0, "", ""));
 				hoteldataservice.finishHotelDataService();
-				
+
 				roomdataservice.initRoomDataService();
-				roomdataservice.insertRoom(new RoomPO(id, RoomType.SINGLE_ROOM, 0, 0, 0));
-				roomdataservice.insertRoom(new RoomPO(id, RoomType.STANDARD_ROOM, 0, 0, 0));
-				roomdataservice.insertRoom(new RoomPO(id, RoomType.SUITE, 0, 0, 0));
-				roomdataservice.insertRoom(new RoomPO(id, RoomType.TRIPLE_ROOM, 0, 0, 0));
-				roomdataservice.insertRoom(new RoomPO(id, RoomType.KING_SIZE_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(userID, RoomType.SINGLE_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(userID, RoomType.STANDARD_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(userID, RoomType.SUITE, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(userID, RoomType.TRIPLE_ROOM, 0, 0, 0));
+				roomdataservice.insertRoom(new RoomPO(userID, RoomType.KING_SIZE_ROOM, 0, 0, 0));
 				roomdataservice.finishRoomDataService();
 			}
 			return ResultMessage.TRUE;

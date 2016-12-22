@@ -25,32 +25,32 @@ public class Credit_start extends Application {
 
 	private IDHelper idHelper;
 	private int id;
-	
+
 	private static Credit_start instance;
 	private Parent root;
-	
-	private Credit_start(){
-		
+
+	private Credit_start() {
+
 	}
-	
-	//单件模式
-		public static  Credit_start getInstance(){
-			if(instance == null){
-				instance = new Credit_start();
-			}
-			return instance;
+
+	// 单件模式
+	public static Credit_start getInstance() {
+		if (instance == null) {
+			instance = new Credit_start();
 		}
-	
+		return instance;
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/信用.fxml"));
-			
+
 			this.initiateHelper();
 			this.initiateElements(root);
 			initiateTableView(root);
-			
+
 			Scene scene = new Scene(root, 800, 600);
 			Credit_controller.stage = primaryStage;
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -83,13 +83,16 @@ public class Credit_start extends Application {
 		data.clear();
 		ObservableList<TableColumn<CreditData, ?>> observableList = creditTable.getColumns();
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("time"));
-		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("history"));
+		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("change"));
+		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("creditmovement"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("remain"));
 
 		System.out.println(id);
 		ArrayList<UserCreditHistoryVO> timeList = creditBlService.getHistory(id);
 
 		for (int i = 0; i < timeList.size(); i++) {
-			data.add(new CreditData(timeList.get(i).getTime(), timeList.get(i).getChange()));
+			data.add(new CreditData(timeList.get(i).getUserId(), timeList.get(i).getTime(), timeList.get(i).getChange(),
+					timeList.get(i).getCreditMovement().toString(), timeList.get(i).getRemain()));
 		}
 
 		creditTable.setItems(data);
@@ -97,6 +100,7 @@ public class Credit_start extends Application {
 
 	/**
 	 * 初始化界面组件
+	 * 
 	 * @param root
 	 */
 	private void initiateElements(Parent root) {
@@ -112,12 +116,13 @@ public class Credit_start extends Application {
 		idHelper = IDHelper.getInstance();
 		id = idHelper.getID();
 	}
-	
+
 	/**
 	 * 初始化当前日期
+	 * 
 	 * @param root
 	 */
-	private void initiateDate(Parent root){
+	private void initiateDate(Parent root) {
 		Label date = (Label) root.lookup("#date");
 		java.util.Date time = new java.util.Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -127,6 +132,7 @@ public class Credit_start extends Application {
 
 	/**
 	 * 初始化当前用户用户名
+	 * 
 	 * @param root
 	 */
 	private void initiateUserName(Parent root) {

@@ -2,6 +2,7 @@ package businesslogic.creditbl;
 
 import businesslogic.orderbl.CreditInfo;
 import businesslogicservice.creditBLService.CreditBLService;
+import vo.CreditMovement;
 
 public class CreditInfoForOrder implements CreditInfo {
 	CreditBLService creditBLService;
@@ -27,7 +28,7 @@ public class CreditInfoForOrder implements CreditInfo {
 	 * @return 更新用户信用值
 	 */
 	@Override
-	public void updateCreditByUserID(int id, int creditValue) {
-		creditBLService.addCredit(id, creditValue);
+	public void updateCreditByUserID(int id, int creditValue, CreditMovement creditMovement) {
+		creditBLService.modifyCredit(id, creditValue, creditMovement);
 	}
 }
