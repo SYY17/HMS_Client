@@ -135,25 +135,6 @@ public class CreatePromotion_controller {
 		new Manage_start().start(stage);
 	}
 
-	 @FXML
-	 private void onReviewOrderList(ActionEvent event) throws Exception {
-	 new OrderList_start().start(stage);
-	}
-	
-	 @FXML
-	 private void onMain(ActionEvent event) throws Exception {
-	 new HotelUI_start().start(stage);
-	 }
-	//
-	 @FXML
-	 private void onManage(ActionEvent event) throws Exception {
-	new Manage_start().start(stage);
-	}
-	//
-	 @FXML
-	 private void onReviewPromotion(ActionEvent event) throws Exception {
-	 new Promotion_start().start(stage);
-	 }
 	 
 	public Date strToDate(String strDate) {
 		String str = strDate;

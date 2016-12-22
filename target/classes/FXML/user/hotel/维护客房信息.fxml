@@ -34,7 +34,7 @@
                   <Image url="@../../login/icon/orderview_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="310.0" text="订单管理" textFill="#fffdfd">
+            <Label layoutX="48.0" layoutY="310.0" onMouseClicked="#onReviewOrderList" text="订单管理" textFill="#fffdfd">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -47,7 +47,7 @@
                   <Image url="@../../login/icon/promotion_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="423.0" text="策略管理" textFill="WHITE">
+            <Label layoutX="48.0" layoutY="423.0" onMouseClicked="#onReviewPromotion" text="策略管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -60,7 +60,7 @@
                   <Image url="@../../login/icon/hotelinfo_wh.png" />
                </image>
             </ImageView>
-            <Label layoutX="48.0" layoutY="530.0" text="酒店管理" textFill="WHITE">
+            <Label layoutX="48.0" layoutY="530.0" onMouseClicked="#onManage" text="酒店管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -96,7 +96,7 @@
                </image>
             </ImageView>
             <BorderPane layoutX="667.0" layoutY="275.0" prefHeight="27.0" prefWidth="127.0" />
-            <Label layoutX="61.0" layoutY="197.0" text="首页" textFill="WHITE">
+            <Label layoutX="61.0" layoutY="197.0" onMouseClicked="#onMain" text="首页" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

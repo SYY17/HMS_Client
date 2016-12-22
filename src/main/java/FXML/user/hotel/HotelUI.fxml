@@ -45,7 +45,7 @@
                   <Image url="@../../login/icon/orderview_wh.png" />
                </image>
             </ImageView>
-            <Label fx:id="orderManage" layoutX="48.0" layoutY="310.0" onMouseClicked="#onOrderManage" text="订单管理" textFill="#fffdfd">
+            <Label fx:id="orderManage" layoutX="48.0" layoutY="310.0" onMouseClicked="#onOrderList" text="订单管理" textFill="#fffdfd">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -58,7 +58,7 @@
                   <Image url="@../../login/icon/promotion_wh.png" />
                </image>
             </ImageView>
-            <Label fx:id="promotionManage" layoutX="48.0" layoutY="423.0" onMouseClicked="#onPromotionManage" text="策略管理" textFill="WHITE">
+            <Label fx:id="promotionManage" layoutX="48.0" layoutY="423.0" onMouseClicked="#onReviewPromotion" text="策略管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -71,7 +71,7 @@
                   <Image url="@../../login/icon/hotelinfo_wh.png" />
                </image>
             </ImageView>
-            <Label fx:id="hotelManage" layoutX="48.0" layoutY="530.0" onMouseClicked="#onHotelManage" text="酒店管理" textFill="WHITE">
+            <Label fx:id="hotelManage" layoutX="48.0" layoutY="530.0" onMouseClicked="#onManage" text="酒店管理" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -179,7 +179,7 @@
                   <Image url="@../../login/icon/datecheck_small.png" />
                </image>
             </ImageView>
-            <Label fx:id="homepage" layoutX="61.0" layoutY="197.0" onMouseClicked="#onHomepage" text="首页" textFill="WHITE">
+            <Label fx:id="homepage" layoutX="61.0" layoutY="197.0" onMouseClicked="#onMain" text="首页" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
