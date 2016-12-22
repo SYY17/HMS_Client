@@ -59,22 +59,22 @@ public class HotelUI_controller {
 	//
 	//
 	 @FXML
-	 private void onOrderList(ActionEvent event) throws Exception {
+	 private void onOrderList(MouseEvent event) throws Exception {
 	 new OrderList_start().start(stage);
 	}
 	
 	 @FXML
-	 private void onMain(ActionEvent event) throws Exception {
+	 private void onMain(MouseEvent event) throws Exception {
 	 new HotelUI_start().start(stage);
 	 }
 	//
 	 @FXML
-	 private void onManage(ActionEvent event) throws Exception {
+	 private void onManage(MouseEvent event) throws Exception {
 	new Manage_start().start(stage);
 	}
 	//
 	 @FXML
-	 private void onReviewPromotion(ActionEvent event) throws Exception {
+	 private void onReviewPromotion(MouseEvent event) throws Exception {
 	 new Promotion_start().start(stage);
 	 }
 	//

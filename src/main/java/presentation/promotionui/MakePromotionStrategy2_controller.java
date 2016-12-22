@@ -139,6 +139,7 @@ public class MakePromotionStrategy2_controller {
 			//
 			alert = Alert.getInstance();
 			alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
+			new MakePromotionStrategy1_start().start(stage);//
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

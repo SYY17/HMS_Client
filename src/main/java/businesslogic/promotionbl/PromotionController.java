@@ -331,6 +331,9 @@ public class PromotionController implements PromotionBLService {
 				}
 			}//把网站营销promotion可用的加入
 			
+			if(available.size() ==0){
+				return initialPrice;
+			}
 			
 			/*for(int i=0;i<available.size();i++){
 				System.out.println(available.get(i).getPromotionName());
