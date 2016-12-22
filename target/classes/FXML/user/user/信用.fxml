@@ -129,7 +129,7 @@
                </center>
             </BorderPane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" opacity="0.8" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
-            <Label fx:id="hotelSum" layoutX="690.0" layoutY="406.0" text="0">
+            <Label fx:id="ordernum" layoutX="690.0" layoutY="406.0" text="0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -211,7 +211,7 @@
                   <Image url="@../../login/icon/achievement.png" />
                </image>
             </ImageView>
-            <Label fx:id="hotelSum2" layoutX="742.0" layoutY="406.0" text="0">
+            <Label fx:id="creditvalue" layoutX="730.0" layoutY="406.0" prefHeight="15.0" prefWidth="36.0" text="0" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -283,12 +283,12 @@
                   <Tooltip text="总排名计算方法: 订单数的平方根*评分" />
                </tooltip>
             </Label>
-            <Label layoutX="191.0" layoutY="141.0" text="当前的信用是">
+            <Label layoutX="191.0" layoutY="141.0" text="您当前的信用是">
                <font>
                   <Font size="31.0" />
                </font>
             </Label>
-            <TableView fx:id="creditTable" layoutX="167.0" layoutY="231.0" prefHeight="294.0" prefWidth="463.0">
+            <TableView fx:id="creditTable" layoutX="167.0" layoutY="201.0" prefHeight="364.0" prefWidth="463.0">
                <columns>
                   <TableColumn prefWidth="100.0" text="时间" />
                   <TableColumn prefWidth="121.0" text="变更" />
@@ -296,9 +296,9 @@
                   <TableColumn prefWidth="84.0" text="剩余信用" />
                </columns>
             </TableView>
-            <Label layoutX="194.0" layoutY="197.0" text="信用历史">
+            <Label fx:id="credit" layoutX="417.0" layoutY="141.0" text="0">
                <font>
-                  <Font size="15.0" />
+                  <Font size="31.0" />
                </font>
             </Label>
          </children>

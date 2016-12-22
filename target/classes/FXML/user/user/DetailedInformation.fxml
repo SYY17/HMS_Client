@@ -139,7 +139,7 @@
                </center>
             </BorderPane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1f1f1" height="191.0" layoutX="647.0" layoutY="313.0" opacity="0.8" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="2.0" width="145.0" />
-            <Label fx:id="hotelSum" layoutX="690.0" layoutY="406.0" text="0">
+            <Label fx:id="ordernum" layoutX="690.0" layoutY="406.0" text="0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -221,7 +221,7 @@
                   <Image url="@../../login/icon/achievement.png" />
                </image>
             </ImageView>
-            <Label fx:id="hotelSum2" layoutX="742.0" layoutY="406.0" text="0">
+            <Label fx:id="creditvalue" layoutX="732.0" layoutY="406.0" prefHeight="15.0" prefWidth="28.0" text="0" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

@@ -17,11 +17,11 @@ public class CreditData {
 		this(0, null, 0, null, 0);
 	}
 
-	public CreditData(int id ,Date time, int change,String creditMovement,int remain) {
+	public CreditData(int id ,Date time, int change,CreditMovement creditMovement,int remain) {
 		this.time = new SimpleStringProperty(time.toString());
 		this.change = new SimpleStringProperty(String.valueOf(change));
 		this.id = new SimpleStringProperty(String.valueOf(id));
-		this.creditmovement = new SimpleStringProperty(creditMovement);
+		this.creditmovement = new SimpleStringProperty(creditMovement.toString());
 		this.remain = new SimpleStringProperty(String.valueOf(remain));
 	}
 
@@ -49,20 +49,21 @@ public class CreditData {
 		this.id.set(id);
 	}
 	
-	public String getCreditMovement() {
+	public String getCreditmovement() {
+		if(creditmovement.get().toString().equals(CreditMovement.AbnormalOrder.toString())){
+			return "异常订单";
+		} else if(creditmovement.get().toString().equals(CreditMovement.AddMoney.toString())){
+			return "充值操作";
+		} else if(creditmovement.get().toString().equals(CreditMovement.CancelOrder.toString())){
+			return "取消订单";
+		} else if(creditmovement.get().toString().equals(CreditMovement.ExecuteOrder.toString())){
+			return "执行订单";
+		}
 		return creditmovement.get();
 	}
 
-	public void setCreditMovement(String creditmovement) {
-		if(creditmovement.equals(CreditMovement.AbnormalOrder.toString())){
-			this.creditmovement.set("异常订单");
-		} else if(creditmovement.equals(CreditMovement.AddMoney.toString())){
-			this.creditmovement.set("充值操作");
-		} else if(creditmovement.equals(CreditMovement.CancelOrder.toString())){
-			this.creditmovement.set("取消订单");
-		} else if(creditmovement.equals(CreditMovement.ExecuteOrder.toString())){
-			this.creditmovement.set("执行订单");
-		}
+	public void setCreditmovement(CreditMovement creditmovement) {
+		this.creditmovement.set(creditmovement.toString());
 	}
 
 	public String getRemain() {

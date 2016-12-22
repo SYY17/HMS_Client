@@ -18,8 +18,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import presentation.controller.CreditControllerImpl;
 import presentation.controller.IDHelper;
+import presentation.controller.OrderControllerImpl;
 import presentation.controller.UserControllerImpl;
+import presentation.creditui.CreditControllerService;
+import presentation.orderui.OrderControllerService;
 import presentation.userui.UserControllerService;
 import vo.CustomerVO;
 import vo.UserVO;
@@ -65,6 +69,8 @@ public class DetailedInformation_start extends Application {
 		// TODO Auto-generated method stub
 		initiateUserName(root);
 		initiateDate(root);
+		initiateCredit(root);
+		initiateOrderNum(root);
 	}
 
 	/**
@@ -97,7 +103,29 @@ public class DetailedInformation_start extends Application {
 		String name = userController.searchByUserID(id);
 		username.setText(name);
 	}
+	/**
+	 * 初始化当前用户信用值
+	 * 
+	 * @param root
+	 */
+	private void initiateCredit(Parent root) {
+		Label creditvalue = (Label) root.lookup("#creditvalue");
+		CreditControllerService creditController = new CreditControllerImpl();
+		int value = creditController.getCredit(IDHelper.getInstance().getID()).getCredit();
+		creditvalue.setText(value + "");
+	}
 
+	/**
+	 * 初始化订单总数
+	 * 
+	 * @param root
+	 */
+	private void initiateOrderNum(Parent root) {
+		Label ordernum = (Label) root.lookup("#ordernum");
+		OrderControllerService orderController = new OrderControllerImpl();
+		int num = orderController.reviewOrder(IDHelper.getInstance().getID()).size();
+		ordernum.setText(num + "");
+	}
 	/**
 	 * 总体初始化方法
 	 * @param root

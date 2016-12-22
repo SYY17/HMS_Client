@@ -16,9 +16,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import presentation.controller.CreditControllerImpl;
 import presentation.controller.IDHelper;
+import presentation.controller.OrderControllerImpl;
 import presentation.controller.UserControllerImpl;
+import presentation.creditui.CreditControllerService;
+import presentation.orderui.OrderControllerService;
 import presentation.userui.UserControllerService;
+import vo.CreditMovement;
 import vo.UserCreditHistoryVO;
 
 public class Credit_start extends Application {
@@ -92,8 +97,11 @@ public class Credit_start extends Application {
 
 		for (int i = 0; i < timeList.size(); i++) {
 			data.add(new CreditData(timeList.get(i).getUserId(), timeList.get(i).getTime(), timeList.get(i).getChange(),
-					timeList.get(i).getCreditMovement().toString(), timeList.get(i).getRemain()));
-			System.out.println(timeList.get(i).getCreditMovement().toString());
+					CreditMovement.valueOf(timeList.get(i).getCreditMovement().toString()),
+					timeList.get(i).getRemain()));
+			System.out.println(new CreditData(timeList.get(i).getUserId(), timeList.get(i).getTime(), timeList.get(i).getChange(),
+					CreditMovement.valueOf(timeList.get(i).getCreditMovement().toString()),
+					timeList.get(i).getRemain()).getCreditmovement());
 		}
 
 		creditTable.setItems(data);
@@ -108,6 +116,8 @@ public class Credit_start extends Application {
 		// TODO Auto-generated method stub
 		initiateUserName(root);
 		initiateDate(root);
+		initiateCredit(root);
+		initiateOrderNum(root);
 	}
 
 	/**
@@ -141,5 +151,31 @@ public class Credit_start extends Application {
 		UserControllerService userController = new UserControllerImpl();
 		String name = userController.searchByUserID(id);
 		username.setText(name);
+	}
+
+	/**
+	 * 初始化当前用户信用值
+	 * 
+	 * @param root
+	 */
+	private void initiateCredit(Parent root) {
+		Label credit = (Label) root.lookup("#credit");
+		Label creditvalue = (Label) root.lookup("#creditvalue");
+		CreditControllerService creditController = new CreditControllerImpl();
+		int value = creditController.getCredit(IDHelper.getInstance().getID()).getCredit();
+		credit.setText(value + "");
+		creditvalue.setText(value + "");
+	}
+
+	/**
+	 * 初始化订单总数
+	 * 
+	 * @param root
+	 */
+	private void initiateOrderNum(Parent root) {
+		Label ordernum = (Label) root.lookup("#ordernum");
+		OrderControllerService orderController = new OrderControllerImpl();
+		int num = orderController.reviewOrder(IDHelper.getInstance().getID()).size();
+		ordernum.setText(num + "");
 	}
 }
