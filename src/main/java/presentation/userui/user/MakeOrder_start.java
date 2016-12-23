@@ -146,10 +146,15 @@ public class MakeOrder_start extends Application  {
 		ChoiceBox<String> suitebox = (ChoiceBox<String>) root.lookup("#suitebox");
 		
 		singlebox.setItems(FXCollections.observableArrayList(getNum("single")));
+		singlebox.setValue("0");
 		standardbox.setItems(FXCollections.observableArrayList(getNum("standard")));
+		standardbox.setValue("0");
 		triplebox.setItems(FXCollections.observableArrayList(getNum("triple")));
+		triplebox.setValue("0");
 		kingbox.setItems(FXCollections.observableArrayList(getNum("king")));
+		kingbox.setValue("0");
 		suitebox.setItems(FXCollections.observableArrayList(getNum("suite")));
+		suitebox.setValue("0");
 		
 		
 	}

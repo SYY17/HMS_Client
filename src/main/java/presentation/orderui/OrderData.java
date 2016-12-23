@@ -31,6 +31,7 @@ public class OrderData {
 		this.checkOut.set(checkOut.toString());
 		this.roomType.set(roomType.toString());
 		this.roomNumber.set(roomNumber);
+		this.price.set(price);
 	}
 
 	public int getOrderID() {

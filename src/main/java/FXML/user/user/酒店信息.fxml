@@ -333,16 +333,8 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ImageView fx:id="order" fitHeight="54.0" fitWidth="56.0" layoutX="581.0" layoutY="530.0" onMouseClicked="#onOrder">
-               <image>
-                  <Image url="@order.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="historyOrder" fitHeight="61.0" fitWidth="87.0" layoutX="178.0" layoutY="527.0" onMouseClicked="#onHistoryOrder">
-               <image>
-                  <Image url="@historyOrder.png" />
-               </image>
-            </ImageView>
+            <Button layoutX="571.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#onOrder" prefHeight="27.0" prefWidth="64.0" text="去下单" />
+            <Button layoutX="166.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#onHistoryOrder" prefHeight="27.0" prefWidth="64.0" text="返回" />
          </children>
       </Pane>
    </children>

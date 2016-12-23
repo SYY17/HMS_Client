@@ -179,7 +179,7 @@
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TableView fx:id="hotelTableView" layoutX="161.0" layoutY="277.0" prefHeight="149.0" prefWidth="219.0">
+            <TableView fx:id="hotelTableView" layoutX="161.0" layoutY="305.0" prefHeight="197.0" prefWidth="219.0">
                <columns>
                   <TableColumn prefWidth="101.0" text="房间类型" />
                   <TableColumn prefWidth="61.0" text="空余数" />
@@ -196,7 +196,7 @@
                   <Font name="Kefa Regular" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="HBA" layoutX="217.0" layoutY="201.0" prefHeight="28.0" prefWidth="50.0" text="商圈">
+            <Label fx:id="HBA" layoutX="217.0" layoutY="201.0" prefHeight="28.0" prefWidth="201.0" text="商圈">
                <font>
                   <Font name="Heiti TC Light" size="23.0" />
                </font>
@@ -211,36 +211,36 @@
                   <Font name="PingFang SC Medium" size="37.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="singlebox" layoutX="513.0" layoutY="332.0" prefHeight="27.0" prefWidth="76.0" />
-            <Label layoutX="401.0" layoutY="337.0" text="SINGLE">
+            <ChoiceBox fx:id="singlebox" layoutX="513.0" layoutY="306.0" prefHeight="27.0" prefWidth="76.0" />
+            <Label layoutX="399.0" layoutY="311.0" text="单人间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="394.0" layoutY="377.0" text="STANDARD">
+            <Label layoutX="401.0" layoutY="352.0" text="标准间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="403.0" layoutY="419.0" text="TRIPLE">
+            <Label layoutX="401.0" layoutY="394.0" text="三人间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="398.0" layoutY="462.0" text="KING_SIZE">
+            <Label layoutX="400.0" layoutY="437.0" text="总统套间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="408.0" layoutY="505.0" text="SUITE">
+            <Label layoutX="401.0" layoutY="480.0" text="套房">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="standardbox" layoutX="513.0" layoutY="377.0" prefHeight="27.0" prefWidth="76.0" />
-            <ChoiceBox fx:id="triplebox" layoutX="513.0" layoutY="419.0" prefHeight="27.0" prefWidth="76.0" />
-            <ChoiceBox fx:id="kingbox" layoutX="513.0" layoutY="462.0" prefHeight="27.0" prefWidth="76.0" />
-            <ChoiceBox fx:id="suitebox" layoutX="513.0" layoutY="505.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="standardbox" layoutX="513.0" layoutY="351.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="triplebox" layoutX="513.0" layoutY="393.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="kingbox" layoutX="513.0" layoutY="436.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="suitebox" layoutX="513.0" layoutY="479.0" prefHeight="27.0" prefWidth="76.0" />
             <Label layoutX="161.0" layoutY="165.0" text="地址:">
                <font>
                   <Font size="22.0" />
@@ -273,6 +273,18 @@
                   <Image url="@submit.jpg" />
                </image>
             </ImageView>
+            <Label layoutX="174.0" layoutY="541.0" text="预计入住人数：">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="400.0" layoutY="541.0" text="有无儿童：">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField layoutX="316.0" layoutY="541.0" prefHeight="27.0" prefWidth="51.0" promptText="人数" />
+            <CheckBox layoutX="514.0" layoutY="546.0" mnemonicParsing="false" />
          </children>
       </Pane>
    </children>
