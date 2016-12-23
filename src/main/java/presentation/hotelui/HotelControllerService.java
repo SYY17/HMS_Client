@@ -1,6 +1,8 @@
 package presentation.hotelui;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import businesslogicservice.ResultMessage;
 import po.RoomType;
 import vo.HotelVO;
@@ -93,4 +95,15 @@ public interface HotelControllerService {
 	 * @return roomList
 	 */
 	public ArrayList<RoomVO> searchRooms(int id);
+	
+	/**
+	 * 获得指定时间段指定房型剩余数量
+	 * 
+	 * @param hotelid
+	 * @param roomtype
+	 * @param checkin
+	 * @param checkout
+	 * @return remainRooms
+	 */
+	public int getRemainRooms(int hotelid, RoomType roomtype, Date checkin, Date checkout);
 }

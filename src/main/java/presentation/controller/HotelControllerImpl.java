@@ -1,6 +1,7 @@
 package presentation.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.hotelbl.HotelController;
 import businesslogicservice.ResultMessage;
@@ -174,6 +175,21 @@ public class HotelControllerImpl implements HotelControllerService {
 	public ArrayList<RoomVO> searchRooms(int id) {
 		// TODO Auto-generated method stub
 		return hotelBLService.SearchRooms(id);
+	}
+
+	/**
+	 * 获得指定时间段指定房型剩余数量
+	 * 
+	 * @param hotelid
+	 * @param roomtype
+	 * @param checkin
+	 * @param checkout
+	 * @return remainRooms
+	 */
+	@Override
+	public int getRemainRooms(int hotelid, RoomType roomtype, Date checkin, Date checkout) {
+		// TODO Auto-generated method stub
+		return hotelBLService.getRemainRooms(hotelid, roomtype, checkin, checkout);
 	}
 
 }

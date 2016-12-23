@@ -2,17 +2,23 @@ package businesslogic.hotelbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
+import businesslogic.orderbl.OrderController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.hoteldataservice.HotelDataService;
+import dataservice.orderdataservice.OrderDataService;
 import dataservice.roomdataservice.RoomDataService;
 import po.HotelPO;
+import po.OrderPO;
 import po.RoomPO;
 import po.RoomType;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
 import vo.HotelVO;
+import vo.OrderVO;
 import vo.RoomVO;
 
 public class HotelController implements HotelBLService {
@@ -20,6 +26,7 @@ public class HotelController implements HotelBLService {
 	private RemoteController remoteController;
 	private HotelDataService hotelDataService;
 	private RoomDataService roomDataService;
+	private OrderDataService orderDataService;
 	// private HotelLineItem hotelLineItem;
 
 	public HotelController() {
@@ -67,11 +74,11 @@ public class HotelController implements HotelBLService {
 		return hvo;
 	}
 
-	// public static void main(String[] args){
-	// HotelBLService hotel = new HotelController();
-	// HotelVO hvo = hotel.searchHotelByID(20905098);
-	// System.out.println(hvo.getHotelDescription());
-	// }
+//	 public static void main(String[] args){
+//	 HotelBLService hotel = new HotelController();
+//	 HotelVO hvo = hotel.searchHotelByID(20905098);
+//	 System.out.println(hvo.getHotelDescription());
+//	 }
 
 	@Override
 	public ArrayList<HotelVO> reviewHotelList() {
@@ -246,6 +253,46 @@ public class HotelController implements HotelBLService {
 		return rvoList;
 	}
 
+	@Override
+	public int getRemainRooms(int hotelid, RoomType roomtype, Date checkin, Date checkout) {
+		// TODO Auto-generated method stub
+		RoomPO rpo = null ;
+		int remainRooms = 0;
+		try {
+			roomDataService.initRoomDataService();
+			rpo = roomDataService.findRoom(hotelid, roomtype);
+			roomDataService.finishRoomDataService();
+			
+			remainRooms = rpo.getRemainSum();
+			
+			HotelBLService hotel = new HotelController();
+			String hotelName = hotel.searchHotelByID(hotelid).getHotelName();
+			//OrderBLService order = new OrderController();
+			
+			orderDataService.initOrderDataService();
+			ArrayList<OrderPO> orderList = orderDataService.findOrderByHotelName(hotelName);
+			orderDataService.finishOrderDataService();
+			
+			if(orderList!=null){
+			for(int i=0;i<orderList.size();i++){
+				Date in = orderList.get(i).getCheckIn();
+				Date out = orderList.get(i).getCheckOut();
+				
+				if((in.compareTo(checkin)>0 && in.compareTo(checkout)<0) || 
+						(out.compareTo(checkin)>0 && out.compareTo(checkout)<0) ||
+						(in.compareTo(checkin)<0 && out.compareTo(checkout)>0) || 
+						(in.compareTo(checkin)>0 && out.compareTo(checkout)<0)){
+					remainRooms = remainRooms - 1;
+				}
+			}
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return remainRooms;
+	}
+	
 	public HotelPO HotelVOtoHotelPO(HotelVO hvo) {
 		// ArrayList<RoomPO> rpoList = new ArrayList<RoomPO>();
 		// ArrayList<RoomVO> rvoList = hvo.getRooms();
@@ -286,6 +333,8 @@ public class HotelController implements HotelBLService {
 				 */hpo.getRating(), hpo.getStaffName(), hpo.getPhoneNumber());
 		return hvo;
 	}
+
+	
 
 //	public static void main(String[] args) {
 //		HotelController h = new HotelController();

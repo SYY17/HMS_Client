@@ -1,6 +1,8 @@
 package businesslogicservice.hotelBLService;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import businesslogicservice.ResultMessage;
 import po.RoomType;
 import vo.HotelVO;
@@ -84,4 +86,14 @@ public interface HotelBLService {
 	 * @return 查找所有房间
 	 */
 	public ArrayList<RoomVO> SearchRooms(int id);
+	
+	/**
+	 * 
+	 * @param hotelid
+	 * @param roomtype
+	 * @param checkin
+	 * @param checkout
+	 * @return 获得指定时间段指定房型剩余数量
+	 */
+	public int getRemainRooms(int hotelid, RoomType roomtype, Date checkin, Date checkout);
 }
