@@ -23,10 +23,7 @@ public class PromotionBLServiceTest {
 	private Date start;
 	private Date stop;
 	private int id;
-	private Timestamp presentTime;
 	private PromotionVO promotionVO;
-	private FullCutPromotionVO fullCutPromotionVO;
-	private DiscountPromotionVO discountPromotionVO;
 	private double every;
 	private double cut;
 	private double discount;
@@ -43,13 +40,13 @@ public class PromotionBLServiceTest {
 		promotionType = PromotionType.FULL_CUT;
 		start = Date.valueOf("2019-11-01");
 		stop = Date.valueOf("2019-12-01");
-		presentTime = Timestamp.valueOf("2019-11-21 00:00:00");
+		Timestamp.valueOf("2019-11-21 00:00:00");
 		every = 200;
 		cut = 20;
 		discount = 0.9;
 		promotionVO = new PromotionVO(promotionName, content, start, stop, promotionType, id);
-		fullCutPromotionVO = new FullCutPromotionVO(promotionName, content, start, stop, promotionType, id, every, cut);
-		discountPromotionVO = new DiscountPromotionVO(promotionName, content, start, stop, promotionType, id, discount);
+		new FullCutPromotionVO(promotionName, content, start, stop, promotionType, id, every, cut);
+		new DiscountPromotionVO(promotionName, content, start, stop, promotionType, id, discount);
 	}
 
 	/**

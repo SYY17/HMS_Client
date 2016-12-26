@@ -1,21 +1,16 @@
 package presentation.creditui;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import presentation.controller.IDHelper;
 import presentation.controller.UserControllerImpl;
 import presentation.userui.UserControllerService;
 import presentation.userui.UserDataForManageUserCredit;

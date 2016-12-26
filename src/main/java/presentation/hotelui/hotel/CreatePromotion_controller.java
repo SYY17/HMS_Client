@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import presentation.alertui.Alert;
 import javafx.scene.control.ChoiceBox;

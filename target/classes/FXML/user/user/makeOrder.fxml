@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -16,7 +25,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.MakeOrder_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.MakeOrder_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -74,11 +83,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="153.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7f5ff" height="475.0" layoutX="640.0" layoutY="109.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="153.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="475.0" layoutX="153.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="495.0" />
             <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新申请消息" textFill="WHITE">
                <cursor>
@@ -169,20 +174,17 @@
                   <Tooltip text="系统已注册酒店数" />
                </tooltip>
             </Label>
-            <TextArea fx:id="description" layoutX="165.0" layoutY="230.0" prefHeight="80.0" prefWidth="470.0" promptText="简要介绍">
-               <effect>
-                  <DropShadow />
-               </effect>
+            <TextArea fx:id="description" layoutX="429.0" layoutY="172.0" prefHeight="92.0" prefWidth="191.0" promptText="简要介绍">
+               <font>
+                  <Font size="18.0" />
+               </font>
             </TextArea>
-            <TableView fx:id="hotelTableView" layoutX="166.0" layoutY="332.0" prefHeight="213.0" prefWidth="219.0">
+            <TableView fx:id="hotelTableView" layoutX="161.0" layoutY="305.0" prefHeight="197.0" prefWidth="219.0">
                <columns>
                   <TableColumn prefWidth="101.0" text="房间类型" />
                   <TableColumn prefWidth="61.0" text="空余数" />
                   <TableColumn prefWidth="56.0" text="价格" />
                </columns>
-               <effect>
-                  <DropShadow />
-               </effect>
             </TableView>
             <Label fx:id="HRating" layoutX="571.0" layoutY="120.0" text="评分">
                <font>
@@ -194,90 +196,95 @@
                   <Font name="Kefa Regular" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="HBA" layoutX="493.0" layoutY="165.0" prefHeight="28.0" prefWidth="153.0" text="商圈">
+            <Label fx:id="HBA" layoutX="217.0" layoutY="201.0" prefHeight="28.0" prefWidth="201.0" text="商圈">
                <font>
                   <Font name="Heiti TC Light" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="HPhone" layoutX="216.0" layoutY="198.0" prefHeight="28.0" prefWidth="261.0" text="电话那就长一点好了">
+            <Label fx:id="HPhone" layoutX="218.0" layoutY="239.0" prefHeight="28.0" prefWidth="201.0" text="电话那就长一点好了">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
             <Label fx:id="HName" layoutX="157.0" layoutY="113.0" prefHeight="46.0" prefWidth="386.0" text="酒店名称有多长不知道">
                <font>
-                  <Font name="Hiragino Sans W8" size="37.0" />
+                  <Font name="PingFang SC Medium" size="37.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="singlebox" layoutX="513.0" layoutY="332.0" prefHeight="27.0" prefWidth="76.0" />
-            <Label layoutX="401.0" layoutY="337.0" text="SINGLE">
+            <ChoiceBox fx:id="singlebox" layoutX="513.0" layoutY="306.0" prefHeight="27.0" prefWidth="76.0" />
+            <Label layoutX="399.0" layoutY="311.0" text="单人间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="394.0" layoutY="377.0" text="STANDARD">
+            <Label layoutX="401.0" layoutY="352.0" text="标准间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="403.0" layoutY="419.0" text="TRIPLE">
+            <Label layoutX="401.0" layoutY="394.0" text="三人间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="398.0" layoutY="462.0" text="KING_SIZE">
+            <Label layoutX="400.0" layoutY="437.0" text="总统套间">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="408.0" layoutY="505.0" text="SUITE">
+            <Label layoutX="401.0" layoutY="480.0" text="套房">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="standardbox" layoutX="513.0" layoutY="377.0" prefHeight="27.0" prefWidth="76.0" />
-            <ChoiceBox fx:id="triplebox" layoutX="513.0" layoutY="419.0" prefHeight="27.0" prefWidth="76.0" />
-            <ChoiceBox fx:id="kingbox" layoutX="513.0" layoutY="462.0" prefHeight="27.0" prefWidth="76.0" />
-            <ChoiceBox fx:id="suitebox" layoutX="513.0" layoutY="505.0" prefHeight="27.0" prefWidth="76.0" />
-            <Label fx:id="submit" layoutX="572.0" layoutY="548.0" onMouseClicked="#onSubmit" text="提交">
-               <font>
-                  <Font name="Hiragino Sans W6" size="26.0" />
-               </font>
-            </Label>
+            <ChoiceBox fx:id="standardbox" layoutX="513.0" layoutY="351.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="triplebox" layoutX="513.0" layoutY="393.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="kingbox" layoutX="513.0" layoutY="436.0" prefHeight="27.0" prefWidth="76.0" />
+            <ChoiceBox fx:id="suitebox" layoutX="513.0" layoutY="479.0" prefHeight="27.0" prefWidth="76.0" />
             <Label layoutX="161.0" layoutY="165.0" text="地址:">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="161.0" layoutY="198.0" text="电话:">
+            <Label layoutX="161.0" layoutY="239.0" text="电话:">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="440.0" layoutY="165.0" text="商圈:">
+            <Label layoutX="161.0" layoutY="201.0" text="商圈:">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <DatePicker fx:id="checkIn" layoutX="660.0" layoutY="362.0" prefHeight="27.0" prefWidth="127.0">
-               <effect>
-                  <DropShadow />
-               </effect></DatePicker>
-            <DatePicker fx:id="checkOut" layoutX="660.0" layoutY="488.0" prefHeight="27.0" prefWidth="127.0">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </DatePicker>
+            <DatePicker fx:id="checkIn" layoutX="660.0" layoutY="352.0" prefHeight="27.0" prefWidth="127.0" />
+            <DatePicker fx:id="checkOut" layoutX="660.0" layoutY="437.0" prefHeight="27.0" prefWidth="127.0" />
             <Label layoutX="662.0" layoutY="324.0" text="入住">
                <font>
-                  <Font size="25.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="662.0" layoutY="447.0" text="预计离开">
+            <Label layoutX="661.0" layoutY="405.0" text="预计离开">
                <font>
-                  <Font size="25.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
+            <ImageView fx:id="submit" fitHeight="37.0" fitWidth="67.0" layoutX="690.0" layoutY="535.0" onMouseClicked="#onSubmit">
+               <image>
+                  <Image url="@submit.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="174.0" layoutY="541.0" text="预计入住人数：">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="400.0" layoutY="541.0" text="有无儿童：">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField layoutX="316.0" layoutY="541.0" prefHeight="27.0" prefWidth="51.0" promptText="人数" />
+            <CheckBox layoutX="514.0" layoutY="546.0" mnemonicParsing="false" />
          </children>
       </Pane>
    </children>

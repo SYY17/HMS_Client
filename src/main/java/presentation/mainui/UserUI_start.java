@@ -59,8 +59,8 @@ public class UserUI_start extends Application {
 	/*
 	 * 初始化ChoiceBox
 	 */
+	@SuppressWarnings("unchecked")
 	public void initChoiceBox(Parent root) {
-		@SuppressWarnings("unchecked")
 		// 查找business
 		ChoiceBox<String> businessArea = (ChoiceBox<String>) root.lookup("#businessArea");
 		HotelBLService hotelBlService = new HotelController();
@@ -76,9 +76,9 @@ public class UserUI_start extends Application {
 
 		businessArea.setItems(FXCollections.observableArrayList(business));
 
-		businessArea.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+		businessArea.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
 			@Override
-			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				// System.out.println(business.get(Integer.parseInt(String.valueOf(newValue))));
 				changeArea(root, business.get(Integer.parseInt(String.valueOf(newValue))));
@@ -86,14 +86,13 @@ public class UserUI_start extends Application {
 
 		});
 		//
-		@SuppressWarnings("unchecked")
 		// 查找star
 		ChoiceBox<String> star = (ChoiceBox<String>) root.lookup("#star");
 		star.setItems(FXCollections.observableArrayList("从高到低", "从低到高"));
 
-		star.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+		star.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
 			@Override
-			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				changeStar(root, String.valueOf(newValue));
 			}
@@ -104,44 +103,41 @@ public class UserUI_start extends Application {
 		ChoiceBox<String> rating = (ChoiceBox<String>) root.lookup("#rating");
 		rating.setItems(FXCollections.observableArrayList("从高到低", "从低到高"));
 
-		rating.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+		rating.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
 			@Override
-			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				changeRate(root, String.valueOf(newValue));
 			}
 
 		});
 
-		@SuppressWarnings("unchecked")
 		// 查找star
 		ChoiceBox<String> price = (ChoiceBox<String>) root.lookup("#price");
 		price.setItems(FXCollections.observableArrayList("从高到低", "从低到高"));
 
-		price.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener() {
+		price.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
 			@Override
-			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				changePrice(root, String.valueOf(newValue));
 			}
 
 		});
 		
-		@SuppressWarnings("unchecked")
 		// 查找star
 		ChoiceBox<String> type = (ChoiceBox<String>) root.lookup("#type");
 		type.setItems(FXCollections.observableArrayList(/*"未预定过",*/ "已预定过","所有"));
 		
-		type.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener(){
+		type.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>(){
 			@Override
-			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 				// TODO Auto-generated method stub
 				changeType(root, String.valueOf(newValue));
 			}
 			
 		});
 		
-		@SuppressWarnings("unchecked")
 		// 查找star
 		ChoiceBox<String> searchBox = (ChoiceBox<String>) root.lookup("#searchBox");
 		searchBox.setItems(FXCollections.observableArrayList("酒店名称", "星级","评分区间","有空房"));
@@ -153,6 +149,7 @@ public class UserUI_start extends Application {
 	 * @param root
 	 * @param type
 	 */
+	@SuppressWarnings("unchecked")
 	private void changeType(Parent root, String type){
 		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
 		
@@ -258,6 +255,7 @@ public class UserUI_start extends Application {
 	 * @param root
 	 * @param whereToSearch
 	 */
+	@SuppressWarnings("unchecked")
 	private void changeArea(Parent root, String whereToSearch) {
 		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
 
@@ -293,6 +291,7 @@ public class UserUI_start extends Application {
 	 * @param root
 	 * @param howToRate
 	 */
+	@SuppressWarnings("unchecked")
 	private void changeRate(Parent root, String howToRate) {
 		if (howToRate.equals("0")) {// "从高到低"
 			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
@@ -360,6 +359,7 @@ public class UserUI_start extends Application {
 	 * @param root
 	 * @param howToRate
 	 */
+	@SuppressWarnings("unchecked")
 	private void changeStar(Parent root, String howToRate) {
 		if (howToRate.equals("0")) {// "从高到低"
 			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
@@ -428,6 +428,7 @@ public class UserUI_start extends Application {
 	 * @param root
 	 * @param priceSql
 	 */
+	@SuppressWarnings("unchecked")
 	private void changePrice(Parent root, String priceSql) {
 		if (priceSql.equals("0")) {// "从高到低"
 			ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");

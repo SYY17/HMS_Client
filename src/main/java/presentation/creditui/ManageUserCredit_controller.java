@@ -1,21 +1,17 @@
 package presentation.creditui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.controller.CreditControllerImpl;
-import presentation.controller.UserControllerImpl;
 import presentation.controller.UserNameHelper;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.orderui.ManageAbnormalOrder_start;
 import presentation.orderui.ManageAbnormalOrderAndCredit_start;
 import presentation.promotionui.MakePromotionStrategy1_start;
-import presentation.userui.UserControllerService;
 
 public class ManageUserCredit_controller {
 

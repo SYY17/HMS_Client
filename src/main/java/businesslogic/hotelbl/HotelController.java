@@ -4,10 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.orderbl.OrderController;
 import businesslogicservice.ResultMessage;
 import businesslogicservice.hotelBLService.HotelBLService;
-import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.roomdataservice.RoomDataService;
@@ -18,7 +16,6 @@ import po.RoomType;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
 import vo.HotelVO;
-import vo.OrderVO;
 import vo.RoomVO;
 
 public class HotelController implements HotelBLService {

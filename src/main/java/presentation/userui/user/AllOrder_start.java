@@ -16,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import presentation.controller.IDHelper;
 import presentation.controller.OrderControllerImpl;
-import presentation.hotelui.hotel.PromotionData;
 import presentation.orderui.OrderControllerService;
 import presentation.orderui.OrderData;
 import presentation.orderui.OrderDataHelper;
@@ -109,7 +108,6 @@ public class AllOrder_start extends Application {
 		// 查找tableview
 		ListView<String> hotelList = (ListView<String>) root.lookup("#hotelList");
 
-		@SuppressWarnings("unchecked")
 		// 查找tableview
 		Label number = (Label) root.lookup("#number");
 

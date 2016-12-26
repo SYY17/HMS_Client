@@ -54,7 +54,6 @@ public class PromotionContent_start extends Application {
 		PromotionBLService promotionBlService = new PromotionController();
 		promotionBlService.searchPromotion(pvo);
 		
-		@SuppressWarnings("unchecked")
 		// 查找promotionName
 		Label promotionName = (Label) root.lookup("#promotionName");
 		promotionName.setText(pvo.getPromotionName());

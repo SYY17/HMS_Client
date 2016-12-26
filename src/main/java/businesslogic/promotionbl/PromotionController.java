@@ -298,8 +298,6 @@ public class PromotionController implements PromotionBLService {
 
 	@Override
 	public double searchPromotionPresent(int userId, int roomNum, int id, Timestamp presentTime, int initialPrice) {
-		// TODO Auto-generated method stub
-		PromotionVO pvo;
 		try{
 			remoteController.getPromotionDataService().initPromotionDataService();
 			ArrayList<PromotionPO> allPromotion = remoteController.getPromotionDataService().getAllPromotion();//所有promotion 没有筛选
@@ -433,11 +431,6 @@ public class PromotionController implements PromotionBLService {
 					small = i;
 				}
 			}
-			//System.out.println(small);
-			pvo = new PromotionVO(available.get(small).getPromotionName(), available.get(small).getContent(),
-					available.get(small).getStartTime(), available.get(small).getStopTime(),
-					converse(available.get(small).getPromotionType()), available.get(small).getID());
-			
 			remoteController.getPromotionDataService().finishPromotionDataService();
 			
 			return list.get(small);
@@ -461,7 +454,7 @@ public class PromotionController implements PromotionBLService {
 		calendar.setTime(holdDate);
 		
 		java.util.Date utilDate = (java.util.Date)calendar.getTime();
-		calendar.add(calendar.DATE, span);
+		calendar.add(Calendar.DATE, span);
 		utilDate = (java.util.Date)calendar.getTime();
 		Date newDate = new Date(utilDate.getTime());
 		
