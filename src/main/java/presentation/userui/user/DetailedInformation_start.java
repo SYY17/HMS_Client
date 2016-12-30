@@ -158,6 +158,11 @@ public class DetailedInformation_start extends Application {
 		address.setText(cvo.getAddress());		
 		address.setEditable(false);
 		
+		// 查找enterprise
+				TextField enterprise = (TextField) root.lookup("#enterprise");
+				enterprise.setText(cvo.getEnterprise());		
+				enterprise.setEditable(false);
+		
 	}
 	
 	/**

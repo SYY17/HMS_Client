@@ -72,6 +72,9 @@ public class DetailedInformation_controller {
 	
 	@FXML
 	private Label label_cancel;
+	//
+	@FXML
+	private TextField enterprise;
 	
 	@FXML
 	private void onModify(MouseEvent event) throws Exception {
@@ -180,6 +183,7 @@ public class DetailedInformation_controller {
 		email.setEditable(mode);
 		address.setEditable(mode);
 		birth.setEditable(mode);
+		enterprise.setEditable(mode);//
 	}
 	
 	/**
@@ -197,7 +201,7 @@ public class DetailedInformation_controller {
 		phone.setText(cvo.getPhoneNumber());
 		email.setText(cvo.getEmail());
 		address.setText(cvo.getAddress());		
-		
+		enterprise.setText(cvo.getEnterprise());//
 	}
 	
 	/**
@@ -261,7 +265,7 @@ public class DetailedInformation_controller {
 			String email = this.email.getText();
 			String address = this.address.getText();
 			int member = 0;
-			String enterprise = "";
+			String enterprise = this.enterprise.getText();
 			
 			//??????
 			CustomerVO cvo = new CustomerVO(uvo, time, phoneNumber, email, address, member, enterprise);
