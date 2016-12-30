@@ -394,7 +394,30 @@ public class PromotionController implements PromotionBLService {
 			}//
 			
 			//合作企业客户优惠
+			double diss = 0;
+			String enterprise = cvo.getEnterprise();
+			if(enterprise.equals("") && enterprise!=null){
+				PromotionPO ins = remoteController.getPromotionDataService().findsPromotion(id, "合作企业客户折扣").get(0);
+				
+				if(ins.getPromotionType() == PromotionType.DISCOUNT){
+					remoteController.getDiscountPromotionDataService().initDiscountPromotionDataService();
+					DiscountPromotionPO ds = remoteController.getDiscountPromotionDataService().findsDiscountPromotion(ins.getID(), ins.getContent()).get(0);
+					
+					diss = ds.calculatePayment(initialPrice);
+					PromotionInfoForOrder.addString(String.valueOf(bir)+"+"+ds.getPromotionName());
+					remoteController.getDiscountPromotionDataService().finishDiscountPromotionDataService();
+				}else{
+					remoteController.getFullCutPromotionDataService().initFullCutPromotionDataService();
+					FullCutPromotionPO fs = remoteController.getFullCutPromotionDataService().findsFullPromotion(ins.getID(), ins.getContent()).get(0);
+					
+					diss = fs.calculatePayment(initialPrice);
+					PromotionInfoForOrder.addString(String.valueOf(bir)+"+"+fs.getPromotionName());
+					remoteController.getFullCutPromotionDataService().finishFullCutPromotionDataService();
+				}
+				return diss;
+			}
 			
+			//
 			ArrayList<Double> list = new ArrayList<Double>();
 			for(int i=0;i<available.size();i++){
 				if(available.get(i).getPromotionName().equals("生日")||available.get(i).getPromotionName().equals("三间及以上预定优惠")||available.get(i).getPromotionName().equals("合作企业客户折扣")){
