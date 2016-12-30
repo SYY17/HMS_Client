@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -18,6 +19,7 @@ import presentation.alertui.Alert;
 import presentation.controller.PromotionControllerImpl;
 import presentation.creditui.ManageUserCredit_start;
 import presentation.hotelui.hotel.PromotionData;
+import presentation.hotelui.hotel.Promotion_start;
 import presentation.loginui.LoginUI_start;
 import presentation.mainui.SalerUI_start;
 import presentation.orderui.ManageAbnormalOrder_start;
@@ -119,27 +121,35 @@ public class MakePromotionStrategy2_controller {
 				pte = pt[1];
 			}
 
-			promotionController.addPromotion(
-					new PromotionVO(name, name+":"+content, time, sp, pte, id));//
+			ArrayList<PromotionVO> promotionList =  promotionController.getAllPromotion(id);
+			ArrayList<String> existed = new ArrayList<String>();
 			
-			System.out.println("JJ");
-
-//			Timestamp timestamp = new Timestamp(new java.util.Date().getTime());
-//			long t = timestamp.getTime();
+			for(int i=0; i<promotionList.size();i++){
+				existed.add(promotionList.get(i).getPromotionName());
+			}
 			
-			if (pte == PromotionType.FULL_CUT) {
-				promotionController.addFullCutPromotion(new FullCutPromotionVO(name, name+":"+content, time, sp, pte,
-						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
-			}
+			if(existed.contains(name)){
+				alert = Alert.getInstance();
+				alert.showConfirmDialog(stage, name+" 已经存在！", "增加失败");
+			}else{
+				promotionController.addPromotion(
+						new PromotionVO(name, name+":"+content, time, sp, pte, id));//
 
-			if (pte == PromotionType.DISCOUNT) {
-				promotionController.addDiscountPromotion(new DiscountPromotionVO(name, name+":"+content, time, sp, pte,
-						id, Double.parseDouble(discountText)/10));
+				if (pte == PromotionType.FULL_CUT) {
+					promotionController.addFullCutPromotion(new FullCutPromotionVO(name, name+":"+content, time, sp, pte,
+							id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
+				}
+
+				if (pte == PromotionType.DISCOUNT) {
+					promotionController.addDiscountPromotion(new DiscountPromotionVO(name, name+":"+content, time, sp, pte,
+							id, Double.parseDouble(discountText)/10));
+				}
+				
+				//
+				alert = Alert.getInstance();
+				alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
+				new Promotion_start().start(stage);
 			}
-			//
-			alert = Alert.getInstance();
-			alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
-			new MakePromotionStrategy1_start().start(stage);//
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

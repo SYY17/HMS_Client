@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import businesslogic.promotionbl.PromotionController;
 import businesslogicservice.promotionblservice.PromotionBLService;
@@ -92,23 +93,35 @@ public class CreatePromotion_controller {
 				pte = pt[1];
 			}
 
-			promotionBlService.addPromotion(
-					new PromotionVO(name, name+":"+content, time, sp, pte, id));//
-
-			if (pte == PromotionType.FULL_CUT) {
-				promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, name+":"+content, time, sp, pte,
-						id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
-			}
-
-			if (pte == PromotionType.DISCOUNT) {
-				promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, name+":"+content, time, sp, pte,
-						id, Double.parseDouble(discountText)/10));
+			ArrayList<PromotionVO> promotionList =  promotionBlService.getAllPromotion(id);
+			ArrayList<String> existed = new ArrayList<String>();
+			
+			for(int i=0; i<promotionList.size();i++){
+				existed.add(promotionList.get(i).getPromotionName());
 			}
 			
-			//
-			alert = Alert.getInstance();
-			alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
-			new Promotion_start().start(stage);
+			if(existed.contains(name)){
+				alert = Alert.getInstance();
+				alert.showConfirmDialog(stage, name+" 已经存在！", "增加失败");
+			}else{
+				promotionBlService.addPromotion(
+						new PromotionVO(name, name+":"+content, time, sp, pte, id));//
+
+				if (pte == PromotionType.FULL_CUT) {
+					promotionBlService.addFullCutPromotion(new FullCutPromotionVO(name, name+":"+content, time, sp, pte,
+							id, Double.parseDouble(everyText), Double.parseDouble(cutText)));
+				}
+
+				if (pte == PromotionType.DISCOUNT) {
+					promotionBlService.addDiscountPromotion(new DiscountPromotionVO(name, name+":"+content, time, sp, pte,
+							id, Double.parseDouble(discountText)/10));
+				}
+				
+				//
+				alert = Alert.getInstance();
+				alert.showMessageDialog(stage, name+" 增加成功！", "增加成功");
+				new Promotion_start().start(stage);
+			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,8 +1,9 @@
-/FXML/
 /businesslogic/
 /businesslogicservice/
 /dataservice/
 /po/
 /presentation/
+/rmi/
+/runner/
 /vo/
-/.DS_Store
+/META-INF/

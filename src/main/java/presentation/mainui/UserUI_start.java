@@ -597,23 +597,42 @@ public class UserUI_start extends Application {
 	 */
 	public String getExpression(HotelVO hvo) {
 		String str = hvo.getHotelName();
-		for (int i = 0; i < 20 - hvo.getHotelName().length(); i++) {
+		for (int i = 0; i < 15 - hvo.getHotelName().length(); i++) {
 			str += " ";
 		}
 		str += hvo.getBusinessArea();
-		for (int i = 0; i < 40 - str.length(); i++) {
+		for (int i = 0; i < 30 - str.length(); i++) {
 			str += " ";
 		}
-		for (int i = 0; i < 50 - str.length(); i++) {
+		for (int i = 0; i < 37 - str.length(); i++) {
 			str += " ";
 		}
 		str += "星级：";
 		str += String.valueOf(hvo.getStarLevel());
-		for (int i = 0; i < 60 - str.length(); i++) {
+		for (int i = 0; i < 50 - str.length(); i++) {
 			str += " ";
 		}
 		str += "最低价格：";
 		str += String.valueOf(getMinPrice(hvo));
+		//return str;
+		
+		OrderBLService orderBlService = new OrderController();
+		int numOfOrder = 0;
+		ArrayList<OrderVO> orderList = orderBlService.reviewOrder( id, OrderStatus.Finished);
+		for(int i=0;i<orderList.size();i++){
+			if(orderList.get(i).getHotelName().equals(hvo.getHotelName())){
+				numOfOrder++;
+			}
+		}
+		
+		if(numOfOrder>0){
+			for (int i = 0; i < 60 - str.length(); i++) {
+				str += " ";
+			}
+			str += "订单数：";
+			str += String.valueOf(numOfOrder);
+		}
+		
 		return str;
 	}
 
