@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.user.DetailedInformation_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.CustomerInfo_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -202,11 +202,6 @@
                   <Image url="@../../login/icon/birth.png" />
                </image>
             </ImageView>
-            <DatePicker fx:id="birth" layoutX="230.0" layoutY="317.0" prefHeight="23.0" prefWidth="153.0" showWeekNumbers="true">
-               <effect>
-                  <InnerShadow choke="0.51" color="#93989e" />
-               </effect>
-            </DatePicker>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="419.0" layoutY="385.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
             <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="437.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -284,6 +279,11 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <TextField fx:id="birth" editable="false" layoutX="230.0" layoutY="318.0" prefHeight="23.0" prefWidth="153.0">
+               <effect>
+                  <InnerShadow choke="0.51" color="#93989e" />
+               </effect>
+            </TextField>
          </children>
       </Pane>
       <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="35.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">

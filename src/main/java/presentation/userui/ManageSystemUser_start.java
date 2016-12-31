@@ -158,7 +158,7 @@ public class ManageSystemUser_start extends Application {
 	@SuppressWarnings("unchecked")
 	private void initiateChoiceBox(Parent root) {
 		ChoiceBox<String> id_choicebox = (ChoiceBox<String>) root.lookup("#id_choicebox");
-		id_choicebox.setItems(FXCollections.observableArrayList("客户", "酒店工作人员", "网站营销人员", "网站管理人员"));
+		id_choicebox.setItems(FXCollections.observableArrayList("网站营销人员", "网站管理人员"));
 		id_choicebox.setValue("客户");
 	}
 

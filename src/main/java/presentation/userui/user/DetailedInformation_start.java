@@ -45,8 +45,7 @@ public class DetailedInformation_start extends Application {
 			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("FXML/user/user/DetailedInformation.fxml"));
 			initiateHelper();
 			this.initiateElements(root);
-			
-			initialize(root);
+			this.initialize(root);
 			Scene scene = new Scene(root, 800, 600);
 			DetailedInformation_controller.stage = primaryStage;
 			//this.initiateHelper();
