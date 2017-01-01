@@ -58,7 +58,7 @@ public class CreditBLService_Stub implements CreditBLService{
 	public ArrayList<UserCreditHistoryVO> getHistory(int userId) {
 		// TODO Auto-generated method stub
 		UserCreditHistoryVO ucho = new UserCreditHistoryVO(id, change, time, po.CreditMovement.AddMoney, remain);
-		ArrayList<UserCreditHistoryVO> list = new ArrayList<>();
+		ArrayList<UserCreditHistoryVO> list = new ArrayList<UserCreditHistoryVO>();
 		list.add(ucho);
 		return list;
 	}
