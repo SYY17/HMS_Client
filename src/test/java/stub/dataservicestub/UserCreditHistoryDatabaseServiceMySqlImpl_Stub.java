@@ -9,6 +9,7 @@ import po.CreditMovement;
 import po.UserCreditHistoryPO;
 
 public class UserCreditHistoryDatabaseServiceMySqlImpl_Stub implements UserCreditHistoryDataService {
+	
 	int userID = 10101001;
 	int change = 0;
 	Date date = new Date(System.currentTimeMillis());

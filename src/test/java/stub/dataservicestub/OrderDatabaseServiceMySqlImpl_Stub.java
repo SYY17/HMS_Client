@@ -19,9 +19,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 	public void insertOrder(OrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		if (po.getOrderID() == 100) {
-			System.out.println("Insert Finished!");
+			System.out.println("Insert finished!");
 		} else {
-			System.out.println("Failed!");
+			System.out.println("Insert failed!");
 		}
 	}
 
@@ -32,9 +32,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 	public void deleteOrder(int id) throws RemoteException {
 		// TODO Auto-generated method stub
 		if (id == 100) {
-			System.out.println("Delete Finished!");
+			System.out.println("Delete finished!");
 		} else {
-			System.out.println("Failed!");
+			System.out.println("Delete failed!");
 		}
 	}
 
@@ -45,9 +45,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 	public void updateOrder(int id, OrderStatus status) throws RemoteException {
 		// TODO Auto-generated method stub
 		if (id == 100) {
-			System.out.println("Update Finished!");
+			System.out.println("Update finished!");
 		} else {
-			System.out.println("Failed!");
+			System.out.println("Update failed!");
 		}
 	}
 
@@ -58,9 +58,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 	public void updateOrder(int id, String room) throws RemoteException {
 		// TODO Auto-generated method stub
 		if (id == 100) {
-			System.out.println("Update Finished!");
+			System.out.println("Update finished!");
 		} else {
-			System.out.println("Failed!");
+			System.out.println("Update failed!");
 		}
 	}
 
@@ -70,7 +70,7 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 	@Override
 	public ArrayList<OrderPO> findOrder() throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println("Insert Finished!");
+		System.out.println("Insert finished!");
 		ArrayList<OrderPO> list = new ArrayList<OrderPO>();
 		list.add(new OrderPO(100, "user", "hotel", OrderStatus.Unfilled, 1000, RoomType.SINGLE_ROOM, 1,
 				new Timestamp(System.currentTimeMillis()), new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24),
@@ -86,14 +86,14 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 	public OrderPO findOrderByOrderID(int id) throws RemoteException {
 		// TODO Auto-generated method stub
 		if (id == 100) {
-			System.out.println("Order Found!");
+			System.out.println("Order found!");
 			return new OrderPO(100, "user", "hotel", OrderStatus.Unfilled, 1000, RoomType.SINGLE_ROOM, 1,
 					new Timestamp(System.currentTimeMillis()),
 					new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24),
 					new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 2),
 					new Timestamp(System.currentTimeMillis() + 1000 * 60 * 60 * 24), 1, false, "123");
 		} else {
-			System.out.println("Failed!");
+			System.out.println("Find order failed!");
 			return null;
 		}
 	}

@@ -1,35 +1,37 @@
-//package stub.dataservicestub;
-//
-//import java.rmi.RemoteException;
-//
-//import dataservice.logindataservice.LoginDataService;
-//import po.UserPO;
-//
-//public class LoginDataServiceMySqlImpl_Stub implements LoginDataService{
-//
-//	@Override
-//	public void insert(String username, String password, long id) throws RemoteException {
-//		// TODO Auto-generated method stub
-//		System.out.println("Insert succeed!");
-//	}
-//
-//	@Override
-//	public UserPO find(String username, String password, long id) throws RemoteException {
-//		// TODO Auto-generated method stub
-//		UserPO user=new UserPO();
-//		return user;
-//	}
-//
-//	@Override
-//	public void init() throws RemoteException {
-//		// TODO Auto-generated method stub
-//		System.out.println("Initialed!");
-//	}
-//
-//	@Override
-//	public void finish() throws RemoteException {
-//		// TODO Auto-generated method stub
-//		System.out.println("Finished!");
-//	}
-//
-//}
+package stub.dataservicestub;
+import java.rmi.RemoteException;
+import dataservice.logindataservice.LoginDataService;
+
+public class LoginDataServiceMySqlImpl_Stub implements LoginDataService{
+
+	/**
+	 * 验证是否存在相应用户
+	 */
+	@Override
+	public boolean isValidateUser(String username, String password, int id) throws RemoteException {
+		// TODO Auto-generated method stub
+		if(username != null && password != null && id>=10000000 && id<50000000){
+			return true;
+		}
+		else return false;
+	}
+
+	/**
+	 * 初始化
+	 */
+	@Override
+	public void initLoginDataService() throws RemoteException {
+		// TODO Auto-generated method stub
+		System.out.println("Init Finished!");
+	}
+
+	/**
+	 * 结束
+	 */
+	@Override
+	public void finishLoginDataService() throws RemoteException {
+		// TODO Auto-generated method stub
+		System.out.println("Finish Finished!");
+	}
+
+}
