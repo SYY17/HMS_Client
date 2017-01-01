@@ -13,7 +13,6 @@ import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
-import presentation.controller.IDHelper;
 import vo.RoomType;
 import rmi.RemoteController;
 import runner.DataServiceClientRunner;
@@ -149,7 +148,6 @@ public class OrderController implements OrderBLService {
 						maxOrderID = listTemp.get(i).getOrderID();
 					}
 				}
-				String returnMessage = "";
 				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
 						promotionInfo.getFinalPrice(userInfo.searchByUserName(userName), roomNumber, hotelName, setTime,
 								hotelInfo.getPrice(hotelName, roomType) * roomNumber),
