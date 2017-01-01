@@ -1,80 +1,102 @@
-//package stub.blservicestub;
-//
-//import java.util.ArrayList;
-//import java.util.Date;
-//
-//import businesslogicservice.ResultMessage;
-//import businesslogicservice.orderblservice.OrderBLService;
-//import vo.HotelVO;
-//import vo.OrderVO;
-//import vo.PromotionVO;
-//import vo.RoomVO;
-//
-//public class OrderBLService_Stub implements OrderBLService {
-//	int userID;
-//	Date setTime;
-//	Date checkIn;
-//	Date checkOut;
-//	int roomNumber;
-//	int hotelID;
-//	ArrayList<RoomVO> rooms;
-//
-//	public OrderBLService_Stub(int userID, Date setTime, Date checkIn, Date checkOut, int roomNumber, int hotelID,
-//			ArrayList<RoomVO> rooms) {
-//		this.userID = userID;
-//		this.setTime = setTime;
-//		this.checkIn = checkIn;
-//		this.checkOut = checkOut;
-//		this.roomNumber = roomNumber;
-//		this.hotelID = hotelID;
-//		this.rooms = rooms;
-//	}
-//
-//	public ArrayList<OrderVO> reviewOrder(int id) {
-//		ArrayList<OrderVO> OrderVOList = new ArrayList<OrderVO>();
-//		OrderVOList.add(new OrderVO(userID, setTime, checkIn, checkOut, roomNumber, hotelID, rooms));
-//		return OrderVOList;
-//	}
-//
-//	@Override
-//	public ArrayList<OrderVO> reviewAbnormalOrder() {
-//		ArrayList<OrderVO> AbnormalOrderVOList = new ArrayList<OrderVO>();
-//		AbnormalOrderVOList.add(new OrderVO(userID, setTime, checkIn, checkOut, roomNumber, hotelID, rooms));
-//		return AbnormalOrderVOList;
-//	}
-//
-//	@Override
-//	public ResultMessage cancelOrder(OrderVO ovo) {
-//		if (ovo.getCheckInTime() == checkIn && ovo.getCheckOutTime() == checkOut && ovo.getHotelID() == hotelID
-//				&& ovo.getRoomNumber() == roomNumber&&ovo.getRooms()==rooms&&ovo.getSetTime()==setTime&&ovo.getUserID()==userID){
-//			return ResultMessage.TRUE;
-//		}else{
-//			return ResultMessage.FALSE;
-//		}
-//	}
-//
-//	@Override
-//	public ResultMessage addOrder(OrderVO ovo) {
-//		if(ovo.getUserID()!=00000000){
-//			return ResultMessage.FALSE;
-//		}else{
-//			return ResultMessage.TRUE;
-//		}
-//	}
-//
-//	@Override
-//	public ResultMessage complainOrder(OrderVO ovo) {
-//		if(ovo.getUserID()!=00000000){
-//			return ResultMessage.FALSE;
-//		}else{
-//			return ResultMessage.TRUE;
-//		}
-//	}
-//
-//	@Override
-//	public OrderVO create(HotelVO hvo, int id, PromotionVO pvo) {
-//		return new OrderVO(userID, setTime, checkIn, checkOut, roomNumber, hotelID, rooms);
-//	}
-//
-//
-//}
+package stub.blservicestub;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import businesslogicservice.ResultMessage;
+import businesslogicservice.orderblservice.OrderBLService;
+import vo.CreditMovement;
+import vo.OrderStatus;
+import vo.OrderVO;
+import vo.RoomType;
+
+public class OrderBLService_Stub implements OrderBLService {
+	int orderID;
+	OrderStatus orderStatus;
+	int price;
+	String userName;
+	int userID;
+	Timestamp setTime;
+	Date checkIn;
+	Date checkOut;
+	int roomNumber;
+	String hotelName;
+	RoomType roomType;
+	Timestamp deadline;
+	int predictNumber;
+	boolean haveChild;
+	String room;
+
+	public OrderBLService_Stub() {
+		orderID = 1;
+		orderStatus = OrderStatus.Unfilled;
+		price = 1000;
+		userName = "user";
+		userID = 10101001;
+		setTime = new Timestamp(System.currentTimeMillis());
+		checkIn = new Date(setTime.getTime() + 1000 * 60 * 60 * 24 * 3);
+		checkOut = new Date(setTime.getTime() + 1000 * 60 * 60 * 24 * 4);
+		roomNumber = 1;
+		hotelName = "hotel";
+		roomType = RoomType.SINGLE_ROOM;
+		deadline = new Timestamp(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 3);
+		predictNumber = 1;
+		haveChild = false;
+		room = "123";
+	}
+
+	@Override
+	public ArrayList<OrderVO> reviewOrder(int id, OrderStatus orderStatus) {
+		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
+		if (id == 10101001 && orderStatus.toString().equals(OrderStatus.Unfilled.toString())) {
+			list.add(new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime,
+					checkIn, checkOut, deadline, predictNumber, haveChild, room));
+		}
+		return list;
+	}
+
+	@Override
+	public ResultMessage cancelOrder(int id) {
+		if (id == 100) {
+			return ResultMessage.TRUE;
+		}
+		return ResultMessage.FALSE;
+	}
+
+	@Override
+	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
+			java.sql.Date checkIn, java.sql.Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
+		return new OrderVO(100, userName, hotelName, OrderStatus.Unfilled, 1000, roomType, roomNumber, setTime, checkIn,
+				checkOut, deadline, predictNumber, haveChild, "");
+	}
+
+	@Override
+	public ResultMessage changeOrderStatus(int id, OrderStatus status, CreditMovement creditMovement) {
+		if (id == 100) {
+			orderStatus = status;
+			return ResultMessage.TRUE;
+		}
+		return ResultMessage.FALSE;
+	}
+
+	@Override
+	public ResultMessage assignRoom(int id, String room) {
+		if (id == 100) {
+			this.room = room;
+			return ResultMessage.TRUE;
+		}
+		return ResultMessage.FALSE;
+	}
+
+	@Override
+	public ArrayList<OrderVO> reviewOrder(int id) {
+		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
+		if (id == 10101001) {
+			list.add(new OrderVO(orderID, userName, hotelName, orderStatus, price, roomType, roomNumber, setTime,
+					checkIn, checkOut, deadline, predictNumber, haveChild, room));
+		}
+		return list;
+	}
+
+}
