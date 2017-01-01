@@ -6,8 +6,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.promotionbl.PromotionInfoForOrder;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -24,6 +26,7 @@ import presentation.loginui.LoginUI_start;
 import presentation.mainui.UserUI_start;
 import presentation.orderui.OrderControllerService;
 import presentation.userui.UserControllerService;
+import vo.OrderVO;
 import vo.RoomType;
 
 public class MakeOrder_controller {
@@ -117,48 +120,83 @@ public class MakeOrder_controller {
 			// 用户名，酒店名，入住时间，离开时间,所有预定房间类型以及数量都获得了，还有setTime没有得到需要补充
 			OrderControllerService orderController = new OrderControllerImpl();
 			if (singleNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.SINGLE_ROOM, singleNum,
+				OrderVO ovo = orderController.create(username, hotelname, RoomType.SINGLE_ROOM, singleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild);
+				if (ovo == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
 				} else {
-					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
+					ArrayList<String> available = PromotionInfoForOrder.available;
+					String result = "成功\n";
+					for (int i = 0; i < available.size(); i++) {
+						result += available.get(i) + "\n";
+					}
+					result += "最终价格：" + ovo.getPrice();
+					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
 			}
 			if (standardNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.STANDARD_ROOM, standardNum,
+				OrderVO ovo = orderController.create(username, hotelname, RoomType.STANDARD_ROOM, standardNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild);
+				if (ovo == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
 				} else {
-					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
+					ArrayList<String> available = PromotionInfoForOrder.available;
+					String result = "成功\n";
+					for (int i = 0; i < available.size(); i++) {
+						result += available.get(i) + "\n";
+					}
+					result += "最终价格：" + ovo.getPrice();
+					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
 			}
 			if (kingNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, kingNum,
+				OrderVO ovo = orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, kingNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild);
+				if (ovo == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
 				} else {
-					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
+					ArrayList<String> available = PromotionInfoForOrder.available;
+					String result = "成功\n";
+					for (int i = 0; i < available.size(); i++) {
+						result += available.get(i) + "\n";
+					}
+					result += "最终价格：" + ovo.getPrice();
+					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
 			}
 			if (suiteNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.SUITE, suiteNum,
+				OrderVO ovo = orderController.create(username, hotelname, RoomType.SUITE, suiteNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild);
+				if (ovo == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
 				} else {
-					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
+					ArrayList<String> available = PromotionInfoForOrder.available;
+					String result = "成功\n";
+					for (int i = 0; i < available.size(); i++) {
+						result += available.get(i) + "\n";
+					}
+					result += "最终价格：" + ovo.getPrice();
+					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
 			}
 			if (tripleNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, tripleNum,
+				OrderVO ovo = orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, tripleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild);
+				if (ovo == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
 				} else {
-					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
+					ArrayList<String> available = PromotionInfoForOrder.available;
+					String result = "成功\n";
+					for (int i = 0; i < available.size(); i++) {
+						result += available.get(i) + "\n";
+					}
+					result += "最终价格：" + ovo.getPrice();
+					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
 			}
 		} catch (ParseException e) {
