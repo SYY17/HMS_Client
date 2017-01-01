@@ -96,7 +96,8 @@
                <columns>
                   <TableColumn id="col_odd" editable="false" maxWidth="95.0" minWidth="95.0" prefWidth="95.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="ID" />
                   <TableColumn id="col_odd" editable="false" maxWidth="124.0" minWidth="124.0" prefWidth="124.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="用户名" />
-                  <TableColumn id="col_even" editable="false" maxWidth="192.0" minWidth="192.0" prefWidth="192.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="用户身份" />
+                  <TableColumn id="col_even" editable="false" maxWidth="167.0" minWidth="167.0" prefWidth="167.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" text="用户身份" />
+                  <TableColumn id="col_odd" editable="false" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" />
                   <TableColumn id="col_odd" editable="false" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" resizable="false" sortable="false" style="-fx-font-size: 12px;" />
                </columns>
                <effect>

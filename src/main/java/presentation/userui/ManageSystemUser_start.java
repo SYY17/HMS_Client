@@ -106,7 +106,8 @@ public class ManageSystemUser_start extends Application {
 		observableList.get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
 		observableList.get(1).setCellValueFactory(new PropertyValueFactory<>("username"));
 		observableList.get(2).setCellValueFactory(new PropertyValueFactory<>("identity"));
-		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("operation"));
+		observableList.get(3).setCellValueFactory(new PropertyValueFactory<>("view"));
+		observableList.get(4).setCellValueFactory(new PropertyValueFactory<>("delete"));
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class ManageSystemUser_start extends Application {
 	private void initiateChoiceBox(Parent root) {
 		ChoiceBox<String> id_choicebox = (ChoiceBox<String>) root.lookup("#id_choicebox");
 		id_choicebox.setItems(FXCollections.observableArrayList("网站营销人员", "网站管理人员"));
-		id_choicebox.setValue("客户");
+		id_choicebox.setValue("网站营销人员");
 	}
 
 }

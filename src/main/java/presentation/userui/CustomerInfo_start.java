@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import presentation.controller.IDHelper;
+import presentation.controller.TempIDHelper;
 import presentation.controller.UserControllerImpl;
 import vo.CustomerVO;
 import vo.UserVO;
@@ -22,7 +23,9 @@ import vo.UserVO;
 public class CustomerInfo_start extends Application {
 
 	private IDHelper idHelper;
+	private TempIDHelper tempHelper;
 	private int id;
+	private int tempId;
 	Parent root;
 
 	@Override
@@ -49,7 +52,9 @@ public class CustomerInfo_start extends Application {
 	 */
 	private void initiateHelper() {
 		idHelper = IDHelper.getInstance();
+		tempHelper = TempIDHelper.getInstance();
 		id = idHelper.getID();
+		tempId = tempHelper.getID();
 	}
 	
 	private void initiateElements(Parent root) {
@@ -81,7 +86,7 @@ public class CustomerInfo_start extends Application {
 	
 	private void initialize(Parent root){
 		UserBLService userBlService = new UserController();
-		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
+		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(tempId));
 		String username = uvo.getName();
 		CustomerBLService customerBLService = new CustomerController();
 		CustomerVO cvo = customerBLService.getCustomerInfo(username);

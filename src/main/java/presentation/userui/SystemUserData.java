@@ -10,22 +10,25 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import presentation.alertui.Alert;
 import presentation.alertui.Alert.Response;
+import presentation.controller.TempIDHelper;
 import presentation.controller.UserControllerImpl;
 
 public class SystemUserData {
 	private final SimpleStringProperty id = new SimpleStringProperty();
 	private final SimpleStringProperty username = new SimpleStringProperty();
 	private final SimpleStringProperty identity = new SimpleStringProperty();
-	private final SimpleStringProperty operation = new SimpleStringProperty();
-
-	public SystemUserData(String id, String username, String identity, String operation) {
-		// TODO Auto-generated constructor stub
-		this.id.set(id);
-		this.username.set(username);
-		this.identity.set(identity);
-		this.operation.set(operation);
-	}
-
+	private final SimpleStringProperty view = new SimpleStringProperty();
+	private final SimpleStringProperty delete = new SimpleStringProperty();
+	
+	public SystemUserData(String id, String username, String identity, String view, String delete) {
+	// TODO Auto-generated constructor stub
+	this.id.set(id);
+	this.username.set(username);
+	this.identity.set(identity);
+	this.view.set(view);
+	this.delete.set(delete);
+}
+	
 	/**
 	 * 
 	 * @return 用户ID
@@ -33,7 +36,7 @@ public class SystemUserData {
 	public String getId() {
 		return id.getValue();
 	}
-
+	
 	/**
 	 * 
 	 * @return 用户名
@@ -41,7 +44,7 @@ public class SystemUserData {
 	public String getUsername() {
 		return username.getValue();
 	}
-
+	
 	/**
 	 * 
 	 * @return 身份
@@ -49,12 +52,49 @@ public class SystemUserData {
 	public String getIdentity() {
 		return identity.getValue();
 	}
-
+	
 	/**
 	 * 
-	 * @return 操作
+	 * @return 管理操作
 	 */
-	public Button getOperation() {
+	public Button getView() {
+		Button button = new Button();
+		button.setPrefSize(20, 20);
+		button.setMaxSize(20, 20);
+		button.setMinSize(20, 20);
+		button.setCursor(Cursor.HAND);
+		button.setBackground(new Background(new BackgroundImage(
+				new Image(getClass().getResource("viewinfo.png").toString()), null, null, null, null)));
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				Alert alert = Alert.getInstance();
+				Response response = alert.showConfirmDialog(ManageSystemUser_controller.stage, "您是否要管理该用户信息", "管理确认");
+				
+				if(response == Response.CANCEL){
+					return;
+				}
+				
+				try {
+					TempIDHelper tempHelper = TempIDHelper.getInstance();
+					tempHelper.setID(Integer.valueOf(id.getValue()));
+					new CustomerInfo_start().start(ManageSystemUser_controller.stage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		return button;
+	}
+	
+	/**
+	 * 
+	 * @return 删除操作
+	 */
+	public Button getDelete() {
 		Button button = new Button();
 		button.setPrefSize(20, 20);
 		button.setMaxSize(20, 20);
@@ -83,36 +123,5 @@ public class SystemUserData {
 		return button;
 	}
 
-	/**
-	 * 
-	 * @param id
-	 */
-	public void setId(String id) {
-		this.id.set(id);
-	}
-
-	/**
-	 * 
-	 * @param username
-	 */
-	public void setUsername(String username) {
-		this.username.set(username);
-	}
-
-	/**
-	 * 
-	 * @param identity
-	 */
-	public void setIdentity(String identity) {
-		this.identity.set(identity);
-	}
-
-	/**
-	 * 
-	 * @param operation
-	 */
-	public void setOperation(String operation) {
-		this.operation.set(operation);
-	}
 
 }

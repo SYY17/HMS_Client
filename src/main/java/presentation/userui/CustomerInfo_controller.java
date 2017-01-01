@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import presentation.controller.IDHelper;
+import presentation.controller.TempIDHelper;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
 import presentation.loginui.LoginUI_start;
 import presentation.userui.user.DetailedInformation_start;
@@ -228,8 +228,8 @@ public class CustomerInfo_controller {
 	 * @return 获取当前用户用户名
 	 */
 	private String getUserName(){
-		IDHelper idHelper = IDHelper.getInstance();
-		int id = idHelper.getID();
+		TempIDHelper tempHelper = TempIDHelper.getInstance();
+		int id = tempHelper.getID();
 		UserBLService userBlService = new UserController();
 		UserVO uvo = userBlService.searchByUserName(userBlService.searchByUserID(id));
 		String username = uvo.getName();

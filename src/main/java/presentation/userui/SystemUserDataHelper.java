@@ -13,9 +13,10 @@ public class SystemUserDataHelper {
 		String id = String.valueOf(uvo.getID());
 		String username = uvo.getName();
 		String identity = getIdentity(uvo.getID());
-		String operation = "管理";
+		String view = "管理";
+		String delete = "删除";
 
-		return new SystemUserData(id, username, identity, operation);
+		return new SystemUserData(id, username, identity, view, delete);
 	}
 
 	/**

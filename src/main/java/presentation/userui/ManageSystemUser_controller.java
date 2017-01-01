@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import presentation.alertui.Alert;
 import presentation.controller.LoginControllerImpl;
 import presentation.controller.UserControllerImpl;
 import presentation.hotelui.ManageHotelCreatingApplication_start;
@@ -106,11 +107,14 @@ public class ManageSystemUser_controller {
 	private void onAddNewUser(MouseEvent event) throws Exception {
 		// 在observablelist中添加value
 		String text = username_field.getText();
-
+		Alert alert = Alert.getInstance();
+		
 		if (text.equals("")) {
 			// 提示未输入用户名
+			alert.showMessageDialog(stage, "添加失败，请您输入用户名!", "添加失败");
 		} else if (text.length() > 12) {
 			// 提示字数过多
+			alert.showMessageDialog(stage, "添加失败，您输入的用户名字数过多，请您输入12字以内的用户名!", "添加失败");
 		} else {
 			LoginControllerService loginController = new LoginControllerImpl();
 			loginController.addNewUser(text, "000000", this.parseID(id_choicebox));
