@@ -42,27 +42,38 @@ public class OrderBLService_Driver {
 		predictNumber = 1;
 		haveChild = false;
 
+		//创建订单
 		OrderVO orderVO = orderBLService.create(userName, hotelName, roomType, roomNumber, setTime, checkIn, checkOut,
 				deadline, predictNumber, haveChild);
 		if (orderVO != null) {
 			System.out.println("Order created!");
 		}
+		
+		//获取订单列表
 		ArrayList<OrderVO> list = orderBLService.reviewOrder(userID);
 		if (list != null) {
 			System.out.println("All Orders got!");
 		}
+		
+		//获取订单列表
 		list = orderBLService.reviewOrder(userID,OrderStatus.Unfilled);
 		if (list != null) {
 			System.out.println("Unfilled Orders got!");
 		}
+		
+		//分配房间
 		ResultMessage result = orderBLService.assignRoom(orderID, "124");
 		if (result == ResultMessage.TRUE) {
 			System.out.println("Room assigned!");
 		}
+		
+		//改变订单状态
 		result = orderBLService.changeOrderStatus(orderID, orderStatus, CreditMovement.AbnormalOrder);
 		if (result == ResultMessage.TRUE) {
 			System.out.println("Orderstatus changed!");
 		}
+		
+		//删除订单
 		result = orderBLService.cancelOrder(orderID);
 		if (result == ResultMessage.TRUE) {
 			System.out.println("Order canceled!");

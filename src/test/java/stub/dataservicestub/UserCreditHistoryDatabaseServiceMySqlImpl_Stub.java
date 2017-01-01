@@ -15,6 +15,9 @@ public class UserCreditHistoryDatabaseServiceMySqlImpl_Stub implements UserCredi
 	CreditMovement creditMovement = CreditMovement.AbnormalOrder;
 	int remain = 0;
 
+	/**
+	 * 添加信用记录
+	 */
 	@Override
 	public void updateHistory(int userID, int change, Date date, CreditMovement creditMovement, int remain)
 			throws RemoteException {
@@ -30,6 +33,9 @@ public class UserCreditHistoryDatabaseServiceMySqlImpl_Stub implements UserCredi
 		}
 	}
 
+	/**
+	 * 获得信用记录
+	 */
 	@Override
 	public ArrayList<UserCreditHistoryPO> findCreditHistory(int userId) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -43,6 +49,9 @@ public class UserCreditHistoryDatabaseServiceMySqlImpl_Stub implements UserCredi
 		return list;
 	}
 
+	/**
+	 * 获得信用记录
+	 */
 	@Override
 	public ArrayList<UserCreditHistoryPO> getAllCreditHistory() throws RemoteException {
 		// TODO Auto-generated method stub
@@ -53,12 +62,18 @@ public class UserCreditHistoryDatabaseServiceMySqlImpl_Stub implements UserCredi
 
 	}
 
+	/**
+	 * 初始化
+	 */
 	@Override
 	public void initUserCreditHistoryDataService() throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("Success!");
 	}
 
+	/**
+	 * 结束
+	 */
 	@Override
 	public void finishUserCreditHistoryDataService() throws RemoteException {
 		// TODO Auto-generated method stub

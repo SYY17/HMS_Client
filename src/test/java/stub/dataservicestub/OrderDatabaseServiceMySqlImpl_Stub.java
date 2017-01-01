@@ -12,6 +12,9 @@ import po.RoomType;
 
 public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 
+	/**
+	 * 添加订单
+	 */
 	@Override
 	public void insertOrder(OrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -22,6 +25,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 删除订单
+	 */
 	@Override
 	public void deleteOrder(int id) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -32,6 +38,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 更新订单
+	 */
 	@Override
 	public void updateOrder(int id, OrderStatus status) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -42,6 +51,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 更新订单
+	 */
 	@Override
 	public void updateOrder(int id, String room) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -52,6 +64,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 获得订单列表
+	 */
 	@Override
 	public ArrayList<OrderPO> findOrder() throws RemoteException {
 		// TODO Auto-generated method stub
@@ -64,6 +79,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		return list;
 	}
 
+	/**
+	 * 获得订单列表
+	 */
 	@Override
 	public OrderPO findOrderByOrderID(int id) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -80,6 +98,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 获得订单列表
+	 */
 	@Override
 	public ArrayList<OrderPO> findOrderByUserName(String userName) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -98,6 +119,9 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 获得订单列表
+	 */
 	@Override
 	public ArrayList<OrderPO> findOrderByHotelName(String hotelName) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -116,12 +140,18 @@ public class OrderDatabaseServiceMySqlImpl_Stub implements OrderDataService {
 		}
 	}
 
+	/**
+	 * 初始化
+	 */
 	@Override
 	public void initOrderDataService() throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("Init Finished!");
 	}
 
+	/**
+	 * 结束
+	 */
 	@Override
 	public void finishOrderDataService() throws RemoteException {
 		// TODO Auto-generated method stub

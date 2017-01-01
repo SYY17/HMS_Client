@@ -46,6 +46,9 @@ public class OrderBLService_Stub implements OrderBLService {
 		room = "123";
 	}
 
+	/**
+	 * 添加用户
+	 */
 	@Override
 	public ArrayList<OrderVO> reviewOrder(int id, OrderStatus orderStatus) {
 		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
@@ -56,6 +59,9 @@ public class OrderBLService_Stub implements OrderBLService {
 		return list;
 	}
 
+	/**
+	 * 删除订单
+	 */
 	@Override
 	public ResultMessage cancelOrder(int id) {
 		if (id == 100) {
@@ -64,6 +70,9 @@ public class OrderBLService_Stub implements OrderBLService {
 		return ResultMessage.FALSE;
 	}
 
+	/**
+	 * 创建订单
+	 */
 	@Override
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			java.sql.Date checkIn, java.sql.Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
@@ -71,6 +80,9 @@ public class OrderBLService_Stub implements OrderBLService {
 				checkOut, deadline, predictNumber, haveChild, "");
 	}
 
+	/**
+	 * 改变订单状态
+	 */
 	@Override
 	public ResultMessage changeOrderStatus(int id, OrderStatus status, CreditMovement creditMovement) {
 		if (id == 100) {
@@ -80,6 +92,9 @@ public class OrderBLService_Stub implements OrderBLService {
 		return ResultMessage.FALSE;
 	}
 
+	/**
+	 * 分配房间
+	 */
 	@Override
 	public ResultMessage assignRoom(int id, String room) {
 		if (id == 100) {
@@ -89,6 +104,9 @@ public class OrderBLService_Stub implements OrderBLService {
 		return ResultMessage.FALSE;
 	}
 
+	/**
+	 * 浏览订单列表
+	 */
 	@Override
 	public ArrayList<OrderVO> reviewOrder(int id) {
 		ArrayList<OrderVO> list = new ArrayList<OrderVO>();
