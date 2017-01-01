@@ -19,16 +19,16 @@ public class SystemUserData {
 	private final SimpleStringProperty identity = new SimpleStringProperty();
 	private final SimpleStringProperty view = new SimpleStringProperty();
 	private final SimpleStringProperty delete = new SimpleStringProperty();
-	
+
 	public SystemUserData(String id, String username, String identity, String view, String delete) {
-	// TODO Auto-generated constructor stub
-	this.id.set(id);
-	this.username.set(username);
-	this.identity.set(identity);
-	this.view.set(view);
-	this.delete.set(delete);
-}
-	
+		// TODO Auto-generated constructor stub
+		this.id.set(id);
+		this.username.set(username);
+		this.identity.set(identity);
+		this.view.set(view);
+		this.delete.set(delete);
+	}
+
 	/**
 	 * 
 	 * @return 用户ID
@@ -36,7 +36,7 @@ public class SystemUserData {
 	public String getId() {
 		return id.getValue();
 	}
-	
+
 	/**
 	 * 
 	 * @return 用户名
@@ -44,7 +44,7 @@ public class SystemUserData {
 	public String getUsername() {
 		return username.getValue();
 	}
-	
+
 	/**
 	 * 
 	 * @return 身份
@@ -52,7 +52,7 @@ public class SystemUserData {
 	public String getIdentity() {
 		return identity.getValue();
 	}
-	
+
 	/**
 	 * 
 	 * @return 管理操作
@@ -72,15 +72,22 @@ public class SystemUserData {
 				// TODO Auto-generated method stub
 				Alert alert = Alert.getInstance();
 				Response response = alert.showConfirmDialog(ManageSystemUser_controller.stage, "您是否要管理该用户信息", "管理确认");
-				
-				if(response == Response.CANCEL){
+
+				if (response == Response.CANCEL) {
 					return;
 				}
-				
+
 				try {
 					TempIDHelper tempHelper = TempIDHelper.getInstance();
-					tempHelper.setID(Integer.valueOf(id.getValue()));
-					new CustomerInfo_start().start(ManageSystemUser_controller.stage);
+					int tempid = Integer.valueOf(id.getValue());
+					tempHelper.setID(tempid);
+					if (10000000 <= tempid && tempid < 20000000) {
+						new CustomerInfo_start().start(ManageSystemUser_controller.stage);
+					} else if (20000000 <= tempid && tempid < 30000000) {
+						new HotelInfo_start().start(ManageSystemUser_controller.stage);
+					} else if (30000000 <= tempid && tempid < 40000000) {
+						new SalerInfo_start().start(ManageSystemUser_controller.stage);
+					}
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -89,7 +96,7 @@ public class SystemUserData {
 		});
 		return button;
 	}
-	
+
 	/**
 	 * 
 	 * @return 删除操作
@@ -109,11 +116,11 @@ public class SystemUserData {
 				// TODO Auto-generated method stub
 				Alert alert = Alert.getInstance();
 				Response response = alert.showConfirmDialog(ManageSystemUser_controller.stage, "您是否确认删除该用户？", "删除确认");
-				
-				if(response == Response.CANCEL){
+
+				if (response == Response.CANCEL) {
 					return;
 				}
-				
+
 				UserControllerService userController = new UserControllerImpl();
 				userController.deleteUser(Integer.valueOf(getId()));
 				ManageSystemUser_start.getInstance().refreshTableView();
@@ -122,6 +129,5 @@ public class SystemUserData {
 
 		return button;
 	}
-
 
 }

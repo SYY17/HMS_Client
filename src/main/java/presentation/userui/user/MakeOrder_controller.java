@@ -9,9 +9,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.alertui.Alert;
@@ -45,8 +47,12 @@ public class MakeOrder_controller {
 	DatePicker checkIn;
 	@FXML
 	DatePicker checkOut;
-	@FXML 
+	@FXML
 	Label HName;
+	@FXML
+	TextField predictnum;
+	@FXML
+	CheckBox havechild;
 
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
@@ -81,6 +87,8 @@ public class MakeOrder_controller {
 		String username = initiateUserName();
 		String date = initiateDate();
 		hotelname = HName.getText();
+		boolean haveChild = havechild.isSelected();
+		int predictNum = Integer.parseInt(predictnum.getText());
 		try {
 			java.sql.Date ci;
 			java.sql.Date co;
@@ -109,29 +117,39 @@ public class MakeOrder_controller {
 			// 用户名，酒店名，入住时间，离开时间,所有预定房间类型以及数量都获得了，还有setTime没有得到需要补充
 			OrderControllerService orderController = new OrderControllerImpl();
 			if (singleNum != 0) {
-				orderController.create(username, hotelname, RoomType.SINGLE_ROOM, singleNum,
+				if (orderController.create(username, hotelname, RoomType.SINGLE_ROOM, singleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				}
 			}
 			if (standardNum != 0) {
-				orderController.create(username, hotelname, RoomType.STANDARD_ROOM, standardNum,
+				if (orderController.create(username, hotelname, RoomType.STANDARD_ROOM, singleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				}
 			}
 			if (kingNum != 0) {
-				orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, kingNum,
+				if (orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, singleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				}
 			}
 			if (suiteNum != 0) {
-				orderController.create(username, hotelname, RoomType.SUITE, suiteNum,
+				if (orderController.create(username, hotelname, RoomType.SUITE, singleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				}
 			}
 			if (tripleNum != 0) {
-				orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, tripleNum,
+				if (orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, singleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
-						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), 1, false);
+						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
+					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				}
 			}
 			Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 		} catch (ParseException e) {

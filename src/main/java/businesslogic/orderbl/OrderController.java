@@ -13,6 +13,7 @@ import businesslogicservice.ResultMessage;
 import businesslogicservice.orderblservice.OrderBLService;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
+import presentation.alertui.Alert;
 import presentation.controller.IDHelper;
 import vo.RoomType;
 import rmi.RemoteController;
@@ -139,22 +140,24 @@ public class OrderController implements OrderBLService {
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
 		try {
-			orderDataService.initOrderDataService();
-			int maxOrderID = 0;
-			ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
-			listTemp = orderDataService.findOrder();
-			for (int i = 0; i < listTemp.size(); i++) {
-				if (maxOrderID < listTemp.get(i).getOrderID()) {
-					maxOrderID = listTemp.get(i).getOrderID();
+			if (creditinfo.getCreditByUserID(userInfo.searchByUserName(userName)) >= 0) {
+				orderDataService.initOrderDataService();
+				int maxOrderID = 0;
+				ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
+				listTemp = orderDataService.findOrder();
+				for (int i = 0; i < listTemp.size(); i++) {
+					if (maxOrderID < listTemp.get(i).getOrderID()) {
+						maxOrderID = listTemp.get(i).getOrderID();
+					}
 				}
+				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
+						promotionInfo.getFinalPrice(IDHelper.getInstance().getID(), roomNumber, hotelName, setTime,
+								hotelInfo.getPrice(hotelName, roomType) * roomNumber),
+						roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
+				orderDataService.insertOrder(VOToPO(ovoTemp));
+				orderDataService.finishOrderDataService();
+				return ovoTemp;
 			}
-			OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
-					promotionInfo.getFinalPrice(IDHelper.getInstance().getID(), roomNumber, hotelName, setTime,
-							hotelInfo.getPrice(hotelName, roomType) * roomNumber),
-					roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
-			orderDataService.insertOrder(VOToPO(ovoTemp));
-			orderDataService.finishOrderDataService();
-			return ovoTemp;
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -283,8 +283,8 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="316.0" layoutY="541.0" prefHeight="27.0" prefWidth="51.0" promptText="人数" />
-            <CheckBox layoutX="514.0" layoutY="546.0" mnemonicParsing="false" />
+            <TextField fx:id="predictnum" layoutX="316.0" layoutY="541.0" prefHeight="27.0" prefWidth="51.0" promptText="人数" />
+            <CheckBox fx:id="havechild" layoutX="514.0" layoutY="546.0" mnemonicParsing="false" />
          </children>
       </Pane>
    </children>

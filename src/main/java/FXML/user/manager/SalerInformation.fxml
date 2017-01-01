@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.CustomerInfo_controller">
+<Pane id="panel_manager" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.SalerInfo_controller">
    <children>
       <Pane id="panel_body" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -59,7 +59,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="客户信息管理">
+            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="163.0" text="营销人员信息管理">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -131,13 +131,13 @@
                </tooltip>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e5e5" height="386.0" layoutX="159.0" layoutY="176.0" stroke="#f1f1f1" strokeType="INSIDE" strokeWidth="0.0" width="484.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="176.0" layoutY="205.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="190.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="178.0" layoutY="236.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="192.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/client.png" />
                </image>
             </ImageView>
-            <Label layoutX="184.0" layoutY="243.0" text="用户名">
+            <Label layoutX="186.0" layoutY="274.0" text="用户名">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -145,88 +145,18 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="name" editable="false" layoutX="228.0" layoutY="225.0" prefHeight="23.0" prefWidth="153.0">
+            <TextField fx:id="name" editable="false" layoutX="230.0" layoutY="256.0" prefHeight="23.0" prefWidth="153.0">
                <effect>
                   <InnerShadow choke="0.51" color="#93989e" />
                </effect>
             </TextField>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="418.0" layoutY="205.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
-            <TextField fx:id="phone" layoutX="470.0" layoutY="225.0" prefHeight="23.0" prefWidth="153.0">
-               <effect>
-                  <InnerShadow choke="0.51" color="#93989e" />
-               </effect>
-            </TextField>
-            <Label layoutX="434.0" layoutY="244.0" text="手机">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="436.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/phone.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="419.0" layoutY="296.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
-            <TextField fx:id="email" layoutX="471.0" layoutY="316.0" prefHeight="23.0" prefWidth="153.0">
-               <effect>
-                  <InnerShadow choke="0.51" color="#93989e" />
-               </effect>
-            </TextField>
-            <Label layoutX="434.0" layoutY="334.0" text="邮箱">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="433.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/email.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="178.0" layoutY="297.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
-            <Label layoutX="193.0" layoutY="334.0" text="生日">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="192.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/birth.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="419.0" layoutY="385.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
-            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="437.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../login/icon/address.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="434.0" layoutY="423.0" text="住址">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="address" layoutX="471.0" layoutY="405.0" prefHeight="23.0" prefWidth="153.0">
-               <effect>
-                  <InnerShadow choke="0.51" color="#93989e" />
-               </effect>
-            </TextField>
-            <ImageView fx:id="icon_edit" fitHeight="40.0" fitWidth="40.0" layoutX="506.0" layoutY="482.0" onMouseClicked="#onEdit" onMouseEntered="#onEnteredEdit" onMouseExited="#onExitedEdit" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="178.0" layoutY="390.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
+            <ImageView fx:id="icon_edit" fitHeight="40.0" fitWidth="40.0" layoutX="504.0" layoutY="394.0" onMouseClicked="#onEdit" onMouseEntered="#onEnteredEdit" onMouseExited="#onExitedEdit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../login/icon/edit.png" />
                </image>
             </ImageView>
-            <Label fx:id="label_edit" layoutX="510.0" layoutY="523.0" onMouseClicked="#onEdit" onMouseEntered="#onEnteredEdit" onMouseExited="#onExitedEdit" text="编辑">
+            <Label fx:id="label_edit" layoutX="508.0" layoutY="435.0" onMouseClicked="#onEdit" onMouseEntered="#onEnteredEdit" onMouseExited="#onExitedEdit" text="编辑">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -260,18 +190,23 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c9c9" height="61.0" layoutX="178.0" layoutY="386.0" stroke="#a49b9b" strokeType="INSIDE" width="213.0" />
-            <TextField fx:id="enterprise" layoutX="230.0" layoutY="405.0" prefHeight="23.0" prefWidth="153.0">
+            <Button fx:id="modify" layoutX="227.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#onModify" prefHeight="23.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" text="不可查看&amp;修改">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <effect>
-                  <InnerShadow choke="0.51" color="#93989e" />
+                  <InnerShadow choke="0.53" color="#93989e" />
                </effect>
-            </TextField>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="192.0" layoutY="397.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="190.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../login/icon/enterprise.png" />
+                  <Image url="@../../login/icon/password.png" />
                </image>
             </ImageView>
-            <Label layoutX="182.0" layoutY="425.0" text="合作企业">
+            <Label layoutX="191.0" layoutY="427.0" text="密码">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -279,11 +214,6 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="birth" editable="false" layoutX="230.0" layoutY="318.0" prefHeight="23.0" prefWidth="153.0">
-               <effect>
-                  <InnerShadow choke="0.51" color="#93989e" />
-               </effect>
-            </TextField>
          </children>
       </Pane>
       <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="35.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
