@@ -36,6 +36,8 @@ public class OrderList_controller {
 	public TableView<OrderData> orderListTableView;
 	public TableView<OrderData> abnormalOrderListTableView;
 	public TableView<OrderData> uncheckoutOrderListTableView;
+	public TableView<OrderData> checkoutOrderListTableView;
+	public TableView<OrderData> canceledOrderListTableView;
 	public Button execute;
 	public Label mark;
 	public TextField room;
@@ -91,6 +93,22 @@ public class OrderList_controller {
 		room.setVisible(false);
 		execute.setText("确认退房");
 		initialTableView(uncheckoutOrderListTableView, OrderStatus.Finished);
+	}
+
+	@FXML
+	private void CheckoutOrderList(Event event) {
+		mark.setVisible(false);
+		room.setVisible(false);
+		execute.setVisible(false);
+		initialTableView(checkoutOrderListTableView, OrderStatus.Checkout);
+	}
+
+	@FXML
+	private void CanceledOrderList(Event event) {
+		mark.setVisible(false);
+		room.setVisible(false);
+		execute.setVisible(false);
+		initialTableView(canceledOrderListTableView, OrderStatus.Canceled);
 	}
 
 	@FXML

@@ -71,8 +71,8 @@
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/userui/user/OrderAndRating_start.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/orderui/OrderDataForSalerUI.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/userui/user/CreditData.java
-/Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/userui/user/HotelData暂时先不删.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/orderui/OrderDataForManageAbnormalOrder.java
+/Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/userui/user/HotelData.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/runner/DataServiceClientRunnerTest.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/dataservice/orderdataservice/OrderDataService.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/businesslogic/creditbl/CreditDataService_Driver.java
@@ -107,6 +107,7 @@
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/Client.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/controller/UserControllerImpl.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/vo/UserCreditHistoryVO.java
+/Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/userui/user/HotelDataHelper.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/businesslogicservice/orderblservice/OrderBLService.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/hotelui/hotel/CreatePromotion_controller.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/po/FullCutPromotionPO.java
@@ -135,7 +136,6 @@
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/businesslogic/customerbl/CustomerController.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/controller/HotelControllerImpl.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/po/PromotionPO.java
-/Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/userui/user/HotelDataHelper暂时先不删.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/hotelui/hotel/PromotionContent_start.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/vo/DiscountPromotionVO.java
 /Users/zhuangyz1998/Documents/Code/workspace/HMS_Client/src/main/java/presentation/promotionui/MakePromotionStrategy2_controller.java

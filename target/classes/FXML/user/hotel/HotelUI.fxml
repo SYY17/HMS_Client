@@ -107,7 +107,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="最新订单查看">
+            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="异常订单查看">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
