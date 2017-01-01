@@ -334,7 +334,7 @@
                </font>
             </Label>
             <Button layoutX="571.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#onOrder" prefHeight="27.0" prefWidth="64.0" text="去下单" />
-            <Button layoutX="166.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#onHistoryOrder" prefHeight="27.0" prefWidth="64.0" text="返回" />
+            <Button layoutX="166.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#onHistoryOrder" prefHeight="27.0" prefWidth="72.0" text="历史订单" />
          </children>
       </Pane>
    </children>

@@ -146,13 +146,12 @@ public class SalerInfo_controller {
 	 * 上传信息
 	 */
 	private void upload(){
-		String username = this.getUserName();
-		UserBLService userBLService = new UserController();
+		this.getUserName();
+		new UserController();
 		
 		//获取生日: 获取的String -> java.util.Date -> java.sql.Date
 		try {
-			String salerName = name.getText();
-			//更新用户名
+			name.getText();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
