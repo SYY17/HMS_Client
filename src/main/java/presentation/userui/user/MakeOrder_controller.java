@@ -199,6 +199,7 @@ public class MakeOrder_controller {
 					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
 			}
+			PromotionInfoForOrder.available.clear();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
