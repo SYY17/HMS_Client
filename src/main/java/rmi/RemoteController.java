@@ -8,6 +8,7 @@ import dataservice.datafactoryservice.DataFactoryService;
 import dataservice.discountpromotiondataservice.DiscountPromotionDataService;
 import dataservice.fullcutpromotiondataservice.FullCutPromotionDataService;
 import dataservice.hoteldataservice.HotelDataService;
+import dataservice.logindataservice.LoginDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
@@ -40,6 +41,14 @@ public class RemoteController {
 	 */
 	public void setRemote(Remote remote) {
 		this.remote = remote;
+	}
+	
+	/**
+	 * 
+	 * @return 获得登录/注册数据信息服务
+	 */
+	public LoginDataService getLoginDataService() {
+		return (LoginDataService) remote;
 	}
 
 	/**

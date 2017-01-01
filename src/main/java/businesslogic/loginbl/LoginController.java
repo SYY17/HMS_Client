@@ -8,6 +8,7 @@ import businesslogicservice.creditBLService.CreditBLService;
 import businesslogicservice.loginblservice.LoginBLService;
 import dataservice.customerdataservice.CustomerDataService;
 import dataservice.hoteldataservice.HotelDataService;
+import dataservice.logindataservice.LoginDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
 import po.HotelPO;
@@ -20,6 +21,7 @@ import runner.DataServiceClientRunner;
 public class LoginController implements LoginBLService {
 
 	private RemoteController remoteController;
+	private LoginDataService logindataService;
 	private UserDataService userdataservice;
 	private CustomerDataService customerdataservice;
 	private CreditBLService creditblservice;
@@ -32,6 +34,7 @@ public class LoginController implements LoginBLService {
 		DataServiceClientRunner runner = new DataServiceClientRunner();
 		runner.start();
 		remoteController = runner.getRemoteController();
+		logindataService = remoteController.getLoginDataService();
 		userdataservice = remoteController.getUserDataService();
 		customerdataservice = remoteController.getCustomerDataService();
 		creditblservice = new CreditController();
@@ -100,16 +103,14 @@ public class LoginController implements LoginBLService {
 	public ResultMessage login(String username, String password, int id) {
 		// TODO Auto-generated method stub
 		try {
-			userdataservice.initUserDataService();
-			UserPO user = userdataservice.findUser(username);
-			userdataservice.finishUserDataService();
+			logindataService.initLoginDataService();
+			boolean result = logindataService.isValidateUser(username, password, id);
+			logindataService.finishLoginDataService();
 
-			if (user == null)
-				return ResultMessage.FALSE;
-
-			if (user.getPassword().equals(password) && (user.getID() / 10000000 == id)) {
+			if(result){
 				return ResultMessage.TRUE;
 			}
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
