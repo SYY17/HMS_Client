@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.alertui.Alert;
 import presentation.controller.HotelControllerImpl;
 import presentation.hotelui.HotelControllerService;
 import presentation.hotelui.hotel.Manage_start;
@@ -23,6 +24,9 @@ public class OrderAndRating_controller {
 	public static Label rateLabel;
 	public static TextField rateText;
 	public static TextArea hotelInfoText;
+	
+	//
+	public Alert alert;
 
 	@FXML
 	private void onLogout(MouseEvent event) throws Exception {
@@ -80,6 +84,8 @@ public class OrderAndRating_controller {
 			 * 鎻愮ず闇�瑕佸～鍐欐墠鑳借瘎浠�
 			 */
 		}
+		alert = Alert.getInstance();
+		alert.showMessageDialog(stage, "评分成功", "评分成功");
 	}
 
 }

@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import vo.RoomType;
 
-public class HotelData暂时先不删 {
+public class HotelData {
 	
 	private final SimpleStringProperty roomType = new SimpleStringProperty();
 	private final SimpleIntegerProperty totalNum = new SimpleIntegerProperty();
@@ -12,7 +12,7 @@ public class HotelData暂时先不删 {
 	private final SimpleStringProperty brief = new SimpleStringProperty();
 	private final SimpleIntegerProperty price = new SimpleIntegerProperty();
 	
-	public HotelData暂时先不删( RoomType roomType, int totalNum, int vacantNum, String brief, int price){
+	public HotelData( RoomType roomType, int totalNum, int vacantNum, String brief, int price){
 		this.roomType.set(roomType.toString());
 		this.totalNum.set(totalNum);
 		this.vacantNum.set(vacantNum);
