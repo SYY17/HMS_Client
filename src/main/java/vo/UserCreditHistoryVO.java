@@ -3,7 +3,7 @@ package vo;
 import java.io.Serializable;
 import java.sql.Date;
 
-import po.CreditMovement;
+import vo.CreditMovement;
 
 public class UserCreditHistoryVO implements Serializable {
 
