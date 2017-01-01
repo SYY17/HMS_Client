@@ -149,8 +149,9 @@ public class OrderController implements OrderBLService {
 						maxOrderID = listTemp.get(i).getOrderID();
 					}
 				}
+				String returnMessage = "";
 				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
-						promotionInfo.getFinalPrice(IDHelper.getInstance().getID(), roomNumber, hotelName, setTime,
+						promotionInfo.getFinalPrice(userInfo.searchByUserName(userName), roomNumber, hotelName, setTime,
 								hotelInfo.getPrice(hotelName, roomType) * roomNumber),
 						roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
 				orderDataService.insertOrder(VOToPO(ovoTemp));

@@ -37,6 +37,8 @@ public class LoginController implements LoginBLService {
 		logindataService = remoteController.getLoginDataService();
 		userdataservice = remoteController.getUserDataService();
 		customerdataservice = remoteController.getCustomerDataService();
+		hoteldataservice = remoteController.getHotelDataService();
+		roomdataservice = remoteController.getRoomDataService();
 		creditblservice = new CreditController();
 	}
 
@@ -72,7 +74,7 @@ public class LoginController implements LoginBLService {
 				creditblservice.addCredit(userID, 0);
 			} else if (20000000 <= userID && userID < 30000000) {
 				hoteldataservice.initHotelDataService();
-				hoteldataservice.insertHotel(new HotelPO(id, "", "", "", "", 0, 0, "", ""));
+				hoteldataservice.insertHotel(new HotelPO(id, username, "", "", "", 0, 0, "", ""));
 				hoteldataservice.finishHotelDataService();
 
 				roomdataservice.initRoomDataService();

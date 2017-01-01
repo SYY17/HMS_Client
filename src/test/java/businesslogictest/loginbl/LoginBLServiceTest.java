@@ -27,9 +27,9 @@ public class LoginBLServiceTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		username = "testworker";
+		username = "testsaler";
 		password = "000000";
-		id = 2;
+		id = 3;
 		loginBLService = new LoginController();
 	}
 
@@ -55,16 +55,19 @@ public class LoginBLServiceTest {
 	@Test
 	public void test3_Logout() {
 		assertEquals(ResultMessage.TRUE, loginBLService.logout(username));
-	}
-	
-	/**
-	 * 删除test用户
-	 */
-	@After
-	public void tearDown(){
 		UserBLService userBLService = new UserController();
 		UserVO uvo = userBLService.searchByUserName(username);
 		userBLService.deleteUser(uvo.getID());
 	}
+	
+//	/**
+//	 * 删除test用户
+//	 */
+//	@After
+//	public void tearDown(){
+//		UserBLService userBLService = new UserController();
+//		UserVO uvo = userBLService.searchByUserName(username);
+//		userBLService.deleteUser(uvo.getID());
+//	}
 
 }

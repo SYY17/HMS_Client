@@ -35,7 +35,7 @@ public class OrderBLServiceTest {
 	private int predictNumber;
 	private boolean haveChild;
 	public static int orderID;
-	public static final int ADMIN_ID = 10916231;
+	public static final int ADMIN_ID = 10101001;
 
 	/**
 	 * 初始化
@@ -45,7 +45,7 @@ public class OrderBLServiceTest {
 		orderBlService = new OrderController();
 		userInfo = new UserInfoForOrder();
 		userName = userInfo.searchByUserID(ADMIN_ID);
-		hotelName = "中国";
+		hotelName = "hotel";
 		roomType = RoomType.KING_SIZE_ROOM;
 		roomNumber = 2;
 		setTime = Timestamp.valueOf("2016-12-14 14:47:36.000000");
@@ -79,8 +79,8 @@ public class OrderBLServiceTest {
 
 		// 顾客&酒店
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID).get(0);
-		assertEquals("admin", ovoTemp.getUserName());
-		assertEquals("中国", ovoTemp.getHotelName());
+		assertEquals("user", ovoTemp.getUserName());
+		assertEquals("hotel", ovoTemp.getHotelName());
 	}
 
 	/**
@@ -89,8 +89,8 @@ public class OrderBLServiceTest {
 	@Test
 	public void test3_ReviewOrderIntOrderStatus() {
 		OrderVO ovoTemp = orderBlService.reviewOrder(ADMIN_ID, OrderStatus.Abnormal).get(0);
-		assertEquals("admin", ovoTemp.getUserName());
-		assertEquals("中国", ovoTemp.getHotelName());
+		assertEquals("user", ovoTemp.getUserName());
+		assertEquals("hotel", ovoTemp.getHotelName());
 
 		ArrayList<OrderVO> list = orderBlService.reviewOrder(ADMIN_ID, OrderStatus.Canceled);
 		assertEquals(list.size(), 0);

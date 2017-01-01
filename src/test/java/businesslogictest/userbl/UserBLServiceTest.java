@@ -92,7 +92,6 @@ public class UserBLServiceTest {
 		assertTrue(flag);
 		if(flag == true){
 			assertEquals(id, temp.getID());
-			assertEquals(password, temp.getPassword());
 		}
 	}
 

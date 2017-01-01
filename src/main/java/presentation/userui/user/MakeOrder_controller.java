@@ -121,37 +121,46 @@ public class MakeOrder_controller {
 						new Timestamp(System.currentTimeMillis()), ci, co,
 						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				} else {
+					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 				}
 			}
 			if (standardNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.STANDARD_ROOM, singleNum,
+				if (orderController.create(username, hotelname, RoomType.STANDARD_ROOM, standardNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
 						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				} else {
+					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 				}
 			}
 			if (kingNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, singleNum,
+				if (orderController.create(username, hotelname, RoomType.KING_SIZE_ROOM, kingNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
 						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				} else {
+					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 				}
 			}
 			if (suiteNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.SUITE, singleNum,
+				if (orderController.create(username, hotelname, RoomType.SUITE, suiteNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
 						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				} else {
+					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 				}
 			}
 			if (tripleNum != 0) {
-				if (orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, singleNum,
+				if (orderController.create(username, hotelname, RoomType.TRIPLE_ROOM, tripleNum,
 						new Timestamp(System.currentTimeMillis()), ci, co,
 						new Timestamp(ci.getTime() + 12 * 1000 * 60 * 60), predictNum, haveChild) == null) {
 					Alert.getInstance().showMessageDialog(stage, "信用不足", "警告");
+				} else {
+					Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 				}
 			}
-			Alert.getInstance().showMessageDialog(stage, "成功", "订单创建");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
