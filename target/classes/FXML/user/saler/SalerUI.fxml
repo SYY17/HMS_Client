@@ -82,7 +82,7 @@
                   <DropShadow />
                </effect>
             </TableView>
-            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="127.0" text="今日异常订单">
+            <Label layoutX="183.0" layoutY="143.0" prefHeight="27.0" prefWidth="361.0" text="今日未执行订单（截至明天中午之前）">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

@@ -83,7 +83,7 @@ public class UserDataServiceMySqlImpl_Stub implements UserDataService{
 	@Override
 	public ArrayList<UserPO> findAll() throws RemoteException {
 		// TODO Auto-generated method stub
-		ArrayList<UserPO> list = new ArrayList<>();
+		ArrayList<UserPO> list = new ArrayList<UserPO>();
 		list.add(upo);
 		return list;
 	}

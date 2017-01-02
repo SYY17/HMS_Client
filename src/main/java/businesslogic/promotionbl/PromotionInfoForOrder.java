@@ -25,6 +25,9 @@ public class PromotionInfoForOrder implements PromotionInfo {
 
 		double finalPrice = pc.searchPromotionPresent(userId, roomNum, hotelId, setTime, initialPrice);
 
+		if(finalPrice>=initialPrice){
+			return initialPrice;
+		}
 		return (int) finalPrice;
 	}
 
@@ -58,10 +61,10 @@ public class PromotionInfoForOrder implements PromotionInfo {
 		show();
 	}
 	
-	public static void main(String[]args){
-		PromotionInfoForOrder a = new PromotionInfoForOrder();
-		int ww = a.getFinalPrice(11225001, 9, "盘丝洞",Timestamp.valueOf("2016-12-02 00:00:00"), 1000);
-		System.out.println(ww);
-		a.output();
-	}
+//	public static void main(String[]args){
+//		PromotionInfoForOrder a = new PromotionInfoForOrder();
+//		int ww = a.getFinalPrice(11225001, 9, "盘丝洞",Timestamp.valueOf("2016-12-02 00:00:00"), 1000);
+//		System.out.println(ww);
+//		a.output();
+//	}
 }

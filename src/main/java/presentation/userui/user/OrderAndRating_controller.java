@@ -55,35 +55,35 @@ public class OrderAndRating_controller {
 
 	@FXML
 	private void onSubmit(ActionEvent event) throws IOException {
-		int rate = Integer.parseInt(rateText.getText());
-
-		String hotelName = "homeinn";/* 浼犲叆hotelID */
-
-		if (rate != 0) {
-			HotelControllerService hotelController = new HotelControllerImpl();
-			HotelVO hotel = hotelController.reviewHotelInfo(hotelName);
-
-			HotelVO hvo = new HotelVO(hotel.getHotelID(), hotelName, hotel.getHotelAddress(), hotel.getBusinessArea(),
-					hotel.getHotelDescription(), hotel.getStarLevel(), rate, hotel.getStaffName(),
-					hotel.getPhoneNumber());
-			ResultMessage result = hotelController.gradeHotel(hvo);
-
-			if (result == ResultMessage.TRUE) {
-				/*
-				 * 鎻愮ず璇勪环鎴愬姛
-				 */
-				new Manage_start().start(stage);
-			} else {
-				/*
-				 * 鎻愮ず璇勪环澶辫触
-				 */
-			}
-
-		} else {
-			/*
-			 * 鎻愮ず闇�瑕佸～鍐欐墠鑳借瘎浠�
-			 */
-		}
+//		int rate = Integer.parseInt(rateText.getText());
+//
+//		String hotelName = "homeinn";/* 浼犲叆hotelID */
+//
+//		if (rate != 0) {
+//			HotelControllerService hotelController = new HotelControllerImpl();
+//			HotelVO hotel = hotelController.reviewHotelInfo(hotelName);
+//
+//			HotelVO hvo = new HotelVO(hotel.getHotelID(), hotelName, hotel.getHotelAddress(), hotel.getBusinessArea(),
+//					hotel.getHotelDescription(), hotel.getStarLevel(), rate, hotel.getStaffName(),
+//					hotel.getPhoneNumber());
+//			ResultMessage result = hotelController.gradeHotel(hvo);
+//
+//			if (result == ResultMessage.TRUE) {
+//				/*
+//				 * 鎻愮ず璇勪环鎴愬姛
+//				 */
+//				new Manage_start().start(stage);
+//			} else {
+//				/*
+//				 * 鎻愮ず璇勪环澶辫触
+//				 */
+//			}
+//
+//		} else {
+//			/*
+//			 * 鎻愮ず闇�瑕佸～鍐欐墠鑳借瘎浠�
+//			 */
+//		}
 		alert = Alert.getInstance();
 		alert.showMessageDialog(stage, "评分成功", "评分成功");
 	}

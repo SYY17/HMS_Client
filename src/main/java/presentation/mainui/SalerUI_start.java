@@ -3,7 +3,10 @@ package presentation.mainui;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
+import org.omg.Messaging.SyncScopeHelper;
+
+import java.sql.Date;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -104,7 +107,7 @@ public class SalerUI_start extends Application {
 	 */
 	private void initiateDate(Parent root) {
 		Label date = (Label) root.lookup("#date");
-		Date time = new Date();
+		Date time = new Date(System.currentTimeMillis());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String text = format.format(time);
 		date.setText(text);
@@ -177,12 +180,13 @@ public class SalerUI_start extends Application {
 		initiateObservableList(observableList);
 
 		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */40000000, OrderStatus.Abnormal);
+				.reviewOrder(/* id = */40000000, OrderStatus.Unfilled);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			Date orderDate = ovo.getSetTime();
-			Date currentDate = new Timestamp(System.currentTimeMillis());
-			if (orderDate.getDay() == currentDate.getDay() && orderDate.getMonth() == currentDate.getMonth()) {
+			Date orderDate = new Date(ovo.getDeadline().getTime());
+			Date currentDate = new Date(System.currentTimeMillis());
+			if ((orderDate.getDay() == currentDate.getDay() || orderDate.getDay() == currentDate.getDay() + 1)
+					&& orderDate.getMonth() == currentDate.getMonth()) {
 				data.add(new OrderDataHelper().toOrderDataForSalerUI(ovo));
 			}
 		}

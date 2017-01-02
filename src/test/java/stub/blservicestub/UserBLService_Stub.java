@@ -73,7 +73,7 @@ public class UserBLService_Stub implements UserBLService{
 	@Override
 	public ArrayList<UserVO> getAllUsers() {
 		// TODO Auto-generated method stub
-		ArrayList<UserVO> list = new ArrayList<>();
+		ArrayList<UserVO> list = new ArrayList<UserVO>();
 		list.add(uvo);
 		return list;
 	}
