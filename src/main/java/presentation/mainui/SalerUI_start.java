@@ -177,10 +177,10 @@ public class SalerUI_start extends Application {
 		initiateObservableList(observableList);
 
 		ArrayList<OrderVO> orderList = orderControllerService
-				.reviewOrder(/* id = */40000000, OrderStatus.Abnormal);
+				.reviewOrder(/* id = */40000000, OrderStatus.Unfilled);
 		for (int i = 0; i < orderList.size(); i++) {
 			OrderVO ovo = orderList.get(i);
-			Date orderDate = ovo.getSetTime();
+			Date orderDate = ovo.getDeadline();
 			Date currentDate = new Timestamp(System.currentTimeMillis());
 			if (orderDate.getDay() == currentDate.getDay() && orderDate.getMonth() == currentDate.getMonth()) {
 				data.add(new OrderDataHelper().toOrderDataForSalerUI(ovo));
