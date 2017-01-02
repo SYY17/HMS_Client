@@ -19,6 +19,7 @@ public class UserController implements UserBLService {
 
 	public UserController() {
 		// TODO Auto-generated constructor stub
+		//初始化启动服务
 		DataServiceClientRunner runner = new DataServiceClientRunner();
 		runner.start();
 		remoteController = runner.getRemoteController();
@@ -35,6 +36,7 @@ public class UserController implements UserBLService {
 	public ResultMessage addUser(UserVO uvo) {
 		// TODO Auto-generated method stub
 		try {
+			//抽象出vo与po的转换方法
 			userdataservice.initUserDataService();
 			userLineItem.setUserLineItem(uvo);
 			userdataservice.insertUser(userLineItem.getUserPO());
@@ -124,6 +126,7 @@ public class UserController implements UserBLService {
 			ArrayList<UserPO> upoList = userdataservice.findAll();
 			userdataservice.finishUserDataService();
 
+			//对表内每一对象进行转换
 			for (int i = 0; i < upoList.size(); i++) {
 				userLineItem.setUserLineItem(upoList.get(i));
 				list.add(userLineItem.getUserVO());

@@ -37,6 +37,9 @@ public class HotelController implements HotelBLService {
 		// hotelLineItem = new HotelLineItem();
 	}
 
+	/**
+	 * 查看酒店信息
+	 */
 	@Override
 	public HotelVO reviewHotelInfo(String name) {
 		// TODO Auto-generated method stub
@@ -54,6 +57,9 @@ public class HotelController implements HotelBLService {
 		return hvo;
 	}
 
+	/**
+	 * 根据id查找并返回酒店信息
+	 */
 	@Override
 	public HotelVO searchHotelByID(int id) {
 		// TODO Auto-generated method stub
@@ -71,12 +77,9 @@ public class HotelController implements HotelBLService {
 		return hvo;
 	}
 
-//	 public static void main(String[] args){
-//	 HotelBLService hotel = new HotelController();
-//	 HotelVO hvo = hotel.searchHotelByID(20905098);
-//	 System.out.println(hvo.getHotelDescription());
-//	 }
-
+	/**
+	 * 查看酒店评分列表
+	 */
 	@Override
 	public ArrayList<HotelVO> reviewHotelList() {
 		// TODO Auto-generated method stub
@@ -89,6 +92,8 @@ public class HotelController implements HotelBLService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//对表内每一对象进行转换
 		ArrayList<HotelVO> hvoList = new ArrayList<HotelVO>();
 		for (int i = 0; i < hpoList.size(); i++) {
 			hvoList.add(HotelPOtoHotelVO(hpoList.get(i)));
@@ -97,6 +102,9 @@ public class HotelController implements HotelBLService {
 		return hvoList;
 	}
 
+	/**
+	 * 创建酒店
+	 */
 	@Override
 	public ResultMessage createHotel(HotelVO hvo) {
 		// TODO Auto-generated method stub
@@ -114,6 +122,9 @@ public class HotelController implements HotelBLService {
 		return result;
 	}
 
+	/**
+	 * 删除酒店
+	 */
 	@Override
 	public ResultMessage deleteHotel(int id) {
 		// TODO Auto-generated method stub
@@ -131,6 +142,9 @@ public class HotelController implements HotelBLService {
 		return result;
 	}
 
+	/**
+	 * 维护酒店基本信息
+	 */
 	@Override
 	public ResultMessage modifyHotel(HotelVO hvo) {
 		// TODO Auto-generated method stub
@@ -148,6 +162,9 @@ public class HotelController implements HotelBLService {
 		return result;
 	}
 
+	/**
+	 * 酒店评分
+	 */
 	@Override
 	public ResultMessage gradeHotel(HotelVO hvo) {
 		// TODO Auto-generated method stub
@@ -165,6 +182,9 @@ public class HotelController implements HotelBLService {
 		return result;
 	}
 
+	/**
+	 * 按酒店名称查找并返回所有房间信息
+	 */
 	@Override
 	public ArrayList<HotelVO> searchHotel(String name) {
 		// TODO Auto-generated method stub
@@ -186,6 +206,9 @@ public class HotelController implements HotelBLService {
 		return hvoList;
 	}
 
+	/**
+	 * 按照id和房间类型查找并返回房间信息
+	 */
 	@Override
 	public RoomVO searchRoom(int id, RoomType type) {
 		// TODO Auto-generated method stub
@@ -197,25 +220,32 @@ public class HotelController implements HotelBLService {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} // change enum from po to vo????
+		} // po, vo转换
 		RoomVO rvo = new RoomVO(rpo.getHotelID(), vo.RoomType.valueOf(rpo.getRoomType().toString()), rpo.getTotalSum(),
 				rpo.getRemainSum(), rpo.getPrice());
 		return rvo;
 	}
 
+	/**
+	 * 更新客房信息
+	 */
 	@Override
 	public ResultMessage ModifyRoom(RoomVO rvo) {
 		// TODO Auto-generated method stub
 		ResultMessage result = null;
 		try {
-			roomDataService.initRoomDataService();// change enum from vo to
-													// po???
+			roomDataService.initRoomDataService();
+			
+			//分别对剩余数量, 总数量和价格进行更新
 			roomDataService.updateRemainSum(rvo.getHotelID(), po.RoomType.valueOf(rvo.getRoomType().toString()),
 					rvo.getRemainSum());
+			
 			roomDataService.updateTotalSum(rvo.getHotelID(), po.RoomType.valueOf(rvo.getRoomType().toString()),
 					rvo.getTotalSum());
+			
 			roomDataService.updatePrice(rvo.getHotelID(), po.RoomType.valueOf(rvo.getRoomType().toString()),
 					rvo.getPrice());
+			
 			roomDataService.finishRoomDataService();
 			result = ResultMessage.TRUE;
 		} catch (RemoteException e) {
@@ -226,6 +256,9 @@ public class HotelController implements HotelBLService {
 		return result;
 	}
 
+	/**
+	 * 根据id查找并返回所有房间信息
+	 */
 	@Override
 	public ArrayList<RoomVO> SearchRooms(int id) {
 		// TODO Auto-generated method stub
@@ -240,9 +273,11 @@ public class HotelController implements HotelBLService {
 		}
 
 		ArrayList<RoomVO> rvoList = new ArrayList<RoomVO>();
+		
+		//将表中每一个对象进行转换
 		if (rpoList != null) {
 			for (int i = 0; i < rpoList.size(); i++) {
-				RoomPO rpo = rpoList.get(i); // change enum from po to vo????
+				RoomPO rpo = rpoList.get(i);
 				rvoList.add(new RoomVO(id, vo.RoomType.valueOf(rpo.getRoomType().toString()), rpo.getTotalSum(),
 						rpo.getRemainSum(), rpo.getPrice()));
 			}
@@ -250,6 +285,9 @@ public class HotelController implements HotelBLService {
 		return rvoList;
 	}
 
+	/**
+	 * 获取剩余房间数
+	 */
 	@Override
 	public int getRemainRooms(int hotelid, RoomType roomtype, Date checkin, Date checkout) {
 		// TODO Auto-generated method stub
@@ -275,13 +313,14 @@ public class HotelController implements HotelBLService {
 				Date in = orderList.get(i).getCheckIn();
 				Date out = orderList.get(i).getCheckOut();
 				
+				//对checkin和checkout时间进行判断并更新剩余数目
 				if((in.compareTo(checkin)>0 && in.compareTo(checkout)<0) || 
 						(out.compareTo(checkin)>0 && out.compareTo(checkout)<0) ||
 						(in.compareTo(checkin)<0 && out.compareTo(checkout)>0) || 
 						(in.compareTo(checkin)>0 && out.compareTo(checkout)<0)){
 					remainRooms = remainRooms - 1;
+					}
 				}
-			}
 			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -290,51 +329,28 @@ public class HotelController implements HotelBLService {
 		return remainRooms;
 	}
 	
+	/**
+	 *  
+	 * @param hvo
+	 * @return VO转PO的方法
+	 */
 	public HotelPO HotelVOtoHotelPO(HotelVO hvo) {
-		// ArrayList<RoomPO> rpoList = new ArrayList<RoomPO>();
-		// ArrayList<RoomVO> rvoList = hvo.getRooms();
-		// if(rvoList != null){
-		// for(int i=0;i<rvoList.size();i++){//change enums in vo to po?
-		// RoomPO rpo = new RoomPO(rvoList.get(i).getHotelID(),
-		// po.RoomType.valueOf(rvoList.get(i).getRoomType().toString()),
-		// rvoList.get(i).getTotalSum(), rvoList.get(i).getRemainSum(),
-		// rvoList.get(i).getPrice());
-		// rpoList.add(rpo);
-		// }
-		// }
 		HotelPO hpo = new HotelPO(hvo.getHotelID(), hvo.getHotelName(), hvo.getHotelAddress(), hvo.getBusinessArea(),
 				hvo.getHotelDescription(), hvo.getStarLevel(),
-				/*
-				 * hvo.getRoomNumber(), rpoList,
-				 */ hvo.getRating(), hvo.getStaffName(), hvo.getPhoneNumber());
+				hvo.getRating(), hvo.getStaffName(), hvo.getPhoneNumber());
 		return hpo;
 	}
 
+	/**
+	 * 
+	 * @param hpo
+	 * @return PO转VO的方法
+	 */
 	public HotelVO HotelPOtoHotelVO(HotelPO hpo) {
-		// ArrayList<RoomVO> rvoList = new ArrayList<RoomVO>();
-		// ArrayList<RoomPO> rpoList = hpo.getRooms();
-		// if(rpoList != null){
-		// for(int i=0;i<rpoList.size();i++){//??????????change enums in po to
-		// vo???????????????
-		// RoomVO rvo = new RoomVO(rpoList.get(i).getHotelID(),
-		// vo.RoomType.valueOf(rpoList.get(i).getRoomType().toString()),
-		// rpoList.get(i).getTotalSum(), rpoList.get(i).getRemainSum(),
-		// rpoList.get(i).getPrice());
-		// rvoList.add(rvo);
-		// }
-		// }
 		HotelVO hvo = new HotelVO(hpo.getHotelID(), hpo.getHotelName(), hpo.getHotelAddress(), hpo.getBusinessArea(),
-				hpo.getHotelDescription(), hpo.getStarLevel(),
-				/*
-				 * hpo.getRoomNumber(), rvoList,
-				 */hpo.getRating(), hpo.getStaffName(), hpo.getPhoneNumber());
+				hpo.getHotelDescription(), hpo.getStarLevel(), 
+				hpo.getRating(), hpo.getStaffName(), hpo.getPhoneNumber());
 		return hvo;
 	}
 
-	
-
-//	public static void main(String[] args) {
-//		HotelController h = new HotelController();
-//		h.ModifyRoom(new RoomVO(21214001, vo.RoomType.KING_SIZE_ROOM, 1000, 999, 10000));
-//	}
 }

@@ -61,9 +61,13 @@ public class OrderController implements OrderBLService {
 	 */
 	private ArrayList<OrderVO> getOrderByUserID(int id) throws RemoteException {
 		orderDataService.initOrderDataService();
+		
+		//创建存储订单的数据结构
 		ArrayList<OrderPO> listPO = new ArrayList<OrderPO>();
 		ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
 		listTemp = orderDataService.findOrder();
+		
+		//根据时间来触发订单状态转换
 		for (int i = 0; i < listTemp.size(); i++) {
 			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(listTemp.get(i).getOrderID()));
 			if (System.currentTimeMillis() > ovo.getDeadline().getTime()
@@ -71,6 +75,8 @@ public class OrderController implements OrderBLService {
 				changeOrderStatus(ovo.getOrderID(), OrderStatus.Abnormal, CreditMovement.AbnormalOrder);
 			}
 		}
+		
+		//对订单对应用户进行判断
 		if (id >= 30000000) {
 			listPO = orderDataService.findOrder();
 		} else {
@@ -81,12 +87,15 @@ public class OrderController implements OrderBLService {
 				listPO = orderDataService.findOrderByHotelName(name);
 			}
 		}
-
+		
 		orderDataService.finishOrderDataService();
+		
+		//po, vo转换
 		ArrayList<OrderVO> listVO = new ArrayList<OrderVO>();
 		for (int i = 0; i < listPO.size(); i++) {
 			listVO.add(POToVO(listPO.get(i)));
 		}
+		
 		return listVO;
 	}
 
@@ -117,8 +126,12 @@ public class OrderController implements OrderBLService {
 		try {
 			ArrayList<OrderVO> listTemp = getOrderByUserID(id);
 			for (int i = 0; i < listTemp.size(); i++) {
-				if (listTemp.get(i).getOrderStatus().toString().equals(orderStatus.toString())) {
-					list.add(listTemp.get(i));
+				//降低隐式访问耦合
+				OrderVO ovo = listTemp.get(i);
+				OrderStatus status = ovo.getOrderStatus();
+				
+				if (status.toString().equals(orderStatus.toString())) {
+					list.add(ovo);
 				}
 			}
 		} catch (RemoteException e) {
@@ -138,22 +151,37 @@ public class OrderController implements OrderBLService {
 	public OrderVO create(String userName, String hotelName, RoomType roomType, int roomNumber, Timestamp setTime,
 			Date checkIn, Date checkOut, Timestamp deadline, int predictNumber, boolean haveChild) {
 		try {
-			if (creditinfo.getCreditByUserID(userInfo.searchByUserName(userName)) >= 0) {
+			//定义id, 减少隐式访问耦合
+			int id = userInfo.searchByUserName(userName);
+			if (creditinfo.getCreditByUserID(id) >= 0) {
 				orderDataService.initOrderDataService();
+				
+				//listTemp用于存储订单信息
 				int maxOrderID = 0;
-				ArrayList<OrderPO> listTemp = new ArrayList<OrderPO>();
-				listTemp = orderDataService.findOrder();
+				ArrayList<OrderPO> listTemp = orderDataService.findOrder();
+				
+				//获得当前最新的orderID
 				for (int i = 0; i < listTemp.size(); i++) {
-					if (maxOrderID < listTemp.get(i).getOrderID()) {
-						maxOrderID = listTemp.get(i).getOrderID();
+					//定义opo与orderID, 减少隐式访问耦合
+					OrderPO opo = listTemp.get(i);
+					int orderID = opo.getOrderID();
+					
+					if (maxOrderID < orderID) {
+						maxOrderID = orderID;
 					}
 				}
+				
+				//创建订单ID为当前最新ID+1的新订单
 				OrderVO ovoTemp = new OrderVO(maxOrderID + 1, userName, hotelName, OrderStatus.Unfilled,
 						promotionInfo.getFinalPrice(userInfo.searchByUserName(userName), roomNumber, hotelName, setTime,
 								hotelInfo.getPrice(hotelName, roomType) * roomNumber),
 						roomType, roomNumber, setTime, checkIn, checkOut, deadline, predictNumber, haveChild, null);
+				
+				//利用抽象出的转换方法进行vo,po转换
 				orderDataService.insertOrder(VOToPO(ovoTemp));
 				orderDataService.finishOrderDataService();
+				
+				//返回创建出的订单信息
 				return ovoTemp;
 			}
 		} catch (RemoteException e1) {
@@ -217,25 +245,39 @@ public class OrderController implements OrderBLService {
 		try {
 			orderDataService.initOrderDataService();
 			orderDataService.updateOrder(id, orderStatus);
+			
+			//查找订单信息
 			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
 			int userID = userInfo.searchByUserName(ovo.getUserName());
 
+			//根据订单不同状态进行不同处理
 			if (creditMovement.toString().equals(CreditMovement.AbnormalOrder.toString())) {
+				
+				//对异常订单的处理
 				creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice(), creditMovement);
-			} else if (creditMovement.toString().equals(CreditMovement.CancelOrder.toString())) {
+			}else if (creditMovement.toString().equals(CreditMovement.CancelOrder.toString())) {
+				
+				//对未执行订单的处理
 				if (ovo.getOrderStatus().toString().equals(OrderStatus.Unfilled.toString())) {
+					
 					if (ovo.getDeadline().getTime() - System.currentTimeMillis() < 6 * 1000 * 60 * 60) {
+						
 						creditinfo.updateCreditByUserID(userID, (-1) * ovo.getPrice() / 2, creditMovement);
 					}
-				} else if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
+				}else if (ovo.getOrderStatus().toString().equals(OrderStatus.Abnormal.toString())) {
 					if (orderStatus.toString().equals(OrderStatus.Canceled.toString())) {
+						
+						//对撤销订单的处理
 						creditinfo.updateCreditByUserID(userID, ovo.getPrice(), creditMovement);
-					} else if (orderStatus.toString().equals(OrderStatus.HalfCanceled.toString())) {
+					}else if (orderStatus.toString().equals(OrderStatus.HalfCanceled.toString())) {
+						
 						creditinfo.updateCreditByUserID(userID, ovo.getPrice() / 2, creditMovement);
 					}
 				}
-			} else if (creditMovement.toString().equals(CreditMovement.ExecuteOrder.toString())) {
+			}else if (creditMovement.toString().equals(CreditMovement.ExecuteOrder.toString())) {
 				if (orderDataService.findOrderByOrderID(id).getOrderStatus().toString().equals(OrderStatus.Abnormal)) {
+					
+					//对已执行订单的处理
 					creditinfo.updateCreditByUserID(userID, ovo.getPrice(), creditMovement);
 				}
 				creditinfo.updateCreditByUserID(userID, ovo.getPrice(), creditMovement);
