@@ -128,9 +128,17 @@ public class MakeOrder_controller {
 				} else {
 					ArrayList<String> available = PromotionInfoForOrder.available;
 					String result = "成功\n";
-					for (int i = 0; i < available.size(); i++) {
-						result += available.get(i) + "\n";
+					//
+					if(available==null||available.size()==0){
+						result += "没有可用优惠"+ "\n";
+					}else{
+						for (int i = 0; i < available.size(); i++) {
+							result += available.get(i) + "\n";
+						}
 					}
+					//for (int i = 0; i < available.size(); i++) {
+						//result += available.get(i) + "\n";
+					//}
 					result += "最终价格：" + ovo.getPrice();
 					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
@@ -144,9 +152,17 @@ public class MakeOrder_controller {
 				} else {
 					ArrayList<String> available = PromotionInfoForOrder.available;
 					String result = "成功\n";
-					for (int i = 0; i < available.size(); i++) {
-						result += available.get(i) + "\n";
+					//
+					if(available==null||available.size()==0){
+						result += "没有可用优惠"+ "\n";
+					}else{
+						for (int i = 0; i < available.size(); i++) {
+							result += available.get(i) + "\n";
+						}
 					}
+					//for (int i = 0; i < available.size(); i++) {
+						//result += available.get(i) + "\n";
+					//}
 					result += "最终价格：" + ovo.getPrice();
 					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
@@ -160,9 +176,17 @@ public class MakeOrder_controller {
 				} else {
 					ArrayList<String> available = PromotionInfoForOrder.available;
 					String result = "成功\n";
-					for (int i = 0; i < available.size(); i++) {
-						result += available.get(i) + "\n";
+					//
+					if(available==null||available.size()==0){
+						result += "没有可用优惠"+ "\n";
+					}else{
+						for (int i = 0; i < available.size(); i++) {
+							result += available.get(i) + "\n";
+						}
 					}
+					//for (int i = 0; i < available.size(); i++) {
+						//result += available.get(i) + "\n";
+					//}
 					result += "最终价格：" + ovo.getPrice();
 					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
@@ -176,9 +200,17 @@ public class MakeOrder_controller {
 				} else {
 					ArrayList<String> available = PromotionInfoForOrder.available;
 					String result = "成功\n";
-					for (int i = 0; i < available.size(); i++) {
-						result += available.get(i) + "\n";
+					//
+					if(available==null||available.size()==0){
+						result += "没有可用优惠"+ "\n";
+					}else{
+						for (int i = 0; i < available.size(); i++) {
+							result += available.get(i) + "\n";
+						}
 					}
+					//for (int i = 0; i < available.size(); i++) {
+						//result += available.get(i) + "\n";
+					//}
 					result += "最终价格：" + ovo.getPrice();
 					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
@@ -192,9 +224,17 @@ public class MakeOrder_controller {
 				} else {
 					ArrayList<String> available = PromotionInfoForOrder.available;
 					String result = "成功\n";
-					for (int i = 0; i < available.size(); i++) {
-						result += available.get(i) + "\n";
+					//
+					if(available==null||available.size()==0){
+						result += "没有可用优惠"+ "\n";
+					}else{
+						for (int i = 0; i < available.size(); i++) {
+							result += available.get(i) + "\n";
+						}
 					}
+					//for (int i = 0; i < available.size(); i++) {
+						//result += available.get(i) + "\n";
+					//}
 					result += "最终价格：" + ovo.getPrice();
 					Alert.getInstance().showMessageDialog(stage, result, "订单创建");
 				}
