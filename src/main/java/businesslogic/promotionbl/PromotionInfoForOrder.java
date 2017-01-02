@@ -25,6 +25,9 @@ public class PromotionInfoForOrder implements PromotionInfo {
 
 		double finalPrice = pc.searchPromotionPresent(userId, roomNum, hotelId, setTime, initialPrice);
 
+		if(finalPrice>=initialPrice){
+			return initialPrice;
+		}
 		return (int) finalPrice;
 	}
 
