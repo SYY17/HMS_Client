@@ -216,8 +216,8 @@ public class OrderController implements OrderBLService {
 
 		try {
 			orderDataService.initOrderDataService();
-			orderDataService.updateOrder(id, orderStatus);
 			OrderVO ovo = POToVO(orderDataService.findOrderByOrderID(id));
+			orderDataService.updateOrder(id, orderStatus);
 			int userID = userInfo.searchByUserName(ovo.getUserName());
 
 			if (creditMovement.toString().equals(CreditMovement.AbnormalOrder.toString())) {
